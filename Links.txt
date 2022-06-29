@@ -1,0 +1,7 @@
+Domain Name
+https://domains.google.com/registrar/search?searchTerm=reflow&hl=es&priceFilter=30&tab=1
+
+Hostinger VPS --> Node.js, Mysql
+
+Run nodemon
+rpm run server.js

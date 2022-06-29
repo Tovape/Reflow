@@ -581,35 +581,35 @@ Introduction Configuration
 }
 
 #back1 {
-	background: url('../files/images/image8.jpg');
+	background: url('/images/image8.jpg');
     background-size:     cover; 
     background-repeat:   no-repeat;
     background-position: center center;
 }
 
 #back2 {
-	background: url('../files/images/image1.jpg');
+	background: url('/images/image1.jpg');
     background-size:     cover; 
     background-repeat:   no-repeat;
     background-position: center center;
 }
 
 #back3 {
-	background: url('../files/images/image6.jpg');
+	background: url('/images/image6.jpg');
     background-size:     cover; 
     background-repeat:   no-repeat;
     background-position: center center;
 }
 
 #back4 {
-	background: url('../files/images/image7.jpg');
+	background: url('/images/image7.jpg');
     background-size:     cover; 
     background-repeat:   no-repeat;
     background-position: center center;
 }
 
 #back5 {
-	background: url('../files/images/image2.jpg');
+	background: url('/images/image2.jpg');
     background-size:     cover; 
     background-repeat:   no-repeat;
     background-position: center center;

@@ -9,7 +9,7 @@ const passport = require('passport')
 const flash = require('express-flash')
 const session = require('express-session')
 const methodOverride = require('method-override')
-
+const PORT = 5000;
 const initializePassport = require('./passport-config')
 initializePassport(
   passport,
@@ -18,7 +18,6 @@ initializePassport(
 )
 
 const users = []
-
 app.set('view-engine', 'ejs')
 app.use(express.urlencoded({ extended: false }))
 app.use(flash())
@@ -31,8 +30,7 @@ app.use(passport.initialize())
 app.use(passport.session())
 app.use(methodOverride('_method'))
 
-// App
-
+// Main Pages
 app.get('/', checkNotAuthenticated, (req, res) => {
 	res.render('index.ejs'),
 	app.use(express.static(__dirname + '/css')),
@@ -40,6 +38,23 @@ app.get('/', checkNotAuthenticated, (req, res) => {
 	app.use(express.static(__dirname + '/js'))
 })
 
+app.get('/projects', checkNotAuthenticated, (req, res) => {
+  res.render('projects.ejs')
+})
+
+app.get('/showcase', checkNotAuthenticated, (req, res) => {
+  res.render('showcase.ejs')
+})
+
+app.get('/contact', checkNotAuthenticated, (req, res) => {
+  res.render('contact.ejs')
+})
+
+app.get('/booking', checkNotAuthenticated, (req, res) => {
+  res.render('booking.ejs')
+})
+
+// Signup Login
 app.get('/login', checkNotAuthenticated, (req, res) => {
   res.render('login.ejs')
 })
@@ -79,6 +94,7 @@ app.get('/dashboard', checkAuthenticated, (req, res) => {
   res.render('dashboard.ejs')
 })
 
+// Auth Functions
 function checkAuthenticated(req, res, next) {
   if (req.isAuthenticated()) {
     return next()
@@ -96,6 +112,6 @@ function checkNotAuthenticated(req, res, next) {
   next()
 }
 
-console.log("Server Started")
+console.log("Server Started on port " + PORT);
 
-app.listen(5000)
+app.listen(PORT)

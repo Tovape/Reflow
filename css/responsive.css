@@ -96,6 +96,10 @@
 
 @media only screen and (max-width: 570px) {
 
+.introduction {
+	height: 600px;
+}
+
 .introduction-category {
 	display: none;
 }

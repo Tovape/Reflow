@@ -16,16 +16,77 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
 		// Text
 		
-		var titlearray = ['Pentahouse','Condo Extended','Sabadell Centre Duplex','Puerta del Sol Condo','Avinguda San Esteve'];
-		var subtitlearray = ['Barcelona','Terrassa','Sabadell','Madrid','Castellar del Valles'];
-		var descriptionarray = [
-			'Archivos de texto. Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 1500 cuando un impresor (N. del T. persona que se dedica a la imprenta) desconocido usó una galería de textos y los mezcló de tal manera que logró hacer un libro de textos especimen. No sólo sobrevivió 500 años, sino que tambien ingresó como texto de relleno en documentos electrónicos, quedand',
-			'b',
-			'c',
-			'd',
-			'e'
-		];
-		var linkarray = ['https://google.com','b','c','d','e']
+		var language = localStorage.getItem("language");
+		
+		if (language == 'es') {
+			var titlearray = [
+			'Pentahouse',
+			'Condo Extended',
+			'Sabadell Centre Duplex',
+			'Puerta del Sol Condo',
+			'Avinguda San Esteve'
+			];
+			var subtitlearray = [
+			'Barcelona',
+			'Terrassa',
+			'Sabadell',
+			'Madrid',
+			'Castellar del Valles'
+			];
+			var descriptionarray = [
+				'a',
+				'b',
+				'c',
+				'd',
+				'e'
+			];
+		} else if (language == 'ca') {
+			var titlearray = [
+			'Pentahouse',
+			'Condo Extended',
+			'Sabadell Centre Duplex',
+			'Puerta del Sol Condo',
+			'Avinguda San Esteve'
+			];
+			var subtitlearray = [
+			'Barcelona',
+			'Terrassa',
+			'Sabadell',
+			'Madrid',
+			'Castellar del Valles'
+			];
+			var descriptionarray = [
+				'a',
+				'b',
+				'c',
+				'd',
+				'e'
+			];
+		} else if (language == 'en') {
+			var titlearray = [
+			'Pentahouse',
+			'Condo Extended',
+			'Sabadell Centre Duplex',
+			'Puerta del Sol Condo',
+			'Avinguda San Esteve'
+			];
+			var subtitlearray = [
+			'Barcelona',
+			'Terrassa',
+			'Sabadell',
+			'Madrid',
+			'Castellar del Valles'
+			];
+			var descriptionarray = [
+				'a',
+				'b',
+				'c',
+				'd',
+				'e'
+			];
+		}
+		
+		var linkarray = ['a','b','c','d','e']
 
 		title.innerHTML = titlearray[count];
 		subtitle.innerHTML = subtitlearray[count];
@@ -148,3 +209,28 @@ function menudropper() {
 	}
 }
 
+// Image Lazy Load
+
+$(document).ready(function(){
+
+	const targets = document.querySelectorAll('body img');
+	
+	const lazyLoad = target => {
+		const io = new IntersectionObserver((entries, observer) => {
+
+		entries.forEach(entry => {
+			
+			if (entry.isIntersecting) {
+				const img = entry.target;
+				const src = img.getAttribute('data-lazy');
+				
+				img.setAttribute('src', src);
+				
+				observer.disconnect();
+				}
+			});
+		});
+	io.observe(target);
+	};
+	targets.forEach(lazyLoad);
+});

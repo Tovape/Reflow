@@ -1,6 +1,6 @@
 <!DOCTYPE HTML>
 <html lang="en-US">
-	<link rel="icon" href="./files/logo/logo3.png" type="image/gif" sizes="16x16">
+	<link rel="icon" href="/logo/logo3.png" type="image/gif" sizes="16x16">
 	<link rel="stylesheet" type="text/css" href="global.css">
 	<link rel="stylesheet" type="text/css" href="style.css">
 	<link rel="stylesheet" type="text/css" href="responsive.css">
@@ -15,6 +15,8 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/quicklink/2.2.0/quicklink.umd.js"></script>
 	<script type="text/javascript" src="javascript.js"></script>
+	<script type="text/javascript" src="global-language.js"></script>
+	<script type="text/javascript" src="index-language.js"></script>
 	<!-- Fonts -->
 	<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
@@ -29,68 +31,68 @@
 
 	<div class="menu">
 		<div class="menu-logo">
-			<img src="/logo/logo.png">
+			<img data-lazy="/logo/logo.png">
 		</div>
 
 		<div class="menu-nav">
 			<div class="menu-nav-hover">
-				<a href="#">
-					<p>Home</p>
+				<a href="/">
+					<p key="home">Home</p>
 				</a>
 			</div>
 			<span class="menu-nav-google active">&nbsp;</span>
 		</div>
 		<div class="menu-nav dropdown-trigger-menu">
 			<div class="menu-nav-hover">
-				<a href="#">
-					<p>Projects</p>
+				<a href="/projects">
+					<p key="projects">Projects</p>
 				</a>
 			</div>
 			<span class="menu-nav-google">&nbsp;</span>
 		</div>
 		<div class="menu-nav">
 			<div class="menu-nav-hover">
-				<a href="#">
-					<p>Showcase</p>
+				<a href="/showcase">
+					<p key="showcase">Showcase</p>
 				</a>
 			</div>
 			<span class="menu-nav-google">&nbsp;</span>
 		</div>
 		<div class="menu-nav">
 			<div class="menu-nav-hover">
-				<a href="#">
-					<p>Contact</p>
+				<a href="/contact">
+					<p key="contact">Contact</p>
 				</a>
 			</div>
 			<span class="menu-nav-google">&nbsp;</span>
 		</div>
 		<div class="menu-nav">
 			<div class="menu-nav-button">
-				<a href="#">
-					<p>Reserva</p>
+				<a href="/booking">
+					<p key="booking">Reserva</p>
 				</a>
 			</div>
 		</div>
 		<div class="menu-options">
 			<div class="menu-options-each option-language">
 				<a href="#">
-					<img src="/icons/language.png">
+					<img data-lazy="/icons/language.png">
 				</a>
 				<div class="language-dropdown">
-					<div class="language-dropdown-each language-active">
-						<a href="#">Español</a>
+					<div class="language-dropdown-each">
+						<a href="#" class="language" id="es" key="spanish">Español</a>
 					</div>
 					<div class="language-dropdown-each">
-						<a href="#">Català</a>
+						<a href="#" class="language" id="ca" key="catalan">Català</a>
 					</div>
 					<div class="language-dropdown-each">
-						<a href="#">English</a>
+						<a href="#" class="language" id="en" key="english">English</a>
 					</div>
 				</div>
 			</div>
 			<div class="menu-options-each">
-				<a href="/login">
-					<img src="/icons/account.png">
+				<a href="/register">
+					<img data-lazy="/icons/account.png">
 				</a>
 			</div>
 		</div>
@@ -109,62 +111,62 @@
 				<div class="menu-dropmenu-each">
 					<span class="menu-dropmenu-google active">&nbsp;</span>
 					<div class="menu-dropmenu-hover">
-						<a href="#">
-							<p>Home</p>
+						<a href="/">
+							<p key="home">Home</p>
 						</a>
 					</div>
 				</div>
 				<div class="menu-dropmenu-each">
 					<span class="menu-dropmenu-google">&nbsp;</span>
 					<div class="menu-dropmenu-hover">
-						<a href="#">
-							<p>Projects</p>
+						<a href="/projects">
+							<p key="projects">Projects</p>
 						</a>
 					</div>
 				</div>
 				<div class="menu-dropmenu-each">
 					<span class="menu-dropmenu-google">&nbsp;</span>
 					<div class="menu-dropmenu-hover">
-						<a href="#">
-							<p>Showcase</p>
+						<a href="/showcase">
+							<p key="showcase">Showcase</p>
 						</a>
 					</div>
 				</div>
 				<div class="menu-dropmenu-each">
 					<span class="menu-dropmenu-google">&nbsp;</span>
 					<div class="menu-dropmenu-hover">
-						<a href="#">
-							<p>Contact</p>
+						<a href="/contact">
+							<p key="contact">Contact</p>
 						</a>
 					</div>
 				</div>
 				<div class="menu-dropmenu-each">
 					<div class="menu-dropmenu-button">
-						<a href="#">
-							<p>Reserva</p>
+						<a href="/booking">
+							<p key="booking">Reserva</p>
 						</a>
 					</div>
 				</div>
 				<div class="menu-dropmenu-options">
 					<div class="menu-options-each option-language">
 						<a href="#">
-							<img src="/icons/language.png">
+							<img data-lazy="/icons/language.png">
 						</a>
 						<div class="language-dropdown">
-							<div class="language-dropdown-each language-active">
-								<a href="#">Español</a>
+							<div class="language-dropdown-each">
+								<a href="#" class="language" id="es" key="spanish">Español</a>
 							</div>
 							<div class="language-dropdown-each">
-								<a href="#">Català</a>
+								<a href="#" class="language" id="ca" key="catalan">Català</a>
 							</div>
 							<div class="language-dropdown-each">
-								<a href="#">English</a>
+								<a href="#" class="language" id="en" key="english">English</a>
 							</div>
 						</div>
 					</div>
 					<div class="menu-options-each">
-						<a href="#">
-							<img src="/icons/account.png">
+						<a href="/register">
+							<img data-lazy="/icons/account.png">
 						</a>
 					</div>
 				</div>
@@ -179,21 +181,21 @@
 			<div class="submenu-category">
 				<p class="submenu-title">Latest Work</p>
 				<div class="submenu-latest-each">
-					<img src="/images/image1.jpg">
+					<img data-lazy="/images/image1.jpg">
 					<div class="submenu-latest-text">
 						<p class="submenu-latest-title">Asian House or</p>
 						<p class="submenu-latest-subtitle">something long text to make up for lazyness my bsomething longsomething longsomething long something longsomething longsomething longad</p>
 					</div>
 				</div>
 				<div class="submenu-latest-each">
-					<img src="/images/image1.jpg">
+					<img data-lazy="/images/image1.jpg">
 					<div class="submenu-latest-text">
 						<p class="submenu-latest-title">Asian House or</p>
 						<p class="submenu-latest-subtitle">something long text to make up for lazyness my bad</p>
 					</div>
 				</div>
 				<div class="submenu-latest-each">
-					<img src="/images/image1.jpg">
+					<img data-lazy="/images/image1.jpg">
 					<div class="submenu-latest-text">
 						<p class="submenu-latest-title">Asian House or</p>
 						<p class="submenu-latest-subtitle">something long text to make up for lazyness my bad</p>
@@ -204,21 +206,21 @@
 			<div class="submenu-category">
 				<p class="submenu-title">Old Work</p>
 				<div class="submenu-latest-each">
-					<img src="/images/image1.jpg">
+					<img data-lazy="/images/image1.jpg">
 					<div class="submenu-latest-text">
 						<p class="submenu-latest-title">Asian House or</p>
 						<p class="submenu-latest-subtitle">something long text to make up for lazyness my bad</p>
 					</div>
 				</div>
 				<div class="submenu-latest-each">
-					<img src="/images/image1.jpg">
+					<img data-lazy="/images/image1.jpg">
 					<div class="submenu-latest-text">
 						<p class="submenu-latest-title">Asian House or</p>
 						<p class="submenu-latest-subtitle">something long text to make up for lazyness my bad</p>
 					</div>
 				</div>
 				<div class="submenu-latest-each">
-					<img src="/images/image1.jpg">
+					<img data-lazy="/images/image1.jpg">
 					<div class="submenu-latest-text">
 						<p class="submenu-latest-title">Asian House or</p>
 						<p class="submenu-latest-subtitle">something long text to make up for lazyness my bad</p>
@@ -243,26 +245,26 @@
 		<div class="introduction-flex">
 			<div class="introduction-category">
 				<div class="introduction-category-each">
-					<p>Demandas Populares</p>
+					<p key="popular">Demandas Populares</p>
 				</div>
 				<div class="introduction-category-each">
-					<p>Diseño de Interior</p>
-				</div>
-				<span>&nbsp;</span>
-				<div class="introduction-category-each">
-					<p>Visualización de Materiales</p>
+					<p key="popular-1">Diseño de Interior</p>
 				</div>
 				<span>&nbsp;</span>
 				<div class="introduction-category-each">
-					<p>Decoración y Amueblado</p>
+					<p key="popular-2">Visualización de Materiales</p>
 				</div>
 				<span>&nbsp;</span>
 				<div class="introduction-category-each">
-					<p>Renderización 3D</p>
+					<p key="popular-3">Decoración y Amueblado</p>
 				</div>
 				<span>&nbsp;</span>
 				<div class="introduction-category-each">
-					<p>Capas, Enlazes y Compra</p>
+					<p key="popular-4">Renderización 3D</p>
+				</div>
+				<span>&nbsp;</span>
+				<div class="introduction-category-each">
+					<p key="popular-5">Capas, Enlazes y Compra</p>
 				</div>
 			</div>
 			<div class="introduction-text">
@@ -270,7 +272,7 @@
 				<p id="introduction-title" class=""></p>
 				<p id="introduction-description" class=""></p>
 				<div class="introduction-link">
-					<a id="introduction-link" href="#">View More Info</a>
+					<a id="introduction-link" href="#" key="viewmore">View More Info</a>
 					<i class="fas fa-arrow-right"></i>
 				</div>
 			</div>
@@ -279,7 +281,7 @@
 </div>
 
 <div class="banner">
-	<p>Reforma a tu estilo!</p>
+	<p key="banner">Reforma a tu estilo!</p>
 		<div class="triangle">
 	  <svg width='100' height='100'>
 		<path fill="var(--tertiary)" d="M 50,5 95,47.5 5,47.5 z"/>
@@ -290,52 +292,52 @@
 <div class="content">
 	<div class="responsive-aligner">
 		<div class="content-last">
-			<p class="content-title">Servicios</p>
-			<p class="content-subtitle">Todo lo que ofrecemos</p>
+			<p class="content-title" key="service-title">Servicios</p>
+			<p class="content-subtitle" key="service-subtitle">Todo lo que ofrecemos</p>
 			<div class="services">
 				<div class="services-each-border">
 					<div class="services-each">
-						<p class="service-each-title">Diseño de Interior</p>
-						<p class="service-each-subtitle">Salón, Cocina, Comedor, Patio etc</p>
-						<p class="service-each-description">Archivos de texto. Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 1500, 
+						<p class="service-each-title" key="service-row-1-title">Diseño de Interior</p>
+						<p class="service-each-subtitle" key="service-row-1-subtitle">Salón, Cocina, Comedor, Patio etc</p>
+						<p class="service-each-description" key="service-row-1-description">Archivos de texto. Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 1500, 
 						cuando un impresor (N. del T. persona que se dedica a la 00 años, sino que tambien ingresó como texto de relleno en documentos electrónicos, quedand</p>
-						<img src="/images/image8.jpg">
+						<img data-lazy="/images/image8.jpg">
 					</div>
 				</div>
 				<div class="services-each-border">
 					<div class="services-each">
-						<p class="service-each-title">Visualización de Materiales</p>
-						<p class="service-each-subtitle">Madera, Cemento, Hormigón pulido, Piedra Natural, Colores etc</p>
-						<p class="service-each-description">Archivos de texto. Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 1500, 
+						<p class="service-each-title" key="service-row-2-title">Visualización de Materiales</p>
+						<p class="service-each-subtitle" key="service-row-2-subtitle">Madera, Cemento, Hormigón pulido, Piedra Natural, Colores etc</p>
+						<p class="service-each-description" key="service-row-2-description">Archivos de texto. Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 1500, 
 						cuando un impresor (N. del T. persona que se dedica aió 500 años, sino que tambien ingresó como texto de relleno en documentos electrónicos, quedand</p>
-						<img src="/images/image8.jpg">
+						<img data-lazy="/images/image8.jpg">
 					</div>
 				</div>
 				<div class="services-each-border">
 					<div class="services-each">
-						<p class="service-each-title">Decoración y Amueblado</p>
-						<p class="service-each-subtitle">Visualiza tu Salón con todo tipo de muebles o decoraciones</p>
-						<p class="service-each-description">Archivos de texto. Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 1500, 
+						<p class="service-each-title" key="service-row-3-title">Decoración y Amueblado</p>
+						<p class="service-each-subtitle" key="service-row-3-subtitle">Visualiza tu Salón con todo tipo de muebles o decoraciones</p>
+						<p class="service-each-description" key="service-row-3-description">Archivos de texto. Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 1500, 
 						cuando un impresor (N. del T. persona que se dedica a laó 500 años, sino que tambien ingresó como texto de relleno en documentos electrónicos, quedand</p>
-						<img src="/images/image8.jpg">
+						<img data-lazy="/images/image8.jpg">
 					</div>
 				</div>
 				<div class="services-each-border">
 					<div class="services-each">
-						<p class="service-each-title">Renderización 3D</p>
-						<p class="service-each-subtitle">Descarga un modelo 3D de tu casa o piso</p>
-						<p class="service-each-description">Archivos de texto. Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 1500, 
+						<p class="service-each-title" key="service-row-4-title">Renderización 3D</p>
+						<p class="service-each-subtitle" key="service-row-4-subtitle">Descarga un modelo 3D de tu casa o piso</p>
+						<p class="service-each-description" key="service-row-4-description">Archivos de texto. Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 1500, 
 						cuando un impresor (N. del T. persona que se dedica a ivió 500 años, sino que tambien ingresó como texto de relleno en documentos electrónicos, quedand</p>
-						<img src="/images/image8.jpg">
+						<img data-lazy="/images/image8.jpg">
 					</div>
 				</div>
 				<div class="services-each-border">
 					<div class="services-each">
-						<p class="service-each-title">Capas, Enlazes y Compra</p>
-						<p class="service-each-subtitle">Encuentra donde comprar dichos materiales, decoraciones y muebles</p>
-						<p class="service-each-description">Archivos de texto. Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 1500, 
+						<p class="service-each-title" key="service-row-5-title">Capas, Enlazes y Compra</p>
+						<p class="service-each-subtitle" key="service-row-5-subtitle">Encuentra donde comprar dichos materiales, decoraciones y muebles</p>
+						<p class="service-each-description" key="service-row-5-description">Archivos de texto. Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 1500, 
 						cuando un impresor (N. del T. persona que se dedica ó 500 años, sino que tambien ingresó como texto de relleno en documentos electrónicos, quedand</p>
-						<img src="/images/image8.jpg">
+						<img data-lazy="/images/image8.jpg">
 					</div>
 				</div>
 			</div>
@@ -346,8 +348,8 @@
 <div class="content">
 	<div class="responsive-aligner">
 		<div class="content-last">
-			<p class="content-title">¿Como Funciona?</p>
-			<p class="content-subtitle">Es simple, te lo explicamos</p>
+			<p class="content-title" key="workflow-title">¿Como Funciona?</p>
+			<p class="content-subtitle" key="workflow-subtitle">Es simple, te lo explicamos</p>
 			<div class="workflow">
 				<div class="workflow-each">
 					<div class="workflow-timeline">
@@ -355,10 +357,10 @@
 						<span>&nbsp;</span>
 					</div>
 					<div class="workflow-box">
-						<p class="workflow-title">Organización</p>
-						<p class="workflow-description">Contactamos y mesuramos toda la planta para obtener tamaños (anchura, altura y profundidad),
+						<p class="workflow-title" key="workflow-row-1-title">Organización</p>
+						<p class="workflow-description" key="workflow-row-1-description">Contactamos y mesuramos toda la planta para obtener tamaños (anchura, altura y profundidad),
 						de esta manera nuestro equipo tendra todo lo necesario para empezar el proyecto en 3D</p>
-						<img src="/images/image8.jpg">
+						<img data-lazy="/images/image8.jpg">
 					</div>	
 				</div>
 				<div class="workflow-each">
@@ -367,10 +369,10 @@
 						<span>&nbsp;</span>
 					</div>
 					<div class="workflow-box">
-						<p class="workflow-title">Planeamiento</p>
-						<p class="workflow-description">Una vez tengamos todo lo necesario, empezaremos el diseño, si tienes alguna preferencia con los materiales,
+						<p class="workflow-title" key="workflow-row-2-title">Planeamiento</p>
+						<p class="workflow-description" key="workflow-row-2-description">Una vez tengamos todo lo necesario, empezaremos el diseño, si tienes alguna preferencia con los materiales,
 						marcas o con los colores nos ocuparemos de ajustarnos a tu gusto</p>
-						<img src="/images/image8.jpg">
+						<img data-lazy="/images/image8.jpg">
 					</div>	
 				</div>
 				<div class="workflow-each">
@@ -379,10 +381,10 @@
 						<span>&nbsp;</span>
 					</div>
 					<div class="workflow-box">
-						<p class="workflow-title">Seguimiento</p>
-						<p class="workflow-description">En todo momento nos podrás preguntar según el progreso, te crearemos un <a href="#">perfil</a> por 
+						<p class="workflow-title" key="workflow-row-3-title">Seguimiento</p>
+						<p class="workflow-description" key="workflow-row-3-description">En todo momento nos podrás preguntar según el progreso, te crearemos un <a href="#">perfil</a> por 
 						donde podrás ver dichos progresos y el projecto final</p>
-						<img src="/images/image8.jpg">
+						<img data-lazy="/images/image8.jpg">
 					</div>	
 				</div>
 				<div class="workflow-each">
@@ -391,11 +393,11 @@
 						<span>&nbsp;</span>
 					</div>
 					<div class="workflow-box">
-						<p class="workflow-title">Entrega</p>
-						<p class="workflow-description">Una vez te entregemos el proyecto finalizado, podrás verlo desde tu <a href="#">perfil</a>, desde 
+						<p class="workflow-title" key="workflow-row-4-title">Entrega</p>
+						<p class="workflow-description" key="workflow-row-4-description">Una vez te entregemos el proyecto finalizado, podrás verlo desde tu <a href="#">perfil</a>, desde 
 						ahí podrás interactuar con nuestro menu de opciones donde podrás ver el acabado de cada habitación con nuestra sección de materiales
 						 y colores<br>Tendrás 2 semanas para confirmar de que todo esta a tu satisfación</p>
-						<img src="/images/image8.jpg">
+						<img data-lazy="/images/image8.jpg">
 					</div>	
 				</div>
 				<div class="workflow-each">
@@ -404,10 +406,10 @@
 						<span>&nbsp;</span>
 					</div>
 					<div class="workflow-box">
-						<p class="workflow-title">Elección</p>
-						<p class="workflow-description">Una vez decidido/a podrás ver donde encontrar dichos materiales, muebles y demás en la misma página con una 
+						<p class="workflow-title" key="workflow-row-5-title">Elección</p>
+						<p class="workflow-description" key="workflow-row-5-description">Una vez decidido/a podrás ver donde encontrar dichos materiales, muebles y demás en la misma página con una 
 						comparativa de precios</p>
-						<img src="/images/image8.jpg">
+						<img data-lazy="/images/image8.jpg">
 					</div>	
 				</div>
 			</div>
@@ -418,41 +420,41 @@
 <div class="content">
 	<div class="responsive-aligner">
 		<div class="content-last">
-			<p class="content-title">Tabla de Precios</p>
-			<p class="content-subtitle">Comparativa de ventajas</p>
+			<p class="content-title" key="price-title">Tabla de Precios</p>
+			<p class="content-subtitle" key="price-subtitle">Comparativa de ventajas</p>
 			<div class="pricing">
 				<div class="pricing-each pricing-small">
 					<div>
-						<p class="pricing-title">Visión General</p>
-						<p class="pricing-description">Diseño Completo, Acceso a toda nuestra plataforma, Cualidad y Detalles Normales</p>
+						<p class="pricing-title" key="price-row-1-title">Visión General</p>
+						<p class="pricing-description" key="price-row-1-description">Diseño Completo, Acceso a toda nuestra plataforma, Cualidad y Detalles Normales</p>
 					</div>
 					<div class="pricing-options">
-						<p>Piso</p>
-						<p>Casa</p>
+						<p key="price-flat">Piso</p>
+						<p key="price-house">Casa</p>
 					</div>
 					<div class="pricing-comparator">
 						<div class="pricing-comparator-each">
-							<p>Resolución 1080p</p>
+							<p key="price-resolution-1">Resolución 1080p</p>
 							<i class="fas fa-check"></i>
 						</div>
 						<div class="pricing-comparator-each">
-							<p>Resolución 4K</p>
+							<p key="price-resolution-2">Resolución 4K</p>
 							<i class="fas fa-xmark"></i>
 						</div>
 						<div class="pricing-comparator-each">
-							<p>Vista 360 Grados</p>
+							<p key="price-360view">Vista 360 Grados</p>
 							<i class="fas fa-xmark"></i>
 						</div>
 						<div class="pricing-comparator-each">
-							<p>Hasta 2 Plantas</p>
+							<p key="price-floors-2">Hasta 2 Plantas</p>
 							<i class="fa-solid fa-info"></i>
 						</div>
 						<div class="pricing-comparator-each">
-							<p>Tiempo de Entrega ~1 Semana</p>
+							<p key="price-delivery-1">Tiempo de Entrega ~1 Semana</p>
 							<i class="fa-solid fa-info"></i>
 						</div>
 						<div class="pricing-comparator-each">
-							<p>Formato de entrega webp, jpg y png</p>
+							<p key="price-format-1">Formato de entrega webp, jpg y png</p>
 							<i class="fa-solid fa-info"></i>
 						</div>
 					</div>
@@ -464,37 +466,37 @@
 				</div>
 				<div class="pricing-each pricing-medium">
 					<div>
-						<p class="pricing-title">Prespectiva 360</p>
-						<p class="pricing-description">Eres más fan de los videos? Esta opción es para ti. Con esta tendrás una vista en panorama de 360 Grados, además de una Cualidad y Detalles Superiores</p>
+						<p class="pricing-title" key="price-row-2-title">Prespectiva 360</p>
+						<p class="pricing-description" key="price-row-2-description">Eres más fan de los videos? Esta opción es para ti. Con esta tendrás una vista en panorama de 360 Grados, además de una Cualidad y Detalles Superiores</p>
 					</div>
 					<div class="pricing-options">
-						<p>Piso</p>
-						<p>Casa</p>
-						<p>Establecimiento</p>
+						<p key="price-flat">Piso</p>
+						<p key="price-house">Casa</p>
+						<p key="price-establishment">Establecimiento</p>
 					</div>
 					<div class="pricing-comparator">
 						<div class="pricing-comparator-each">
-							<p>Resolución 1080p</p>
+							<p key="price-resolution-1">Resolución 1080p</p>
 							<i class="fas fa-check"></i>
 						</div>
 						<div class="pricing-comparator-each">
-							<p>Resolución 4K</p>
+							<p key="price-resolution-2">Resolución 4K</p>
 							<i class="fas fa-xmark"></i>
 						</div>
 						<div class="pricing-comparator-each">
-							<p>Vista 360 Grados</p>
+							<p key="price-360view">Vista 360 Grados</p>
 							<i class="fas fa-check"></i>
 						</div>
 						<div class="pricing-comparator-each">
-							<p>Hasta 4 Plantas</p>
+							<p key="price-floors-4">Hasta 4 Plantas</p>
 							<i class="fa-solid fa-info"></i>
 						</div>
 						<div class="pricing-comparator-each">
-							<p>Tiempo de Entrega ~5 Días</p>
+							<p key="price-delivery-2">Tiempo de Entrega ~5 Días</p>
 							<i class="fa-solid fa-info"></i>
 						</div>
 						<div class="pricing-comparator-each">
-							<p>Formato mp4, avi, mov, mkv, webp, jpg y png</p>
+							<p key="price-format-2">Formato mp4, avi, mov, mkv, webp, jpg y png</p>
 							<i class="fa-solid fa-info"></i>
 						</div>
 					</div>
@@ -506,39 +508,39 @@
 				</div>
 				<div class="pricing-each pricing-high">
 					<div>
-						<p class="pricing-title">Máximo Detalle</p>
-						<p class="pricing-description">Detalle a la perfección, para los exigentes que necesitan un lugar de ensueño</p>
+						<p class="pricing-title" key="price-row-3-title">Máximo Detalle</p>
+						<p class="pricing-description" key="price-row-3-description">Detalle a la perfección, para los exigentes que necesitan un lugar de ensueño</p>
 					</div>
 					<div class="pricing-options">
-						<p>Piso</p>
-						<p>Casa</p>
-						<p>Instalaciones</p>
-						<p>Establecimiento</p>
-						<p>Almacenes</p>
+						<p key="price-flat">Piso</p>
+						<p key="price-house">Casa</p>
+						<p key="price-establishment">Establecimiento</p>
+						<p key="price-installations">Instalaciones</p>
+						<p key="price-warehouses">Almacenes</p>
 					</div>
 					<div class="pricing-comparator">
 						<div class="pricing-comparator-each">
-							<p>Resolución 1080p</p>
+							<p key="price-resolution-1">Resolución 1080p</p>
 							<i class="fas fa-check"></i>
 						</div>
 						<div class="pricing-comparator-each">
-							<p>Resolución 4K</p>
+							<p key="price-resolution-2">Resolución 4K</p>
 							<i class="fas fa-check"></i>
 						</div>
 						<div class="pricing-comparator-each">
-							<p>Vista 360 Grados</p>
+							<p key="price-360view">Vista 360 Grados</p>
 							<i class="fas fa-check"></i>
 						</div>
 						<div class="pricing-comparator-each">
-							<p>Hasta 6 Plantas</p>
+							<p key="price-floors-6">Hasta 6 Plantas</p>
 							<i class="fa-solid fa-info"></i>
 						</div>
 						<div class="pricing-comparator-each">
-							<p>Tiempo de Entrega ~5 Días</p>
+							<p key="price-delivery-2">Tiempo de Entrega ~5 Días</p>
 							<i class="fa-solid fa-info"></i>
 						</div>
 						<div class="pricing-comparator-each">
-							<p>Formato mp4, avi, mov, mkv, webp, jpg y png</p>
+							<p key="price-format-3">Formato mp4, avi, mov, mkv, webp, jpg y png</p>
 							<i class="fa-solid fa-info"></i>
 						</div>
 					</div>
@@ -550,46 +552,46 @@
 				</div>
 				<div class="pricing-each pricing-custom">
 					<div>
-						<p class="pricing-title">A Gran Escala</p>
-						<p class="pricing-description">Tienes un proyecto a gran escala? Contáctanos para poder organizarnos</p>
+						<p class="pricing-title" key="price-row-4-title">A Gran Escala</p>
+						<p class="pricing-description" key="price-row-4-description">Tienes un proyecto a gran escala? Contáctanos para poder organizarnos</p>
 					</div>
 					<div class="pricing-options">
-						<p>Piso</p>
-						<p>Casa</p>
-						<p>Edificio</p>
-						<p>Instalaciones</p>
-						<p>Establecimiento</p>
-						<p>Almacenes</p>
+						<p key="price-flat">Piso</p>
+						<p key="price-house">Casa</p>
+						<p key="price-establishment">Establecimiento</p>
+						<p key="price-installations">Instalaciones</p>
+						<p key="price-warehouses">Almacenes</p>
+						<p key="price-building">Edificio</p>
 					</div>
 					<div class="pricing-comparator">
 						<div class="pricing-comparator-each">
-							<p>Resolución 1080p</p>
+							<p key="price-resolution-1">Resolución 1080p</p>
 							<i class="fas fa-check"></i>
 						</div>
 						<div class="pricing-comparator-each">
-							<p>Resolución 4K</p>
+							<p key="price-resolution-2">Resolución 4K</p>
 							<i class="fas fa-check"></i>
 						</div>
 						<div class="pricing-comparator-each">
-							<p>Vista 360 Grados</p>
+							<p key="price-360view">Vista 360 Grados</p>
 							<i class="fas fa-check"></i>
 						</div>
 						<div class="pricing-comparator-each">
-							<p>Plantas Ilimitadas</p>
+							<p key="price-floors-unlimited">Plantas Ilimitadas</p>
 							<i class="fa-solid fa-info"></i>
 						</div>
 						<div class="pricing-comparator-each">
-							<p>Tiempo de Entrega Relativo</p>
+							<p key="price-delivery-4">Tiempo de Entrega Relativo</p>
 							<i class="fa-solid fa-info"></i>
 						</div>
 						<div class="pricing-comparator-each">
-							<p>Formato mp4, avi, mov, mkv, webp, jpg y png</p>
+							<p key="price-format-4">Formato mp4, avi, mov, mkv, webp, jpg y png</p>
 							<i class="fa-solid fa-info"></i>
 						</div>
 					</div>
 					<div class="pricing-tag">
 						<a href="#">
-							<p>Preguntar</p>
+							<p key="price-ask">Preguntar</p>
 						</a>
 					</div>
 				</div>
@@ -601,16 +603,16 @@
 <div class="content">
 	<div class="responsive-aligner">
 		<div class="content-last">
-			<p class="content-title">FAQ</p>
-			<p class="content-subtitle">Preguntas más frequentes</p>
+			<p class="content-title" key="faq-title">FAQ</p>
+			<p class="content-subtitle" key="faq-subtitle">Preguntas más frequentes</p>
 			<div class="faq">
 				<div class="faq-each">
 					<div class="faq-button">
-						<p>¿A qué y quién está orientado este servicio?</p>
+						<p key="faq-row-1-title">¿A qué y quién está orientado este servicio?</p>
 						<i class="fa-solid fa-angle-up"></i>
 					</div>
 					<div class="faq-each-content">
-						<p>Construir un edificio nuevo vale mucho dinero y en muchas veces siempre sale más rentable reformar el edificio. Aquí es donde entramos nosotros, 
+						<p key="faq-row-1-description">Construir un edificio nuevo vale mucho dinero y en muchas veces siempre sale más rentable reformar el edificio. Aquí es donde entramos nosotros, 
 						siempre sale el problema de no saber como reformarlo, que materiales usar, los colores, medidas para saber si los muebles que ya tienes cabrán en las 
 						habitaciones, decoraciones. Además podrás ver la cantidad de luz que entraría en cada habitación.
 						</p>
@@ -618,11 +620,11 @@
 				</div>
 				<div class="faq-each">
 					<div class="faq-button">
-						<p>¿Porqué nosotros?</p>
+						<p key="faq-row-2-title">¿Porqué nosotros?</p>
 						<i class="fa-solid fa-angle-up"></i>
 					</div>
 					<div class="faq-each-content">
-						<p>Tenemos mucha experiencia en el mundo del diseño interior, además contamos con reformadores professionales
+						<p key="faq-row-2-description">Tenemos mucha experiencia en el mundo del diseño interior, además contamos con reformadores professionales
 						</p>
 					</div>
 				</div>
@@ -634,46 +636,46 @@
 <div class="footer">
 	<div class="footer-aligner">
 		<div class="footer-logo">
-			<img src="/logo/logo.png">
+			<img data-lazy="/logo/logo.png">
 			<div class="footer-catchphrase">
 				<p>Brand New Kicks</p>
 			</div>
 			<div class="footer-social">
 				<a href="#">
-					<img src="/icons/phone.png">
+					<img data-lazy="/icons/phone.png">
 				</a>
 				<span>&nbsp;</span>
 				<a href="#">
-					<img src="/icons/mail.png">
+					<img data-lazy="/icons/mail.png">
 				</a>
 				<span>&nbsp;</span>
 				<a href="#">
-					<img src="/icons/youtube.png">
+					<img data-lazy="/icons/youtube.png">
 				</a>
 				<span>&nbsp;</span>
 				<a href="#">
-					<img src="/icons/linkedin.png">
+					<img data-lazy="/icons/linkedin.png">
 				</a>
 			</div>
 		</div>
 		
 		<div class="footer-each">
-			<p>Empresa</p>
-			<a>Sobre Nosotros</a>
-			<a>Trabajo</a>
+			<p key="footer-row-1-title">Empresa</p>
+			<a key="footer-row-1-entry-1">Sobre Nosotros</a>
+			<a key="footer-row-1-entry-2">Trabajo</a>
 		</div>
 		
 		<div class="footer-each">
-			<p>Legal</p>
-			<a>Privacidad</a>
-			<a>Seguridad</a>
-			<a>Términos y Condiciones</a>
+			<p key="footer-row-2-title">Legal</p>
+			<a key="footer-row-2-entry-1">Privacidad</a>
+			<a key="footer-row-2-entry-2">Seguridad</a>
+			<a key="footer-row-2-entry-3">Términos y Condiciones</a>
 		</div>
 	</div>
 </div>
 
 <div class="author">
-	<a href="https://tovape.github.io">Website made by Toni Valverde</a>
+	<a href="https://tovape.github.io" key="website">Website developed by Toni Valverde</a>
 </div>
 
 </body>

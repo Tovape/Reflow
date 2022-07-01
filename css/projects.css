@@ -1,0 +1,114 @@
+/*
+----------------------------------
+Content Configuration
+----------------------------------
+*/
+
+.content {
+	width: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.responsive-aligner{
+	width: 80%;
+	padding-top: 120px;
+	padding-bottom: 120px;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: center;
+}
+
+.content-last {
+	width: 100%;
+	height: auto;
+	padding-top: 40px;
+	padding-bottom: 40px;
+	display: flex;
+	flex-wrap: wrap;
+	flex-direction: column;
+	align-items: left;
+	justify-content: left;
+}
+
+.content-title {
+	font-size: var(--bigfont);
+}
+
+.content-subtitle {
+	font-size: var(--smafont);
+}
+
+/* Projects */
+
+.projects{
+	width: 100%;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: center;
+}
+
+.projects-each {
+	margin-bottom: 40px;
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+}
+
+.projects-each:first-child {
+	margin-top: 40px;
+}
+
+.projects-each-introduction {
+	width: 100%;
+	display: flex;
+	flex-direction: row;
+}
+
+.projects-each-introduction div:first-child {
+	width: calc(100% - 20px);
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	justify-content: center;
+}
+
+.projects-each-introduction div:last-child {
+	width: 20px;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: center;
+}
+
+.projects-each-title {
+	
+}
+
+.projects-each-subtitle {
+	
+}
+
+.fa-house-chimney {
+	
+}
+
+.projects-each-gallery {
+
+}
+
+.projects-each-gallery img {
+	height: 30px;
+	width: 30px;
+}
+
+.projects-each-footer {
+	
+}
+
+.projects-each-date {
+	
+}

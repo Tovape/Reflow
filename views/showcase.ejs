@@ -1,1 +1,344 @@
-<h1>Insert code here showcase</h1>
+<!DOCTYPE HTML>
+<html lang="en-US">
+	<link rel="icon" href="/logo/logo3.png" type="image/gif" sizes="16x16">
+	<link rel="stylesheet" type="text/css" href="global.css">
+	<link rel="stylesheet" type="text/css" href="showcase.css">
+	<link rel="stylesheet" type="text/css" href="global-responsive.css">
+	<link rel="stylesheet" type="text/css" href="showcase-responsive.css">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<head>
+	<title>Reflow</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta charset="UTF-8"/>
+	<script src="https://kit.fontawesome.com/6308dbf55d.js" crossorigin="anonymous"></script>
+	<script src="https://cdn.websitepolicies.io/lib/cookieconsent/1.0.3/cookieconsent.min.js" defer></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/quicklink/2.2.0/quicklink.umd.js"></script>
+	<script type="text/javascript" src="global-javascript.js"></script>
+	<script type="text/javascript" src="global-language.js"></script>
+	<script type="text/javascript" src="showcase-language.js"></script>
+	<script type="text/javascript" src="showcase-javascript.js"></script>
+	<!-- Fonts -->
+	<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Raleway&display=swap" rel="stylesheet">	
+</head>
+
+<body>
+
+<button onclick="topFunction()" id="toTop" class="top"><i class="fa fa-arrow-up"></i></button>
+
+<div class="menu-background" id="menu-background">
+
+	<div class="menu">
+		<div class="menu-logo">
+			<img data-lazy="/logo/logo.png">
+		</div>
+
+		<div class="menu-nav">
+			<div class="menu-nav-hover">
+				<a href="/">
+					<p key="home">Home</p>
+				</a>
+			</div>
+			<span class="menu-nav-google">&nbsp;</span>
+		</div>
+		<div class="menu-nav dropdown-trigger-menu">
+			<div class="menu-nav-hover">
+				<a href="/projects">
+					<p key="projects">Projects</p>
+				</a>
+			</div>
+			<span class="menu-nav-google">&nbsp;</span>
+		</div>
+		<div class="menu-nav">
+			<div class="menu-nav-hover">
+				<a href="/showcase">
+					<p key="showcase">Showcase</p>
+				</a>
+			</div>
+			<span class="menu-nav-google active">&nbsp;</span>
+		</div>
+		<div class="menu-nav">
+			<div class="menu-nav-hover">
+				<a href="/contact">
+					<p key="contact">Contact</p>
+				</a>
+			</div>
+			<span class="menu-nav-google">&nbsp;</span>
+		</div>
+		<div class="menu-nav">
+			<div class="menu-nav-button">
+				<a href="/booking">
+					<p key="booking">Reserva</p>
+				</a>
+			</div>
+		</div>
+		<div class="menu-options">
+			<div class="menu-options-each option-language">
+				<a href="#">
+					<img data-lazy="/icons/language.png">
+				</a>
+				<div class="language-dropdown">
+					<div class="language-dropdown-each">
+						<a href="#" class="language" id="es" key="spanish">Español</a>
+					</div>
+					<div class="language-dropdown-each">
+						<a href="#" class="language" id="ca" key="catalan">Català</a>
+					</div>
+					<div class="language-dropdown-each">
+						<a href="#" class="language" id="en" key="english">English</a>
+					</div>
+				</div>
+			</div>
+			<div class="menu-options-each">
+				<a href="/register">
+					<img data-lazy="/icons/account.png">
+				</a>
+			</div>
+		</div>
+		<div class="menu-responsive">
+			<div class="menu-bars" id="menu-bars">
+				<a href="javascript:void(0);" onclick="menudropper()"/>
+					<svg version="1.1" version="1.1" viewBox="0 0 512 512" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><g data-name="1" id="_1"><path d="M441.13,166.52h-372a15,15,0,1,1,0-30h372a15,15,0,0,1,0,30Z"/><path d="M441.13,279.72h-372a15,15,0,1,1,0-30h372a15,15,0,0,1,0,30Z"/><path d="M441.13,392.92h-372a15,15,0,1,1,0-30h372a15,15,0,0,1,0,30Z"/></g></svg>
+				</a>
+			</div>
+			<div class="menu-cross" id="menu-cross">
+				<a href="javascript:void(0);" onclick="menudropper()"/>
+					<svg version="1.1" version="1.1" viewBox="0 0 512 512" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><g class="st2" id="cross"><g class="st0"><line class="st1" x1="112.5" x2="401" y1="112.5" y2="401"/><line class="st1" x1="401" x2="112.5" y1="112.5" y2="401"/></g></g><g id="cross_copy"><path d="M268.064,256.75l138.593-138.593c3.124-3.124,3.124-8.189,0-11.313c-3.125-3.124-8.189-3.124-11.314,0L256.75,245.436   L118.157,106.843c-3.124-3.124-8.189-3.124-11.313,0c-3.125,3.124-3.125,8.189,0,11.313L245.436,256.75L106.843,395.343   c-3.125,3.125-3.125,8.189,0,11.314c1.562,1.562,3.609,2.343,5.657,2.343s4.095-0.781,5.657-2.343L256.75,268.064l138.593,138.593   c1.563,1.562,3.609,2.343,5.657,2.343s4.095-0.781,5.657-2.343c3.124-3.125,3.124-8.189,0-11.314L268.064,256.75z"/></g></svg>
+				</a>
+			</div>
+			<div class="menu-dropmenu" id="menu-dropmenu">
+				<div class="menu-dropmenu-each">
+					<span class="menu-dropmenu-google">&nbsp;</span>
+					<div class="menu-dropmenu-hover">
+						<a href="/">
+							<p key="home">Home</p>
+						</a>
+					</div>
+				</div>
+				<div class="menu-dropmenu-each">
+					<span class="menu-dropmenu-google">&nbsp;</span>
+					<div class="menu-dropmenu-hover">
+						<a href="/projects">
+							<p key="projects">Projects</p>
+						</a>
+					</div>
+				</div>
+				<div class="menu-dropmenu-each">
+					<span class="menu-dropmenu-google active">&nbsp;</span>
+					<div class="menu-dropmenu-hover">
+						<a href="/showcase">
+							<p key="showcase">Showcase</p>
+						</a>
+					</div>
+				</div>
+				<div class="menu-dropmenu-each">
+					<span class="menu-dropmenu-google">&nbsp;</span>
+					<div class="menu-dropmenu-hover">
+						<a href="/contact">
+							<p key="contact">Contact</p>
+						</a>
+					</div>
+				</div>
+				<div class="menu-dropmenu-each">
+					<div class="menu-dropmenu-button">
+						<a href="/booking">
+							<p key="booking">Reserva</p>
+						</a>
+					</div>
+				</div>
+				<div class="menu-dropmenu-options">
+					<div class="menu-options-each option-language">
+						<a href="#">
+							<img data-lazy="/icons/language.png">
+						</a>
+						<div class="language-dropdown">
+							<div class="language-dropdown-each">
+								<a href="#" class="language" id="es" key="spanish">Español</a>
+							</div>
+							<div class="language-dropdown-each">
+								<a href="#" class="language" id="ca" key="catalan">Català</a>
+							</div>
+							<div class="language-dropdown-each">
+								<a href="#" class="language" id="en" key="english">English</a>
+							</div>
+						</div>
+					</div>
+					<div class="menu-options-each">
+						<a href="/register">
+							<img data-lazy="/icons/account.png">
+						</a>
+					</div>
+				</div>
+			</div>			
+		</div>
+	</div>
+</div>
+
+<div class="dropdown-content dropdown-trigger-content dropdown-content-inactive">
+	<div class="responsive-aligner dropdown-content-default dropdown-opacity-false" style="height: 100%">
+		<div class="submenu">
+			<div class="submenu-category">
+				<p class="submenu-title">Latest Work</p>
+				<div class="submenu-latest-each">
+					<img data-lazy="/images/image1.jpg">
+					<div class="submenu-latest-text">
+						<p class="submenu-latest-title">Asian House or</p>
+						<p class="submenu-latest-subtitle">something long text to make up for lazyness my bsomething longsomething longsomething long something longsomething longsomething longad</p>
+					</div>
+				</div>
+				<div class="submenu-latest-each">
+					<img data-lazy="/images/image1.jpg">
+					<div class="submenu-latest-text">
+						<p class="submenu-latest-title">Asian House or</p>
+						<p class="submenu-latest-subtitle">something long text to make up for lazyness my bad</p>
+					</div>
+				</div>
+				<div class="submenu-latest-each">
+					<img data-lazy="/images/image1.jpg">
+					<div class="submenu-latest-text">
+						<p class="submenu-latest-title">Asian House or</p>
+						<p class="submenu-latest-subtitle">something long text to make up for lazyness my bad</p>
+					</div>
+				</div>
+			</div>
+			<span>&nbsp;</span>
+			<div class="submenu-category">
+				<p class="submenu-title">Old Work</p>
+				<div class="submenu-latest-each">
+					<img data-lazy="/images/image1.jpg">
+					<div class="submenu-latest-text">
+						<p class="submenu-latest-title">Asian House or</p>
+						<p class="submenu-latest-subtitle">something long text to make up for lazyness my bad</p>
+					</div>
+				</div>
+				<div class="submenu-latest-each">
+					<img data-lazy="/images/image1.jpg">
+					<div class="submenu-latest-text">
+						<p class="submenu-latest-title">Asian House or</p>
+						<p class="submenu-latest-subtitle">something long text to make up for lazyness my bad</p>
+					</div>
+				</div>
+				<div class="submenu-latest-each">
+					<img data-lazy="/images/image1.jpg">
+					<div class="submenu-latest-text">
+						<p class="submenu-latest-title">Asian House or</p>
+						<p class="submenu-latest-subtitle">something long text to make up for lazyness my bad</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="content">
+	<div class="responsive-aligner responsive-aligner-padding">
+		<div class="content-last">
+			<p class="content-title" key="showcase-title">Showcase</p>
+			<p class="content-subtitle" key="showcase-subtitle">What's the big deal about?</p>
+			<div class="showcase" id="showcase">
+				<!--<div id="showcase-scrollbar"></div>-->
+				<div class="showcase-step">
+					<div class="showcase-step-each">
+						<div class="showcase-step-each-number">
+							<p>1</p>
+						</div>
+						<div class="showcase-step-each-image">
+							<img data-lazy="/images/image1.jpg">
+						</div>
+						<div class="showcase-step-each-text">
+							<p key="showcase-row-1-title" class="showcase-step-each-title">Planos</p>
+							<p key="showcase-row-1-description" class="showcase-step-each-desciption">Para decorar o restaurar un hogar siempre va bien tener un plano 
+							para poder visualizar el espacio disponible, el problema es que a veces estos planos no aparecen, ya sea por la compañía 
+							constructora o porque el edificio es muy viejo, de todas formas por aquí es por donde se empieza, con nuestro equipo 
+							haremos que esto no se convierta en un problema y lo haremos en tiempo record, una vez lo tengamos rasterizado en buena 
+							cualidad te mandaremos el plano por correo con cada medida (En metros cuadrados o square feet por preferencia)</p>
+						</div>
+					</div>
+					<span>&nbsp;</span>
+					<div class="showcase-step-each">
+						<div class="showcase-step-each-number">
+							<p>2</p>
+						</div>
+						<div class="showcase-step-each-image">
+							<img data-lazy="/images/image1.jpg">
+							<img data-lazy="/images/image1.jpg">
+						</div>
+						<div class="showcase-step-each-text">
+							<p key="showcase-row-2-title" class="showcase-step-each-title">Renderización</p>
+							<p key="showcase-row-2-description" class="showcase-step-each-desciption">Una vez tengamos todo listo, podrás ver desde tu perfil como quedaría tu hogar con 
+							diferentes materiales, muebles, decoraciones y demás. Tambíen podrás ver el espacio que queda entre cada mueble, juega como 
+							si tu casa fuera de los Sims!</p>
+						</div>
+					</div>
+					<span>&nbsp;</span>
+					<div class="showcase-step-each">
+						<div class="showcase-step-each-number">
+							<p>3</p>
+						</div>
+						<div class="showcase-step-each-image">
+							<img data-lazy="/images/image1.jpg">
+						</div>
+						<div class="showcase-step-each-text">
+							<p key="showcase-row-3-title" class="showcase-step-each-title">Realización</p>
+							<p key="showcase-row-3-description" class="showcase-step-each-desciption">Te gusta tu configuración actual? Desde el panel de opciones podrás ver 
+							donde comprar dichos muebles, decoraciones, pintura y mucho más! A demás tambíen puedes contratar directamente para que te 
+							lo hagán</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="footer">
+	<div class="footer-aligner">
+		<div class="footer-logo">
+			<img data-lazy="/logo/logo.png">
+			<div class="footer-catchphrase">
+				<p>Brand New Kicks</p>
+			</div>
+			<div class="footer-social">
+				<a href="#">
+					<img data-lazy="/icons/phone.png">
+				</a>
+				<span>&nbsp;</span>
+				<a href="#">
+					<img data-lazy="/icons/mail.png">
+				</a>
+				<span>&nbsp;</span>
+				<a href="#">
+					<img data-lazy="/icons/youtube.png">
+				</a>
+				<span>&nbsp;</span>
+				<a href="#">
+					<img data-lazy="/icons/linkedin.png">
+				</a>
+			</div>
+		</div>
+		
+		<div class="footer-each">
+			<p key="footer-row-1-title">Empresa</p>
+			<a key="footer-row-1-entry-1">Sobre Nosotros</a>
+			<a key="footer-row-1-entry-2">Trabajo</a>
+		</div>
+		
+		<div class="footer-each">
+			<p key="footer-row-2-title">Legal</p>
+			<a key="footer-row-2-entry-1">Privacidad</a>
+			<a key="footer-row-2-entry-2">Seguridad</a>
+			<a key="footer-row-2-entry-3">Términos y Condiciones</a>
+		</div>
+	</div>
+</div>
+
+<div class="author">
+	<a href="https://tovape.github.io" key="website">Website developed by Toni Valverde</a>
+</div>
+
+</body>
+
+</html>

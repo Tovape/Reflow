@@ -30,7 +30,18 @@ var arrGlobal = {
 	
 	// Other
 	'viewmore': 'View More Info',
-	'website': 'Platform developed by Toni Valverde'
+	'website': 'Platform developed by Toni Valverde',
+	'all': 'All',
+	'newest': 'Newest',
+	'oldest': 'Oldest',
+	
+	// Tags
+	'house': 'House',
+	'flat': 'Flat',
+	'building': 'Building',
+	'installations': 'Installations',
+	'establishment': 'Establishment',
+	'warehouses': 'Warehouses'
 	
 	},
 
@@ -61,8 +72,19 @@ var arrGlobal = {
 
 	// Other
 	'viewmore': 'Ver Más Información',
-	'website': 'Plataforma desarrollada por Toni Valverde'
-
+	'website': 'Plataforma desarrollada por Toni Valverde',
+	'all': 'Todo',
+	'newest': 'Nuevo',
+	'oldest': 'Antiguo',
+	
+	// Tags
+	'house': 'Casa',
+	'flat': 'Piso',
+	'building': 'Edificio',
+	'installations': 'Instalaciones',
+	'establishment': 'Establecimiento',
+	'warehouses': 'Almacenes'
+	
 	},
 	
 	// Catalan
@@ -92,7 +114,18 @@ var arrGlobal = {
 
 	// Other
 	'viewmore': 'Ver Més Informació',
-	'website': 'Plataforma desenvolupada per Toni Valverde'
+	'website': 'Plataforma desenvolupada per Toni Valverde',
+	'all': 'Tot',
+	'newest': 'Nou',
+	'oldest': 'Antic',
+	
+	// Tags
+	'house': 'Casa',
+	'flat': 'Pis',
+	'building': 'Edifici',
+	'installations': 'Instalacions',
+	'establishment': 'Establiment',
+	'warehouses': 'Magatzems'
 
 	}
 };

@@ -5,37 +5,25 @@ var arrLang = {
 	// English
 	'en': {
 	
-	// Project
-	'project-title': 'Projects',
-	'project-subtitle': 'Everything we acomplished so far',
-	
-	'project-filter-year': 'Sort By Year',
-	'project-filter-type': 'Sort By Type'
-	
+	// Register
+	'showcase-title': 'Showcase'
+		
 	},
 
 	// Spanish
 	'es': {
 
-	// Project
-	'project-title': 'Proyectos',
-	'project-subtitle': 'Todo lo que hemos aconseguido realizar',
+	// Register
+	'showcase-title': 'Demostración'
 	
-	'project-filter-year': 'Filtrar Por Año',
-	'project-filter-type': 'Filtrar Por Tipo'
-
 	},
 	
 	// Catalan
 	'ca': {
 
-	// Project
-	'project-title': 'Projectes',
-	'project-subtitle': 'Tot el que hem aconseguit realitzar',
-	
-	'project-filter-year': 'Filtrar Per Any',
-	'project-filter-type': 'Filtrar Per Tipus'
-
+	// Register
+	'showcase-title': 'Demostració'
+		
 	}
 };
 

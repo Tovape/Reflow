@@ -18,6 +18,7 @@
 	<script type="text/javascript" src="global-javascript.js"></script>
 	<script type="text/javascript" src="global-language.js"></script>
 	<script type="text/javascript" src="projects-language.js"></script>
+	<script type="text/javascript" src="projects-javascript.js"></script>
 	<!-- Fonts -->
 	<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
@@ -232,18 +233,36 @@
 	</div>
 </div>
 
-
 <div class="content">
-	<div class="responsive-aligner">
+	<div class="responsive-aligner responsive-aligner-padding">
 		<div class="content-last">
-			<p class="content-title" key="service-title">Proyectos</p>
-			<p class="content-subtitle" key="service-subtitle">Todo lo que hemos aconseguido realizar</p>
+			<p class="content-title" key="project-title">Proyectos</p>
+			<p class="content-subtitle" key="project-subtitle">Todo lo que hemos aconseguido realizar</p>
+			
+			<div class="projects-filter">
+				<div class="projects-filter-each">
+					<p key="project-filter-year">Sort by Year</p>
+					<a href="#" key="newest" class="sort-each sort-year-asc">Newest <i class="fa fa-arrow-up"></i></a>
+					<a href="#" key="oldest" class="sort-each sort-year-desc">Oldest <i class="fa fa-arrow-down"></i></a>
+				</div>
+				<div class="projects-filter-each">
+					<p key="project-filter-type">Sort by Type</p>
+					<a href="#" key="all" class="sort-each sort-type-all">All</a>
+					<a href="#" key="flat" class="sort-each sort-type-flat">Flat</a>
+					<a href="#" key="house" class="sort-each sort-type-house">House</a>
+					<a href="#" key="establishment" class="sort-each sort-type-establishment">Establishment</a>
+					<a href="#" key="installations" class="sort-each sort-type-installations">Installations</a>
+					<a href="#" key="warehouses" class="sort-each sort-type-warehouses">Warehouses</a>
+					<a href="#" key="building" class="sort-each sort-type-building">Building</a>
+				</div>
+			</div>
+		
 			<div class="projects">
-				<div class="projects-each">
+				<div class="projects-each" data-type="house" data-year="2020">
 					<div class="projects-each-introduction">
 						<div>
-							<p class="projects-each-title">Titol Recent</p>
-							<p class="projects-each-subtitle">Nosre quris sfkjasbhf</p>
+							<p class="projects-each-title">Titol fsa</p>
+							<p class="projects-each-subtitle">asf quris sfkjasbhf</p>
 						</div>
 						<div>
 							<i class="fa-solid fa-house-chimney"></i>
@@ -258,7 +277,122 @@
 						<img data-lazy="/images/image1.jpg">
 					</div>
 					<div class="projects-each-footer">
-						<p class="projects-each-date">2022</p>
+						<p class="projects-each-date">2020</p>
+					</div>
+				</div>
+				
+				<div class="projects-each" data-type="flat" data-year="2021">
+					<div class="projects-each-introduction">
+						<div>
+							<p class="projects-each-title">Titol bxc</p>
+							<p class="projects-each-subtitle">Nosre quris xbc</p>
+						</div>
+						<div>
+							<i class="fa-solid fa-cube"></i>
+						</div>
+					</div>
+					<div class="projects-each-gallery">
+						<img data-lazy="/images/image1.jpg">
+						<img data-lazy="/images/image1.jpg">
+						<img data-lazy="/images/image1.jpg">
+						<img data-lazy="/images/image1.jpg">
+						<img data-lazy="/images/image1.jpg">
+						<img data-lazy="/images/image1.jpg">
+					</div>
+					<div class="projects-each-footer">
+						<p class="projects-each-date">2021</p>
+					</div>
+				</div>
+				
+				<div class="projects-each" data-type="building" data-year="2010">
+					<div class="projects-each-introduction">
+						<div>
+							<p class="projects-each-title">asdqw Recent</p>
+							<p class="projects-each-subtitle">Nosre afs sfkjasbhf</p>
+						</div>
+						<div>
+							<i class="fa-solid fa-building"></i>
+						</div>
+					</div>
+					<div class="projects-each-gallery">
+						<img data-lazy="/images/image1.jpg">
+						<img data-lazy="/images/image1.jpg">
+						<img data-lazy="/images/image1.jpg">
+						<img data-lazy="/images/image1.jpg">
+						<img data-lazy="/images/image1.jpg">
+						<img data-lazy="/images/image1.jpg">
+					</div>
+					<div class="projects-each-footer">
+						<p class="projects-each-date">2010</p>
+					</div>
+				</div>
+				
+				<div class="projects-each" data-type="warehouses" data-year="2010">
+					<div class="projects-each-introduction">
+						<div>
+							<p class="projects-each-title">asdqw Recent</p>
+							<p class="projects-each-subtitle">Nosre afs sfkjasbhf</p>
+						</div>
+						<div>
+							<i class="fa-solid fa-warehouse"></i>
+						</div>
+					</div>
+					<div class="projects-each-gallery">
+						<img data-lazy="/images/image1.jpg">
+						<img data-lazy="/images/image1.jpg">
+						<img data-lazy="/images/image1.jpg">
+						<img data-lazy="/images/image1.jpg">
+						<img data-lazy="/images/image1.jpg">
+						<img data-lazy="/images/image1.jpg">
+					</div>
+					<div class="projects-each-footer">
+						<p class="projects-each-date">2010</p>
+					</div>
+				</div>
+				
+				<div class="projects-each" data-type="installations" data-year="2010">
+					<div class="projects-each-introduction">
+						<div>
+							<p class="projects-each-title">asdqw Recent</p>
+							<p class="projects-each-subtitle">Nosre afs sfkjasbhf</p>
+						</div>
+						<div>
+							<i class="fa-solid fa-industry"></i>
+						</div>
+					</div>
+					<div class="projects-each-gallery">
+						<img data-lazy="/images/image1.jpg">
+						<img data-lazy="/images/image1.jpg">
+						<img data-lazy="/images/image1.jpg">
+						<img data-lazy="/images/image1.jpg">
+						<img data-lazy="/images/image1.jpg">
+						<img data-lazy="/images/image1.jpg">
+					</div>
+					<div class="projects-each-footer">
+						<p class="projects-each-date">2010</p>
+					</div>
+				</div>
+				
+				<div class="projects-each" data-type="establishment" data-year="2010">
+					<div class="projects-each-introduction">
+						<div>
+							<p class="projects-each-title">asdqw Recent</p>
+							<p class="projects-each-subtitle">Nosre afs sfkjasbhf</p>
+						</div>
+						<div>
+							<i class="fa-solid fa-hotel"></i>
+						</div>
+					</div>
+					<div class="projects-each-gallery">
+						<img data-lazy="/images/image1.jpg">
+						<img data-lazy="/images/image1.jpg">
+						<img data-lazy="/images/image1.jpg">
+						<img data-lazy="/images/image1.jpg">
+						<img data-lazy="/images/image1.jpg">
+						<img data-lazy="/images/image1.jpg">
+					</div>
+					<div class="projects-each-footer">
+						<p class="projects-each-date">2010</p>
 					</div>
 				</div>
 			</div>

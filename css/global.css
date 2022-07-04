@@ -10,6 +10,8 @@ Ver 1.0
 	
 	/* Color Palette */
 	
+	--pureblack: #000000;
+	--purewhite: #ffffff;
 	--black: #202020;
 	--white: #F0F0F0;
 	--snowy: #DFDFDF;
@@ -30,6 +32,7 @@ Ver 1.0
 	
 	/* Shadow Palette */
 	
+	--shadowbar: rgba(0,0,0,0.2);
 	--shadowlow: rgba(0,0,0,0.4);
 	--shadowmid: rgba(0,0,0,0.6);
 	--shadowhig: rgba(0,0,0,0.8);
@@ -158,6 +161,9 @@ Menu Configuration
 .menu-logo {
 	flex-grow: 5;
 	height: 100%;
+	display: flex;
+	align-items: center; 
+	justify-content: flex-start;
 }
 
 .menu-logo img {
@@ -673,3 +679,43 @@ Menu Configuration
 	text-decoration: underline;		
 }
 
+/* Content */
+
+.content {
+	width: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.responsive-aligner{
+	width: 80%;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: center;
+}
+
+.responsive-aligner-padding {
+	padding: 100px 0 100px 0;
+}
+
+.content-last {
+	width: 100%;
+	height: auto;
+	padding-top: 40px;
+	padding-bottom: 40px;
+	display: flex;
+	flex-wrap: wrap;
+	flex-direction: column;
+	align-items: left;
+	justify-content: left;
+}
+
+.content-title {
+	font-size: var(--bigfont);
+}
+
+.content-subtitle {
+	font-size: var(--smafont);
+}

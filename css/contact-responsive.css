@@ -1,20 +1,7 @@
-/* 1080 Screen */
-
-@media only screen and (max-width: 1370px) {
-	
-.contact {
-    width: calc(100% - 80px);
-	padding: 0 40px;
-}
-	
-}
-
-
 @media only screen and (max-width: 1000px) {
 	
 .contact {
-    width: calc(100% - 40px);
-	padding: 0 20px;
+    width: 100%;
 	flex-direction: column;
 }
 
@@ -30,6 +17,18 @@
 
 .contact-each:last-child {
     padding-left: 0px;
+}
+	
+}
+
+@media only screen and (max-width: 1000px) {
+	
+.contact-each-options {
+	padding: 10px;
+}
+	
+.contact-each-options a {
+    font-size: var(--smafont);
 }
 	
 }

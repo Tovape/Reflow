@@ -1,5 +1,3 @@
-/* 1080 Screen */
-
 @media only screen and (max-width: 1370px) {
 
 .menu{
@@ -12,6 +10,15 @@
 	padding: 20px 40px;	
 }
 
+.responsive-aligner{
+	width: 100%;
+	padding: 0 40px;
+}
+
+.responsive-aligner-padding {
+	padding: 60px 40px;
+}
+
 }
 
 @media only screen and (max-width: 1000px) {
@@ -19,10 +26,8 @@
 .menu{
 	padding: 0 20px;
 }
-	
-}
 
-/* Phone Based */
+}
 
 @media only screen and (max-width: 780px) {
 
@@ -81,4 +86,14 @@
 	padding-bottom: 20px;
 }
 
+.triangle {
+	display: none;
 }
+
+.menu-logo img {
+    width: 50%;
+    height: auto;
+}
+
+}
+

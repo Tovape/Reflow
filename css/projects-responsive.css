@@ -1,0 +1,15 @@
+@media only screen and (max-width: 1000px) {
+	
+.projects-filter{
+	flex-direction: column;
+}
+
+}
+
+@media only screen and (max-width: 570px) {
+	
+.projects-each-gallery img {
+    width: 50%;
+}
+
+}

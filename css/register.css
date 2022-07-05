@@ -11,7 +11,7 @@ html,body {
 }
 
 .register {
-	width: calc(100% - 40px);
+	width: 1000px;
 	height: calc(60% - 50px);
 	margin-bottom: 20px;
 	display: flex;
@@ -41,21 +41,28 @@ html,body {
 }
 
 .register-each-logo {
-	height: 100px;
+	height: 50px;
 }
 
 .register-each-logo img {
-	width: 50%;
-	height: auto;
+	width: auto;
+	height: 50px;
 }
 
 .register-each-content {
-	height: calc(100% - 100px);
 	display: flex;
 	flex-wrap: wrap;
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
+}
+
+.register-each:first-child .register-each-content {
+	height: calc(100% - 50px);
+}
+
+.register-each:last-child .register-each-content {
+	height: 100%;
 }
 
 .register-each-content p {
@@ -88,13 +95,15 @@ html,body {
 .register-each-form-title {
 	font-family: var(--opensans);
 	font-size: var(--impfont);
+	text-align: center;
 	padding-bottom: 50px;
+	width: 100%;
 }
 
 /* Form */
 
 .register-each-content form {
-	width: 100%;
+	width: 60%;
 	display: flex;
 	flex-wrap: wrap;
 	flex-direction: column;
@@ -102,22 +111,66 @@ html,body {
 	align-items: center;
 }
 
-.register-each-form-button {
-	cursor: pointer;
-	background-color: var(--fourth);
-	border: 1px solid var(--white);
+.register-each-content form div {
+	width: calc(100% - 40px);
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	padding: 20px;
+	margin-bottom: 10px;
 	border-radius: 4px;
-	padding: 10px 40px;
+	outline: 1px solid transparent;
+	background-color: var(--fifth);
+}
+
+.register-each-content form input {
+	border: none;
+	background-color: transparent;
+	width: calc(100% - 30px);
+}
+
+.register-each-content form input::placeholder{
+	font-family: var(--opensans);
+	color: var(--black);
+	font-size: var(--undfont);
+}
+
+.register-each-content form div:hover {outline: 1px solid var(--primary);}
+.register-each-content form input:focus {outline: none;}
+.register-each-content form input[type="text"] {font-family: var(--opensans); font-size:var(--undfont);}
+.register-each-content form input[type="email"] {font-family: var(--opensans); font-size:var(--undfont);}
+.register-each-content form input[type="password"] {font-family: var(--opensans); font-size:var(--undfont);}
+
+.fa-user,.fa-key,.fa-at {
+	width: 20px;
+	color: black;
+	padding-right: 10px;
+}
+
+.register-each-form-button {
 	color: var(--white);
-	transition: all 0.1s ease-in-out;
-	-webkit-transition: all 0.1s ease-in-out;
+	font-family: var(--raleway);
+	margin-top: 20px;
+	padding: 20px 60px;
+	background-color: var(--fourth);
+	border-radius: 4px;
+	border: 1px solid var(--primary);
+	transition: all 0.2s ease-in-out;
+	text-transform: uppercase;
+	font-weight: bold;
+	cursor: pointer;
 }
 
 .register-each-form-button:hover {
-	color: var(--black);
+	color: var(--primary);
 	background-color: var(--fifth);
-	transition: all 0.1s ease-in-out;
-	-webkit-transition: all 0.1s ease-in-out;
+	transition: all 0.2s ease-in-out;
+}
+
+.register-each-form-button:active{
+	background-color: var(--sixth);
+	transition: all 0.2s ease-in-out;
 }
 
 /* Author */

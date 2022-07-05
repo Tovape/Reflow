@@ -6,7 +6,12 @@ var arrLang = {
 	'en': {
 	
 	// Register
-	'showcase-title': 'Showcase'
+	'register-title': 'Say Hi to a better place!',
+	'register-subtitle': 'Use your account to access our platform and content',
+	'register-switch': 'Already have an account?',
+	'register-login': 'Login',
+	'register-register': 'Register',
+	'register-createaccount': 'Create Account'
 		
 	},
 
@@ -14,7 +19,12 @@ var arrLang = {
 	'es': {
 
 	// Register
-	'showcase-title': 'Demostración'
+	'register-title': 'Di hola a un lugar mucho mejor!',
+	'register-subtitle': 'Utiliza tu cuenta para aceder a nuestra plataforma y contenido',
+	'register-switch': '¿Ya tienes una cuenta?',
+	'register-login': 'Iniciar Sesión',
+	'register-register': 'Registrar',
+	'register-createaccount': 'Crear Cuenta'
 	
 	},
 	
@@ -22,7 +32,12 @@ var arrLang = {
 	'ca': {
 
 	// Register
-	'showcase-title': 'Demostració'
+	'register-title': 'Digues hola a un lloc molt millor!',
+	'register-subtitle': 'Utilitza la compte per accedir a la nostra plataforma i continguts',
+	'register-switch': 'Ja tens una compte?',
+	'register-login': 'Iniciar Sessió',
+	'register-register': 'Registrar',
+	'register-createaccount': 'Crear Compte'
 		
 	}
 };
@@ -34,40 +49,21 @@ $(function() {
 	}
 
 	var lang = localStorage.getItem("language");
-		$('p,a').each(function(index, element) {
-			$(this).html(arrLang[lang][$(this).attr('key')]);
-			$(this).html(arrGlobal[lang][$(this).attr('key')]);
+		$('p,a,button').each(function(index, element) {
+			$(this).text(arrLang[lang][$(this).attr('key')]);
+			$(this).text(arrGlobal[lang][$(this).attr('key')]);
 	});
 
 	$('.language').click(function() {
 		localStorage.setItem("language", $(this).attr('id'));
 		var lang = $(this).attr('id');
-		$(this).parent().addClass('language-active').siblings().removeClass('language-active');
 
-		$('p,a').each(function(index, element) {
-			$(this).html(arrLang[lang][$(this).attr('key')]);
-			$(this).html(arrGlobal[lang][$(this).attr('key')]);
+		$('p,a,button').each(function(index, element) {
+			$(this).text(arrLang[lang][$(this).attr('key')]);
+			$(this).text(arrGlobal[lang][$(this).attr('key')]);
 
 		});
 
 	});
-
-});
-
-$(document).ready(function() {
-	
-	const languagebutton = document.getElementsByClassName("language-dropdown-each");
-	var language = localStorage.getItem("language");
-	
-	if (language == 'es') {
-		languagebutton[0].classList.add('language-active');
-		languagebutton[3].classList.add('language-active');
-	} else if (language == 'ca') {
-		languagebutton[1].classList.add('language-active');
-		languagebutton[4].classList.add('language-active');
-	} else if (language == 'en') {
-		languagebutton[2].classList.add('language-active');
-		languagebutton[5].classList.add('language-active');
-	}
 
 });

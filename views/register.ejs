@@ -18,6 +18,7 @@
 	<script type="text/javascript" src="global-javascript.js"></script>
 	<script type="text/javascript" src="global-language.js"></script>
 	<script type="text/javascript" src="register-language.js"></script>
+	<script type="text/javascript" src="register-javascript.js"></script>
 	<!-- Fonts -->
 	<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
@@ -29,7 +30,9 @@
 <div class="register">
 	<div class="register-each">
 		<div class="register-each-logo">
-			<img data-lazy="/logo/logo.png">
+			<a href="/">
+				<img data-lazy="/logo/logo.png" src="/logo/logo.png">
+			</a>
 		</div>
 		<div class="register-each-content">
 			<p key="register-title" class="register-each-content-welcome">Hello!<br>Say Hi to a better place!</p>
@@ -41,20 +44,24 @@
 	<div class="register-each">
 		<div class="register-each-content">
 			<p key="register-createaccount" class="register-each-form-title">Create Account</p>
+			<div class="register-error-div">
+				<p id="register-error-email" key="register-error-email">Email Not Valid</p>
+				<p id="register-error-password" key="register-error-password">Password must be at least 6 characters with number</p>
+			</div>
 			<form action="/register" method="POST">
 				<div>
 					<i class="fa-solid fa-user"></i>
-					<input type="text" id="name" name="name" placeholder="Name" required>
+					<input type="text" id="name" name="name" placeholder="Name" value="" required>
 				</div>
 				<div>
 					<i class="fa-solid fa-at"></i>
-					<input type="email" id="email" name="email" placeholder="Email" required>
+					<input type="email" id="email" name="email" placeholder="Email" value="" required>
 				</div>
 				<div>
 					<i class="fa-solid fa-key"></i>
 					<input type="password" id="password" name="password" placeholder="Password" required>
 				</div>				
-				<button key="register-register" class="register-each-form-button" type="submit">Register</button>
+				<button key="register-register" class="register-each-form-button" type="submit" onclick="startRegex()">Register</button>
 			</form>
 		</div>
 	</div>

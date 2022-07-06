@@ -1,12 +1,14 @@
 require('dotenv').config()
 const mysql = require("mysql");
 const express = require('express')
+const path = require('path')
 const app = express()
 const bcrypt = require('bcrypt')
 const passport = require('passport')
 const flash = require('express-flash')
 const session = require('express-session')
 const methodOverride = require('method-override')
+const favicon = require('serve-favicon')
 const PORT = 5000;
 const initializePassport = require('./passport-config')
 
@@ -35,7 +37,7 @@ db.query(query, function (err, result, fields) {
 		throw err;
 		console.log("Error Inserting User");
 	} else {
-		console.log("\nGot Users\n");
+		console.log("\nGot Users");
 		for(let i = 0; i < result.length; i++) {
 			result[i] = JSON.parse(JSON.stringify(result[i]));
 			users.push(result[i]);
@@ -45,6 +47,7 @@ db.query(query, function (err, result, fields) {
 });
 
 app.set('view-engine', 'ejs')
+app.use(favicon(__dirname + '/files/icons/favicon.ico'));
 app.use(express.urlencoded({ extended: false }))
 app.use(flash())
 app.use(session({
@@ -57,35 +60,35 @@ app.use(passport.session())
 app.use(methodOverride('_method'))
 
 // Main Pages
-app.get('/', checkNotAuthenticated, (req, res) => {
+app.get('/', function (req, res) {
 	res.render('index.ejs'),
 	app.use(express.static(__dirname + '/css')),
 	app.use(express.static(__dirname + '/files')),
 	app.use(express.static(__dirname + '/js'))
 })
 
-app.get('/projects', checkNotAuthenticated, (req, res) => {
+app.get('/projects', function (req, res) {
 	res.render('projects.ejs'),
 	app.use(express.static(__dirname + '/css')),
 	app.use(express.static(__dirname + '/files')),
 	app.use(express.static(__dirname + '/js'))
 })
 
-app.get('/showcase', checkNotAuthenticated, (req, res) => {
+app.get('/showcase', function (req, res) {
 	res.render('showcase.ejs'),
 	app.use(express.static(__dirname + '/css')),
 	app.use(express.static(__dirname + '/files')),
 	app.use(express.static(__dirname + '/js'))
 })
 
-app.get('/contact', checkNotAuthenticated, (req, res) => {
+app.get('/contact', function (req, res) {
 	res.render('contact.ejs'),
 	app.use(express.static(__dirname + '/css')),
 	app.use(express.static(__dirname + '/files')),
 	app.use(express.static(__dirname + '/js'))
 })
 
-app.get('/booking', checkNotAuthenticated, (req, res) => {
+app.get('/booking', function (req, res) {
 	res.render('booking.ejs'),
 	app.use(express.static(__dirname + '/css')),
 	app.use(express.static(__dirname + '/files')),
@@ -114,32 +117,46 @@ app.get('/register', checkNotAuthenticated, (req, res) => {
 })
 
 app.post('/register', checkNotAuthenticated, async (req, res) => {
-	
-  try {
-    const hashedPassword = await bcrypt.hash(req.body.password, 10)
-    users.push({
-      id_users: Date.now(),
-      username: req.body.name,
-      email: req.body.email,
-      password: hashedPassword
-    })
-	
-	let query = "INSERT INTO users VALUES (null,'" + req.body.name + "','" + req.body.email + "','" + hashedPassword + "')";
-	
-	db.query(query, function (err, result, fields) {
-		if (err)  {
-			throw err;
-		} else {
-			console.log("User Inserted Correctly")
+
+	// Password Validation
+	var passwordExpression  = /^(?=.*[0-9])[a-zA-Z0-9!@#$%^&*]{6,16}$/;
+	var emailExpression = /^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/;
+
+	if(!passwordExpression.test(req.body.password)) {
+		console.log("Password: From 6 to 16 with Numbers");
+		return false;
+	} else if (!emailExpression.test(req.body.email)) {
+		console.log("Email: test@test.com");
+		return false;
+	} else {
+		try {
+			const hashedPassword = await bcrypt.hash(req.body.password, 10)
+			let temp = Date.now().toString();
+
+			users.push({
+				id_users: Date.now(),
+				username: req.body.name,
+				email: req.body.email,
+				password: hashedPassword,
+				timestamp: temp
+			})
+
+			let query = "INSERT INTO users (username, email, password, timestamp) VALUES ('" + req.body.name + "','" + req.body.email + "','" + hashedPassword + "','" + temp + "')";
+
+			db.query(query, function (err, result, fields) {
+				if (err)  {
+					throw err;
+				} else {
+					console.log("User Inserted Correctly")
+				}
+			});
+
+			console.log(users)
+			res.redirect('/login')
+		} catch {
+			res.redirect('/register')
 		}
-	});
-	
-	console.log(users)
-	
-    res.redirect('/login')
-  } catch {
-    res.redirect('/register')
-  }
+	}
 })
 
 app.delete('/logout', (req, res) => {
@@ -151,6 +168,10 @@ app.delete('/logout', (req, res) => {
 
 app.get('/dashboard', checkAuthenticated, (req, res) => {
   res.render('dashboard.ejs')
+})
+
+app.get('/editor', checkAuthenticated, (req, res) => {
+  res.render('editor.ejs')
 })
 
 // Auth Functions

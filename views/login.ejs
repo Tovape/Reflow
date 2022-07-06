@@ -29,7 +29,9 @@
 <div class="register">
 	<div class="register-each">
 		<div class="register-each-logo">
-			<img data-lazy="/logo/logo.png">
+			<a href="/">
+				<img data-lazy="/logo/logo.png" src="/logo/logo.png">
+			</a>
 		</div>
 		<div class="register-each-content">
 			<p key="register-title" class="register-each-content-welcome">Hello!<br>Say Hi to a better place!</p>
@@ -41,9 +43,13 @@
 	<div class="register-each">
 		<div class="register-each-content">
 			<p key="register-login" class="register-each-form-title">Login Account</p>
-			<% if (messages.error) { %>
+			<div class="register-error-div">
+				<p>
+				<% if (messages.error) { %>
 				<%= messages.error %>
-			<% } %>
+				<% } %>
+				</p>
+			</div>
 			<form action="/login" method="POST">
 				<div>
 					<i class="fa-solid fa-at"></i>

@@ -166,6 +166,11 @@ Menu Configuration
 	justify-content: flex-start;
 }
 
+.menu-logo a {
+	width: auto;
+	height: 100%;
+}
+
 .menu-logo img {
 	width: auto;
 	height: 100%;

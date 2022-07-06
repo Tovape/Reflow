@@ -13,6 +13,8 @@ var arrLang = {
 	'register-login': 'Login',
 	'register-register': 'Register',
 	'register-createaccount': 'Create Account',
+	'register-error-email': 'Email Not Valid',
+	'register-error-password': 'Password must be at least 6 characters with number'
 		
 	},
 
@@ -26,7 +28,9 @@ var arrLang = {
 	'register-switch-2': `¿No tienes una cuenta?`,
 	'register-login': 'Iniciar Sesión',
 	'register-register': 'Registrar',
-	'register-createaccount': 'Crear Cuenta'
+	'register-createaccount': 'Crear Cuenta',
+	'register-error-email': 'Correo No Válido',
+	'register-error-password': 'La Contraseña debe de tener al menos 6 caracteres y un número'
 
 	},
 	
@@ -40,7 +44,9 @@ var arrLang = {
 	'register-switch-2': `No tens una compte?`,
 	'register-login': 'Iniciar Sessió',
 	'register-register': 'Registrar',
-	'register-createaccount': 'Crear Compte'
+	'register-createaccount': 'Crear Compte',
+	'register-error-email': 'Correu Invàlid',
+	'register-error-password': 'La Contrasenya ha de tindre almenys 6 caràcters i un número'
 		
 	}
 };

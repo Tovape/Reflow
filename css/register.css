@@ -96,7 +96,7 @@ html,body {
 	font-family: var(--opensans);
 	font-size: var(--impfont);
 	text-align: center;
-	padding-bottom: 50px;
+	padding-bottom: 20px;
 	width: 100%;
 }
 
@@ -112,12 +112,11 @@ html,body {
 }
 
 .register-each-content form div {
-	width: calc(100% - 40px);
+	width: 100%;
 	display: flex;
 	flex-direction: row;
 	justify-content: center;
 	align-items: center;
-	padding: 20px;
 	margin-bottom: 10px;
 	border-radius: 4px;
 	outline: 1px solid transparent;
@@ -127,7 +126,8 @@ html,body {
 .register-each-content form input {
 	border: none;
 	background-color: transparent;
-	width: calc(100% - 30px);
+	width: calc(100% - 70px);
+	padding: 20px;
 }
 
 .register-each-content form input::placeholder{
@@ -145,7 +145,7 @@ html,body {
 .fa-user,.fa-key,.fa-at {
 	width: 20px;
 	color: black;
-	padding-right: 10px;
+	padding: 20px 0 20px 20px;
 }
 
 .register-each-form-button {
@@ -181,4 +181,24 @@ html,body {
 	left: 0;
 	width: 100%;
 	height: 20px;
+}
+
+/* Error Handle */
+
+.register-error-div{
+	height: 20px;
+	width: 100%;
+	padding-bottom: 10px;
+}
+
+#register-error-email {
+	display: none;
+}
+
+#register-error-password {
+	display: none;
+}
+
+.register-error-on {
+	display: block !important;
 }

@@ -18,6 +18,7 @@
 	<script type="text/javascript" src="global-javascript.js"></script>
 	<script type="text/javascript" src="global-language.js"></script>
 	<script type="text/javascript" src="dashboard-language.js"></script>
+	<script type="text/javascript" src="dashboard-javascript.js"></script>
 	<!-- Fonts -->
 	<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
@@ -26,9 +27,94 @@
 
 <body>
 
-<form action="/logout?_method=DELETE" method="POST">
-  <button type="submit">Log Out</button>
-</form>
+<div class="dashboard-aligner">
+	<div class="dashboard">
+		<div class="dashboard-banner">
+			<a href="/">
+				<img data-lazy="/logo/logo.png" src="/logo/logo.png">
+			</a>
+		</div>
+		<div class="dashboard-content">
+			<div class="dashboard-profile">
+				<div class="dashboard-profile-shadow">
+					<div class="dashboard-profile-info">
+						<img data-lazy="/icons/default-avatar.png">
+						<div>
+							<p>Username</p>
+							<p>Mail</p>
+							<p>Member from 12/6/2022</p>
+						</div>
+					</div>
+					<div class="dashboard-profile-options">
+						<div class="dashboard-profile-options-each">
+							<form action="/logout?_method=DELETE" method="POST">
+								<button type="submit">Log Out</button>
+							</form>
+						</div>
+						<div class="dashboard-profile-options-each">
+							<a href="/editor">Editor</a>
+						</div>
+					</div>
+					<div class="dashboard-profile-stats">
+						<div>
+							<p>32</p>
+							<p>Requests</p>
+						</div>
+						<div>
+							<p>16</p>
+							<p>In Progress</p>
+						</div>
+						<div>
+							<p>320</p>
+							<p>Points</p>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="dashboard-requests">
+				<div class="dashboard-sort">
+					<a href="#" key="newest" class="dashboard-sort-each dashboard-sort-asc">Newest <i class="fa fa-arrow-up"></i></a>
+					<a href="#" key="oldest" class="dashboard-sort-each dashboard-sort-desc">Oldest <i class="fa fa-arrow-down"></i></a>
+				</div>
+				<div class="dashboard-filter">
+					<a class="dashboard-filter-each dashboard-filter-all dashboard-filter-active" href="#">All</a>
+					<a class="dashboard-filter-each dashboard-filter-photos" href="#">Photos</a>
+					<a class="dashboard-filter-each dashboard-filter-videos" href="#">Videos</a>
+					<a class="dashboard-filter-each dashboard-filter-progress" href="#">In Progress</a>
+				</div>
+				<div class="dashboard-gallery">
+					<div class="dashboard-gallery-each" data-type="photos" data-year="2021">
+						a
+					</div>
+					<div class="dashboard-gallery-each" data-type="videos" data-year="2020">
+						b
+					</div>
+					<div class="dashboard-gallery-each" data-type="progress" data-year="2022">
+						c
+					</div>
+					<div class="dashboard-gallery-each" data-type="photos" data-year="2015">
+						d
+					</div>
+					<div class="dashboard-gallery-each" data-type="videos" data-year="2012">
+						e
+					</div>
+					<div class="dashboard-gallery-each" data-type="progress" data-year="2019">
+						f
+					</div>
+					<div class="dashboard-gallery-each" data-type="photos" data-year="2018">
+						g
+					</div>
+					<div class="dashboard-gallery-each" data-type="videos" data-year="2010">
+						h
+					</div>
+					<div class="dashboard-gallery-each" data-type="progress" data-year="2011">
+						i
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
 
 </body>
 

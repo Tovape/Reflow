@@ -143,9 +143,11 @@ app.post('/register', checkNotAuthenticated, async (req, res) => {
 })
 
 app.delete('/logout', (req, res) => {
-  req.logOut()
-  res.redirect('/login')
-})
+  req.logout(req.user, err => {
+    if(err) return next(err);
+    res.redirect("/login");
+  });
+});
 
 app.get('/dashboard', checkAuthenticated, (req, res) => {
   res.render('dashboard.ejs')
@@ -155,10 +157,7 @@ app.get('/dashboard', checkAuthenticated, (req, res) => {
 function checkAuthenticated(req, res, next) {
   if (req.isAuthenticated()) {
     return next()
-  } else {
-	  
   }
-
   res.redirect('/login')
 }
 

@@ -9,6 +9,8 @@ const flash = require('express-flash')
 const session = require('express-session')
 const methodOverride = require('method-override')
 const favicon = require('serve-favicon')
+const busboy = require('connect-busboy')
+const fs = require('fs-extra')
 const PORT = 5000;
 const initializePassport = require('./passport-config')
 
@@ -47,6 +49,8 @@ db.query(query, function (err, result, fields) {
 });
 
 app.set('view-engine', 'ejs')
+app.use(busboy());
+app.use(express.static(path.join(__dirname)));
 app.use(favicon(__dirname + '/files/icons/favicon.ico'));
 app.use(express.urlencoded({ extended: false }))
 app.use(flash())
@@ -160,18 +164,22 @@ app.post('/register', checkNotAuthenticated, async (req, res) => {
 })
 
 app.delete('/logout', (req, res) => {
-  req.logout(req.user, err => {
-    if(err) return next(err);
-    res.redirect("/login");
-  });
+	req.logout(req.user, err => {
+		if(err) return next(err);
+		res.redirect("/login");
+	});
 });
 
 app.get('/dashboard', checkAuthenticated, (req, res) => {
-  res.render('dashboard.ejs')
+	console.log("Logged as " + JSON.stringify(req.user));
+	res.render('dashboard.ejs', { data: req.user}),
+	app.use(express.static(__dirname + '/css')),
+	app.use(express.static(__dirname + '/files')),
+	app.use(express.static(__dirname + '/js'))
 })
 
 app.get('/editor', checkAuthenticated, (req, res) => {
-  res.render('editor.ejs')
+	res.render('editor.ejs')
 })
 
 // Auth Functions
@@ -189,6 +197,22 @@ function checkNotAuthenticated(req, res, next) {
   next()
 }
 
-console.log("Server Started on port " + PORT);
+// Get Avatar Image
+app.route('/saveavatar').post(function (req, res, next) {
+	var fstream;
+	req.pipe(req.busboy);
+	req.busboy.on('file', function (fieldname, file, filename) {
+		console.log("Uploading: " + JSON.stringify(filename));
+		filename = req.user[Object.keys(req.user)[0]] + ".jpg"
+		fstream = fs.createWriteStream(__dirname + '/files/user/' + filename);
+		file.pipe(fstream);
+		fstream.on('close', function () {    
+			console.log("Upload Finished of " + JSON.stringify(filename));              
+			res.redirect('/dashboard');
+		});
+	});
+});
 
+// Port
+console.log("Server Started on port " + PORT);
 app.listen(PORT);

@@ -38,11 +38,21 @@
 			<div class="dashboard-profile">
 				<div class="dashboard-profile-shadow">
 					<div class="dashboard-profile-info">
-						<img data-lazy="/icons/default-avatar.png">
+						<div class="dashboard-profile-avatar" title="Change Picture">
+							<form action="/saveavatar" method="POST" id="saveavatar" enctype="multipart/form-data">
+								<input type="file" id="avatar" name="avatar" accept="image/png, image/jpeg">
+							</form>
+						</div>
 						<div>
-							<p>Username</p>
-							<p>Mail</p>
-							<p>Member from 12/6/2022</p>
+							<p><%= data[Object.keys(data)[1]] %></p>
+							<p><%= data[Object.keys(data)[2]] %></p>
+							<p id="dashboard-profile-timestamp"></p>
+							<script>
+							let hola = Number(<%= data[Object.keys(data)[4]] %>)
+							var date = new Date(Math.round(Number(hola)));
+							let formattedDate = date.getUTCDate() + '/' + (date.getUTCMonth() + 1)+ '/' + date.getUTCFullYear()
+							document.getElementById("dashboard-profile-timestamp").innerHTML = "Joined on " + formattedDate;
+							</script>
 						</div>
 					</div>
 					<div class="dashboard-profile-options">

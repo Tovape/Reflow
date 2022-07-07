@@ -86,3 +86,12 @@ $(document).ready(function() {
 	});
 	
 });
+
+
+// Avatar Auto Submit
+
+document.addEventListener("DOMContentLoaded", function(event) { 
+	document.getElementById("avatar").onchange = function() {
+		document.getElementById("saveavatar").submit();
+	};
+});

@@ -58,10 +58,36 @@
 	align-items: center;
 }
 
-.dashboard-profile-info img {
-	width: 50px;
-	height: 50px;
-	padding-right: 20px;
+.dashboard-profile-avatar {
+	background-image: url('/icons/default-avatar.png');
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	border-radius: 50%;
+	width: 48px;
+	height: 48px;
+	margin-right: 20px;
+	border: 1px solid transparent;
+}
+
+.dashboard-profile-avatar:hover {
+	opacity: 0.7;
+	border: 1px solid var(--black);
+}
+
+.dashboard-profile-avatar form {
+	cursor: pointer;
+	width: 100%;
+	height: 100%;
+	display: block;	
+}
+
+.dashboard-profile-avatar input[type=file] {
+	cursor: pointer;
+	width: 100%;
+	height: 100%;
+	opacity: 0;
+    font-size: 0;
 }
 
 .dashboard-profile-options {

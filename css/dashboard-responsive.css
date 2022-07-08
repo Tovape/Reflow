@@ -1,0 +1,35 @@
+@media only screen and (max-width: 1000px) {
+
+.dashboard-content {
+    flex-direction: column;
+}
+
+.dashboard-profile {
+    width: 100%;
+}
+
+.dashboard-requests {
+    width: 100%;
+	padding: 0;
+	margin-top: 40px;
+}
+
+}
+
+@media only screen and (max-width: 500px) {
+	
+.dashboard-filter-each {
+    width: 80px;
+	padding: 10px 20px;
+}
+
+.dashboard-content {
+    width: calc(100% - 20px);
+    margin-top: 10px;
+}
+
+.dashboard-requests {
+    margin-top: 10px;
+}
+	
+}

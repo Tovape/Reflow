@@ -29,7 +29,7 @@
 
 <div class="dashboard-aligner">
 	<div class="dashboard">
-		<div class="dashboard-banner">
+		<div class="dashboard-banner" id="dashboard-banner">
 			<a href="/">
 				<img data-lazy="/logo/logo.png" src="/logo/logo.png">
 			</a>
@@ -38,7 +38,7 @@
 			<div class="dashboard-profile">
 				<div class="dashboard-profile-shadow">
 					<div class="dashboard-profile-info">
-						<div class="dashboard-profile-avatar" title="Change Picture">
+						<div class="dashboard-profile-avatar" id="dashboard-profile-avatar" title="Change Picture">
 							<form action="/saveavatar" method="POST" id="saveavatar" enctype="multipart/form-data">
 								<input type="file" id="avatar" name="avatar" accept="image/png, image/jpeg">
 							</form>
@@ -47,12 +47,6 @@
 							<p><%= data[Object.keys(data)[1]] %></p>
 							<p><%= data[Object.keys(data)[2]] %></p>
 							<p id="dashboard-profile-timestamp"></p>
-							<script>
-							let hola = Number(<%= data[Object.keys(data)[4]] %>)
-							var date = new Date(Math.round(Number(hola)));
-							let formattedDate = date.getUTCDate() + '/' + (date.getUTCMonth() + 1)+ '/' + date.getUTCFullYear()
-							document.getElementById("dashboard-profile-timestamp").innerHTML = "Joined on " + formattedDate;
-							</script>
 						</div>
 					</div>
 					<div class="dashboard-profile-options">
@@ -67,15 +61,15 @@
 					</div>
 					<div class="dashboard-profile-stats">
 						<div>
-							<p>32</p>
+							<p><%= data[Object.keys(data)[6]] %></p>
 							<p>Requests</p>
 						</div>
 						<div>
-							<p>16</p>
+							<p><%= data[Object.keys(data)[7]] %></p>
 							<p>In Progress</p>
 						</div>
 						<div>
-							<p>320</p>
+							<p><%= data[Object.keys(data)[5]] %></p>
 							<p>Points</p>
 						</div>
 					</div>
@@ -93,38 +87,105 @@
 					<a class="dashboard-filter-each dashboard-filter-progress" href="#">In Progress</a>
 				</div>
 				<div class="dashboard-gallery">
-					<div class="dashboard-gallery-each" data-type="photos" data-year="2021">
-						a
-					</div>
+				
+				
+					<% for (var i = 0; i < requests.length; i++) { %>
+						<div class="dashboard-gallery-each" data-type="<%= requests[i].type %>" data-year="<%= requests[i].year %>">
+							<span class="dashboard-gallery-each-status"></span>
+							<div class="dashboard-gallery-each-text">
+								<p><%= requests[i].title %></p>
+								<p><%= requests[i].description %></p>
+							</div>
+							<img data-lazy="/images/image8.jpg">
+						</div>
+					<% } %>
+					
 					<div class="dashboard-gallery-each" data-type="videos" data-year="2020">
-						b
+						<span class="dashboard-gallery-each-status"></span>
+						<div class="dashboard-gallery-each-text">
+							<p>Title</p>
+							<p>Subtitle</p>
+						</div>
+						<img data-lazy="/images/image8.jpg">
 					</div>
 					<div class="dashboard-gallery-each" data-type="progress" data-year="2022">
-						c
+						<span class="dashboard-gallery-each-status"></span>
+						<div class="dashboard-gallery-each-text">
+							<p>Title</p>
+							<p>Subtitle</p>
+						</div>
+						<img data-lazy="/images/image8.jpg">
 					</div>
 					<div class="dashboard-gallery-each" data-type="photos" data-year="2015">
-						d
+						<span class="dashboard-gallery-each-status"></span>
+						<div class="dashboard-gallery-each-text">
+							<p>Title</p>
+							<p>Subtitle</p>
+						</div>
+						<img data-lazy="/images/image8.jpg">
 					</div>
 					<div class="dashboard-gallery-each" data-type="videos" data-year="2012">
-						e
+						<span class="dashboard-gallery-each-status"></span>
+						<div class="dashboard-gallery-each-text">
+							<p>Title</p>
+							<p>Subtitle</p>
+						</div>
+						<img data-lazy="/images/image8.jpg">
 					</div>
 					<div class="dashboard-gallery-each" data-type="progress" data-year="2019">
-						f
+						<span class="dashboard-gallery-each-status"></span>
+						<div class="dashboard-gallery-each-text">
+							<p>Title</p>
+							<p>Subtitle</p>
+						</div>
+						<img data-lazy="/images/image8.jpg">
 					</div>
 					<div class="dashboard-gallery-each" data-type="photos" data-year="2018">
-						g
+						<span class="dashboard-gallery-each-status"></span>
+						<div class="dashboard-gallery-each-text">
+							<p>Title</p>
+							<p>Subtitle</p>
+						</div>
+						<img data-lazy="/images/image8.jpg">
 					</div>
 					<div class="dashboard-gallery-each" data-type="videos" data-year="2010">
-						h
+						<span class="dashboard-gallery-each-status"></span>
+						<div class="dashboard-gallery-each-text">
+							<p>Title</p>
+							<p>Subtitle</p>
+						</div>
+						<img data-lazy="/images/image8.jpg">
 					</div>
 					<div class="dashboard-gallery-each" data-type="progress" data-year="2011">
-						i
+						<span class="dashboard-gallery-each-status"></span>
+						<div class="dashboard-gallery-each-text">
+							<p>Title</p>
+							<p>Subtitle</p>
+						</div>
+						<img data-lazy="/images/image8.jpg">
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
 </div>
+
+<script>
+// Get Joined Timestamp
+let timestamp = Number(<%= data[Object.keys(data)[4]] %>)
+var date = new Date(Math.round(Number(timestamp)));
+let formattedDate = date.getUTCDate() + '/' + (date.getUTCMonth() + 1)+ '/' + date.getUTCFullYear()
+document.getElementById("dashboard-profile-timestamp").innerHTML = "Joined on " + formattedDate;
+
+// Set Avatar
+let id_users = <%= data[Object.keys(data)[0]] %>
+document.getElementById("dashboard-profile-avatar").style.backgroundImage = "url('/user/" + id_users + ".jpg')";
+
+// Set Banner
+let rand =  Math.floor(Math.random() * (5 - 1) + 1);
+document.getElementById("dashboard-banner").style.backgroundImage = "url('/banner/banner-" + rand + ".jpg')";
+
+</script>
 
 </body>
 

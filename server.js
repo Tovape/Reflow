@@ -1,5 +1,5 @@
 require('dotenv').config()
-const mysql = require("mysql");
+const mysql = require("mysql")
 const express = require('express')
 const path = require('path')
 const app = express()
@@ -17,7 +17,7 @@ const initializePassport = require('./passport-config')
 initializePassport(
   passport,
   email => users.find(user => user.email === email),
-  id_users => users.find(user => user.id_users === id_users)
+  id_user => users.find(user => user.id_user === id_user)
 )
 
 // SQL Connection
@@ -138,7 +138,7 @@ app.post('/register', checkNotAuthenticated, async (req, res) => {
 			let temp = Date.now().toString();
 
 			users.push({
-				id_users: Date.now(),
+				id_user: Date.now(),
 				username: req.body.name,
 				email: req.body.email,
 				password: hashedPassword,
@@ -170,9 +170,35 @@ app.delete('/logout', (req, res) => {
 	});
 });
 
-app.get('/dashboard', checkAuthenticated, (req, res) => {
-	console.log("Logged as " + JSON.stringify(req.user));
-	res.render('dashboard.ejs', { data: req.user}),
+// Get User Requests Function
+
+let getRequests = async (user_id) => {
+	
+    const query = "SELECT * FROM requests WHERE id_user = " + user_id;
+	let requests = [];
+	let result = await new Promise((resolve, reject) => db.query(query, (err, result) => {
+		if (err) {
+			reject(err)
+		} else {
+			resolve(result);
+			console.log("\nGot Requests")
+			for(let i = 0; i < result.length; i++) {
+				result[i] = JSON.parse(JSON.stringify(result[i]));
+				requests.push(result[i]);
+			}
+		}
+	}));
+	console.log(requests)
+	return requests;
+}
+
+app.get('/dashboard', checkAuthenticated, async (req, res) => {
+	
+	let user_id = req.user[Object.keys(req.user)[0]];
+	let requests = await getRequests(user_id);
+
+	console.log("\nLogged as Username: " + req.user[Object.keys(req.user)[1]] + " | Email: " + req.user[Object.keys(req.user)[2]] + " | Id: " + req.user[Object.keys(req.user)[0]]);
+	res.render('dashboard.ejs', { data: req.user, requests: requests }),
 	app.use(express.static(__dirname + '/css')),
 	app.use(express.static(__dirname + '/files')),
 	app.use(express.static(__dirname + '/js'))

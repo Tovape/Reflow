@@ -17,7 +17,6 @@
 .dashboard-banner {
 	height: 300px;
 	width: 100%;
-	background-image: url('/banner/banner-1.jpg');
 	background-repeat: no-repeat;
 	background-attachment: fixed;
 	background-size: cover;
@@ -59,7 +58,6 @@
 }
 
 .dashboard-profile-avatar {
-	background-image: url('/icons/default-avatar.png');
 	background-position: center;
 	background-repeat: no-repeat;
 	background-size: cover;
@@ -194,6 +192,7 @@
 
 .dashboard-filter {
 	display: flex;
+	flex-wrap: wrap;
 	flex-direction: row;
 	align-items: center;
 	justify-content: flex-start;
@@ -259,7 +258,63 @@
 }
 
 .dashboard-gallery{
+	margin-top: 20px;
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(240px, 2fr));
+	gap:10px;
+}
 
+.dashboard-gallery-each {
+	cursor: pointer;
+	height: 180px;
+	padding: 10px;
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-end;
+	align-items: flex-start;
+	position: relative;
+	overflow: hidden;
+	background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 70%, rgba(0, 0, 0, 1));
+	transition: all 0.1s ease-in-out;
+	-webkit-transition: all 0.1s ease-in-out;	
+}
+
+.dashboard-gallery-each:hover img {
+	overflow: hidden;
+	transform: scale(1.06);
+	transition: all 0.1s ease-in-out;
+	-webkit-transition: all 0.1s ease-in-out;	
+}
+
+.dashboard-gallery-each img {
+	position: absolute;
+	top: 0; left: 0;
+	width: 100%;
+	height: 100%;
+	z-index: -1;
+	transition: all 0.1s ease-in-out;
+	-webkit-transition: all 0.1s ease-in-out;
+}
+
+.dashboard-gallery-each-status {
+	position: absolute;
+	background-color: green;
+	border: 1px solid var(--black);
+	border-radius: 50%;
+	top: 5px; right: 5px;
+	height: 8px; width: 8px;
+}
+
+.dashboard-gallery-each-text {
+	color: var(--white);
+}
+
+.dashboard-gallery-each-text p:first-child {
+	font-size: var(--undfont);
+}
+
+.dashboard-gallery-each-text p:last-child {
+	
 }
 
 .dashboard-filter-fadein {

@@ -193,7 +193,6 @@ let getRequests = async (user_id) => {
 }
 
 app.get('/dashboard', checkAuthenticated, async (req, res) => {
-	
 	let user_id = req.user[Object.keys(req.user)[0]];
 	let requests = await getRequests(user_id);
 
@@ -205,7 +204,19 @@ app.get('/dashboard', checkAuthenticated, async (req, res) => {
 })
 
 app.get('/editor', checkAuthenticated, (req, res) => {
-	res.render('editor.ejs')
+	res.render('editor.ejs'),
+	app.use(express.static(__dirname + '/css')),
+	app.use(express.static(__dirname + '/files')),
+	app.use(express.static(__dirname + '/js'))
+})
+
+app.post('/editor', checkAuthenticated, (req, res) => {
+	let user_id = req.user[Object.keys(req.user)[0]];
+	console.log("Redirecting to editor ejs with request " + req.body.request_id + " from " + user_id)
+	res.render('editor.ejs', { data: user_id, request: req.body.request_id }),
+	app.use(express.static(__dirname + '/css')),
+	app.use(express.static(__dirname + '/files')),
+	app.use(express.static(__dirname + '/js'))
 })
 
 // Auth Functions

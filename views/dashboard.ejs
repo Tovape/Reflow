@@ -77,8 +77,8 @@
 			</div>
 			<div class="dashboard-requests">
 				<div class="dashboard-sort">
-					<a href="#" key="newest" class="dashboard-sort-each dashboard-sort-asc">Newest <i class="fa fa-arrow-up"></i></a>
-					<a href="#" key="oldest" class="dashboard-sort-each dashboard-sort-desc">Oldest <i class="fa fa-arrow-down"></i></a>
+					<a href="#" key="newest" class="dashboard-sort-each dashboard-sort-desc">Newest <i class="fa fa-arrow-up"></i></a>
+					<a href="#" key="oldest" class="dashboard-sort-each dashboard-sort-asc">Oldest <i class="fa fa-arrow-down"></i></a>
 				</div>
 				<div class="dashboard-filter">
 					<a class="dashboard-filter-each dashboard-filter-all dashboard-filter-active" href="#">All</a>
@@ -88,82 +88,30 @@
 				</div>
 				<div class="dashboard-gallery">
 				
-				
 					<% for (var i = 0; i < requests.length; i++) { %>
-						<div class="dashboard-gallery-each" data-type="<%= requests[i].type %>" data-year="<%= requests[i].year %>">
-							<span class="dashboard-gallery-each-status"></span>
-							<div class="dashboard-gallery-each-text">
-								<p><%= requests[i].title %></p>
-								<p><%= requests[i].description %></p>
+						<form action="/editor" method="post" class="dashboard-form" data-type="<%= requests[i].type %>" data-year="<%= requests[i].year %>">
+							<div class="dashboard-gallery-each">
+								<span class="dashboard-gallery-each-status" 
+								<% if(requests[i].status == 0) { %>
+								style="background-color:green"
+								<% } else if(requests[i].status == 1) { %>
+								style="background-color:orange"
+								<% } else if(requests[i].status == 2) { %>
+								style="background-color:red"
+								<% } else { %>
+								style="background-color: grey"
+								<% } %>
+								></span>
+								<div class="dashboard-gallery-each-text">
+									<p><%= requests[i].title %></p>
+									<p><%= requests[i].description %> - <%= requests[i].year %></p>
+								</div>
+								<img data-lazy="/images/image8.jpg">
 							</div>
-							<img data-lazy="/images/image8.jpg">
-						</div>
+							<input type="number" id="request_id" name="request_id" value="<%= requests[i].id_request %>" required>
+						</form>
 					<% } %>
-					
-					<div class="dashboard-gallery-each" data-type="videos" data-year="2020">
-						<span class="dashboard-gallery-each-status"></span>
-						<div class="dashboard-gallery-each-text">
-							<p>Title</p>
-							<p>Subtitle</p>
-						</div>
-						<img data-lazy="/images/image8.jpg">
-					</div>
-					<div class="dashboard-gallery-each" data-type="progress" data-year="2022">
-						<span class="dashboard-gallery-each-status"></span>
-						<div class="dashboard-gallery-each-text">
-							<p>Title</p>
-							<p>Subtitle</p>
-						</div>
-						<img data-lazy="/images/image8.jpg">
-					</div>
-					<div class="dashboard-gallery-each" data-type="photos" data-year="2015">
-						<span class="dashboard-gallery-each-status"></span>
-						<div class="dashboard-gallery-each-text">
-							<p>Title</p>
-							<p>Subtitle</p>
-						</div>
-						<img data-lazy="/images/image8.jpg">
-					</div>
-					<div class="dashboard-gallery-each" data-type="videos" data-year="2012">
-						<span class="dashboard-gallery-each-status"></span>
-						<div class="dashboard-gallery-each-text">
-							<p>Title</p>
-							<p>Subtitle</p>
-						</div>
-						<img data-lazy="/images/image8.jpg">
-					</div>
-					<div class="dashboard-gallery-each" data-type="progress" data-year="2019">
-						<span class="dashboard-gallery-each-status"></span>
-						<div class="dashboard-gallery-each-text">
-							<p>Title</p>
-							<p>Subtitle</p>
-						</div>
-						<img data-lazy="/images/image8.jpg">
-					</div>
-					<div class="dashboard-gallery-each" data-type="photos" data-year="2018">
-						<span class="dashboard-gallery-each-status"></span>
-						<div class="dashboard-gallery-each-text">
-							<p>Title</p>
-							<p>Subtitle</p>
-						</div>
-						<img data-lazy="/images/image8.jpg">
-					</div>
-					<div class="dashboard-gallery-each" data-type="videos" data-year="2010">
-						<span class="dashboard-gallery-each-status"></span>
-						<div class="dashboard-gallery-each-text">
-							<p>Title</p>
-							<p>Subtitle</p>
-						</div>
-						<img data-lazy="/images/image8.jpg">
-					</div>
-					<div class="dashboard-gallery-each" data-type="progress" data-year="2011">
-						<span class="dashboard-gallery-each-status"></span>
-						<div class="dashboard-gallery-each-text">
-							<p>Title</p>
-							<p>Subtitle</p>
-						</div>
-						<img data-lazy="/images/image8.jpg">
-					</div>
+
 				</div>
 			</div>
 		</div>

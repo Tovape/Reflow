@@ -50,29 +50,29 @@ function sortType(arg, sel, elem, order) {
 // Sort Year Buttons
 
 $(document).on('click', '.dashboard-sort-asc', function() {
-  sortYear('data-year', '.dashboard-gallery', '.dashboard-gallery-each', 'asc');
+  sortYear('data-year', '.dashboard-gallery', '.dashboard-form', 'asc');
 });
 
 $(document).on('click', '.dashboard-sort-desc', function() {
-  sortYear('data-year', '.dashboard-gallery', '.dashboard-gallery-each', 'desc');
+  sortYear('data-year', '.dashboard-gallery', '.dashboard-form', 'desc');
 });
 
 // Sort Type Buttons
 
 $(document).on('click', '.dashboard-filter-all', function() {
-  sortType('data-type', '.dashboard-gallery', '.dashboard-gallery-each', 'all');
+  sortType('data-type', '.dashboard-gallery', '.dashboard-form', 'all');
 });
 
 $(document).on('click', '.dashboard-filter-photos', function() {
-  sortType('data-type', '.dashboard-gallery', '.dashboard-gallery-each', 'photos');
+  sortType('data-type', '.dashboard-gallery', '.dashboard-form', 'photos');
 });
 
 $(document).on('click', '.dashboard-filter-videos', function() {
-  sortType('data-type', '.dashboard-gallery', '.dashboard-gallery-each', 'videos');
+  sortType('data-type', '.dashboard-gallery', '.dashboard-form', 'videos');
 });
 
 $(document).on('click', '.dashboard-filter-progress', function() {
-  sortType('data-type', '.dashboard-gallery', '.dashboard-gallery-each', 'progress');
+  sortType('data-type', '.dashboard-gallery', '.dashboard-form', 'progress');
 });
 
 // Set Filter Selection
@@ -94,4 +94,17 @@ document.addEventListener("DOMContentLoaded", function(event) {
 	document.getElementById("avatar").onchange = function() {
 		document.getElementById("saveavatar").submit();
 	};
+});
+
+
+// Auto Redirect Gallery
+document.addEventListener("DOMContentLoaded", function(event) { 
+	var request_id = document.getElementsByClassName("dashboard-form");
+
+	for (let i = 0; i < request_id.length; i++) {
+		request_id[i].addEventListener("click", function () {
+		  request_id[i].submit();
+		});
+	}
+
 });

@@ -67,10 +67,10 @@
 					<p key="contact">Contact</p>
 				</a>
 			</div>
-			<span class="menu-nav-google active">&nbsp;</span>
+			<span class="menu-nav-google">&nbsp;</span>
 		</div>
 		<div class="menu-nav">
-			<div class="menu-nav-button">
+			<div class="menu-nav-button active">
 				<a href="/booking">
 					<p key="booking">Reserva</p>
 				</a>
@@ -136,7 +136,7 @@
 					</div>
 				</div>
 				<div class="menu-dropmenu-each">
-					<span class="menu-dropmenu-google active">&nbsp;</span>
+					<span class="menu-dropmenu-google">&nbsp;</span>
 					<div class="menu-dropmenu-hover">
 						<a href="/contact">
 							<p key="contact">Contact</p>
@@ -144,7 +144,7 @@
 					</div>
 				</div>
 				<div class="menu-dropmenu-each">
-					<div class="menu-dropmenu-button">
+					<div class="menu-dropmenu-button active">
 						<a href="/booking">
 							<p key="booking">Reserva</p>
 						</a>
@@ -240,7 +240,7 @@
 			<p class="booking-title" key="booking-title">Booking</p>
 			<p class="booking-description" key="booking-subtitle">Ready to take action? Fill up the form with your information and we will get in contact with you asap</p>
 			<div class="booking">
-				<form action="booking-form.php" method="POST" enctype="multipart/form-data">
+				<form action="/bookingform" method="POST">
 					<div class="booking-flex">
 						<div class="booking-each">
 							<div class="booking-form">
@@ -249,7 +249,7 @@
 							<div class="booking-form">
 								<input type="input" class="booking-form-field" placeholder="Email" name="email" required />
 							</div>
-							<textarea name="comment" rows="6" cols="20" placeholder="Message" required></textarea>
+							<textarea rows="6" cols="20" placeholder="Message" name="message" required></textarea>
 						</div>
 						<div class="booking-each">
 							<div class="booking-form">
@@ -257,11 +257,27 @@
 							</div>
 							<p>Request Type:</p>
 							<div class="booking-radio">
-								<label>Flat
+								<label><p key="flat">Flat</p>
 									<input type="radio" checked="checked" value="flat" name="request_type">
 									<span class="checkmark"></span>
 								</label>
-								<label>House
+								<label><p key="house">House</p>
+									<input type="radio" checked="checked" value="house" name="request_type">
+									<span class="checkmark"></span>
+								</label>
+								<label><p key="establishment">Establishment</p>
+									<input type="radio" checked="checked" value="house" name="request_type">
+									<span class="checkmark"></span>
+								</label>
+								<label><p key="installations">Installations</p>
+									<input type="radio" checked="checked" value="house" name="request_type">
+									<span class="checkmark"></span>
+								</label>
+								<label><p key="warehouses">Warehouses</p>
+									<input type="radio" checked="checked" value="house" name="request_type">
+									<span class="checkmark"></span>
+								</label>
+								<label><p key="building">Building</p>
 									<input type="radio" checked="checked" value="house" name="request_type">
 									<span class="checkmark"></span>
 								</label>

@@ -6,8 +6,9 @@ var arrLang = {
 	'en': {
 	
 	// Contact
-	'contact-title': 'Contact with us',
-	'contact-subtitle': 'You can either send us a quick message using the following form or by using the following methods'
+	'booking-title': 'Booking',
+	'booking-subtitle': 'Ready to take action? Fill up the form with your information and we will get in contact with you in no time!',
+	'booking-request': 'Request Type'
 	
 	},
 
@@ -15,8 +16,9 @@ var arrLang = {
 	'es': {
 
 	// Contact
-	'contact-title': 'Contacta Con Nosotros',
-	'contact-subtitle': 'Nos puedes escribir un mensaje desde este formulario o utilizar las otras opciones disponibles'
+	'booking-title': 'Reserva',
+	'booking-subtitle': '¡Preparado para tomar acción? Rellena este formulario con tu información y nos pondremos en contacto con ustéd lo más antes possible!',
+	'booking-request': 'Tipo de Reserva'
 
 	},
 	
@@ -24,8 +26,9 @@ var arrLang = {
 	'ca': {
 
 	// Contact
-	'contact-title': 'Contacta Amb Nosaltres',
-	'contact-subtitle': 'Ens pots escriure un missatje desde aquest formulari o utilitzar les altres opcions disponibles'
+	'booking-title': 'Reserva',
+	'booking-subtitle': 'Preparat per a prendre acció? Emplena aquest formulari amb la teva informació i ens posarem en contacte amb vosté el més abans possible!',
+	'booking-request': 'Tipus de Reserva'
 
 	}
 };
@@ -37,9 +40,9 @@ $(function() {
 	}
 
 	var lang = localStorage.getItem("language");
-		$('p,a').each(function(index, element) {
-			$(this).html(arrLang[lang][$(this).attr('key')]);
-			$(this).html(arrGlobal[lang][$(this).attr('key')]);
+		$('p,a,label').each(function(index, element) {
+			$(this).text(arrLang[lang][$(this).attr('key')]);
+			$(this).text(arrGlobal[lang][$(this).attr('key')]);
 	});
 
 	$('.language').click(function() {
@@ -47,9 +50,9 @@ $(function() {
 		var lang = $(this).attr('id');
 		$(this).parent().addClass('language-active').siblings().removeClass('language-active');
 
-		$('p,a').each(function(index, element) {
-			$(this).html(arrLang[lang][$(this).attr('key')]);
-			$(this).html(arrGlobal[lang][$(this).attr('key')]);
+		$('p,a,label').each(function(index, element) {
+			$(this).text(arrLang[lang][$(this).attr('key')]);
+			$(this).text(arrGlobal[lang][$(this).attr('key')]);
 
 		});
 

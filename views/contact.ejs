@@ -241,7 +241,7 @@
 			<p class="contact-each-description" key="contact-subtitle">You can either send us a quick message using the following form or by using the following methods</p>
 			<div class="contact">
 				<div class="contact-each">
-					<form action="contact-form.php" method="POST" enctype="multipart/form-data">
+					<form action="/contactform" method="POST">
 						<div class="contact-form">
 							<input type="input" class="contact-form-field" placeholder="Name" name="name" required />
 						</div>
@@ -249,7 +249,7 @@
 							<input type="input" class="contact-form-field" placeholder="Email" name="email" required />
 						</div>
 
-						<textarea name="comment" rows="6" cols="20" placeholder="Message" required></textarea>
+						<textarea rows="6" cols="20" placeholder="Message" name="message" required></textarea>
 						<br>
 						<button class="contact-form-button" type="submit" name="submit" for="submit">Send</button>
 					</form>

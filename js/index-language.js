@@ -75,14 +75,7 @@ var arrLang = {
 		'price-row-4-title': 'Large Scale',
 		'price-row-4-description': 'Do you have a large-scale project? Contact us to organize',
 		
-		// Tags
-		'price-house': 'House',
-		'price-flat': 'Flat',
-		'price-building': 'Building',
-		'price-installations': 'Installations',
-		'price-establishment': 'Establishment',
-		'price-warehouses': 'Warehouses',
-		
+		// Tags		
 		'price-resolution-1': '1080p Resolution',
 		'price-resolution-2': '4K Resolution',
 		'price-360view': '360 Degree View',
@@ -190,13 +183,6 @@ var arrLang = {
 		'price-row-4-description': 'Tienes un proyecto a gran escala? Contáctanos para poder organizarnos',
 		
 		// Tags
-		'price-house': 'Casa',
-		'price-flat': 'Piso',
-		'price-building': 'Edificio',
-		'price-installations': 'Instalaciones',
-		'price-establishment': 'Establecimiento',
-		'price-warehouses': 'Almacenes',
-		
 		'price-resolution-1': 'Resolución 1080p',
 		'price-resolution-2': 'Resolutión 4K',
 		'price-360view': 'Vista 360 Grados',
@@ -303,14 +289,7 @@ var arrLang = {
 		'price-row-4-title': 'A Gran Escala',
 		'price-row-4-description': `Tens un projecte a gran escala? Contacta'ns per poder organitzar-nos`,
 		
-		// Tags
-		'price-house': 'Casa',
-		'price-flat': 'Pis',
-		'price-building': 'Edifici',
-		'price-installations': 'Instalacions',
-		'price-establishment': 'Establiment',
-		'price-warehouses': 'Magatzems',
-		
+		// Tags		
 		'price-resolution-1': 'Resolució 1080p',
 		'price-resolution-2': 'Resolutió 4K',
 		'price-360view': 'Vista 360 Graus',

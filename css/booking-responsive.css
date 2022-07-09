@@ -6,3 +6,21 @@
 }
 
 }
+
+@media only screen and (max-width: 620px) {
+	
+.booking-flex {
+    flex-direction: column;
+}
+
+.booking-each:first-child {
+    width: 100%;
+    padding-right: 0;
+}
+
+.booking-each:last-child {
+    width: 100%;
+    padding-left: 0;
+}
+	
+}

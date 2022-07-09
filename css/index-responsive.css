@@ -30,6 +30,12 @@
     width: calc(50% - 6px);
 }
 
+.partners img {
+	padding: 10px;
+	width: 100px;
+	height: 100px;
+}
+
 }
 
 @media only screen and (max-width: 570px) {

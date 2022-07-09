@@ -1,0 +1,95 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+	<link rel="icon" href="/logo/logo3.png" type="image/gif" sizes="16x16">
+	<link rel="stylesheet" type="text/css" href="global.css">
+	<link rel="stylesheet" type="text/css" href="global-responsive.css">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<head>
+	<title>Reflow</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta charset="UTF-8"/>
+	<script src="https://kit.fontawesome.com/6308dbf55d.js" crossorigin="anonymous"></script>
+	<script src="https://cdn.websitepolicies.io/lib/cookieconsent/1.0.3/cookieconsent.min.js" defer></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/quicklink/2.2.0/quicklink.umd.js"></script>
+	<script type="text/javascript" src="global-javascript.js"></script>
+	<script type="text/javascript" src="global-language.js"></script>
+	<script type="text/javascript" src="status-language.js"></script>
+	<!-- Fonts -->
+	<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Raleway&display=swap" rel="stylesheet">	
+</head>
+
+<body>
+
+<div class="status">
+	<img data-lazy="/logo/logo.png"><br>
+	<p key="status-success" class="bold">Todo correcto!<br>Hemos recibido tu mensaje y nos pondremos en contacto contigo lo más antes possible</p>
+	<p key="status-redirecting">Te rediccionamos a nuestra web en 5 segundos</p>
+</div>
+
+<div class="author">
+	<a href="https://tovape.github.io" key="website">Website developed by Toni Valverde</a>
+</div>
+
+<style>
+
+html,body {
+	height: 100% !important;
+	width: 100% !important;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	background: url("../icons/house.png") 200px 200px repeat;
+}
+
+.status {
+	max-width: 500px;
+	padding: 20px;
+	background-color: rgba(60,200,60,0.7);
+	border-radius: 4px;
+	border: 1px solid var(--black);
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+}
+
+.status img {
+	width: 200px;
+	height: auto;
+}
+
+.status p {
+	text-align: center;
+}
+
+.bold {
+	font-weight: bold;
+	font-size: var(--medfont);
+	padding-bottom: 20px;
+}
+
+.author {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+}
+
+</style>
+
+<script>
+
+setTimeout(() => {  
+	window.location.replace("http://localhost:5000");
+}, 5000);
+
+</script>
+
+</body>
+
+</html>
+

@@ -35,15 +35,13 @@
 	flex-direction: row;
 }
 
-.booking-flex div {
-	width: calc(50% - 20px);
-}
-
 .booking-each:first-child {
+	width: calc(50% - 20px);
 	padding-right: 20px;
 }
 
 .booking-each:last-child {
+	width: calc(50% - 20px);
 	padding-left: 20px;
 }
 
@@ -132,8 +130,21 @@
 	transition: all 0.2s ease-in-out;
 }
 
+.booking-radio {
+	margin-top: 20px;
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(240px, 2fr));
+	gap:10px;
+}
+
 .booking-radio label {
-	display: block;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: flex-start;
+	height: 25px;
+	font-size: var(--smafont) !important;
+	font-family: var(--raleway);
 	position: relative;
 	padding-left: 35px;
 	margin-bottom: 12px;
@@ -145,52 +156,54 @@
 	user-select: none;
 }
 
-/* Hide the browser's default radio button */
+
+.booking-radio label p {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: center;
+	height: 25px;
+}
+
 .booking-radio label input {
-  position: absolute;
-  opacity: 0;
-  cursor: pointer;
+	position: absolute;
+	opacity: 0;
+	cursor: pointer;
 }
 
-/* Create a custom radio button */
 .booking-radio label span {
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 25px;
-  width: 25px;
-  background-color: #eee;
-  border-radius: 50%;
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 25px;
+	width: 25px;
+	background-color: var(--white);
+	border-radius: 50%;
 }
 
-/* On mouse-over, add a grey background color */
 .booking-radio label:hover input ~ .checkmark {
-  background-color: #ccc;
+	background-color: var(--white);
 }
 
-/* When the radio button is checked, add a blue background */
 .booking-radio label input:checked ~ .checkmark {
-  background-color: #2196F3;
+	background-color: var(--fourth);
 }
 
-/* Create the indicator (the dot/circle - hidden when not checked) */
 .checkmark:after {
-  content: "";
-  position: absolute;
-  display: none;
+	content: "";
+	position: absolute;
+	display: none;
 }
 
-/* Show the indicator (dot/circle) when checked */
 .booking-radio label input:checked ~ .checkmark:after {
-  display: block;
+	display: block;
 }
 
-/* Style the indicator (dot/circle) */
 .booking-radio label .checkmark:after {
- 	top: 9px;
+	top: 9px;
 	left: 9px;
 	width: 8px;
 	height: 8px;
 	border-radius: 50%;
-	background: white;
+	background: var(--white);
 }

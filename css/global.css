@@ -275,6 +275,12 @@ Menu Configuration
 	-webkit-transition: all 0.1s ease-in-out;
 }
 
+.menu-nav-button.active {
+	background-color: var(--fifth);
+	transition: all 0.1s ease-in-out;
+	-webkit-transition: all 0.1s ease-in-out;
+}
+
 .menu-nav-button:active {
 	background-color: var(--sixth);
 	transition: all 0.1s ease-in-out;
@@ -443,6 +449,18 @@ Menu Configuration
 
 .menu-dropmenu-button:hover {
 	background-color: var(--fifth);
+	transition: all 0.1s ease-in-out;
+	-webkit-transition: all 0.1s ease-in-out;
+}
+
+.menu-dropmenu-button.active{
+	background-color: var(--fifth);
+	transition: all 0.1s ease-in-out;
+	-webkit-transition: all 0.1s ease-in-out;	
+}
+
+.menu-dropmenu-button:active {
+	background-color: var(--sixth);
 	transition: all 0.1s ease-in-out;
 	-webkit-transition: all 0.1s ease-in-out;
 }

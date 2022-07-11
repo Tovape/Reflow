@@ -260,14 +260,14 @@
 .dashboard-gallery{
 	margin-top: 20px;
 	display: grid;
-	grid-template-columns: repeat(auto-fit, minmax(240px, 2fr));
+	grid-template-columns: repeat(auto-fit, minmax(340px, 0fr));
 	gap:10px;
 }
 
 .dashboard-gallery form {
 	cursor: pointer;
 	display: block;	
-	max-width: 420px;
+	width: 340px;
 	height: 180px;
 }
 

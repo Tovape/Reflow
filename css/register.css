@@ -111,6 +111,11 @@ html,body {
 	align-items: center;
 }
 
+.register-each-content form a {
+	padding-top: 20px;
+	color: var(--black);
+}
+
 .register-each-content form div {
 	width: 100%;
 	display: flex;

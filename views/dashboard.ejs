@@ -58,6 +58,11 @@
 						<div class="dashboard-profile-options-each">
 							<a href="/editor">Editor</a>
 						</div>
+						<% if(data[Object.keys(data)[8]] == 1) { %>
+						<div class="dashboard-profile-options-each dashboard-admin">
+							<a href="/admin">Administrator Panel</a>
+						</div>
+						<% } %>
 					</div>
 					<div class="dashboard-profile-stats">
 						<div>

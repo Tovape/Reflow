@@ -98,6 +98,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
 
 // Auto Redirect Gallery
+
 document.addEventListener("DOMContentLoaded", function(event) { 
 	var request_id = document.getElementsByClassName("dashboard-form");
 

@@ -175,14 +175,14 @@ app.get('/dashboard', checkAuthenticated, async (req, res) => {
 	let requests = await getRequests(user_id);
 
 	console.log("\nLogged as Username: " + req.user[Object.keys(req.user)[1]] + " | Email: " + req.user[Object.keys(req.user)[2]] + " | Id: " + req.user[Object.keys(req.user)[0]]);
-	res.render('dashboard.ejs', { data: req.user, requests: requests }),
+	res.render('dashboard.ejs', { user_data: req.user, requests: requests }),
 	app.use(express.static(__dirname + '/css')),
 	app.use(express.static(__dirname + '/files')),
 	app.use(express.static(__dirname + '/js'))
 })
 
 app.get('/editor', checkAuthenticated, (req, res) => {
-	res.render('editor.ejs'),
+	res.render('editor.ejs', { user_data: req.user }),
 	app.use(express.static(__dirname + '/css')),
 	app.use(express.static(__dirname + '/files')),
 	app.use(express.static(__dirname + '/js'))
@@ -254,8 +254,8 @@ app.post('/register', checkNotAuthenticated, async (req, res) => {
 
 app.post('/editor', checkAuthenticated, (req, res) => {
 	let user_id = req.user[Object.keys(req.user)[0]];
-	console.log("Redirecting to editor ejs with request " + req.body.request_id + " from " + user_id)
-	res.render('editor.ejs', { data: user_id, request: req.body.request_id }),
+	console.log("Redirecting to editor ejs with request " + req.body.request_id + " from " + user_id + " of class " + req.body.request_class)
+	res.render('editor.ejs', { user_data: req.user, request_id: req.body.request_id, request_class: req.body.request_class }),
 	app.use(express.static(__dirname + '/css')),
 	app.use(express.static(__dirname + '/files')),
 	app.use(express.static(__dirname + '/js'))

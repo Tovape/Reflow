@@ -1,0 +1,88 @@
+/* Editor */
+
+html,body {
+	height: 100% !important;
+	width: 100% !important;
+}
+
+.editor-aligner {
+	display: flex;
+	flex-direction: row;
+	height: 100%;
+}
+
+.editor-menu {
+	width: 300px;
+	background-color: var(--secundary);
+}
+
+.editor-menu-user {
+	width: calc(100% - 20px);
+	padding: 10px;
+}
+
+.editor-menu-logo {
+	width: calc(100% - 40px);
+	height: 60px;
+	padding: 10px 20px;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: space-between;
+	background-color: var(--black);
+}
+
+.editor-menu-logo img {
+	width: 100%;
+	height: 40px;
+}
+
+.editor-menu-logo svg {
+    height: 100%;
+    width: 50px;
+    fill: var(--white);
+}
+
+.editor-menu-user {
+	width: calc(100% - 40px);
+	padding: 20px;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: flex-start;
+}
+
+.editor-menu-user p {
+	color: var(--white);
+}
+
+.editor-profile-avatar {
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	border-radius: 50%;
+	width: 48px;
+	height: 48px;
+	margin-right: 20px;
+	border: 1px solid transparent;
+}
+
+.editor-profile-avatar div {
+	display: flex;
+	flex-direction: column;
+}
+
+.editor-menu-each {
+	width: calc(100% - 40px);
+	padding: 20px;
+}
+
+.editor-menu-each a {
+	color: var(--white);
+}
+
+.editor-canvas {
+	width: calc(100% - 320px);
+	padding: 10px;
+}
+

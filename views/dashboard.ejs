@@ -44,38 +44,38 @@
 							</form>
 						</div>
 						<div>
-							<p><%= data[Object.keys(data)[1]] %></p>
-							<p><%= data[Object.keys(data)[2]] %></p>
-							<p id="dashboard-profile-timestamp"></p>
+							<p><%= user_data[Object.keys(user_data)[1]] %></p>
+							<p><%= user_data[Object.keys(user_data)[2]] %></p>
+							<p key="" id="dashboard-profile-timestamp"></p>
 						</div>
 					</div>
 					<div class="dashboard-profile-options">
 						<div class="dashboard-profile-options-each">
 							<form action="/logout?_method=DELETE" method="POST">
-								<button type="submit">Log Out</button>
+								<button key="dashboard-logout" type="submit">Log Out</button>
 							</form>
 						</div>
 						<div class="dashboard-profile-options-each">
 							<a href="/editor">Editor</a>
 						</div>
-						<% if(data[Object.keys(data)[8]] == 1) { %>
+						<% if(user_data[Object.keys(user_data)[8]] == 1) { %>
 						<div class="dashboard-profile-options-each dashboard-admin">
-							<a href="/admin">Administrator Panel</a>
+							<a key="dashboard-admin" href="/admin">Administrator Panel</a>
 						</div>
 						<% } %>
 					</div>
 					<div class="dashboard-profile-stats">
 						<div>
-							<p><%= data[Object.keys(data)[6]] %></p>
-							<p>Requests</p>
+							<p><%= user_data[Object.keys(user_data)[6]] %></p>
+							<p key="dashboard-requests">Requests</p>
 						</div>
 						<div>
-							<p><%= data[Object.keys(data)[7]] %></p>
-							<p>In Progress</p>
+							<p><%= user_data[Object.keys(user_data)[7]] %></p>
+							<p key="dashboard-progress">In Progress</p>
 						</div>
 						<div>
-							<p><%= data[Object.keys(data)[5]] %></p>
-							<p>Points</p>
+							<p><%= user_data[Object.keys(user_data)[5]] %></p>
+							<p key="dashboard-points">Points</p>
 						</div>
 					</div>
 				</div>
@@ -86,10 +86,10 @@
 					<a href="#" key="oldest" class="dashboard-sort-each dashboard-sort-asc">Oldest <i class="fa fa-arrow-down"></i></a>
 				</div>
 				<div class="dashboard-filter">
-					<a class="dashboard-filter-each dashboard-filter-all dashboard-filter-active" href="#">All</a>
-					<a class="dashboard-filter-each dashboard-filter-photos" href="#">Photos</a>
-					<a class="dashboard-filter-each dashboard-filter-videos" href="#">Videos</a>
-					<a class="dashboard-filter-each dashboard-filter-progress" href="#">In Progress</a>
+					<a key="dashboard-all" class="dashboard-filter-each dashboard-filter-all dashboard-filter-active" href="#">All</a>
+					<a key="dashboard-photos" class="dashboard-filter-each dashboard-filter-photos" href="#">Photos</a>
+					<a key="dashboard-videos" class="dashboard-filter-each dashboard-filter-videos" href="#">Videos</a>
+					<a key="dashboard-progress" class="dashboard-filter-each dashboard-filter-progress" href="#">In Progress</a>
 				</div>
 				<div class="dashboard-gallery">
 				
@@ -114,9 +114,9 @@
 								<img data-lazy="/images/image8.jpg">
 							</div>
 							<input type="number" id="request_id" name="request_id" value="<%= requests[i].id_request %>" required>
+							<input type="number" id="request_class" name="request_class" value="<%= requests[i].class %>" required>
 						</form>
 					<% } %>
-
 				</div>
 			</div>
 		</div>
@@ -124,14 +124,24 @@
 </div>
 
 <script>
+
 // Get Joined Timestamp
-let timestamp = Number(<%= data[Object.keys(data)[4]] %>)
+let timestamp = Number(<%= user_data[Object.keys(user_data)[4]] %>)
 var date = new Date(Math.round(Number(timestamp)));
 let formattedDate = date.getUTCDate() + '/' + (date.getUTCMonth() + 1)+ '/' + date.getUTCFullYear()
-document.getElementById("dashboard-profile-timestamp").innerHTML = "Joined on " + formattedDate;
+
+var language = localStorage.getItem("language");
+		
+if (language == 'es') {
+	document.getElementById("dashboard-profile-timestamp").innerHTML = "Unido el " + formattedDate;
+} else if (language == 'ca') {
+	document.getElementById("dashboard-profile-timestamp").innerHTML = "Unit el " + formattedDate;
+} else {
+	document.getElementById("dashboard-profile-timestamp").innerHTML = "Joined on " + formattedDate;
+}
 
 // Set Avatar
-let id_users = <%= data[Object.keys(data)[0]] %>
+let id_users = <%= user_data[Object.keys(user_data)[0]] %>
 document.getElementById("dashboard-profile-avatar").style.backgroundImage = "url('/user/" + id_users + ".jpg')";
 
 // Set Banner

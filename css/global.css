@@ -615,6 +615,7 @@ Menu Configuration
 	display: flex;
 	justify-content:center;
 	background-color: var(--primary);
+	margin-top: 40px;
 }
 
 .footer-aligner {

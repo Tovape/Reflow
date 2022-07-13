@@ -31,9 +31,6 @@
 <div class="editor-aligner">
 	<div class="editor-menu">
 		<div class="editor-menu-logo">
-			<a href="javascript:void(0);" onclick="menudropper()"/>
-				<svg version="1.1" version="1.1" viewBox="0 0 512 512" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><g data-name="1" id="_1"><path d="M441.13,166.52h-372a15,15,0,1,1,0-30h372a15,15,0,0,1,0,30Z"/><path d="M441.13,279.72h-372a15,15,0,1,1,0-30h372a15,15,0,0,1,0,30Z"/><path d="M441.13,392.92h-372a15,15,0,1,1,0-30h372a15,15,0,0,1,0,30Z"/></g></svg>
-			</a>
 			<a href="/">
 				<img data-lazy="/logo/logo.png" id="my-image">
 			</a>
@@ -45,21 +42,118 @@
 				<p><%= user_data[Object.keys(user_data)[2]] %></p>
 			</div>
 		</div>
-		<div class="editor-menu-each">
-			<a href="/">Option 1</a>
+		<div class="editor-menu-section">
+			<p>House</p>
 		</div>
 		<div class="editor-menu-each">
-			<a href="/">Option 2</a>
+			<div class="editor-menu-each-button">
+				<p>Floor</p>
+				<i class="fa-solid fa-angle-up"></i>
+			</div>
+			<div class="editor-menu-each-content">
+				<div>
+					<div class="editor-menu-each-button">
+						<p>Floor 1</p>
+						<i class="fa-solid fa-angle-up"></i>
+					</div>
+					<div class="editor-menu-each-content editor-menu-each-rooms">
+						<p value="bathroom-1">Bathroom 1</p>
+						<p value="livingroom-1">Livingroom</p>
+					</div>
+				</div>
+				<div>
+					<div class="editor-menu-each-button">
+						<p>Floor 2</p>
+						<i class="fa-solid fa-angle-up"></i>
+					</div>
+					<div class="editor-menu-each-content editor-menu-each-rooms">
+						<p value="bathroom-2">Bathroom 1</p>
+						<p value="livingroom-2">Livingroom</p>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="editor-menu-section">
+			<p>Additions</p>
 		</div>
 		<div class="editor-menu-each">
-			<a href="/">Option 3</a>
+			<div class="editor-menu-each-button">
+				<p>Furniture</p>
+				<i class="fa-solid fa-angle-up"></i>
+			</div>
+			<div class="editor-menu-each-content">
+				<div>
+					<div class="editor-menu-each-button">
+						<p>Ikea</p>
+						<i class="fa-solid fa-angle-up"></i>
+					</div>
+					<div class="editor-menu-each-content">
+						<div class="editor-menu-each-value" height="35" width="35" depth="35" name="eket">
+							<div>
+								<p class="editor-content-each-name">Ikea - <span>Eket</span></p>
+								<table>
+									<tr>
+										<td>Height</td>
+										<td>Width</td>
+										<td>Depth</td>
+									</tr>
+									<tr>
+										<td>35</td>
+										<td>35</td>
+										<td>35</td>
+									</tr>
+								</table>
+							</div>
+							<img data-lazy="/editor/ikea/eket.jpg">
+						</div>
+					</div>
+				</div>
+				<div>
+					<div class="editor-menu-each-button">
+						<p>Other</p>
+						<i class="fa-solid fa-angle-up"></i>
+					</div>
+					<div class="editor-menu-each-content editor-menu-each-rooms">
+						
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="editor-menu-section">
+			<p>Settings</p>
 		</div>
 		<div class="editor-menu-each">
-			<a href="/">Option 4</a>
+			<div class="editor-menu-each-setting">
+				<p>Dark Mode</p>
+								<div class="setting-each">
+								<h2>Dark Mode</h2>
+								<form action="./setting/theme.php" method="post" class="setting-form">
+									<label class="pure-material-switch">
+										<input type="checkbox" name="themeoption" >
+										<span></span>
+									</label>
+									<label class="pure-material-apply">
+										<input type="submit">
+										<span>Apply</span>
+									</label>
+								</form>
+							</div>
+			</div>
 		</div>
 	</div>
-	<div class="editor-canvas">
-		<canvas id="canvas" width="400" height="300"></canvas>
+	<div class="editor-canvas" id="editor-canvas">
+		<canvas id="canvas" width="100" height="100"></canvas>
+	</div>
+	<div class="editor-options">
+		<div id="zoomin">
+			<i class="fa-solid fa-plus"></i>
+		</div>
+		<div id="zoomdef">
+			<i class="fa-solid fa-magnifying-glass"></i>
+		</div>
+		<div id="zoomout">
+			<i class="fa-solid fa-minus"></i>
+		</div>
 	</div>
 </div>
 

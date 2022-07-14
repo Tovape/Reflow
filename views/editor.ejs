@@ -38,6 +38,7 @@
 		<div class="editor-menu-user">
 			<div class="editor-profile-avatar" id="editor-profile-avatar"></div>
 			<div>
+				<p id="user" style="display: none"><%= user_data[Object.keys(user_data)[0]] %></p>
 				<p><%= user_data[Object.keys(user_data)[1]] %></p>
 				<p><%= user_data[Object.keys(user_data)[2]] %></p>
 			</div>
@@ -51,25 +52,10 @@
 				<i class="fa-solid fa-angle-up"></i>
 			</div>
 			<div class="editor-menu-each-content">
-				<div>
-					<div class="editor-menu-each-button">
-						<p>Floor 1</p>
-						<i class="fa-solid fa-angle-up"></i>
-					</div>
-					<div class="editor-menu-each-content editor-menu-each-rooms">
-						<p value="bathroom-1">Bathroom 1</p>
-						<p value="livingroom-1">Livingroom</p>
-					</div>
-				</div>
-				<div>
-					<div class="editor-menu-each-button">
-						<p>Floor 2</p>
-						<i class="fa-solid fa-angle-up"></i>
-					</div>
-					<div class="editor-menu-each-content editor-menu-each-rooms">
-						<p value="bathroom-2">Bathroom 1</p>
-						<p value="livingroom-2">Livingroom</p>
-					</div>
+				<div class="editor-menu-each-rooms">
+					<p class="editor-menu-each-floor" value="1">Floor 1</p>
+					<p class="editor-menu-each-floor" value="2">Floor 2</p>
+					<p class="editor-menu-each-floor" value="3">Floor 3</p>
 				</div>
 			</div>
 		</div>
@@ -124,20 +110,18 @@
 		</div>
 		<div class="editor-menu-each">
 			<div class="editor-menu-each-setting">
-				<p>Dark Mode</p>
-								<div class="setting-each">
-								<h2>Dark Mode</h2>
-								<form action="./setting/theme.php" method="post" class="setting-form">
-									<label class="pure-material-switch">
-										<input type="checkbox" name="themeoption" >
-										<span></span>
-									</label>
-									<label class="pure-material-apply">
-										<input type="submit">
-										<span>Apply</span>
-									</label>
-								</form>
-							</div>
+				<label class="pure-material-switch">
+					<input type="checkbox">
+					<span>Dark Mode</span>
+				</label>
+				<label class="pure-material-switch">
+					<input type="checkbox">
+					<span>Other</span>
+				</label>
+				<label class="pure-material-switch">
+					<input type="checkbox">
+					<span>Other 2</span>
+				</label>
 			</div>
 		</div>
 	</div>
@@ -145,6 +129,14 @@
 		<canvas id="canvas" width="100" height="100"></canvas>
 	</div>
 	<div class="editor-options">
+		<!--
+		<div id="save">
+			<i class="fa-solid fa-floppy-disk"></i>
+		</div>
+		<div id="load">
+			<i class="fa-solid fa-upload"></i>
+		</div>
+		-->
 		<div id="zoomin">
 			<i class="fa-solid fa-plus"></i>
 		</div>

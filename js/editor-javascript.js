@@ -1,12 +1,13 @@
 document.addEventListener("DOMContentLoaded", function(event) { 
 
 	// Get Windows Size
-	
 	var windowWidth = window.innerWidth;
 	var windowHeight = window.innerHeight;
 
+	// Get User
+	var username = document.getElementById("user").textContent;
+
 	// Create Grid
-	
 	var canvas = new fabric.Canvas('canvas', { 
 		selection: false,
 		controlsAboveOverlay: true,
@@ -18,76 +19,148 @@ document.addEventListener("DOMContentLoaded", function(event) {
 	var grid = 50;
 	var inset = 20;
 
-	for (var i = 0; i < (2000 / grid); i++) {
-		canvas.add(new fabric.Line([
-			inset + i * grid, inset, inset + i * grid, 2000], { stroke: '#ccc', selectable: false 
-		}));
+	// Save Canvas
+	var flatselected = 1;
+	var json = [null, null, null]
 
-		canvas.add(new fabric.Line([ 
-			inset, inset + i * grid, 2000,inset + i * grid], { stroke: '#ccc', selectable: false 
-		}))
+	function saveCanvas() {
+		console.log("Saving Canvas in flat " + flatselected)
+		json[flatselected] = JSON.stringify(canvas.toJSON());
 	}
 
-	for (var i = 0; i < (2000 / grid); i++) {
-
-		canvas.add(new fabric.Text(String(i * 5), {
-			left: inset + i * grid, top: 0, 
-			fontSize: 14,
-			fontFamily: 'Verdana',
-			selectable: false
-		}));
-
-		canvas.add(new fabric.Text(String(i * 5), {
-			left:0, top: inset + i * grid, 
-			fontSize: 14,
-			fontFamily: 'Verdana',
-			textAlign: 'Center',
-			selectable: false
-		}));
+	// Load Canvas
+	function loadCanvas(selection, user) {
+		console.log("Loading Canvas in flat " + flatselected);
+		canvasRedraw()
+		canvas.loadFromJSON(
+			JSON.parse(json[flatselected]),
+			canvas.renderAll.bind(canvas)
+		);
+	
+		fabric.Image.fromURL('../files/blueprint/' + user + '/floor-' + selection + '.png', function(oImg) {
+			oImg.set({
+				left: 0,
+				top: 0,
+				originX: 'left',
+				originY: 'top',
+				selectable: false,
+				lockMovementX: true,
+				lockMovementY: true,
+				transparentCorners: false,
+				excludeFromExport: true
+			});
+			oImg.hoverCursor = 'default';
+			oImg.scaleToWidth(windowWidth - 300);
+			oImg.scaleToHeight(windowHeight);
+			canvas.setActiveObject(oImg);
+			canvas.sendToBack(oImg);
+			icon = canvas.getActiveObject();
+			icon.hasBorders = false;
+			icon.hasControls = false;	
+			//canvas.add(oImg);
+		});
+		
+		flatselected = selection;
+		setTimeout(function(){
+			blueprint = icon;
+		}, 500);	
+	
 	}
 
-	canvas.renderAll();
+	// Redraw Canvas
+	function canvasRedraw() {
+		canvas.clear();
+		for (var i = 0; i < (2000 / grid); i++) {
+			canvas.add(new fabric.Line([
+				inset + i * grid, inset, inset + i * grid, 2000], { stroke: '#ccc', selectable: false 
+			}));
+
+			canvas.add(new fabric.Line([ 
+				inset, inset + i * grid, 2000,inset + i * grid], { stroke: '#ccc', selectable: false 
+			}))
+		}
+
+		for (var i = 0; i < (2000 / grid); i++) {
+
+			canvas.add(new fabric.Text(String(i * 5), {
+				left: inset + i * grid, top: 0, 
+				fontSize: 14,
+				fontFamily: 'Verdana',
+				selectable: false
+			}));
+
+			canvas.add(new fabric.Text(String(i * 5), {
+				left:0, top: inset + i * grid, 
+				fontSize: 14,
+				fontFamily: 'Verdana',
+				textAlign: 'Center',
+				selectable: false
+			}));
+		}
+
+		canvas.renderAll();
+	}
 	
 	// Lock Rotation
-	
 	canvas.on('object:rotating', function(options) {
 		var step = 90;
 		options.target.angle = Math.round(options.target.angle / step) * step;
 	});
 	
-	// Add Blueprint - TODO MAKE IMPOSSIBLE TO SELECT
-	
-	fabric.Image.fromURL('../files/blueprint/test.png', function(oImg) {
-		oImg.set({
-			left: 0,
-			top: 0,
-			originX: 'left',
-			originY: 'top',
-			selectable: false,
-			lockMovementX: true,
-			lockMovementY: true,
-			transparentCorners: false
-		});
-		oImg.hoverCursor = 'default';
-		oImg.scaleToWidth(windowWidth - 300);
-		oImg.scaleToHeight(windowHeight);
-		canvas.setActiveObject(oImg);
-		icon = canvas.getActiveObject();
-		icon.hasBorders = false;
-		icon.hasControls = false;	
-		canvas.add(oImg);
+	// Save while moving
+	canvas.on('object:moving', function(options) {
+		saveCanvas();
 	});
+	
+	// Add Blueprint
+	var blueprint = null;
+	
+	addBlueprint(1, username);
+	
+	function addBlueprint(selection, user) {
+		canvasRedraw();
+		fabric.Image.fromURL('../files/blueprint/' + user + '/floor-' + selection + '.png', function(oImg) {
+			oImg.set({
+				left: 0,
+				top: 0,
+				originX: 'left',
+				originY: 'top',
+				selectable: false,
+				lockMovementX: true,
+				lockMovementY: true,
+				transparentCorners: false,
+				excludeFromExport: true
+			});
+			oImg.hoverCursor = 'default';
+			oImg.scaleToWidth(windowWidth - 300);
+			oImg.scaleToHeight(windowHeight);
+			canvas.setActiveObject(oImg);
+			canvas.sendToBack(oImg);
+			icon = canvas.getActiveObject();
+			icon.hasBorders = false;
+			icon.hasControls = false;	
+		});
+		flatselected = selection;
+		setTimeout(function(){
+			blueprint = icon;
+			if(json[flatselected] != null) {
+				loadCanvas(selection, user);
+				console.log(json)
+			}
+		}, 500);
+	}
 
 	// Delete Active Objects
-
+	
 	document.addEventListener("keydown", (e) => {      
 		if (e.key === "Delete" || e.key === 'Backspace') {
-			canvas.remove(canvas.getActiveObject());
+			if(canvas.getActiveObject() != blueprint) {
+				canvas.remove(canvas.getActiveObject());
+			}
 		}
 	});
 
 	// Zoom Function
-
 	/*
 	canvas.on('mouse:wheel', function(opt) {
 		var delta = opt.e.deltaY;
@@ -102,7 +175,6 @@ document.addEventListener("DOMContentLoaded", function(event) {
 	*/
 	
 	// Snap to Grid
-
 	/*
 	canvas.on('object:moving', function(options) { 
 	  options.target.set({
@@ -113,7 +185,6 @@ document.addEventListener("DOMContentLoaded", function(event) {
 	*/
 	
 	// Rezise
-	
 	window.addEventListener('resize', resizeCanvas, false);
 
 	function resizeCanvas() {
@@ -125,7 +196,6 @@ document.addEventListener("DOMContentLoaded", function(event) {
 	resizeCanvas();
 		
 	// Zoom Functions
-	
 	var curZoom = 1;
 	var minZoom = 0.6;
 	var maxZoom = 3;
@@ -134,24 +204,43 @@ document.addEventListener("DOMContentLoaded", function(event) {
 		if(curZoom < maxZoom) {
 			curZoom += 0.2;
 			canvas.setZoom(curZoom);
-			console.log("IN" + curZoom)
+			console.log("IN " + curZoom)
 		}
 	});
 	document.getElementById("zoomdef").addEventListener("click", function() {
 		canvas.setZoom(1);
 		curZoom = 1;
-		console.log("DEF")
+		console.log("DEF " + curZoom)
 	});
 	document.getElementById("zoomout").addEventListener("click", function() {
 		if(curZoom > minZoom) {
 			curZoom -= 0.2;
 			canvas.setZoom(curZoom);
-			console.log("OUT" + curZoom)
+			console.log("OUT " + curZoom)
 		}
 	});
 	
-	// Get Objects
+	// Save Load
+	/*
+	document.getElementById("save").addEventListener("click", function() {
+		saveCanvas();
+	});
+	document.getElementById("load").addEventListener("click", function() {
+		loadCanvas();
+	});
+	*/
 	
+	// Get Floors
+	var floors = document.getElementsByClassName("editor-menu-each-floor");
+
+	for (let i = 0; i < floors.length; i++) {
+		floors[i].addEventListener("click", function() {
+			var value = floors[i].getAttribute("value");
+			addBlueprint(value, username);
+		});
+	}
+	
+	// Get Objects
 	var furniture = document.getElementsByClassName("editor-menu-each-value");
 
 	for (let i = 0; i < furniture.length; i++) {
@@ -182,13 +271,12 @@ document.addEventListener("DOMContentLoaded", function(event) {
 			
 			group.setControlsVisibility({mt: false, mb: false,  ml: false, mr: false, bl: false,br: false, tl: false, tr: false,mtr: false, });
 			canvas.add(group);
+			saveCanvas();
 		});
 	}
-
 });
 
 // Menu Options
-
 $(document).ready(function() {
   $('.editor-menu-each-button').click(function(){
     $(this).toggleClass('editor-menu-each-active');

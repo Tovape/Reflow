@@ -149,11 +149,21 @@
 	</div>
 </div>
 
+<input style="display: none" type="number" id="request_id" name="request_id" value="">
+<input style="display: none" type="number" id="flat_id" name="flat_id" value="">
+<input style="display: none" type="text" id="jsonsave" name="jsonsave" value="">
+
 <script>
 
 // Set Avatar
 let id_users = <%= user_data[Object.keys(user_data)[0]] %>
 document.getElementById("editor-profile-avatar").style.backgroundImage = "url('/user/" + id_users + ".jpg')";
+
+let request_id = document.getElementById("request_id");
+request_id.setAttribute("value", <%= request_id %>);
+
+let jsonsave = document.getElementById("jsonsave");
+jsonsave.setAttribute("value", <%= jsonsave %>);
 
 </script>
 

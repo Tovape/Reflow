@@ -96,7 +96,6 @@ document.addEventListener("DOMContentLoaded", function(event) {
 	};
 });
 
-
 // Auto Redirect Gallery
 
 document.addEventListener("DOMContentLoaded", function(event) { 

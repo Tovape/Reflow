@@ -1,8 +1,10 @@
 require('dotenv').config()
 const mysql = require("mysql")
 const express = require('express')
+const router = express.Router();
 const path = require('path')
 const app = express()
+const bodyParser = require('body-parser');
 const nodemailer = require('nodemailer');
 const bcrypt = require('bcrypt')
 const CryptoJS = require("crypto-js");
@@ -22,6 +24,13 @@ initializePassport(
   id_user => users.find(user => user.id_user === id_user)
 )
 
+// USE
+
+app.use(express.json({limit: '10mb'}));
+app.use(express.urlencoded({limit: '10mb', extended: true}));
+app.use(bodyParser.urlencoded());
+app.use(bodyParser.json({limit: '10mb'}));
+app.use(bodyParser.urlencoded({limit: '10mb', extended: true}));
 app.set('view-engine', 'ejs')
 app.use(busboy());
 app.use(express.static(path.join(__dirname)));
@@ -252,14 +261,47 @@ app.post('/register', checkNotAuthenticated, async (req, res) => {
 	}
 })
 
-app.post('/editor', checkAuthenticated, (req, res) => {
+app.post('/editor', checkAuthenticated, (req, res) => { // TODO, this outputs a json of the 3 results, fix it
 	let user_id = req.user[Object.keys(req.user)[0]];
 	console.log("Redirecting to editor ejs with request " + req.body.request_id + " from " + user_id + " of class " + req.body.request_class)
-	res.render('editor.ejs', { user_data: req.user, request_id: req.body.request_id, request_class: req.body.request_class }),
-	app.use(express.static(__dirname + '/css')),
-	app.use(express.static(__dirname + '/files')),
-	app.use(express.static(__dirname + '/js'))
+	
+	let query = "SELECT json FROM flats WHERE request_id = " + req.body.request_id;
+	let jsonsave = null;
+	db.query(query, function (err, result, fields) {
+		if (err)  {
+			throw err;
+		} else {
+			jsonsave = result;
+			console.log("Got JSON")
+		}
+	});
+	
+	setTimeout(function () {
+		res.render('editor.ejs', { user_data: req.user, request_id: req.body.request_id, request_class: req.body.request_class, jsonsave: jsonsave }),
+		app.use(express.static(__dirname + '/css')),
+		app.use(express.static(__dirname + '/files')),
+		app.use(express.static(__dirname + '/js'))
+		
+	}, 1000);
 })
+
+app.post('/savecanvas', (req, res) => {
+	console.log("\nSaving Server-Side")
+	//JSON.stringify(req.body)
+	console.log("\nRequest " + req.body[Object.keys(req.body)[1]]);
+	console.log("Flat " + req.body[Object.keys(req.body)[2]]);
+	if (req.body[Object.keys(req.body)[0]] != null || req.body[Object.keys(req.body)[0]] != 'undefined' || req.body[Object.keys(req.body)[0]] != '') {
+		let query = "UPDATE flats SET json = '" + req.body[Object.keys(req.body)[0]] + "' WHERE flat_id = " + req.body[Object.keys(req.body)[2]] + " AND request_id = " + req.body[Object.keys(req.body)[1]];
+
+		db.query(query, function (err, result, fields) {
+			if (err)  {
+				throw err;
+			} else {
+				console.log("Canvas Updated Correctly")
+			}
+		});
+	}
+});
 
 // DELETE
 
@@ -269,7 +311,6 @@ app.delete('/logout', (req, res) => {
 		res.redirect("/login");
 	});
 });
-
 
 // ROUTE
 

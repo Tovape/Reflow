@@ -21,11 +21,17 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
 	// Save Canvas
 	var flatselected = 1;
+	
+	let jsonsaveinput = document.getElementById("jsonsave").getAttribute("value");
+	
 	var json = [null, null, null]
+
+	json[0] = jsonsaveinput;
 
 	function saveCanvas() {
 		console.log("Saving Canvas in flat " + flatselected)
 		json[flatselected] = JSON.stringify(canvas.toJSON());
+		document.getElementById("jsonsave").setAttribute("value", json[flatselected]);
 	}
 
 	// Load Canvas
@@ -141,6 +147,10 @@ document.addEventListener("DOMContentLoaded", function(event) {
 			icon.hasControls = false;	
 		});
 		flatselected = selection;
+		
+		let flat_id = document.getElementById("flat_id");
+		flat_id.setAttribute("value", flatselected)
+		
 		setTimeout(function(){
 			blueprint = icon;
 			if(json[flatselected] != null) {
@@ -151,7 +161,6 @@ document.addEventListener("DOMContentLoaded", function(event) {
 	}
 
 	// Delete Active Objects
-	
 	document.addEventListener("keydown", (e) => {      
 		if (e.key === "Delete" || e.key === 'Backspace') {
 			if(canvas.getActiveObject() != blueprint) {
@@ -274,6 +283,28 @@ document.addEventListener("DOMContentLoaded", function(event) {
 			saveCanvas();
 		});
 	}
+		
+	// Save to DDBB AJAX	
+	var jsonAutosave = window.setInterval(function() {
+		var jsonsave = document.getElementById("jsonsave").getAttribute("value");
+		var request_id = document.getElementById("request_id").getAttribute("value");
+		var flat_id = document.getElementById("flat_id").getAttribute("value");
+		
+		if (jsonsave != null || jsonsave == '' || jsonsave == 'undefined') {
+			$.ajax({
+				url: "/savecanvas",
+				type: "POST",
+				data: {
+					'data': jsonsave,
+					'request': request_id,
+					'flat': flatselected,
+				},
+				success: function(data){
+					console.log("Success");
+				}
+			});
+		}	
+	}, 5000);	
 });
 
 // Menu Options
@@ -283,3 +314,4 @@ $(document).ready(function() {
     $(this).next('.editor-menu-each-content').slideToggle(400);
    });
 });
+

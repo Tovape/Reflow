@@ -98,6 +98,28 @@ let getRequests = async (user_id) => {
 	return requests;
 }
 
+// Get JSON Requests Function
+
+let getJson = async (request_id) => {
+	
+	let query = "SELECT json FROM flats WHERE request_id = " + request_id;
+	let jsonsave = [];
+	
+	let result = await new Promise((resolve, reject) => db.query(query, (err, result) => {
+		if (err) {
+			reject(err)
+		} else {
+			resolve(result);
+			console.log("\nGot JSON")
+			for(let i = 0; i < result.length; i++) {
+				result[i] = JSON.parse(JSON.stringify(result[i]));
+				jsonsave.push(result[i]);
+			}
+		}
+	}));
+	return jsonsave;
+}
+
 // Auth Function
 
 function checkAuthenticated(req, res, next) {
@@ -261,33 +283,27 @@ app.post('/register', checkNotAuthenticated, async (req, res) => {
 	}
 })
 
-app.post('/editor', checkAuthenticated, (req, res) => { // TODO, this outputs a json of the 3 results, fix it
+app.post('/editor', checkAuthenticated, async (req, res) => {
 	let user_id = req.user[Object.keys(req.user)[0]];
 	console.log("Redirecting to editor ejs with request " + req.body.request_id + " from " + user_id + " of class " + req.body.request_class)
 	
-	let query = "SELECT json FROM flats WHERE request_id = " + req.body.request_id;
-	let jsonsave = null;
-	db.query(query, function (err, result, fields) {
-		if (err)  {
-			throw err;
-		} else {
-			jsonsave = result;
-			console.log("Got JSON")
-		}
-	});
-	
+	let jsonsave = await getJson(req.body.request_id);
+
 	setTimeout(function () {
-		res.render('editor.ejs', { user_data: req.user, request_id: req.body.request_id, request_class: req.body.request_class, jsonsave: jsonsave }),
+		let stringfiedjsonsave = JSON.stringify(jsonsave);
+		let jsonlength = Object.keys(jsonsave).length;
+
+		res.render('editor.ejs', { user_data: req.user, request_id: req.body.request_id, request_class: req.body.request_class, jsonsave: stringfiedjsonsave, jsonlength: jsonlength }),
 		app.use(express.static(__dirname + '/css')),
 		app.use(express.static(__dirname + '/files')),
 		app.use(express.static(__dirname + '/js'))
-		
 	}, 1000);
 })
 
 app.post('/savecanvas', (req, res) => {
 	console.log("\nSaving Server-Side")
 	//JSON.stringify(req.body)
+	/*
 	console.log("\nRequest " + req.body[Object.keys(req.body)[1]]);
 	console.log("Flat " + req.body[Object.keys(req.body)[2]]);
 	if (req.body[Object.keys(req.body)[0]] != null || req.body[Object.keys(req.body)[0]] != 'undefined' || req.body[Object.keys(req.body)[0]] != '') {
@@ -301,6 +317,7 @@ app.post('/savecanvas', (req, res) => {
 			}
 		});
 	}
+	*/
 });
 
 // DELETE

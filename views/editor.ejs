@@ -43,90 +43,94 @@
 				<p><%= user_data[Object.keys(user_data)[2]] %></p>
 			</div>
 		</div>
-		<div class="editor-menu-section">
-			<p>House</p>
-		</div>
-		<div class="editor-menu-each">
-			<div class="editor-menu-each-button">
-				<p>Floor</p>
-				<i class="fa-solid fa-angle-up"></i>
+		<div class="editor-menu-scrollable">
+			<div class="editor-menu-section">
+				<p>House</p>
 			</div>
-			<div class="editor-menu-each-content">
-				<div class="editor-menu-each-rooms">
-					<p class="editor-menu-each-floor" value="1">Floor 1</p>
-					<p class="editor-menu-each-floor" value="2">Floor 2</p>
-					<p class="editor-menu-each-floor" value="3">Floor 3</p>
+			<div class="editor-menu-each">
+				<div class="editor-menu-each-button">
+					<p>Floor</p>
+					<i class="fa-solid fa-angle-up"></i>
+				</div>
+				<div class="editor-menu-each-content">
+					<div class="editor-menu-each-rooms">
+						<% for (var i = 1; i < jsonlength + 1; i++) { %>
+							<p class="editor-menu-each-floor" value="<%= i %>">Floor <%= i %></p>
+						<% } %>
+					</div>
 				</div>
 			</div>
-		</div>
-		<div class="editor-menu-section">
-			<p>Additions</p>
-		</div>
-		<div class="editor-menu-each">
-			<div class="editor-menu-each-button">
-				<p>Furniture</p>
-				<i class="fa-solid fa-angle-up"></i>
+			<div class="editor-menu-section">
+				<p>Additions</p>
 			</div>
-			<div class="editor-menu-each-content">
-				<div>
-					<div class="editor-menu-each-button">
-						<p>Ikea</p>
-						<i class="fa-solid fa-angle-up"></i>
-					</div>
-					<div class="editor-menu-each-content">
-						<div class="editor-menu-each-value" height="35" width="35" depth="35" name="eket">
-							<div>
-								<p class="editor-content-each-name">Ikea - <span>Eket</span></p>
-								<table>
-									<tr>
-										<td>Height</td>
-										<td>Width</td>
-										<td>Depth</td>
-									</tr>
-									<tr>
-										<td>35</td>
-										<td>35</td>
-										<td>35</td>
-									</tr>
-								</table>
+			<div class="editor-menu-each">
+				<div class="editor-menu-each-button">
+					<p>Furniture</p>
+					<i class="fa-solid fa-angle-up"></i>
+				</div>
+				<div class="editor-menu-each-content">
+					<div>
+						<div class="editor-menu-each-button">
+							<p>Ikea</p>
+							<i class="fa-solid fa-angle-up"></i>
+						</div>
+						<div class="editor-menu-each-content">
+							<div class="editor-menu-each-value" height="35" width="35" depth="35" name="eket">
+								<div>
+									<p class="editor-content-each-name">Ikea - <span>Eket</span></p>
+									<table>
+										<tr>
+											<td>Height</td>
+											<td>Width</td>
+											<td>Depth</td>
+										</tr>
+										<tr>
+											<td>35</td>
+											<td>35</td>
+											<td>35</td>
+										</tr>
+									</table>
+								</div>
+								<img data-lazy="/editor/ikea/eket.jpg">
 							</div>
-							<img data-lazy="/editor/ikea/eket.jpg">
+						</div>
+					</div>
+					<div>
+						<div class="editor-menu-each-button">
+							<p>Other</p>
+							<i class="fa-solid fa-angle-up"></i>
+						</div>
+						<div class="editor-menu-each-content editor-menu-each-rooms">
+							
 						</div>
 					</div>
 				</div>
-				<div>
-					<div class="editor-menu-each-button">
-						<p>Other</p>
-						<i class="fa-solid fa-angle-up"></i>
-					</div>
-					<div class="editor-menu-each-content editor-menu-each-rooms">
-						
-					</div>
-				</div>
 			</div>
-		</div>
-		<div class="editor-menu-section">
-			<p>Settings</p>
-		</div>
-		<div class="editor-menu-each">
-			<div class="editor-menu-each-setting">
-				<label class="pure-material-switch">
-					<input type="checkbox">
-					<span>Dark Mode</span>
-				</label>
-				<label class="pure-material-switch">
-					<input type="checkbox">
-					<span>Other</span>
-				</label>
-				<label class="pure-material-switch">
-					<input type="checkbox">
-					<span>Other 2</span>
-				</label>
+			<div class="editor-menu-section">
+				<p>Settings</p>
+			</div>
+			<div class="editor-menu-each">
+				<div class="editor-menu-each-setting">
+					<label class="pure-material-switch">
+						<input type="checkbox">
+						<span>Dark Mode</span>
+					</label>
+					<label class="pure-material-switch">
+						<input type="checkbox">
+						<span>Other</span>
+					</label>
+					<label class="pure-material-switch">
+						<input type="checkbox">
+						<span>Other 2</span>
+					</label>
+				</div>
 			</div>
 		</div>
 	</div>
 	<div class="editor-canvas" id="editor-canvas">
-		<canvas id="canvas" width="100" height="100"></canvas>
+		<% for (var i = 1; i < jsonlength + 1; i++) { %>
+			<canvas class="editor-canvas-each" value="<%= i %>" id="canvas<%= i %>" width="100" height="100"></canvas>
+		<% } %>
 	</div>
 	<div class="editor-options">
 		<!--
@@ -149,9 +153,12 @@
 	</div>
 </div>
 
-<input style="display: none" type="number" id="request_id" name="request_id" value="">
+<input style="display: none" type="number" id="request_id" name="request_id" value="<%= request_id %>">
 <input style="display: none" type="number" id="flat_id" name="flat_id" value="">
-<input style="display: none" type="text" id="jsonsave" name="jsonsave" value="">
+<input style="display: none" type="number" id="jsonlength" name="jsonlength" value="<%= jsonlength %>">
+<% for (var i = 0; i < jsonlength; i++) { %>
+<input style="display: none" type="text" id="jsonsave<%= i %>" class="jsonsave" name="jsonsave<%= i %>" value="">
+<% } %>
 
 <script>
 
@@ -159,11 +166,15 @@
 let id_users = <%= user_data[Object.keys(user_data)[0]] %>
 document.getElementById("editor-profile-avatar").style.backgroundImage = "url('/user/" + id_users + ".jpg')";
 
-let request_id = document.getElementById("request_id");
-request_id.setAttribute("value", <%= request_id %>);
+// Set JSON Save Data
+var jsonsave_selector = document.getElementsByClassName("jsonsave");
+var jsonsave_editor = JSON.parse(<%-JSON.stringify(jsonsave)%>);
 
-let jsonsave = document.getElementById("jsonsave");
-jsonsave.setAttribute("value", <%= jsonsave %>);
+var floorcount = document.getElementById("jsonlength").value;
+
+for (var i = 0; i < floorcount; i++) {
+	jsonsave_selector[i].setAttribute("value", jsonsave_editor[i].json);
+}
 
 </script>
 

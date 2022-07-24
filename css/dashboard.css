@@ -260,9 +260,10 @@
 
 .dashboard-gallery{
 	margin-top: 20px;
-	display: grid;
-	grid-template-columns: repeat(auto-fit, minmax(340px, 0fr));
-	gap:10px;
+	display: flex;
+	flex-wrap: wrap;
+	flex-direction: row;
+	gap: 10px;
 }
 
 .dashboard-gallery form {

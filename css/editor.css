@@ -13,13 +13,14 @@ html,body {
 }
 
 .editor-menu {
+	overflow: hidden;
 	width: 300px;
 	background-color: var(--secundary);
 }
 
-.editor-menu-user {
-	width: calc(100% - 20px);
-	padding: 10px;
+.editor-menu-scrollable{
+	height: calc(100% - 150px);
+	overflow-y: scroll;
 }
 
 .editor-menu-logo {
@@ -40,6 +41,7 @@ html,body {
 
 .editor-menu-user {
 	width: calc(100% - 40px);
+	height: 50px;
 	padding: 20px;
 	display: flex;
 	flex-direction: row;
@@ -378,3 +380,20 @@ html,body {
 	color: var(--white);
 }
 
+/* Display & Hide Canvas */
+
+.canvas-container {
+	display: none;
+}
+
+.editor-canvas-each {
+	background-color:blue;
+}
+
+.hidden {
+	display: none;
+}
+
+.show {
+	display: block;
+}

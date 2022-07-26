@@ -48,11 +48,11 @@
 				<p>House</p>
 			</div>
 			<div class="editor-menu-each">
-				<div class="editor-menu-each-button">
+				<div class="editor-menu-each-button editor-menu-each-active">
 					<p>Floor</p>
 					<i class="fa-solid fa-angle-up"></i>
 				</div>
-				<div class="editor-menu-each-content">
+				<div class="editor-menu-each-content" id="editor-menu-content-flats">
 					<div class="editor-menu-each-rooms">
 						<% for (var i = 1; i < jsonlength + 1; i++) { %>
 							<p class="editor-menu-each-floor" value="<%= i %>">Floor <%= i %></p>
@@ -128,9 +128,11 @@
 		</div>
 	</div>
 	<div class="editor-canvas" id="editor-canvas">
-		<% for (var i = 1; i < jsonlength + 1; i++) { %>
+		<% for (var i = 0; i < jsonlength; i++) { %>
 			<canvas class="editor-canvas-each" value="<%= i %>" id="canvas<%= i %>" width="100" height="100"></canvas>
 		<% } %>
+		<canvas class="editor-canvas-each" value="canvascus" id="canvascus" width="100" height="100"></canvas>
+		
 	</div>
 	<div class="editor-options">
 		<!--
@@ -154,7 +156,6 @@
 </div>
 
 <input style="display: none" type="number" id="request_id" name="request_id" value="<%= request_id %>">
-<input style="display: none" type="number" id="flat_id" name="flat_id" value="">
 <input style="display: none" type="number" id="jsonlength" name="jsonlength" value="<%= jsonlength %>">
 <% for (var i = 0; i < jsonlength; i++) { %>
 <input style="display: none" type="text" id="jsonsave<%= i %>" class="jsonsave" name="jsonsave<%= i %>" value="">

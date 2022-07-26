@@ -336,5 +336,5 @@
 }
 
 .dashboard-filter-fadeout {
-	display: flex !important;
+	display: block !important;
 }

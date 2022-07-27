@@ -45,11 +45,11 @@
 		</div>
 		<div class="editor-menu-scrollable">
 			<div class="editor-menu-section">
-				<p>House</p>
+				<p key="editor-house">House</p>
 			</div>
 			<div class="editor-menu-each">
 				<div class="editor-menu-each-button editor-menu-each-active">
-					<p>Floor</p>
+					<p key="editor-floor">Floors</p>
 					<i class="fa-solid fa-angle-up"></i>
 				</div>
 				<div class="editor-menu-each-content" id="editor-menu-content-flats">
@@ -61,53 +61,13 @@
 				</div>
 			</div>
 			<div class="editor-menu-section">
-				<p>Additions</p>
+				<p key="editor-objects">Objects</p>
 			</div>
-			<div class="editor-menu-each">
-				<div class="editor-menu-each-button">
-					<p>Furniture</p>
-					<i class="fa-solid fa-angle-up"></i>
-				</div>
-				<div class="editor-menu-each-content">
-					<div>
-						<div class="editor-menu-each-button">
-							<p>Ikea</p>
-							<i class="fa-solid fa-angle-up"></i>
-						</div>
-						<div class="editor-menu-each-content">
-							<div class="editor-menu-each-value" height="35" width="35" depth="35" name="eket">
-								<div>
-									<p class="editor-content-each-name">Ikea - <span>Eket</span></p>
-									<table>
-										<tr>
-											<td>Height</td>
-											<td>Width</td>
-											<td>Depth</td>
-										</tr>
-										<tr>
-											<td>35</td>
-											<td>35</td>
-											<td>35</td>
-										</tr>
-									</table>
-								</div>
-								<img data-lazy="/editor/ikea/eket.jpg">
-							</div>
-						</div>
-					</div>
-					<div>
-						<div class="editor-menu-each-button">
-							<p>Other</p>
-							<i class="fa-solid fa-angle-up"></i>
-						</div>
-						<div class="editor-menu-each-content editor-menu-each-rooms">
-							
-						</div>
-					</div>
-				</div>
+			<div class="editor-menu-button">
+				<p key="editor-open" id="editor-object-open">Open</p>
 			</div>
 			<div class="editor-menu-section">
-				<p>Settings</p>
+				<p key="editor-settings">Settings</p>
 			</div>
 			<div class="editor-menu-each">
 				<div class="editor-menu-each-setting">
@@ -115,14 +75,21 @@
 						<input type="checkbox">
 						<span>Dark Mode</span>
 					</label>
-					<label class="pure-material-switch">
-						<input type="checkbox">
-						<span>Other</span>
-					</label>
-					<label class="pure-material-switch">
-						<input type="checkbox">
-						<span>Other 2</span>
-					</label>
+				</div>
+				<div class="editor-menu-each-button">
+					<p>Language</p>
+					<i class="fa-solid fa-angle-up"></i>
+				</div>
+				<div class="editor-menu-each-content editor-menu-each-rooms">
+					<div class="language-dropdown-each">
+						<a href="#" class="language" id="es" key="spanish">Español</a>
+					</div>
+					<div class="language-dropdown-each">
+						<a href="#" class="language" id="ca" key="catalan">Català</a>
+					</div>
+					<div class="language-dropdown-each">
+						<a href="#" class="language" id="en" key="english">English</a>
+					</div>
 				</div>
 			</div>
 		</div>

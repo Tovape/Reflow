@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function(event) { 
-
+/*
 	// Get Windows Size
 	var windowWidth = window.innerWidth;
 	var windowHeight = window.innerHeight;
@@ -292,9 +292,9 @@ document.addEventListener("DOMContentLoaded", function(event) {
 	  });
 	});
 	*/
-	
+	/*
 	console.log("Generated: " + floorcount + canvas_json.length + canvas_editor.length + canvas_selector.length);
-	
+	*/
 });
 
 // Menu Options
@@ -306,3 +306,9 @@ $(document).ready(function() {
 	$('#editor-menu-content-flats')	.slideToggle(400);
 });
 
+// Object Menu
+$(document).ready(function() {
+	$('.editor-object-open').click(function(){
+		// Logic Here
+	});
+});

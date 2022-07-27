@@ -105,6 +105,20 @@ body::-webkit-scrollbar-thumb {
 
 /*
 ----------------------------------
+Selection Configuration
+----------------------------------
+*/
+
+::-moz-selection {
+	background: rgba(39,59,69,0.5);
+}
+
+::selection {
+	background: rgba(39,59,69,0.5);
+}
+
+/*
+----------------------------------
 Top Button Configuration
 ----------------------------------
 */
@@ -338,7 +352,7 @@ Menu Configuration
 }
 
 .language-active{
-	background-color: var(--fifth);
+	background-color: var(--fifth) !important;
 }
 
 /* Reonsive Menu */

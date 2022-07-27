@@ -129,7 +129,7 @@ html,body {
 
 .editor-menu-each-content {
 	display: none;
-	margin: 20px 0;
+	margin: 20px 0 0 0;
 	overflow: hidden;
 }
 
@@ -173,11 +173,60 @@ html,body {
     border-collapse: collapse;
 }
 
+.editor-menu-button {
+	width: calc(100% - 32px);
+    padding: 16px;
+	text-align: center;
+}
+
+.editor-menu-button p {
+	cursor: pointer;
+	border: 1px solid var(--white);
+	border-radius: 4px;
+	padding: 4px;
+	color: var(--white);
+	background-color: var(--fourth);
+}
+
+.editor-menu-button p:hover {
+	color: var(--primary);
+    background-color: var(--fifth);
+    transition: all 0.1s ease-in-out;
+    -webkit-transition: all 0.1s ease-in-out;
+}
+
+.editor-menu-button p:active {
+    background-color: var(--sixth);
+    transition: all 0.1s ease-in-out;
+    -webkit-transition: all 0.1s ease-in-out;
+}
+
 /* Settings */
 
 .editor-menu-each-setting{
 	display:flex;
 	flex-direction: column;
+}
+
+.editor-menu-each-setting-option {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.editor-menu-each-setting-option div:nth-child(2) {
+	display: none;
+}
+
+.language-dropdown-each {
+	background-color: var(--grey);
+}
+
+.language{
+	font-family: var(--montserrat);
+    font-size: var(--undfont);
+    color: var(--black);
 }
 
 .pure-material-switch {
@@ -251,15 +300,15 @@ html,body {
 /* Checked */
 .pure-material-switch > input:checked {
     right: -10px;
-    background-color: rgb(var(--pure-material-primary-rgb, 33, 150, 243));
+    background-color: rgb(var(--pure-material-primary-rgb, 100, 151, 177));
 }
 
 .pure-material-switch > input:checked + span::before {
-    background-color: rgba(var(--pure-material-primary-rgb, 33, 150, 243), 0.6);
+    background-color: rgba(var(--pure-material-primary-rgb, 100, 151, 177), 0.6);
 }
 
 .pure-material-switch > input:checked + span::after {
-    background-color: rgb(var(--pure-material-primary-rgb, 33, 150, 243));
+    background-color: rgb(var(--pure-material-primary-rgb, 100, 151, 177));
     transform: translateX(16px);
 }
 
@@ -284,7 +333,7 @@ html,body {
 }
 
 .pure-material-switch > input:active + span::before {
-    background-color: rgba(var(--pure-material-primary-rgb, 33, 150, 243), 0.6);
+    background-color: rgba(var(--pure-material-primary-rgb, 100, 151, 177), 0.6);
 }
 
 .pure-material-switch > input:checked:active + span::before {
@@ -307,9 +356,8 @@ html,body {
 }
 
 .pure-material-switch > input:checked:disabled + span::before {
-    background-color: rgba(var(--pure-material-primary-rgb, 33, 150, 243), 0.6);
+    background-color: rgba(var(--pure-material-primary-rgb, 100, 151, 177), 0.6);
 }
-
 
 /* Editor-Canvas */
 

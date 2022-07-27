@@ -12,15 +12,15 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
 	// Get Floor Count
 	var floorcount = document.getElementById("jsonlength").value;
-	console.log("Got " + floorcount + " floors, formatting --")
-	floorcount--;
+	console.log("Got " + floorcount + " floors")
 
 	// Get/Create Canvas
+	var canvas_jsonsave = document.querySelectorAll(".jsonsave")
 	var canvas_selector = document.getElementsByClassName("editor-canvas-each");
 	var canvas_editor = Array.apply(null, Array(floorcount)).map(function () {})
 	var canvas_json = Array.apply(null, Array(floorcount)).map(function () {})
 
-	for (let i = 0; i < canvas_selector.length; i++) {
+	for (let i = 0; i < floorcount; i++) {
 		canvas_editor[i] = new fabric.Canvas('canvas' + i, { 
 			selection: false,
 			controlsAboveOverlay: true,
@@ -30,7 +30,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
 		});
 	}
 	
-	for (let i = 0; i < canvas_json.length; i++) {
+	for (let i = 0; i < floorcount; i++) {
 		canvas_json[i] = null;
 	}
 
@@ -39,27 +39,31 @@ document.addEventListener("DOMContentLoaded", function(event) {
 		
 	// Flat Selected
 	var flatselected = null;
-	
+
 	// Save Canvas Function
 	function saveCanvas(flatselected) {
 		if (flatselected != null) {
 			console.log("Saving Canvas in flat " + flatselected)
-			canvas_json[flatselected] = canvas_editor[flatselected].toJSON();
+			canvas_json[flatselected] = JSON.stringify(canvas_editor[flatselected].toJSON());
 		}
 	}
 	
-	// Load Canvas Function
-	function loadCanvas(selection, user) {
-		//var jsonsave_selector = document.getElementsByClassName("jsonsave");
-		//var jsonsave_data = Array.apply(null, Array(jsonsave_selector.length)).map(function () {})
-		//var temp = document.querySelectorAll(".jsonsave")
+	// TODO FIX OBJECT LOADING AND LINE 225 STOPS AFTER SWITCHING FLOORS
+	// ERROR FOUND, LOADING JSON WITH EXTRA QUOTES
 
-		/*
-		for (let i = 0; i < jsonsave_selector.length; i++) {
-			jsonsave_data[i] = temp[i].value;
+	// Load Canvas Function
+	function loadCanvas() {
+		console.log("Loading JSON");
+		for (let i = 0; i < floorcount; i++) {
+			var result = canvas_jsonsave[i].value.substring(1, canvas_jsonsave[i].value.length-1);
+			canvas_editor[i].loadFromJSON(
+				result,
+				canvas_editor[i].renderAll.bind(canvas_editor[i])
+			);
 		}
-		*/
 	}
+	
+	loadCanvas();
 	
 	// Get Floors
 	var floors = document.getElementsByClassName("editor-menu-each-floor");
@@ -80,15 +84,21 @@ document.addEventListener("DOMContentLoaded", function(event) {
 	// Redraw Canvas
 	var grid = 50;
 	var inset = 20;
-	
+
 	for (let j = 0; j < floors.length; j++) {
 		for (var i = 0; i < (2000 / grid); i++) {
 			canvas_editor[j].add(new fabric.Line([
-				inset + i * grid, inset, inset + i * grid, 2000], { stroke: '#ccc', selectable: false, excludeFromExport: true
+				inset + i * grid, inset, inset + i * grid, 2000], {
+				stroke: '#ccc',
+				selectable: false,
+				excludeFromExport: true
 			}));
 
 			canvas_editor[j].add(new fabric.Line([ 
-				inset, inset + i * grid, 2000,inset + i * grid], { stroke: '#ccc', selectable: false, excludeFromExport: true
+				inset, inset + i * grid, 2000,inset + i * grid], {
+				stroke: '#ccc',
+				selectable: false,
+				excludeFromExport: true
 			}))
 		}
 
@@ -111,11 +121,12 @@ document.addEventListener("DOMContentLoaded", function(event) {
 				excludeFromExport: true
 			}));
 		}
-
 		canvas_editor[j].renderAll();
 	}
 	
 	// Add Background Image to Canvas
+	var blueprint = null;
+	
 	for (let i = 0; i < floors.length; i++) {
 		fabric.Image.fromURL('../files/blueprint/' + username + '/floor-' + i + '.png', function(oImg) {
 			oImg.set({
@@ -136,7 +147,8 @@ document.addEventListener("DOMContentLoaded", function(event) {
 			canvas_editor[i].sendToBack(oImg);
 			icon = canvas_editor[i].getActiveObject();
 			icon.hasBorders = false;
-			icon.hasControls = false;	
+			icon.hasControls = false;
+			blueprint = icon;
 		});
 	}
 	
@@ -239,8 +251,9 @@ document.addEventListener("DOMContentLoaded", function(event) {
 		});
 	}
 	
-	// Save to DDBB AJAX - TODO
+	// Save to DDBB AJAX
 	var jsonAutosave = window.setInterval(function() {
+		console.log("Interval")
 		if (flatselected !== null && canvas_json[flatselected] !== null) {
 			$.ajax({
 				url: "/savecanvas",
@@ -253,7 +266,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
 			});
 		}	
 	}, 5000);
-	
+		
 	// Extras
 	
 	// Zoom Function
@@ -279,6 +292,8 @@ document.addEventListener("DOMContentLoaded", function(event) {
 	  });
 	});
 	*/
+	
+	console.log("Generated: " + floorcount + canvas_json.length + canvas_editor.length + canvas_selector.length);
 	
 });
 

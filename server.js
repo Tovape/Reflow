@@ -26,11 +26,11 @@ initializePassport(
 
 // USE
 
-app.use(express.json({limit: '10mb'}));
-app.use(express.urlencoded({limit: '10mb', extended: true}));
+app.use(express.json({limit: '20mb'}));
+app.use(express.urlencoded({limit: '20mb', extended: true}));
 app.use(bodyParser.urlencoded());
-app.use(bodyParser.json({limit: '10mb'}));
-app.use(bodyParser.urlencoded({limit: '10mb', extended: true}));
+app.use(bodyParser.json({limit: '20mb'}));
+app.use(bodyParser.urlencoded({limit: '20mb', extended: true}));
 app.set('view-engine', 'ejs')
 app.use(busboy());
 app.use(express.static(path.join(__dirname)));
@@ -313,7 +313,6 @@ app.post('/savecanvas', (req, res) => {
 	console.log("Flat " + flat_id);
 	if (json != null || json != 'undefined' || json != '') {
 		let query = "UPDATE flats SET json = '" + json + "' WHERE flat_id = " + flat_id + " AND request_id = " + request_id;
-		console.log(query)
 		db.query(query, function (err, result, fields) {
 			if (err)  {
 				throw err;

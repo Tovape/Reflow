@@ -34,11 +34,11 @@ document.addEventListener("DOMContentLoaded", function(event) {
 			'Castellar del Valles'
 			];
 			var descriptionarray = [
-				'a',
-				'b',
-				'c',
-				'd',
-				'e'
+				'Text here asda',
+				'Text here asda',
+				'Text here asda',
+				'Text here asda',
+				'Text here asda'
 			];
 		} else if (language == 'ca') {
 			var titlearray = [
@@ -56,11 +56,11 @@ document.addEventListener("DOMContentLoaded", function(event) {
 			'Castellar del Valles'
 			];
 			var descriptionarray = [
-				'a',
-				'b',
-				'c',
-				'd',
-				'e'
+				'Text here asda',
+				'Text here asda',
+				'Text here asda',
+				'Text here asda',
+				'Text here asda'
 			];
 		} else if (language == 'en') {
 			var titlearray = [
@@ -78,11 +78,11 @@ document.addEventListener("DOMContentLoaded", function(event) {
 			'Castellar del Valles'
 			];
 			var descriptionarray = [
-				'a',
-				'b',
-				'c',
-				'd',
-				'e'
+				'Text here asda',
+				'Text here asda',
+				'Text here asda',
+				'Text here asda',
+				'Text here asda'
 			];
 		}
 		

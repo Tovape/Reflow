@@ -10,7 +10,8 @@ var arrLang = {
 	'editor-floor': 'Floor',
 	'editor-settings': 'Settings',
 	'editor-products': 'Products',
-	'editor-open': 'Open'
+	'editor-open': 'Open',
+	'editor-close': 'Close'
 	
 	},
 
@@ -22,7 +23,8 @@ var arrLang = {
 	'editor-floor': 'Piso',
 	'editor-settings': 'Ajustes',
 	'editor-products': 'Productos',
-	'editor-open': 'Abrir'
+	'editor-open': 'Abrir',
+	'editor-close': 'Cerrar'
 
 	},
 	
@@ -34,7 +36,8 @@ var arrLang = {
 	'editor-floor': 'Pis',
 	'editor-settings': 'Eines',
 	'editor-products': 'Productes',
-	'editor-open': 'Obrir'
+	'editor-open': 'Obrir',
+	'editor-close': 'Tancar'
 
 	}
 };

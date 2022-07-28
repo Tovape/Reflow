@@ -1,4 +1,6 @@
 document.addEventListener("DOMContentLoaded", function(event) { 
+
+	// TODO FIX LINE 225 STOPS AFTER SWITCHING FLOORS
 /*
 	// Get Windows Size
 	var windowWidth = window.innerWidth;
@@ -47,9 +49,6 @@ document.addEventListener("DOMContentLoaded", function(event) {
 			canvas_json[flatselected] = JSON.stringify(canvas_editor[flatselected].toJSON());
 		}
 	}
-	
-	// TODO FIX OBJECT LOADING AND LINE 225 STOPS AFTER SWITCHING FLOORS
-	// ERROR FOUND, LOADING JSON WITH EXTRA QUOTES
 
 	// Load Canvas Function
 	function loadCanvas() {
@@ -214,7 +213,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
 		}
 	});
 	
-	// Get Objects
+	// Get Objects - MOVING
 	var furniture = document.getElementsByClassName("editor-menu-each-value");
 
 	for (let i = 0; i < furniture.length; i++) {
@@ -253,7 +252,6 @@ document.addEventListener("DOMContentLoaded", function(event) {
 	
 	// Save to DDBB AJAX
 	var jsonAutosave = window.setInterval(function() {
-		console.log("Interval")
 		if (flatselected !== null && canvas_json[flatselected] !== null) {
 			$.ajax({
 				url: "/savecanvas",
@@ -292,9 +290,9 @@ document.addEventListener("DOMContentLoaded", function(event) {
 	  });
 	});
 	*/
-	/*
+/*
 	console.log("Generated: " + floorcount + canvas_json.length + canvas_editor.length + canvas_selector.length);
-	*/
+*/
 });
 
 // Menu Options
@@ -303,12 +301,35 @@ $(document).ready(function() {
 		$(this).toggleClass('editor-menu-each-active');
 		$(this).next('.editor-menu-each-content').slideToggle(400);
 	});
-	$('#editor-menu-content-flats')	.slideToggle(400);
+	$('#editor-menu-content-flats').slideToggle(400);
 });
 
 // Object Menu
 $(document).ready(function() {
-	$('.editor-object-open').click(function(){
-		// Logic Here
+	$('#editor-object-open,#editor-inventory-cross').click(function(){
+		if ($('#editor-object-inventory').hasClass('fadeon')) {
+			$('#editor-object-inventory').toggleClass('fadeon');
+			setTimeout(function() {
+				$('#editor-object-inventory').toggleClass('show');
+			}, 250);
+		$('#editor-object-open').html('Open');
+		} else {
+			$('#editor-object-inventory').toggleClass('show');
+			setTimeout(function() {
+				$('#editor-object-inventory').toggleClass('fadeon');
+			}, 250);
+			$('#editor-object-open').html('Close');
+		}
 	});
+});
+
+// Object Browsing
+$(document).ready(function() {
+	var objects = document.getElementsByClassName("editor-inventory-row-content");
+	for (let i = 0; i < objects.length; i++) {
+		objects[i].addEventListener("click", function() {
+			var type = objects[i].getAttribute("type");
+			
+		});
+	}
 });

@@ -201,6 +201,103 @@ html,body {
     -webkit-transition: all 0.1s ease-in-out;
 }
 
+/* Inventory */
+
+.editor-object-inventory {
+	background-color: var(--white);
+	position: absolute;
+	top: 0; left: 0;
+	height: calc(100% - 160px);
+	width: calc(100% - 160px);
+	padding: 80px;
+}
+
+.editor-inventory-banner{
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-content: center;
+	margin-bottom: 40px;
+}
+
+.editor-inventory-banner svg {
+	height: 50px;
+    width: 50px;
+    fill: var(--black);
+    transition: all 0.25s ease-in-out;
+    -webkit-transition: all 0.25s ease-in-out;
+}
+
+.editor-inventory-banner a:hover svg {
+	transform: rotate(90deg);
+    transition: all 0.25s ease-in-out;
+    -webkit-transition: all 0.25s ease-in-out;
+}
+
+.editor-object-inventory-title {
+	text-align: center;
+	font-size: var(--bigfont);
+}
+
+.editor-inventory {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+}
+
+.editor-inventory-row {
+	height: 400px;
+	width: 33.3%;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+
+.editor-inventory-row .editor-inventory-row-content {
+	height: 50%;
+}
+
+.editor-inventory-row:first-child .editor-inventory-row-content:first-child {
+	height: 100%;
+}
+
+.editor-inventory-row-content {
+	position: relative;
+	display: flex;
+	justify-content: space-between;
+	cursor: pointer;
+}
+
+.editor-inventory-row-content img {
+	position: absolute;
+	bottom: 0px;
+	right: 0px;
+	width: 100%;
+	max-height: 200px;
+}
+
+.editor-inventory-row-content div {
+	padding: 10px;
+	width: calc(90% - 20px);
+	height: calc(90% - 20px);
+}
+
+#furniture {background-color: #A52A2A;}
+#decoration {background-color: #FFC82B;}
+#lights {background-color: #76E523;}
+#plants {background-color: #2B9FFF;}
+#others {background-color: #666666;}
+
+.editor-inventory-row-content div p {
+	color: var(--white);
+	font-weight: bold;
+	font-family: var(--montserrat);
+}
+
+.editor-inventory-row-content div p:first-child {
+	font-size: var(--undfont);
+}
+
 /* Settings */
 
 .editor-menu-each-setting{
@@ -369,6 +466,7 @@ html,body {
 }
 
 .editor-canvas {
+	position: relative;
 	overflow-X: hidden;
 	overflow-Y: scroll;
 }
@@ -441,3 +539,16 @@ html,body {
 .show {
 	display: block;
 }
+
+.fadein {
+	opacity: 0;
+	transition: all 0.25s ease-in-out;
+	-webkit-transition: all 0.25s ease-in-out;	
+}
+
+.fadeon {
+	opacity: 1;
+	transition: all 0.25s ease-in-out;
+	-webkit-transition: all 0.25s ease-in-out;	
+}
+

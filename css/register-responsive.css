@@ -14,11 +14,6 @@
 
 @media only screen and (max-width: 750px) {
 
-html,body {
-	height: auto !important;
-	width: auto !important;
-}
-
 .register {
 	flex-direction: column;
 }

@@ -208,9 +208,10 @@
 								<input type="text" id="searchbar" name="searchbar" placeholder="Search" value="">
 							</div>
 							<div class="editor-inventory-browser-results-scroll">
-								<div class="editor-inventory-browser-results-each" height="35" width="35" depth="35" name="eket">
+							<% for (var i = 0; i < objectslength; i++) { %>
+								<div class="editor-inventory-browser-results-each" color="#<%= objects[i].color %>" height="<%= objects[i].height %>" width="<%= objects[i].width %>" depth="<%= objects[i].depth %>" name="<%= objects[i].name %>">
 									<div>
-										<p class="editor-inventory-browser-results-each-name">Ikea - <span>Eket</span></p>
+										<p class="editor-inventory-browser-results-each-name"><%= objects[i].brand %> - <span><%= objects[i].name %></span></p>
 										<table>
 											<tr>
 												<td>Height</td>
@@ -218,14 +219,15 @@
 												<td>Depth</td>
 											</tr>
 											<tr>
-												<td>35</td>
-												<td>35</td>
-												<td>35</td>
+												<td><%= objects[i].height %></td>
+												<td><%= objects[i].width %></td>
+												<td><%= objects[i].depth %></td>
 											</tr>
 										</table>
 									</div>
 									<img data-lazy="/editor/ikea/eket.jpg">
 								</div>
+								<% } %>	
 							</div>
 						</div>
 					</div>

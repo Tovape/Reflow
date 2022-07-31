@@ -1,6 +1,7 @@
 document.addEventListener("DOMContentLoaded", function(event) { 
 
 	// TODO FIX LINE 225 STOPS AFTER SWITCHING FLOORS
+	// TODO ADD MESSAGE AFTER CLICKING FURNITURE LIKE THIS: $NAME HAS BEEN ADDED TO THE CANVAS POPUP
 /*
 	// Get Windows Size
 	var windowWidth = window.innerWidth;
@@ -214,7 +215,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
 	});
 	
 	// Get Objects - MOVING
-	var furniture = document.getElementsByClassName("editor-menu-each-value");
+	var furniture = document.getElementsByClassName("editor-inventory-browser-results-each");
 
 	for (let i = 0; i < furniture.length; i++) {
 		furniture[i].addEventListener("click", function() {
@@ -223,9 +224,10 @@ document.addEventListener("DOMContentLoaded", function(event) {
 				var width = furniture[i].getAttribute("width");
 				var depth = furniture[i].getAttribute("depth");
 				var name = furniture[i].getAttribute("name");
+				var color = furniture[i].getAttribute("color");
 				
 				var rect = new fabric.Rect({
-					fill: '#ffdc73',
+					fill: color,
 					width: parseInt(width), 
 					height: parseInt(height), 
 					originX: 'center',

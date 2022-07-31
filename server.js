@@ -87,7 +87,7 @@ let getRequests = async (user_id) => {
 			reject(err)
 		} else {
 			resolve(result);
-			console.log("\nGot Requests")
+			console.log("\nGot Requests JSON")
 			for(let i = 0; i < result.length; i++) {
 				result[i] = JSON.parse(JSON.stringify(result[i]));
 				requests.push(result[i]);
@@ -110,7 +110,7 @@ let getJson = async (request_id) => {
 			reject(err)
 		} else {
 			resolve(result);
-			console.log("\nGot JSON")
+			console.log("\nGot Flats JSON")
 			for(let i = 0; i < result.length; i++) {
 				result[i] = JSON.parse(JSON.stringify(result[i]));
 				jsonsave.push(result[i]);
@@ -118,6 +118,28 @@ let getJson = async (request_id) => {
 		}
 	}));
 	return jsonsave;
+}
+
+// Get JSON Objects List
+
+let getObjects = async () => {
+	
+	let query = "SELECT * FROM objects";
+	let objects = [];
+	
+	let result = await new Promise((resolve, reject) => db.query(query, (err, result) => {
+		if (err) {
+			reject(err)
+		} else {
+			resolve(result);
+			console.log("\nGot Objects JSON")
+			for(let i = 0; i < result.length; i++) {
+				result[i] = JSON.parse(JSON.stringify(result[i]));
+				objects.push(result[i]);
+			}
+		}
+	}));
+	return objects;
 }
 
 // Auth Function
@@ -212,8 +234,8 @@ app.get('/dashboard', checkAuthenticated, async (req, res) => {
 	app.use(express.static(__dirname + '/js'))
 })
 
-app.get('/editor', checkAuthenticated, (req, res) => {
-	res.render('editor.ejs', { user_data: req.user }),
+app.get('/editor', checkAuthenticated, async (req, res) => {
+	res.render('editor.ejs', { user_data: req.user, objects: objects }),
 	app.use(express.static(__dirname + '/css')),
 	app.use(express.static(__dirname + '/files')),
 	app.use(express.static(__dirname + '/js'))
@@ -288,12 +310,16 @@ app.post('/editor', checkAuthenticated, async (req, res) => {
 	console.log("Redirecting to editor ejs with request " + req.body.request_id + " from " + user_id + " of class " + req.body.request_class)
 	
 	let jsonsave = await getJson(req.body.request_id);
+	let objects = await getObjects();
 
 	setTimeout(function () {
 		let stringfiedjsonsave = JSON.stringify(jsonsave);
 		let jsonlength = Object.keys(jsonsave).length;
+		
+		let stringfiedobjects = JSON.stringify(objects);
+		let objectslength = Object.keys(objects).length;
 
-		res.render('editor.ejs', { user_data: req.user, request_id: req.body.request_id, request_class: req.body.request_class, jsonsave: stringfiedjsonsave, jsonlength: jsonlength }),
+		res.render('editor.ejs', { user_data: req.user, request_id: req.body.request_id, request_class: req.body.request_class, jsonsave: stringfiedjsonsave, jsonlength: jsonlength, objects: objects, objectslength: objectslength }),
 		app.use(express.static(__dirname + '/css')),
 		app.use(express.static(__dirname + '/files')),
 		app.use(express.static(__dirname + '/js'))

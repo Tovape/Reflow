@@ -370,14 +370,6 @@ html,body {
 	outline: none;
 }
 
-.editor-inventory-browser-results-scroll {
-	
-}
-
-.editor-inventory-browser-results-each {
-	
-}
-
 /* Price Slider */
 
 .filter-price {
@@ -463,6 +455,67 @@ html,body {
 .filter-manufacturer-active {
 	color: var(--white);
 	background-color: var(--fourth) !important;
+}
+
+/* Inventory List */
+
+.editor-inventory-browser-results-scroll {
+	height: calc(100% - 40px);
+	width: calc(100% - 10px);
+    overflow-y: scroll;
+	margin-top: 10px;
+}
+
+.editor-inventory-browser-results-each {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	height: auto;
+	margin-bottom: 6px;
+	padding: 6px;
+	border-radius: 4px;
+	cursor: pointer;
+	border: 1px solid var(--fifth);
+	background-color: var(--purewhite);
+}
+
+.editor-inventory-browser-results-each:hover {
+	border: 1px solid var(--fourth);
+}
+
+.editor-inventory-browser-results-each div {
+	display: flex;
+	flex-direction: column;
+	padding-right: 10px;
+	width: calc(100% - 76px);
+}
+
+.editor-inventory-browser-results-each-name {
+	font-family: var(--montserrat);
+}
+
+.editor-inventory-browser-results-each table {
+	text-align: center;
+	color: var(--grey);
+	font-family: var(--montserrat);
+    border-style: hidden;
+    border-collapse: collapse;
+	table-layout: auto;
+	max-width: 120px;
+}
+
+.editor-inventory-browser-results-each table tr {
+	
+}
+
+.editor-inventory-browser-results-each table tr td {
+	white-space:nowrap; 
+}
+
+.editor-inventory-browser-results-each img {
+	width: 66px;
+	height: 100%;
+	border-radius: 4px;
 }
 
 /* Settings */

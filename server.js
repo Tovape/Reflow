@@ -1,13 +1,13 @@
 require('dotenv').config()
 const mysql = require("mysql")
 const express = require('express')
-const router = express.Router();
+const router = express.Router()
 const path = require('path')
 const app = express()
-const bodyParser = require('body-parser');
-const nodemailer = require('nodemailer');
+const bodyParser = require('body-parser')
+const nodemailer = require('nodemailer')
 const bcrypt = require('bcrypt')
-const CryptoJS = require("crypto-js");
+const CryptoJS = require("crypto-js")
 const passport = require('passport')
 const flash = require('express-flash')
 const session = require('express-session')
@@ -17,6 +17,7 @@ const busboy = require('connect-busboy')
 const fs = require('fs-extra')
 const PORT = 5000;
 const initializePassport = require('./passport-config')
+const ikeachecker = require('ikea-availability-checker')
 
 initializePassport(
   passport,
@@ -528,3 +529,13 @@ app.route('/newpassword').post(async function (req, res, next) {
 
 console.log("Server Started on port " + PORT);
 app.listen(PORT);
+
+
+// Ikea Checker
+
+/*
+(async function() {
+    const result = await ikeachecker.availability('394', '00501436');
+    console.log('RESULT', result);
+})();
+*/

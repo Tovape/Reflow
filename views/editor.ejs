@@ -189,6 +189,7 @@
 								<div class="editor-inventory-browser-filter-each">
 									<p class="editor-inventory-browser-filter-each-title">Manufacturer</p>
 									<div class="filter-manufacturer">
+										<p brand="all">All</p>
 										<p brand="ikea">Ikea</p>
 										<p brand="herman-miller">Herman Miller</p>
 										<p brand="gasgs">Test</p>
@@ -197,8 +198,9 @@
 									</div>
 								</div>
 								<div class="editor-inventory-browser-filter-each">
-									<p class="editor-inventory-browser-filter-each-title">Other</p>
-									<div>Other</div>
+									<div class="filter-button" id="filter-button">
+										<p>Filter</p>
+									</div>
 								</div>
 							</div>
 						</div>
@@ -209,9 +211,9 @@
 							</div>
 							<div class="editor-inventory-browser-results-scroll">
 							<% for (var i = 0; i < objectslength; i++) { %>
-								<div class="editor-inventory-browser-results-each" color="#<%= objects[i].color %>" height="<%= objects[i].height %>" width="<%= objects[i].width %>" depth="<%= objects[i].depth %>" name="<%= objects[i].name %>">
+								<div class="editor-inventory-browser-results-each" price="<%= objects[i].price %>" brand="<%= objects[i].brand %>" color="#<%= objects[i].color %>" height="<%= objects[i].height %>" width="<%= objects[i].width %>" depth="<%= objects[i].depth %>" name="<%= objects[i].name %>">
 									<div>
-										<p class="editor-inventory-browser-results-each-name"><%= objects[i].brand %> - <span><%= objects[i].name %></span></p>
+										<p class="editor-inventory-browser-results-each-name"><%= objects[i].brand %> - <%= objects[i].name %> (<%= objects[i].price %>$)</p>
 										<table>
 											<tr>
 												<td>Height</td>
@@ -245,6 +247,9 @@
 					</div>
 				</div>
 			</div>
+		</div>
+		<div class="editor-canvas-popup fadein hidden" id="editor-canvas-popup">
+			<p id="editor-canvas-popup-text">Message</p>
 		</div>
 	</div>
 </div>

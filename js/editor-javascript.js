@@ -2,7 +2,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
 	// TODO FIX LINE 225 STOPS AFTER SWITCHING FLOORS
 	// TODO ADD MESSAGE AFTER CLICKING FURNITURE LIKE THIS: $NAME HAS BEEN ADDED TO THE CANVAS POPUP
-/*
+
 	// Get Windows Size
 	var windowWidth = window.innerWidth;
 	var windowHeight = window.innerHeight;
@@ -91,25 +91,27 @@ document.addEventListener("DOMContentLoaded", function(event) {
 				inset + i * grid, inset, inset + i * grid, 2000], {
 				stroke: '#ccc',
 				selectable: false,
-				excludeFromExport: true
+				excludeFromExport: true,
+				hoverCursor: 'default'
 			}));
 
 			canvas_editor[j].add(new fabric.Line([ 
 				inset, inset + i * grid, 2000,inset + i * grid], {
 				stroke: '#ccc',
 				selectable: false,
-				excludeFromExport: true
+				excludeFromExport: true,
+				hoverCursor: 'default'
 			}))
 		}
 
 		for (var i = 0; i < (2000 / grid); i++) {
-
 			canvas_editor[j].add(new fabric.Text(String(i * 5), {
 				left: inset + i * grid, top: 0, 
 				fontSize: 14,
 				fontFamily: 'Verdana',
 				selectable: false,
-				excludeFromExport: true
+				excludeFromExport: true,
+				hoverCursor: 'default'
 			}));
 
 			canvas_editor[j].add(new fabric.Text(String(i * 5), {
@@ -118,7 +120,8 @@ document.addEventListener("DOMContentLoaded", function(event) {
 				fontFamily: 'Verdana',
 				textAlign: 'Center',
 				selectable: false,
-				excludeFromExport: true
+				excludeFromExport: true,
+				hoverCursor: 'default'
 			}));
 		}
 		canvas_editor[j].renderAll();
@@ -214,7 +217,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
 		}
 	});
 	
-	// Get Objects - MOVING
+	// Get Objects
 	var furniture = document.getElementsByClassName("editor-inventory-browser-results-each");
 
 	for (let i = 0; i < furniture.length; i++) {
@@ -247,7 +250,10 @@ document.addEventListener("DOMContentLoaded", function(event) {
 				
 				group.setControlsVisibility({mt: false, mb: false,  ml: false, mr: false, bl: false,br: false, tl: false, tr: false,mtr: false, });
 				canvas_editor[flatselected].add(group);
+				popup("green","Object Added");
 				saveCanvas(flatselected);
+			} else {
+				popup("yellow","Select a Flat first");
 			}
 		});
 	}
@@ -255,6 +261,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
 	// Save to DDBB AJAX
 	var jsonAutosave = window.setInterval(function() {
 		if (flatselected !== null && canvas_json[flatselected] !== null) {
+			/*
 			$.ajax({
 				url: "/savecanvas",
 				type: "POST",
@@ -264,9 +271,10 @@ document.addEventListener("DOMContentLoaded", function(event) {
 					'flat': flatselected
 				}
 			});
+			*/
 		}	
 	}, 5000);
-		
+
 	// Extras
 	
 	// Zoom Function
@@ -292,22 +300,17 @@ document.addEventListener("DOMContentLoaded", function(event) {
 	  });
 	});
 	*/
-/*
-	console.log("Generated: " + floorcount + canvas_json.length + canvas_editor.length + canvas_selector.length);
-*/
-});
 
-// Menu Options
-$(document).ready(function() {
+	console.log("Generated: " + floorcount + canvas_json.length + canvas_editor.length + canvas_selector.length);
+	
+	// Menu Options
 	$('.editor-menu-each-button').click(function(){
 		$(this).toggleClass('editor-menu-each-active');
 		$(this).next('.editor-menu-each-content').slideToggle(400);
 	});
 	$('#editor-menu-content-flats').slideToggle(400);
-});
 
-// Inventory Menu
-$(document).ready(function() {
+	// Inventory Menu
 	$('#editor-inventory-open,#editor-inventory-cross').click(function(){
 		if ($('#editor-inventory').hasClass('fadeon')) {
 			$('#editor-inventory').toggleClass('fadeon');
@@ -323,10 +326,8 @@ $(document).ready(function() {
 			$('#editor-inventory-open').html('Close');
 		}
 	});
-});
 
-// Inventory Browsing
-$(document).ready(function() {
+	// Inventory Browsing
 	var objects = document.getElementsByClassName("editor-inventory-row-content");
 	for (let i = 0; i < objects.length; i++) {
 		objects[i].addEventListener("click", function() {
@@ -362,10 +363,8 @@ $(document).ready(function() {
 			}, 250);
 		}
 	});
-});
 
-// Browser Price Range
-$(function() {
+	// Browser Price Range
 	$("#filter-price-range").slider({
 		step: 10,
 		range: true, 
@@ -375,28 +374,66 @@ $(function() {
 		slide: function(event, ui) {$("#filter-price-range-input").val(ui.values[0] + " - " + ui.values[1]); }
 	});
 	$("#filter-price-range-input").val($("#filter-price-range").slider("values", 0) + " - " + $("#filter-price-range").slider("values", 1));
-});
 
-// Browser Brand
-$(document).ready(function() {
-	
+	// Browser Brand
 	var brand_selector = document.querySelectorAll(".filter-manufacturer p");
 	var brand_array = Array.apply(null, Array(brand_selector.length)).map(function () {})
 	
 	for (let i = 0; i < brand_selector.length; i++) {
-		brand_array[i] = false;
+		brand_array[i] = null;
 	}
 	
 	for (let i = 0; i < brand_selector.length; i++) {
 		brand_selector[i].addEventListener("click", function() {
 			var brand = brand_selector[i].getAttribute("brand");
-			if (brand_array[i] === false) {
-				brand_array[i] = true;
+			if (brand_array[i] === null) {
+				brand_array[i] = brand;
 				brand_selector[i].classList.toggle("filter-manufacturer-active");
-			} else if (brand_array[i] === true) {
-				brand_array[i] = false;
+			} else if (brand_array[i] !== null) {
+				brand_array[i] = null;
 				brand_selector[i].classList.toggle("filter-manufacturer-active");
 			} else {}
 		});
 	}
+
+	// Browser Filtering
+	$("#filter-button")[0].addEventListener("click", function() {
+		for (let i = 0; i < furniture.length; i++) {
+			if (brand_array.includes(furniture[i].getAttribute("brand").toLowerCase()) &&
+			$("#filter-price-range").slider("values")[0] <= furniture[i].getAttribute("price") && 
+			$("#filter-price-range").slider("values")[1] >= furniture[i].getAttribute("price")) {
+				furniture[i].classList.remove("hidden");
+			} else if (brand_array.includes('all')) {
+				furniture[i].classList.remove("hidden");
+			} else {
+				if (furniture[i].classList.contains('hidden')) {
+					
+				} else {
+					furniture[i].classList.add("hidden");
+				}
+			}
+		}
+	});
+	
+	// Popup Function
+	let popupflex = document.getElementById("editor-canvas-popup");
+	let popuptext = document.getElementById("editor-canvas-popup-text");
+		
+	function popup(color, message) {
+		popuptext.style.borderColor = color;
+		popuptext.textContent = message;
+		
+		popupflex.classList.toggle('flex');
+		setTimeout(function() {
+			popupflex.classList.toggle('fadeon');
+		}, 150);
+		
+		setTimeout(function() {
+			popupflex.classList.toggle('fadeon');
+			setTimeout(function() {
+				popupflex.classList.toggle('flex');
+			}, 150);
+		}, 2000);
+	}
+	
 });

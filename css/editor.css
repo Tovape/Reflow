@@ -527,10 +527,6 @@ html,body {
 	max-width: 120px;
 }
 
-.editor-inventory-browser-results-each table tr {
-	
-}
-
 .editor-inventory-browser-results-each table tr td {
 	white-space:nowrap; 
 }
@@ -540,6 +536,111 @@ html,body {
 	height: 100%;
 	border-radius: 4px;
 }
+
+/* Material List */
+
+.editor-material {
+	background-color: var(--white);
+	position: absolute;
+	top: 0; left: 0;
+	height: calc(100% - 160px);
+	width: calc(100% - 160px);
+	padding: 80px;
+}
+
+.editor-material table {
+	width: 100%;
+	border-collapse: collapse;
+}
+
+.editor-material table tr:nth-child(odd) {
+	background-color: var(--purewhite);
+}
+
+.editor-material table tr:nth-child(even) {
+	background-color: var(--white);
+}
+
+.editor-material table tr:first-child {
+	background-color: var(--black2);
+	color: var(--white);
+}
+
+.editor-material table td {
+	padding: 6px;
+	font-family: var(--montserrat);
+}
+
+.editor-material table td img {
+	width: 50px;
+	height: 50px;
+}
+
+.editor-material table td svg {
+	vertical-align: middle;
+	horizontal-align: middle;
+}
+
+.editor-material-table-available{
+	width: 25px;
+}
+
+.editor-material-table-image {
+	width: 50px;	
+}
+
+.editor-material-table-quantity {
+	width: 50px;
+	text-align: center;
+}
+
+.editor-material-table-price {
+	width: 50px;
+	text-align: center;
+}
+
+.editor-material-table-site {
+	width: 40px;
+	text-align: center;
+}
+
+.editor-material-table-site span {
+	cursor: pointer;
+    border-radius: 4px;
+    padding: 6px;
+    background-color: var(--fourth);
+	width: 100%;
+	color: var(--white);
+}
+
+.editor-material-table-site span:hover {
+    color: var(--primary);
+    background-color: var(--fifth);
+    transition: all 0.1s ease-in-out;
+    -webkit-transition: all 0.1s ease-in-out;
+}
+
+.editor-material-table-site span:active {
+	background-color: var(--sixth);
+    transition: all 0.1s ease-in-out;
+    -webkit-transition: all 0.1s ease-in-out;
+}
+
+.editor-material-total {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	margin-top: 20px;
+	padding: 6px;
+}
+
+.editor-material-total p {
+	font-size: var(--medfont);
+	font-family: var(--montserrat);
+}
+
+
+.editor-material-total p:first-child {font-weight: bold;}
 
 /* Settings */
 
@@ -822,4 +923,3 @@ html,body {
 	transition: all 0.25s ease-in-out;
 	-webkit-transition: all 0.25s ease-in-out;	
 }
-

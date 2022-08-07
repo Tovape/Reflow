@@ -10,6 +10,7 @@ var arrLang = {
 	'editor-floor': 'Floor',
 	'editor-settings': 'Settings',
 	'editor-products': 'Products',
+	'editor-material': 'Materials',
 	'editor-open': 'Open',
 	'editor-close': 'Close'
 	
@@ -23,6 +24,7 @@ var arrLang = {
 	'editor-floor': 'Piso',
 	'editor-settings': 'Ajustes',
 	'editor-products': 'Productos',
+	'editor-material': 'Materiales',
 	'editor-open': 'Abrir',
 	'editor-close': 'Cerrar'
 
@@ -36,6 +38,7 @@ var arrLang = {
 	'editor-floor': 'Pis',
 	'editor-settings': 'Eines',
 	'editor-products': 'Productes',
+	'editor-material': 'Materials',
 	'editor-open': 'Obrir',
 	'editor-close': 'Tancar'
 

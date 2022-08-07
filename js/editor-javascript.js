@@ -415,6 +415,23 @@ document.addEventListener("DOMContentLoaded", function(event) {
 		}
 	});
 	
+	// Material Menu
+	$('#editor-material-open,#editor-material-cross').click(function(){
+		if ($('#editor-material').hasClass('fadeon')) {
+			$('#editor-material').toggleClass('fadeon');
+			setTimeout(function() {
+				$('#editor-material').toggleClass('show');
+			}, 250);
+		$('#editor-material-open').html('Open');
+		} else {
+			$('#editor-material').toggleClass('show');
+			setTimeout(function() {
+				$('#editor-material').toggleClass('fadeon');
+			}, 250);
+			$('#editor-material-open').html('Close');
+		}
+	});
+	
 	// Popup Function
 	let popupflex = document.getElementById("editor-canvas-popup");
 	let popuptext = document.getElementById("editor-canvas-popup-text");

@@ -55,11 +55,8 @@
 								<button key="dashboard-logout" type="submit">Log Out</button>
 							</form>
 						</div>
-						<div class="dashboard-profile-options-each">
-							<a href="/editor">Editor</a>
-						</div>
 						<% if(user_data[Object.keys(user_data)[8]] == 1) { %>
-						<div class="dashboard-profile-options-each dashboard-admin">
+						<div class="dashboard-profile-options-each">
 							<a key="dashboard-admin" href="/admin">Administrator Panel</a>
 						</div>
 						<% } %>
@@ -92,7 +89,6 @@
 					<a key="dashboard-progress" class="dashboard-filter-each dashboard-filter-progress" href="#">In Progress</a>
 				</div>
 				<div class="dashboard-gallery">
-				
 					<% for (var i = 0; i < requests.length; i++) { %>
 						<form action="/editor" method="post" class="dashboard-form" data-type="<%= requests[i].type %>" data-year="<%= requests[i].year %>">
 							<div class="dashboard-gallery-each">
@@ -113,10 +109,15 @@
 								</div>
 								<img data-lazy="/images/image8.jpg">
 							</div>
-							<input type="number" id="request_id" name="request_id" value="<%= requests[i].id_request %>" required>
-							<input type="number" id="request_class" name="request_class" value="<%= requests[i].class %>" required>
+							<input type="number" id="request_id" name="request_id" value="<%= requests[i].request_id %>" required>
 						</form>
 					<% } %>
+					<form action="/editor" method="post" class="dashboard-form dashboard-form-add">
+						<div class="dashboard-gallery-each dashboard-gallery-add">
+							<p>Add</p>
+						</div>
+						<input type="number" id="request_id" name="request_id" value="<%= requests.length+1 %>" required>
+					</form>
 				</div>
 			</div>
 		</div>

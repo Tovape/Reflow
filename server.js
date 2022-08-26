@@ -22,7 +22,7 @@ const ikeachecker = require('ikea-availability-checker')
 initializePassport(
   passport,
   email => users.find(user => user.email === email),
-  id_user => users.find(user => user.id_user === id_user)
+  user_id => users.find(user => user.user_id === user_id)
 )
 
 // USE
@@ -66,7 +66,7 @@ let query = "SELECT * FROM users";
 db.query(query, function (err, result, fields) {
 	if (err) {
 		throw err;
-		console.log("Error Inserting User");
+		console.log("Error Getting Users");
 	} else {
 		console.log("\nGot Users");
 		for(let i = 0; i < result.length; i++) {
@@ -81,7 +81,7 @@ db.query(query, function (err, result, fields) {
 
 let getRequests = async (user_id) => {
 	
-    const query = "SELECT * FROM requests WHERE id_user = " + user_id;
+    const query = "SELECT * FROM requests WHERE user_id = " + user_id;
 	let requests = [];
 	let result = await new Promise((resolve, reject) => db.query(query, (err, result) => {
 		if (err) {
@@ -103,22 +103,18 @@ let getRequests = async (user_id) => {
 
 let getJson = async (request_id) => {
 	
-	let query = "SELECT json FROM flats WHERE request_id = " + request_id;
-	let jsonsave = [];
+	let query = "SELECT json FROM requests WHERE request_id = " + request_id;
 	
 	let result = await new Promise((resolve, reject) => db.query(query, (err, result) => {
 		if (err) {
 			reject(err)
 		} else {
 			resolve(result);
-			console.log("\nGot Flats JSON")
-			for(let i = 0; i < result.length; i++) {
-				result[i] = JSON.parse(JSON.stringify(result[i]));
-				jsonsave.push(result[i]);
-			}
+			console.log("\nGot Request JSON")
+			console.log(result)
 		}
 	}));
-	return jsonsave;
+	return result;
 }
 
 // Get JSON Objects List
@@ -224,6 +220,13 @@ app.get('/register', checkNotAuthenticated, (req, res) => {
 	app.use(express.static(__dirname + '/js'))
 })
 
+app.get('/new', checkAuthenticated, (req, res) => {
+	res.render('new.ejs', { user_data: req.user }),
+	app.use(express.static(__dirname + '/css')),
+	app.use(express.static(__dirname + '/files')),
+	app.use(express.static(__dirname + '/js'))
+})
+
 app.get('/dashboard', checkAuthenticated, async (req, res) => {
 	let user_id = req.user[Object.keys(req.user)[0]];
 	let requests = await getRequests(user_id);
@@ -281,7 +284,7 @@ app.post('/register', checkNotAuthenticated, async (req, res) => {
 			let temp = Date.now().toString();
 
 			users.push({
-				id_user: Date.now(),
+				user_id: Date.now(),
 				username: req.body.name,
 				email: req.body.email,
 				password: hashedPassword,
@@ -308,25 +311,25 @@ app.post('/register', checkNotAuthenticated, async (req, res) => {
 
 app.post('/editor', checkAuthenticated, async (req, res) => {
 	let user_id = req.user[Object.keys(req.user)[0]];
-	console.log("Redirecting to editor ejs with request " + req.body.request_id + " from " + user_id + " of class " + req.body.request_class)
+	console.log("Redirecting to editor ejs with request " + req.body.request_id + " from " + user_id)
 	
 	let jsonsave = await getJson(req.body.request_id);
 	let objects = await getObjects();
 
 	setTimeout(function () {
 		let stringfiedjsonsave = JSON.stringify(jsonsave);
-		let jsonlength = Object.keys(jsonsave).length;
-		
+
 		let stringfiedobjects = JSON.stringify(objects);
 		let objectslength = Object.keys(objects).length;
 
-		res.render('editor.ejs', { user_data: req.user, request_id: req.body.request_id, request_class: req.body.request_class, jsonsave: stringfiedjsonsave, jsonlength: jsonlength, objects: objects, objectslength: objectslength }),
+		res.render('editor.ejs', { user_data: req.user, request_id: req.body.request_id, jsonsave: stringfiedjsonsave, objects: objects, objectslength: objectslength }),
 		app.use(express.static(__dirname + '/css')),
 		app.use(express.static(__dirname + '/files')),
 		app.use(express.static(__dirname + '/js'))
 	}, 1000);
 })
 
+/* FIX
 app.post('/savecanvas', (req, res) => {
 	console.log("\nSaving Server-Side")
 	
@@ -349,6 +352,7 @@ app.post('/savecanvas', (req, res) => {
 		});
 	}
 });
+*/
 
 // DELETE
 
@@ -529,7 +533,6 @@ app.route('/newpassword').post(async function (req, res, next) {
 
 console.log("Server Started on port " + PORT);
 app.listen(PORT);
-
 
 // Ikea Checker
 

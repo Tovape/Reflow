@@ -97,7 +97,7 @@
 }
 
 .dashboard-profile-options-each {
-	width: 50%;
+	width: 100%;
 	display: flex;
 	flex-direction: row;
 	justify-content: center;
@@ -160,10 +160,6 @@
 	background-color: var(--sixth);
 	transition: all 0.1s ease-in-out;
 	-webkit-transition: all 0.1s ease-in-out;
-}
-
-.dashboard-admin {
-	width: 100%;
 }
 
 .dashboard-profile-stats {
@@ -273,6 +269,12 @@
 	height: 180px;
 }
 
+.dashboard-form-add {
+	border: 1px solid var(--snowy);
+	width: 338px;
+	height: 178px;
+}
+
 .dashboard-gallery form input {
 	visibility: hidden;
     font-size: 0;
@@ -292,6 +294,14 @@
 	background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 70%, rgba(0, 0, 0, 1));
 	transition: all 0.1s ease-in-out;
 	-webkit-transition: all 0.1s ease-in-out;	
+}
+
+.dashboard-gallery-add{
+	background: none;
+	background-image: url(/icons/add.svg);
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: 240px 80px;
 }
 
 .dashboard-gallery-each:hover img {

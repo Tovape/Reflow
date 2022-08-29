@@ -704,6 +704,7 @@ Menu Configuration
 	font-size: var(--midfont);
 	color: var(--grey);
 	padding: 6px 0;
+	cursor: pointer;
 }
 
 .footer-each a:hover {

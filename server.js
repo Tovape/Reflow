@@ -311,27 +311,49 @@ app.post('/register', checkNotAuthenticated, async (req, res) => {
 
 app.post('/editor', checkAuthenticated, async (req, res) => {
 	let user_id = req.user[Object.keys(req.user)[0]];
-	console.log("Redirecting to editor ejs with request " + req.body.request_id + " from " + user_id)
+	console.log("Redirecting to editor ejs with request " + req.body.request_id + " with title " + req.body.request_title + " with description " + req.body.request_description + " from " + user_id)
 	
-	let jsonsave = await getJson(req.body.request_id);
-	let objects = await getObjects();
+	if (req.body.request_title === undefined || req.body.request_title === null) {
+		console.log("Creating New Request");
+		let query = "INSERT INTO requests VALUES (" + req.body.request_id + ", " + req.user[Object.keys(req.user)[0]] + ", 'Title', 'Description', 'photos', '" + new Date().getFullYear() + "', '0','')";
+		db.query(query, function (err, result, fields) {
+			if (err)  {
+				throw err;
+			} else {
+				console.log("Request Added Correctly")
+			}
+		});
+		let objects = await getObjects();
+		setTimeout(function () {
+			let stringfiedobjects = JSON.stringify(objects);
+			let objectslength = Object.keys(objects).length;
 
-	setTimeout(function () {
-		let stringfiedjsonsave = JSON.stringify(jsonsave);
+			res.render('editor.ejs', { user_data: req.user, request_id: req.body.request_id, jsonsave: '', objects: objects, objectslength: objectslength, request_title: 'Title', request_description: 'Description' }),
+			app.use(express.static(__dirname + '/css')),
+			app.use(express.static(__dirname + '/files')),
+			app.use(express.static(__dirname + '/js'))
+		}, 1000);
+	} else {
+		let jsonsave = await getJson(req.body.request_id);
+		let objects = await getObjects();
 
-		let stringfiedobjects = JSON.stringify(objects);
-		let objectslength = Object.keys(objects).length;
+		setTimeout(function () {
+			let stringfiedjsonsave = JSON.stringify(jsonsave);
 
-		res.render('editor.ejs', { user_data: req.user, request_id: req.body.request_id, jsonsave: stringfiedjsonsave, objects: objects, objectslength: objectslength }),
-		app.use(express.static(__dirname + '/css')),
-		app.use(express.static(__dirname + '/files')),
-		app.use(express.static(__dirname + '/js'))
-	}, 1000);
+			let stringfiedobjects = JSON.stringify(objects);
+			let objectslength = Object.keys(objects).length;
+
+			res.render('editor.ejs', { user_data: req.user, request_id: req.body.request_id, jsonsave: stringfiedjsonsave, objects: objects, objectslength: objectslength, request_title: req.body.request_title, request_description: req.body.request_description }),
+			app.use(express.static(__dirname + '/css')),
+			app.use(express.static(__dirname + '/files')),
+			app.use(express.static(__dirname + '/js'))
+		}, 1000);
+	}
 })
 
 /* FIX
 app.post('/savecanvas', (req, res) => {
-	console.log("\nSaving Server-Side")
+	console.log("\nSaving Canvas Server-Side")
 	
 	var json = JSON.stringify(req.body[Object.keys(req.body)[0]]);
 	var request_id = req.body[Object.keys(req.body)[1]];
@@ -353,6 +375,23 @@ app.post('/savecanvas', (req, res) => {
 	}
 });
 */
+
+app.post('/saverequest', (req, res) => {
+	console.log("\nSaving Request Server-Side")
+	if (req.body[Object.keys(req.body)[0]] !== null && req.body[Object.keys(req.body)[0]] !== undefined && req.body[Object.keys(req.body)[0]] !== '' && req.body[Object.keys(req.body)[1]] !== null && req.body[Object.keys(req.body)[1]] !== undefined && req.body[Object.keys(req.body)[1]] !== '' && req.body[Object.keys(req.body)[2]] !== null && req.body[Object.keys(req.body)[2]] !== undefined && req.body[Object.keys(req.body)[2]] !== '') {
+		console.log("\nUpdating request_id: " + req.body[Object.keys(req.body)[0]] + " new title: " + req.body[Object.keys(req.body)[1]] + " new description: " + req.body[Object.keys(req.body)[2]])
+		let query = "UPDATE requests SET title = '" + req.body[Object.keys(req.body)[1]] + "', description = '" + req.body[Object.keys(req.body)[2]] + "' WHERE request_id = " + req.body[Object.keys(req.body)[0]];
+		db.query(query, function (err, result, fields) {
+			if (err)  {
+				throw err;
+			} else {
+				console.log("Request Updated Correctly")
+			}
+		});
+	} else {
+		console.log("Critical Error");
+	}
+});
 
 // DELETE
 

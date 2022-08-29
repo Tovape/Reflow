@@ -1,6 +1,24 @@
+Optimise Web
+Implement Blueprint3d
+
 Research https://www.viaplatten.de/ and variants
 
-Info:
+Get Textures
+Get Models
 
-possible parters: decosol sumi
-real state, mobles like ikea, tiendas q venden muebles companies
+Partners:
+
+decosol sumi, real state, mobles like ikea, tiendas q venden muebles companies
+
+
+Redo buttons for 
+move walls
+draw walls
+delete walls
+
+<i class="fa-solid fa-arrow-pointer editor-menu-tools-each"></i>
+				<i class="fa-solid fa-eraser editor-menu-tools-each"></i>
+				<i class="fa-solid fa-pen editor-menu-tools-each"></i>
+				<i class="fa-solid fa-text-height editor-menu-tools-each"></i>
+				<i class="fa-solid fa-door-open editor-menu-tools-each"></i>
+				<i class="fa-solid fa-window-maximize editor-menu-tools-each"></i>

@@ -47,6 +47,27 @@
 		</div>
 		<div class="editor-menu-scrollable">
 			<div class="editor-menu-section">
+				<p key="editor-name">Name</p>
+			</div>
+			<div class="editor-menu-input">
+				<input type="text" id="request_title" name="request_title" placeholder="Name" value="" required>
+			</div>
+			<div class="editor-menu-section">
+				<p key="editor-description">Description</p>
+			</div>
+			<div class="editor-menu-input">
+				<input type="text" id="request_description" name="request_description" placeholder="Description" value="" required>
+			</div>
+			<div class="editor-menu-section">
+				<p key="editor-height">Flat Height</p>
+			</div>
+			<div class="editor-menu-input">
+				<input type="number" id="new_name" name="new_name" placeholder="Height" value="" required>
+			</div>
+			<div class="editor-menu-button">
+				<button key="editor-save" onclick="saveRequest()">Save</button>
+			</div>
+			<div class="editor-menu-section">
 				<p key="editor-house">House</p>
 			</div>
 			<div class="editor-menu-each">
@@ -286,6 +307,7 @@
 
 <input style="display: none" type="number" id="request_id" name="request_id" value="<%= request_id %>">
 <input style="display: none" type="text" id="jsonsave" class="jsonsave" name="jsonsave" value="">
+<input style="display: none" type="number" id="new" name="request_id" value="">
 
 <script>
 
@@ -298,6 +320,10 @@ var jsonsave_selector = document.getElementById("jsonsave");
 
 // Gets Value in JS File
 jsonsave_selector.setAttribute("value", <%-JSON.stringify(jsonsave)%>);
+
+// Set Title & Description
+document.getElementById("request_title").setAttribute("value", '<%= request_title %>');
+document.getElementById("request_description").setAttribute("value", '<%= request_description %>');
 
 </script>
 

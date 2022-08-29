@@ -110,6 +110,8 @@
 								<img data-lazy="/images/image8.jpg">
 							</div>
 							<input type="number" id="request_id" name="request_id" value="<%= requests[i].request_id %>" required>
+							<input type="text" id="request_title" name="request_title" value="<%= requests[i].title %>" style="display:none">
+							<input type="text" id="request_description" name="request_description" value="<%= requests[i].description %>" style="display:none">
 						</form>
 					<% } %>
 					<form action="/editor" method="post" class="dashboard-form dashboard-form-add">

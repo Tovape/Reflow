@@ -197,3 +197,16 @@ document.addEventListener("DOMContentLoaded", function(event) {
 	}
 	
 });
+
+// Save Title and Description DDBB AJAX
+function saveRequest() {
+	$.ajax({
+		url: "/saverequest",
+		type: "POST",
+		data: {
+			'request_id': document.getElementById("request_id").getAttribute("value"),
+			'request_title': document.getElementById("request_title").value,
+			'request_description': document.getElementById("request_description").value
+		}
+	});
+}

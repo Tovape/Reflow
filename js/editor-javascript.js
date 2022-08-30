@@ -175,6 +175,21 @@ document.addEventListener("DOMContentLoaded", function(event) {
 		}
 	});
 	
+	// Delete Project
+	$("#editor-delete")[0].addEventListener("click", function() {
+		popup("red","Deleting Project...");
+		setTimeout(function() {
+			$.ajax({
+				url: "/deleterequest",
+				type: "POST",
+				data: {
+					'request_id': document.getElementById("request_id").getAttribute("value")
+				}
+			});
+			window.location.replace("./dashboard");
+		}, 2300);
+	});
+	
 	// Popup Function
 	let popupflex = document.getElementById("editor-canvas-popup");
 	let popuptext = document.getElementById("editor-canvas-popup-text");

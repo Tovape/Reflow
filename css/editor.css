@@ -225,6 +225,25 @@ button {
     -webkit-transition: all 0.1s ease-in-out;
 }
 
+.editor-menu-delete p {
+	border: 1px solid red;
+	color: var(--white);
+	background-color: rgba(200,30,30,0.4);
+}
+
+.editor-menu-delete p:hover {
+	color: var(--white);
+	background-color: rgba(200,30,30,0.6);
+    transition: all 0.1s ease-in-out;
+    -webkit-transition: all 0.1s ease-in-out;
+}
+
+.editor-menu-delete p:active {
+	background-color: rgba(200,30,30,0.8);
+    transition: all 0.1s ease-in-out;
+    -webkit-transition: all 0.1s ease-in-out;
+}
+
 /* New Canvas Config */
 
 .editor-menu-input {
@@ -959,12 +978,12 @@ button {
 
 .editor-canvas-popup p {
 	text-align: center;
-	background-color:var(--white);
 	border-left: 3px solid transparent;
 	border-radius: 4px;
-	padding: 6px 12px;
+	padding: 12px 18px;
 	width: fit-Content;
-	background-color: var(--purewhite);
+	color: var(--snowy);
+	background-color: var(--black);
 }
 
 /* Display & Hide Canvas */

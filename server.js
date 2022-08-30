@@ -393,6 +393,22 @@ app.post('/saverequest', (req, res) => {
 	}
 });
 
+app.post('/deleterequest', (req, res) => {
+	console.log("\nDeleting Request Server-Side")
+	if (req.body[Object.keys(req.body)[0]] !== null && req.body[Object.keys(req.body)[0]] !== undefined && req.body[Object.keys(req.body)[0]] !== '') {
+		let query = "DELETE FROM requests WHERE request_id = '" + req.body[Object.keys(req.body)[0]] + "'";
+		db.query(query, function (err, result, fields) {
+			if (err)  {
+				throw err;
+			} else {
+				console.log("Request Deleted Correctly");
+			}
+		});
+	} else {
+		console.log("Critical Error");
+	}
+});
+
 // DELETE
 
 app.delete('/logout', (req, res) => {

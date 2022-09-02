@@ -239,10 +239,15 @@ app.get('/dashboard', checkAuthenticated, async (req, res) => {
 })
 
 app.get('/editor', checkAuthenticated, async (req, res) => {
-	res.render('editor.ejs', { user_data: req.user, objects: objects }),
-	app.use(express.static(__dirname + '/css')),
-	app.use(express.static(__dirname + '/files')),
-	app.use(express.static(__dirname + '/js'))
+	var objects = undefined;
+	if (objects !== undefined) {
+		res.render('editor.ejs', { user_data: req.user, objects: objects }),
+		app.use(express.static(__dirname + '/css')),
+		app.use(express.static(__dirname + '/files')),
+		app.use(express.static(__dirname + '/js'))
+	} else {
+		res.redirect('/dashboard');
+	}
 })
 
 app.get('/resetpassword', checkNotAuthenticated, (req, res) => {

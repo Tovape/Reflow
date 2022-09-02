@@ -6,13 +6,18 @@ var arrLang = {
 	'en': {
 	
 	// Editor
+	'editor-name': 'Name',
+	'editor-description': 'Description',
+	'editor-height': 'Flat Height',
 	'editor-house': 'House',
 	'editor-floor': 'Floor',
 	'editor-settings': 'Settings',
 	'editor-products': 'Products',
 	'editor-material': 'Materials',
+	'editor-inventory': 'Inventory',
 	'editor-open': 'Open',
-	'editor-close': 'Close'
+	'editor-close': 'Close',
+	'editor-delete': 'Delete'
 	
 	},
 
@@ -20,13 +25,18 @@ var arrLang = {
 	'es': {
 
 	// Editor
+	'editor-name': 'Titulo',
+	'editor-description': 'Descripción',
+	'editor-height': 'Altura',
 	'editor-house': 'Casa',
 	'editor-floor': 'Piso',
 	'editor-settings': 'Ajustes',
 	'editor-products': 'Productos',
 	'editor-material': 'Materiales',
+	'editor-inventory': 'Inventario',
 	'editor-open': 'Abrir',
-	'editor-close': 'Cerrar'
+	'editor-close': 'Cerrar',
+	'editor-delete': 'Eliminar'
 
 	},
 	
@@ -34,13 +44,18 @@ var arrLang = {
 	'ca': {
 
 	// Editor
+	'editor-name': 'Titol',
+	'editor-description': 'Descripció',
+	'editor-height': 'Altura',
 	'editor-house': 'Casa',
 	'editor-floor': 'Pis',
 	'editor-settings': 'Eines',
 	'editor-products': 'Productes',
 	'editor-material': 'Materials',
+	'editor-inventory': 'Inventari',
 	'editor-open': 'Obrir',
-	'editor-close': 'Tancar'
+	'editor-close': 'Tancar',
+	'editor-delete': 'Eliminar'
 
 	}
 };

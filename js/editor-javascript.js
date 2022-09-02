@@ -10,6 +10,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
 	}
 
 	// Change 2D/3D
+	/*
 	var view_2d = document.getElementById("editor-menu-view-2d");
 	var view_3d = document.getElementById("editor-menu-view-3d");
 	var canvas_selector = document.getElementsByClassName("editor-canvas-each");
@@ -27,6 +28,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
 		canvas_selector[0].classList.toggle("show");
 		canvas_selector[1].classList.toggle("show");;
 	});
+	*/
 
 	// Save to DDBB AJAX - FIX
 	/*
@@ -44,7 +46,6 @@ document.addEventListener("DOMContentLoaded", function(event) {
 		}	
 	}, 5000);
 	*/
-
 
 	// Menu Options
 	$('.editor-menu-each-button').click(function(){

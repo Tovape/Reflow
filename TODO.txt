@@ -1,7 +1,7 @@
+Make domElement not undefined line 48376
+
 Optimise Web
 Implement Blueprint3d
-
-Research https://www.viaplatten.de/ and variants
 
 Get Textures
 Get Models
@@ -10,15 +10,48 @@ Partners:
 
 decosol sumi, real state, mobles like ikea, tiendas q venden muebles companies
 
+Domain Name
+https://domains.google.com/registrar/search?searchTerm=reflow&hl=es&priceFilter=30&tab=1
 
-Redo buttons for 
-move walls
-draw walls
-delete walls
+Hostinger VPS --> Node.js, Mysql
 
-<i class="fa-solid fa-arrow-pointer editor-menu-tools-each"></i>
-				<i class="fa-solid fa-eraser editor-menu-tools-each"></i>
-				<i class="fa-solid fa-pen editor-menu-tools-each"></i>
-				<i class="fa-solid fa-text-height editor-menu-tools-each"></i>
-				<i class="fa-solid fa-door-open editor-menu-tools-each"></i>
-				<i class="fa-solid fa-window-maximize editor-menu-tools-each"></i>
+Run nodemon
+rpm run server.js
+
+TODO:
+Admin Page, live sql search for users https://www.youtube.com/watch?v=991fdnSllcw
+And Add the coordinate system
+
+The coordinate system will be probably made with inputting in js
+
+
+CODE - ITEMS (Obejcts Imported):
+
+   /*     
+   {
+      "name" : "",
+      "image" : "",
+      "model" : "",
+      "type" : "1"
+    }, 
+    */
+  ]
+
+
+
+  var itemsDiv = $("#items-wrapper")
+  for (var i = 0; i < items.length; i++) {
+    var item = items[i];
+    var html = '<div class="col-sm-4">' +
+                '<a class="thumbnail add-item" model-name="' + 
+                item.name + 
+                '" model-url="' +
+                item.model +
+                '" model-type="' +
+                item.type + 
+                '"><img src="' +
+                item.image + 
+                '" alt="Add Item"> '+
+                item.name +
+                '</a></div>';
+    itemsDiv.append(html);

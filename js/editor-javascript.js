@@ -1,5 +1,10 @@
 document.addEventListener("DOMContentLoaded", function(event) { 
 
+	// Set 2D Floorplanner Default
+	setTimeout(function(){
+		document.getElementById("editor-menu-view-2d").click();
+	}, 1000);
+
 	// Getting JSON
 	var canvas_jsonsave = document.getElementById("jsonsave")
 

@@ -875,6 +875,13 @@ button {
 	overflow-Y: scroll;
 }
 
+#viewer {
+	width: 100%;
+	height: 100%;
+	position: relative;
+	overflow: hidden;	
+}
+
 #floorplanner {
 	width: 100%;
 	height: 100%;
@@ -882,26 +889,25 @@ button {
 	overflow: hidden;
 }
 
-.editor-options {
+#floorplanner-canvas {
+	width: 100% !important;
+}
+
+#floorplanner-controls, #camera-controls {
+	z-index: 9;
 	position: absolute;
 	bottom: 50px;
 	right: 50px;
-	display: flex;
-	flex-direction: column;
-}
-
-.editor-options > div {
 	display: flex;
 	flex-direction: row;
 	align-items: flex-end;
 	justify-content: flex-end;
 	gap: 4px;
-	padding-top: 4px;
 }
 
 #save {background-color: green;}
 
-.editor-options div > div {
+#floorplanner-controls button, #camera-controls div {
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -909,25 +915,122 @@ button {
 	padding: 10px;
 	border-radius: 4px;
 	cursor: pointer;
-	width: 20px;
-	height: 20px;
+	width: 40px;
+	height: 40px;
+	box-sizing: border-box;
 }
 
-.editor-options div > div .fa-solid {
+#floorplanner-controls button, #camera-controls div .fa-solid {
 	color: var(--white);
+	font-size: var(--undfont);
 }
 
-.editor-options div > div:hover {
+#floorplanner-controls button:hover {
 	background-color: var(--fifth) !important;
 	color: var(--primary);
 	transition: all 0.1s ease-in-out;
 	-webkit-transition: all 0.1s ease-in-out;	
 }
 
-.editor-options div > div:active {
+#floorplanner-controls button:active {
 	background-color: var(--sixth) !important;
 	transition: all 0.1s ease-in-out;
 	-webkit-transition: all 0.1s ease-in-out;	
+}
+
+#camera-controls div:hover {
+	background-color: var(--fifth) !important;
+	color: var(--primary);
+	transition: all 0.1s ease-in-out;
+	-webkit-transition: all 0.1s ease-in-out;	
+}
+
+#camera-controls div:active {
+	background-color: var(--sixth) !important;
+	transition: all 0.1s ease-in-out;
+	-webkit-transition: all 0.1s ease-in-out;	
+}
+
+/* Context Menu */
+
+#context-menu {
+	font-family: var(--montserrat);
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	background-color: var(--white);
+	z-index: 9;
+    position: absolute;
+    bottom: 100px;
+    right: 50px;
+	padding: 10px;
+	border-radius: 4px;
+	box-shadow: 0px 4px 4px 0px var(--shadowlow);
+}
+
+#context-menu div {
+	display: flex;
+	flex-direction: row;
+	padding-bottom: 6px;
+}
+
+#context-menu div p {
+	padding-right: 6px;
+	width: calc(100% - 56px);
+}
+
+#context-menu div input {
+	width: 50px;
+	border: none;
+}
+
+#context-menu-name {
+	font-size: var(--undfont);
+}
+
+#context-menu-delete {
+	box-sizing: border-box;
+	margin: 6px 0px;
+	padding: 6px 0px;
+	cursor: pointer;
+	border-radius: 4px;
+	border: 1px solid red;
+	color: var(--white);
+	background-color: rgba(200,30,30,0.4);
+}
+
+#context-menu-delete:hover {
+	color: var(--white);
+	background-color: rgba(200,30,30,0.6);
+    transition: all 0.1s ease-in-out;
+    -webkit-transition: all 0.1s ease-in-out;
+}
+
+#context-menu-delete:active {
+	background-color: rgba(200,30,30,0.8);
+    transition: all 0.1s ease-in-out;
+    -webkit-transition: all 0.1s ease-in-out;
+}
+
+#context-menu-size {
+	padding-bottom: 6px;
+}
+
+/* Loading Modal */
+
+#loading-modal {
+	position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+	background-color: var(--shadowhig);
+}
+
+#loading-modal svg {
+	width: 100px;
+	height: 100px;
 }
 
 /* Shortcuts */
@@ -963,16 +1066,6 @@ button {
 
 /* Display & Hide Canvas */
 
-.editor-canvas-each{
-	display: none;
-	width: 100%;
-	height: 100%;
-}
-
-.canvas-container {
-	display: none;
-}
-
 .hidden {
 	display: none;
 }
@@ -995,16 +1088,4 @@ button {
 	opacity: 1;
 	transition: all 0.25s ease-in-out;
 	-webkit-transition: all 0.25s ease-in-out;	
-}
-
-
-/**/
-
-#floorplanner-controls {
-	position: absolute;
-	z-index: 9999;
-	display: flex;
-	background-color:RED;
-	right: 0;
-	top: 0;
 }

@@ -27,7 +27,7 @@
 	<script type="text/javascript" src="editor-javascript.js"></script>
 	<script type="text/javascript" src="three.min.js"></script>
 	<script type="text/javascript" src="blueprint3d.js"></script>
-	<script type="text/javascript" src="example.js"></script>
+	<script type="text/javascript" src="editor-canvas.js"></script>
 </head>
 
 <body>
@@ -126,128 +126,20 @@
 		<div id="floorplanner" style="height: 1041px;">
 			<canvas id="floorplanner-canvas"></canvas>
 			<div id="floorplanner-controls">
-				<button id="move" >
-				<span ></span>
-				Move Walls
+				<button id="move">
+					<i class="fa-solid fa-arrow-pointer editor-menu-tools-each"></i>
 				</button>
 				<button id="draw">
-				<span ></span>
-				Draw Walls
+					<i class="fa-solid fa-pen editor-menu-tools-each"></i>
 				</button>
-				<button id="delete" >
-				<span ></span>
-				Delete Walls
+				<button id="delete">
+					<i class="fa-solid fa-eraser editor-menu-tools-each"></i>
 				</button>
-				<span >
-				<button  id="update-floorplan">Done &raquo;</button>
-				</span>
-			</div>
-			<div id="draw-walls-hint">
-				Press the "Esc" key to stop drawing walls
 			</div>
 		</div>
-		
-		<div id="viewer">
-			<div id="main-controls">
-				<a href="#" id="new">
-				New Plan
-				</a>
-				<a href="#" id="saveFile">
-				Save Plan
-				</a>
-				<a >
-				<input type="file" id="loadFile">
-				Load Plan
-				</a>
-			</div>
+		<div id="viewer" style="display:none">
+			<!-- Here Goes main-controls -->
 			<div id="camera-controls">
-				<a href="#"  id="zoom-out">
-				<span></span>
-				</a>
-				<a href="#"id="reset-view">
-				<span ></span>
-				</a>
-				<a href="#"  id="zoom-in">
-				<span ></span>
-				</a>
-				<span>&nbsp;</span>
-				<a  href="#" id="move-left" >
-				<span></span>
-				</a>
-				<span >
-				<a href="#" id="move-up">
-				<span ></span>
-				</a>
-				<a href="#" id="move-down">
-				<span></span>
-				</a>
-				</span>
-				<a  href="#" id="move-right" >
-				<span ></span>
-				</a>
-			</div>
-			<div id="loading-modal">
-				<h1>Loading...</h1>
-			</div>
-		</div>
-		
-		<div class="editor-options">
-		
-			<div id="context-menu">
-						<div style="margin: 0 20px">
-				<span id="context-menu-name"></span>
-				<br /><br />
-				<button id="context-menu-delete">
-				<span></span> 
-				Delete Item
-				</button>
-				<br />
-				<div >
-					<div >Adjust Size</div>
-					<div style="color: #333333">
-						<div >
-							<div >
-								<label class="col-sm-5">
-								Width
-								</label>
-								<div class="col-sm-6">
-									<input type="number" id="item-width">
-								</div>
-							</div>
-							<div class="form-group">
-								<label class="col-sm-5 ">
-								Depth 
-								</label>
-								<div class="col-sm-6">
-									<input type="number"  id="item-depth">
-								</div>
-							</div>
-							<div >
-								<label class="col-sm-5 ">
-								Height
-								</label>
-								<div class="col-sm-6">
-									<input type="number" id="item-height">
-								</div>
-							</div>
-						</div>
-						<small><span>Measurements in inches.</span></small>
-					</div>
-				</div>
-				<label><input type="checkbox" id="fixed" /> Lock in place</label>
-				<br /><br />
-			</div>
-			
-				<p id="editor-modifier-name"></p>
-				<input type="number" id="editor-modifier-width">
-				<input type="number" id="editor-modifier-height">
-				<input type="number" id="editor-modifier-depth">
-				<label><input type="checkbox" id="editor-modifier-fixed" /> Lock in place</label>
-			</div>
-			<div>
-				<div id="save">
-					<i class="fa-solid fa-floppy-disk"></i>
-				</div>
 				<div id="zoomin">
 					<i class="fa-solid fa-plus"></i>
 				</div>
@@ -258,23 +150,43 @@
 					<i class="fa-solid fa-minus"></i>
 				</div>
 			</div>
-			<div><!--
-				<div id="pointer">
-					<i class="fa-solid fa-arrow-pointer editor-menu-tools-each"></i>
-				</div>
-				<div id="draw">
-					<i class="fa-solid fa-pen editor-menu-tools-each"></i>
-				</div>
-				<div id="eraser">
-					<i class="fa-solid fa-eraser editor-menu-tools-each"></i>
-				</div>
-				<div id="doors">
-					<i class="fa-solid fa-door-open editor-menu-tools-each"></i>
-				</div>
-				<div id="windows">
-					<i class="fa-solid fa-window-maximize editor-menu-tools-each"></i>
-				</div>-->
+			<div id="loading-modal">
+				<svg version="1.1" id="L9" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+				viewBox="0 0 100 100" enable-background="new 0 0 0 0" xml:space="preserve">
+				<path fill="#fff" d="M73,50c0-12.7-10.3-23-23-23S27,37.3,27,50 M30.9,50c0-10.5,8.5-19.1,19.1-19.1S69.1,39.5,69.1,50">
+				<animateTransform 
+				attributeName="transform" 
+				attributeType="XML" 
+				type="rotate"
+				dur="1s" 
+				from="0 50 50"
+				to="360 50 50" 
+				repeatCount="indefinite" />
+				</path>
+				</svg>
 			</div>
+		</div>
+		<div id="context-menu">	
+			<p id="context-menu-name"></p>
+			<button id="context-menu-delete">Delete Item</button>
+			<p id="context-menu-size">Adjust Size</p>
+			<div>
+				<p>Width</p>
+				<input type="number" id="item-width">
+			</div>
+			<div>
+				<p>Depth</p>
+				<input type="number" id="item-depth">
+			</div>
+			<div>
+				<p>Height</p>
+				<input type="number" id="item-height">
+			</div>
+			<div>
+				<p>Lock in place</p>
+				<input type="checkbox" id="fixed"/>
+			</div>
+			<p>Measurements in inches.</p>
 		</div>
 		<div class="editor-inventory fadein hidden" id="editor-inventory">
 			<div class="editor-inventory-banner">

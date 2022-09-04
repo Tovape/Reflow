@@ -1,4 +1,3 @@
-
 /*
  * Camera Buttons
  */
@@ -110,7 +109,7 @@ var ContextMenu = function(blueprint3d) {
   var three = blueprint3d.three;
 
   function init() {
-    $("#eraser").click(function(event) {
+    $("#context-menu-delete").click(function(event) {
         selectedItem.remove();
     });
 
@@ -135,35 +134,35 @@ var ContextMenu = function(blueprint3d) {
 
   function itemSelected(item) {
     selectedItem = item;
-	
-    $("#editor-modifier-name").text(item.metadata.itemName);
 
-    $("#editor-modifier-width").val(inToCm(selectedItem.getWidth()).toFixed(0));
-    $("#editor-modifier-height").val(inToCm(selectedItem.getHeight()).toFixed(0));
-    $("#editor-modifier-depth").val(inToCm(selectedItem.getDepth()).toFixed(0));
+    $("#context-menu-name").text(item.metadata.itemName);
 
-    $("#editor-modifier").show();
+    $("#item-width").val(cmToIn(selectedItem.getWidth()).toFixed(0));
+    $("#item-height").val(cmToIn(selectedItem.getHeight()).toFixed(0));
+    $("#item-depth").val(cmToIn(selectedItem.getDepth()).toFixed(0));
 
-    $("#editor-modifier-fixed").prop('checked', item.fixed);
+    $("#context-menu").show();
+
+    $("#fixed").prop('checked', item.fixed);
   }
 
   function resize() {
     selectedItem.resize(
-      inToCm($("#editor-modifier-height").val()),
-      inToCm($("#editor-modifier-width").val()),
-      inToCm($("#editor-modifier-depth").val())
+      inToCm($("#item-height").val()),
+      inToCm($("#item-width").val()),
+      inToCm($("#item-depth").val())
     );
   }
 
   function initResize() {
-    $("#editor-modifier-height").change(resize);
-    $("#editor-modifier-width").change(resize);
-    $("#editor-modifier-depth").change(resize);
+    $("#item-height").change(resize);
+    $("#item-width").change(resize);
+    $("#item-depth").change(resize);
   }
 
   function itemUnselected() {
     selectedItem = null;
-    $("#editor-modifier").hide();
+    $("#context-menu").hide();
   }
 
   init();
@@ -248,7 +247,7 @@ var SideMenu = function(blueprint3d, floorplanControls, modalEffects) {
       elem.click(tabClicked(elem));
     }
 
-    // USE floorplanUpdate() to update floor
+    $("#update-floorplan").click(floorplanUpdate);
 
     initLeftMenu();
 
@@ -335,7 +334,7 @@ var SideMenu = function(blueprint3d, floorplanControls, modalEffects) {
 
   };
 
-  // TODO: Convert for Compability
+  // TODO: this doesn't really belong here
   function initItems() {
     $("#add-items").find(".add-item").mousedown(function(e) {
       var modelUrl = $(this).attr("model-url");
@@ -414,7 +413,7 @@ var TextureSelector = function (blueprint3d, sideMenu) {
 
 var ViewerFloorplanner = function(blueprint3d) {
 
-  var canvasWrapper = '#canvas-2d';
+  var canvasWrapper = '#floorplanner';
 
   // buttons
   var move = '#move';
@@ -524,7 +523,7 @@ $(document).ready(function() {
   // main setup
   var opts = {
     floorplannerElement: 'floorplanner-canvas',
-    threeElement: '#canvas-3d',
+    threeElement: '#viewer',
     threeCanvasElement: 'three-canvas',
     textureDir: "models/textures/",
     widget: false

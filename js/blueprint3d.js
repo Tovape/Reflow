@@ -46810,7 +46810,11 @@ var ThreeController = function(three, model, camera, element, controls, hud) {
 
       switch(state) {
         case states.DRAGGING:
-          selectedObject.clickReleased();
+		  if (selectedObject !== null) {
+            selectedObject.clickReleased();
+		  } else {
+			switchState(states.SELECTED);
+		  }
           switchState(states.SELECTED);
           break;
         case states.ROTATING:

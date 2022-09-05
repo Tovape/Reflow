@@ -356,36 +356,12 @@ app.post('/editor', checkAuthenticated, async (req, res) => {
 	}
 })
 
-/* FIX
-app.post('/savecanvas', (req, res) => {
-	console.log("\nSaving Canvas Server-Side")
-	
-	var json = JSON.stringify(req.body[Object.keys(req.body)[0]]);
-	var request_id = req.body[Object.keys(req.body)[1]];
-	var flat_id = req.body[Object.keys(req.body)[2]];
-	
-	flat_id++;
-
-	console.log("\nRequest " + request_id);
-	console.log("Flat " + flat_id);
-	if (json != null || json != 'undefined' || json != '') {
-		let query = "UPDATE flats SET json = '" + json + "' WHERE flat_id = " + flat_id + " AND request_id = " + request_id;
-		db.query(query, function (err, result, fields) {
-			if (err)  {
-				throw err;
-			} else {
-				console.log("Canvas Updated Correctly")
-			}
-		});
-	}
-});
-*/
-
 app.post('/saverequest', (req, res) => {
 	console.log("\nSaving Request Server-Side")
-	if (req.body[Object.keys(req.body)[0]] !== null && req.body[Object.keys(req.body)[0]] !== undefined && req.body[Object.keys(req.body)[0]] !== '' && req.body[Object.keys(req.body)[1]] !== null && req.body[Object.keys(req.body)[1]] !== undefined && req.body[Object.keys(req.body)[1]] !== '' && req.body[Object.keys(req.body)[2]] !== null && req.body[Object.keys(req.body)[2]] !== undefined && req.body[Object.keys(req.body)[2]] !== '') {
+	console.log(req.body[Object.keys(req.body)[0]])
+	if (req.body[Object.keys(req.body)[0]] !== null && req.body[Object.keys(req.body)[0]] !== undefined && req.body[Object.keys(req.body)[0]] !== '') {
 		console.log("\nUpdating request_id: " + req.body[Object.keys(req.body)[0]] + " new title: " + req.body[Object.keys(req.body)[1]] + " new description: " + req.body[Object.keys(req.body)[2]])
-		let query = "UPDATE requests SET title = '" + req.body[Object.keys(req.body)[1]] + "', description = '" + req.body[Object.keys(req.body)[2]] + "' WHERE request_id = " + req.body[Object.keys(req.body)[0]];
+		let query = "UPDATE requests SET title = '" + req.body[Object.keys(req.body)[1]] + "', description = '" + req.body[Object.keys(req.body)[2]] + "', json = '" + req.body[Object.keys(req.body)[3]] + "' WHERE request_id = " + req.body[Object.keys(req.body)[0]];
 		db.query(query, function (err, result, fields) {
 			if (err)  {
 				throw err;

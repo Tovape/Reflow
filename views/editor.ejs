@@ -21,13 +21,13 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.js"></script>
 	<script src="https://code.jquery.com/ui/1.13.0/jquery-ui.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/quicklink/2.2.0/quicklink.umd.js"></script>
+	<script type="text/javascript" src="editor-canvas.js"></script>
 	<script type="text/javascript" src="global-javascript.js"></script>
 	<script type="text/javascript" src="global-language.js"></script>
 	<script type="text/javascript" src="editor-language.js"></script>
 	<script type="text/javascript" src="editor-javascript.js"></script>
 	<script type="text/javascript" src="three.min.js"></script>
 	<script type="text/javascript" src="blueprint3d.js"></script>
-	<script type="text/javascript" src="editor-canvas.js"></script>
 </head>
 
 <body>
@@ -60,12 +60,14 @@
 			<div class="editor-menu-input">
 				<input type="text" id="request_description" name="request_description" placeholder="Description" value="" required>
 			</div>
+			<!--
 			<div class="editor-menu-section">
 				<p key="editor-height">Flat Height</p>
 			</div>
 			<div class="editor-menu-input">
 				<input type="number" id="new_name" name="new_name" placeholder="Height" value="" required>
 			</div>
+			-->
 			<div class="editor-menu-button">
 				<button key="editor-save" onclick="saveRequest()">Save</button>
 			</div>
@@ -122,7 +124,6 @@
 		</div>
 	</div>
 	<div class="editor-canvas" id="editor-canvas">
-	
 		<div id="floorplanner" style="height: 1041px;">
 			<canvas id="floorplanner-canvas"></canvas>
 			<div id="floorplanner-controls">
@@ -188,6 +189,36 @@
 			</div>
 			<p>Measurements in inches.</p>
 		</div>
+		<div id="floorTexturesDiv">
+			<p class="texture-title">Adjust Floor</p>
+			<div class="texture-flex">
+				<div>
+					<a href="#" class="thumbnail texture-select-thumbnail" texture-url="rooms/textures/light_fine_wood.jpg" texture-stretch="false" texture-scale="300">
+						<img data-lazy="rooms/textures/light_fine_wood.jpg" />
+					</a>
+				</div>
+			</div>
+		</div>
+		<div id="wallTextures">
+			<p class="texture-title">Adjust Wall</p>
+			<div class="texture-flex">
+				<div>
+					<a href="#" class="thumbnail texture-select-thumbnail" texture-url="rooms/textures/marbletiles.jpg" texture-stretch="false" texture-scale="300">
+						<img data-lazy="rooms/textures/marbletiles.jpg"/>
+					</a>
+				</div>
+				<div>
+					<a href="#" class="thumbnail texture-select-thumbnail" texture-url="rooms/textures/wallmap_yellow.png" texture-stretch="true" texture-scale="">
+						<img data-lazy="rooms/textures/wallmap_yellow.png"/>
+					</a>
+				</div>
+				<div>
+					<a href="#" class="thumbnail texture-select-thumbnail" texture-url="rooms/textures/light_brick.jpg" texture-stretch="false" texture-scale="100">
+						<img data-lazy="rooms/textures/light_brick.jpg"/>
+					</a>
+				</div>
+			</div>
+		</div>		
 		<div class="editor-inventory fadein hidden" id="editor-inventory">
 			<div class="editor-inventory-banner">
 				<p class="editor-inventory-title" key="editor-inventory">Inventory</p>
@@ -277,27 +308,27 @@
 								<i class="fa-solid fa-magnifying-glass"></i>
 								<input type="text" id="searchbar" name="searchbar" placeholder="Search" value="">
 							</div>
-							<div class="editor-inventory-browser-results-scroll">
-							<% for (var i = 0; i < objectslength; i++) { %>
-								<div class="editor-inventory-browser-results-each" price="<%= objects[i].price %>" brand="<%= objects[i].brand %>" color="#<%= objects[i].color %>" height="<%= objects[i].height %>" width="<%= objects[i].width %>" depth="<%= objects[i].depth %>" name="<%= objects[i].name %>">
-									<div>
-										<p class="editor-inventory-browser-results-each-name"><%= objects[i].brand %> - <%= objects[i].name %> (<%= objects[i].price %>$)</p>
-										<table>
-											<tr>
-												<td>Height</td>
-												<td>Width</td>
-												<td>Depth</td>
-											</tr>
-											<tr>
-												<td><%= objects[i].height %></td>
-												<td><%= objects[i].width %></td>
-												<td><%= objects[i].depth %></td>
-											</tr>
-										</table>
+							<div class="editor-inventory-browser-results-scroll" id="add-items">
+								<% for (var i = 0; i < objectslength; i++) { %>
+									<div class="editor-inventory-browser-results-each add-item" id="items-wrapper" price="<%= objects[i].price %>" brand="<%= objects[i].brand %>" height="<%= objects[i].height %>" width="<%= objects[i].width %>" depth="<%= objects[i].depth %>" model-name="<%= objects[i].name %>" model-url="<%= objects[i].url %>" model-type="<%= objects[i].type %>">
+										<div>
+											<p class="editor-inventory-browser-results-each-name"><%= objects[i].brand %> - <%= objects[i].name %> (<%= objects[i].price %>$)</p>
+											<table>
+												<tr>
+													<td>Height</td>
+													<td>Width</td>
+													<td>Depth</td>
+												</tr>
+												<tr>
+													<td><%= objects[i].height %></td>
+													<td><%= objects[i].width %></td>
+													<td><%= objects[i].depth %></td>
+												</tr>
+											</table>
+										</div>
+										<img data-lazy="models/thumbnails/thumbnail_Church-Chair-oak-white_1024x1024.jpg">
 									</div>
-									<img data-lazy="/editor/ikea/eket.jpg">
-								</div>
-								<% } %>	
+								<% } %>				
 							</div>
 						</div>
 					</div>

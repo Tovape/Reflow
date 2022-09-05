@@ -14,43 +14,13 @@ document.addEventListener("DOMContentLoaded", function(event) {
 		console.log("Got: " + canvas_jsonsave_parsed.json)
 	}
 
-	// Change 2D/3D
-	/*
-	var view_2d = document.getElementById("editor-menu-view-2d");
-	var view_3d = document.getElementById("editor-menu-view-3d");
-	var canvas_selector = document.getElementsByClassName("editor-canvas-each");
-
-	view_2d.addEventListener("click", function() {
-		view_3d.classList.remove("active");
-		view_2d.classList.add("active");
-		canvas_selector[0].classList.toggle("show");
-		canvas_selector[1].classList.toggle("show");
-	});
-	
-	view_3d.addEventListener("click", function() {
-		view_2d.classList.remove("active");
-		view_3d.classList.add("active");
-		canvas_selector[0].classList.toggle("show");
-		canvas_selector[1].classList.toggle("show");;
-	});
-	*/
-
-	// Save to DDBB AJAX - FIX
-	/*
-	var jsonAutosave = window.setInterval(function() {
-		if (flatselected !== null && canvas_json[flatselected] !== null) {
-			$.ajax({
-				url: "/savecanvas",
-				type: "POST",
-				data: {
-					'json': canvas_json[flatselected],
-					'request': request_id,
-					'flat': flatselected
-				}
-			});
-		}	
-	}, 5000);
-	*/
+	// Add Items Popup
+	var items = document.getElementsByClassName("editor-inventory-browser-results-each");
+	for (let i = 0; i < items.length; i++) {
+		items[i].addEventListener("click", function() {
+			popup("green","Adding Item...");
+		});
+	}
 
 	// Menu Options
 	$('.editor-menu-each-button').click(function(){
@@ -196,6 +166,20 @@ document.addEventListener("DOMContentLoaded", function(event) {
 		}, 2300);
 	});
 	
+	// Automatic Saving
+	/*
+	var jsonAutosave = window.setInterval(function() {
+		$.ajax({
+			url: "/savecanvas",
+			type: "POST",
+			data: {
+				'json': canvas_json[flatselected],
+				'request': request_id
+			}
+		});
+	}, 5000);
+	*/
+	
 	// Popup Function
 	let popupflex = document.getElementById("editor-canvas-popup");
 	let popuptext = document.getElementById("editor-canvas-popup-text");
@@ -227,7 +211,10 @@ function saveRequest() {
 		data: {
 			'request_id': document.getElementById("request_id").getAttribute("value"),
 			'request_title': document.getElementById("request_title").value,
-			'request_description': document.getElementById("request_description").value
-		}
+			'request_description': document.getElementById("request_description").value,
+			'request_json': saveBlob()
+		},
+		processData: false, //add this
+		contentType: false //and this
 	});
 }

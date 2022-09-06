@@ -388,7 +388,6 @@
 
 <input style="display: none" type="number" id="request_id" name="request_id" value="<%= request_id %>">
 <input style="display: none" type="text" id="jsonsave" class="jsonsave" name="jsonsave" value="">
-<input style="display: none" type="number" id="new" name="request_id" value="">
 
 <script>
 
@@ -400,7 +399,7 @@ document.getElementById("editor-profile-avatar").style.backgroundImage = "url('/
 var jsonsave_selector = document.getElementById("jsonsave");
 
 // Gets Value in JS File
-jsonsave_selector.setAttribute("value", <%-JSON.stringify(jsonsave)%>);
+jsonsave_selector.setAttribute("value", <%- JSON.stringify(jsonsave)%>);
 
 // Set Title & Description
 document.getElementById("request_title").setAttribute("value", '<%= request_title %>');

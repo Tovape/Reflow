@@ -95,7 +95,6 @@ let getRequests = async (user_id) => {
 			}
 		}
 	}));
-	console.log(requests)
 	return requests;
 }
 
@@ -111,7 +110,6 @@ let getJson = async (request_id) => {
 		} else {
 			resolve(result);
 			console.log("\nGot Request JSON")
-			console.log(result)
 		}
 	}));
 	return result;
@@ -358,7 +356,6 @@ app.post('/editor', checkAuthenticated, async (req, res) => {
 
 app.post('/saverequest', (req, res) => {
 	console.log("\nSaving Request Server-Side")
-	console.log(req.body[Object.keys(req.body)[0]])
 	if (req.body[Object.keys(req.body)[0]] !== null && req.body[Object.keys(req.body)[0]] !== undefined && req.body[Object.keys(req.body)[0]] !== '') {
 		console.log("\nUpdating request_id: " + req.body[Object.keys(req.body)[0]] + " new title: " + req.body[Object.keys(req.body)[1]] + " new description: " + req.body[Object.keys(req.body)[2]])
 		let query = "UPDATE requests SET title = '" + req.body[Object.keys(req.body)[1]] + "', description = '" + req.body[Object.keys(req.body)[2]] + "', json = '" + req.body[Object.keys(req.body)[3]] + "' WHERE request_id = " + req.body[Object.keys(req.body)[0]];

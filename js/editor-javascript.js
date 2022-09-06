@@ -5,15 +5,6 @@ document.addEventListener("DOMContentLoaded", function(event) {
 		document.getElementById("editor-menu-view-2d").click();
 	}, 1000);
 
-	// Getting JSON
-	var canvas_jsonsave = document.getElementById("jsonsave")
-
-	if (canvas_jsonsave.value !== null && canvas_jsonsave.value !== '' && canvas_jsonsave.value !== undefined && canvas_jsonsave.value !== '[]') {
-		var canvas_jsonsave_format = canvas_jsonsave.value.substring(1, canvas_jsonsave.value.length-1);
-		var canvas_jsonsave_parsed = JSON.parse(canvas_jsonsave_format);
-		console.log("Got: " + canvas_jsonsave_parsed.json)
-	}
-
 	// Add Items Popup
 	var items = document.getElementsByClassName("editor-inventory-browser-results-each");
 	for (let i = 0; i < items.length; i++) {
@@ -205,6 +196,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
 // Save Title and Description DDBB AJAX
 function saveRequest() {
+	var data = saveData();
 	$.ajax({
 		url: "/saverequest",
 		type: "POST",
@@ -212,9 +204,7 @@ function saveRequest() {
 			'request_id': document.getElementById("request_id").getAttribute("value"),
 			'request_title': document.getElementById("request_title").value,
 			'request_description': document.getElementById("request_description").value,
-			'request_json': saveBlob()
-		},
-		processData: false, //add this
-		contentType: false //and this
+			'request_json': data
+		}
 	});
 }

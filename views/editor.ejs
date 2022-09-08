@@ -98,13 +98,15 @@
 			<div class="editor-menu-button editor-menu-delete">
 				<p key="editor-delete" id="editor-delete">Delete</p>
 			</div>
-			<div class="editor-menu-each">
+			<div class="editor-menu-each editor-menu-each-nopadding">
 				<div class="editor-menu-each-setting">
 					<label class="pure-material-switch">
 						<input type="checkbox">
 						<span key="editor-darkmode">Dark Mode</span>
 					</label>
 				</div>
+			</div>
+			<div class="editor-menu-each editor-menu-each-nopadding">
 				<div class="editor-menu-each-button">
 					<p key="editor-language">Language</p>
 					<i class="fa-solid fa-angle-up"></i>
@@ -118,6 +120,23 @@
 					</div>
 					<div class="language-dropdown-each">
 						<a href="#" class="language" id="en" key="english">English</a>
+					</div>
+				</div>
+			</div>
+			<div class="editor-menu-each editor-menu-each-nopadding">
+				<div class="editor-menu-each-button">
+					<p key="editor-measurement">Measurement</p>
+					<i class="fa-solid fa-angle-up"></i>
+				</div>
+				<div class="editor-menu-each-content editor-menu-each-rooms">
+					<div class="language-dropdown-each measurement-active">
+						<a href="#" class="measurement" id="meters" key="editor-meters">Meters</a>
+					</div>
+					<div class="language-dropdown-each">
+						<a href="#" class="measurement" id="inches" key="editor-inches">Inches</a>
+					</div>
+					<div class="language-dropdown-each">
+						<a href="#" class="measurement" id="feets" key="editor-feets">Feets</a>
 					</div>
 				</div>
 			</div>
@@ -187,7 +206,7 @@
 				<p>Lock in place</p>
 				<input type="checkbox" id="fixed"/>
 			</div>
-			<p>Measurements in inches.</p>
+			<p key="" id="editor-measurement-type"></p>
 		</div>
 		<div id="floorTexturesDiv">
 			<p class="texture-title">Adjust Floor</p>

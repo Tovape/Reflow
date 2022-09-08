@@ -23,8 +23,9 @@ button {
 }
 
 .editor-menu-scrollable{
-	height: calc(100% - 150px);
+	height: calc(100% - 166px);
 	overflow-y: scroll;
+	padding-bottom: 16px;
 }
 
 .editor-menu-logo {
@@ -87,6 +88,10 @@ button {
 .editor-menu-each {
 	width: calc(100% - 32px);
 	padding: 16px;
+}
+
+.editor-menu-each-nopadding {
+	padding: 0px 16px 16px 16px !important;	
 }
 
 .editor-menu-each p {
@@ -549,7 +554,7 @@ button {
 /* Inventory List */
 
 .editor-inventory-browser-results-scroll {
-	height: calc(100% - 40px);
+	height: calc(100% - 40px) !important;
 	width: calc(100% - 10px);
     overflow-y: scroll;
 	margin-top: 10px;
@@ -730,7 +735,7 @@ button {
 	background-color: var(--grey);
 }
 
-.language{
+.language, .measurement{
 	font-family: var(--montserrat);
     font-size: var(--undfont);
     color: var(--black);

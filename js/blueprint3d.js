@@ -44329,6 +44329,8 @@ var FloorplannerView = function(floorplan, viewmodel, canvas) {
     var inches = Math.round((realFeet - feet) * 12);
     return feet + "'" + inches + '"';
   }
+  
+  // Removed cmToFeet
 
   function drawEdgeLabel(edge) {
     var pos = edge.interiorCenter();
@@ -44344,10 +44346,10 @@ var FloorplannerView = function(floorplan, viewmodel, canvas) {
     context.strokeStyle = "#ffffff";
     context.lineWidth  = 4;
 
-    context.strokeText(cmToFeet(length), 
+    context.strokeText(length.toFixed(2), 
       viewmodel.convertX(pos.x), 
       viewmodel.convertY(pos.y));
-    context.fillText(cmToFeet(length), 
+    context.fillText(length.toFixed(2), 
       viewmodel.convertX(pos.x), 
       viewmodel.convertY(pos.y));
   }

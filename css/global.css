@@ -352,7 +352,7 @@ Menu Configuration
 	-webkit-transition: all 0.25s ease-in-out;
 }
 
-.language-active{
+.language-active, .measurement-active{
 	background-color: var(--fifth) !important;
 }
 

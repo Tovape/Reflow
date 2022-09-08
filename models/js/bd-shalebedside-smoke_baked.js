@@ -54,7 +54,6 @@
 
 	"skinWeights" : [],
 
-  "animations" : []
-
+	"animations" : []
 
 }

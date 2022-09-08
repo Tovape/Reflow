@@ -1,3 +1,63 @@
+// Global Variables
+
+var globalMeasurement = null;
+
+// Measurement Localstorage
+
+$(document).ready(function() {
+	
+	var tempMeasurement = null;
+
+	function getMeasurement() {
+		if (localStorage.getItem("measurement") !== null) {
+			return localStorage.getItem("measurement");
+		} else {
+			return "meters";
+		}
+		
+	}
+
+	function getUpdated() {
+		if (tempMeasurement === 'meters') {
+			$('#meters').parent().addClass('measurement-active').siblings().removeClass('measurement-active');
+			$('#editor-measurement-type').text('Measurements in metric.');
+		} else if (tempMeasurement === 'inches') {
+			$('#inches').parent().addClass('measurement-active').siblings().removeClass('measurement-active');
+			$('#editor-measurement-type').text('Measurements in inches.');
+		} else {
+			$('#feets').parent().addClass('measurement-active').siblings().removeClass('measurement-active');
+			$('#editor-measurement-type').text('Measurements in feet.');
+		}
+	}
+
+	tempMeasurement = getMeasurement();
+	getUpdated();
+	
+	$('.measurement').click(function() {
+		localStorage.setItem("measurement", $(this).attr('id'));
+		tempMeasurement = getMeasurement();
+		getUpdated();
+	});
+
+	globalMeasurement = getMeasurement();
+});
+
+
+$(document).ready(function() {
+	
+	const languagebutton = document.getElementsByClassName("language-dropdown-each");
+	var language = localStorage.getItem("language");
+	
+	if (language == 'es') {
+		languagebutton[0].classList.add('language-active');
+	} else if (language == 'ca') {
+		languagebutton[1].classList.add('language-active');
+	} else if (language == 'en') {
+		languagebutton[2].classList.add('language-active');
+	}
+
+});
+
 /*
  * Camera Buttons
  */
@@ -124,6 +184,15 @@ var ContextMenu = function(blueprint3d) {
     });
   }
 
+  /*
+  if (globalMeasurement === 'meters') {
+	  
+  } else if (globalMeasurement === 'inches') {
+	  
+  } else {
+	  
+  }
+  
   function cmToIn(cm) {
     return cm / 2.54;
   }
@@ -131,15 +200,16 @@ var ContextMenu = function(blueprint3d) {
   function inToCm(inches) {
     return inches * 2.54;
   }
+  */
 
   function itemSelected(item) {
     selectedItem = item;
 
     $("#context-menu-name").text(item.metadata.itemName);
 
-    $("#item-width").val(cmToIn(selectedItem.getWidth()).toFixed(0));
-    $("#item-height").val(cmToIn(selectedItem.getHeight()).toFixed(0));
-    $("#item-depth").val(cmToIn(selectedItem.getDepth()).toFixed(0));
+    $("#item-width").val(selectedItem.getWidth().toFixed(0));
+    $("#item-height").val(selectedItem.getHeight().toFixed(0));
+    $("#item-depth").val(selectedItem.getDepth().toFixed(0));
 
     $("#context-menu").show();
 
@@ -148,9 +218,9 @@ var ContextMenu = function(blueprint3d) {
 
   function resize() {
     selectedItem.resize(
-      inToCm($("#item-height").val()),
-      inToCm($("#item-width").val()),
-      inToCm($("#item-depth").val())
+      $("#item-height").val(),
+      $("#item-width").val(),
+      $("#item-depth").val()
     );
   }
 

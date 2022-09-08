@@ -1,57 +1,17 @@
-Make domElement not undefined line 48376
-
-Optimise Web
-Implement Blueprint3d
-
-Get Textures
-Get Models
-
 Partners:
 
-decosol sumi, real state, mobles like ikea, tiendas q venden muebles companies
+Decosol sumi, real state, mobles like ikea, tiendas q venden muebles companies
 
-Domain Name
+Domain & Hosting:
+
 https://domains.google.com/registrar/search?searchTerm=reflow&hl=es&priceFilter=30&tab=1
-
 Hostinger VPS --> Node.js, Mysql
 
-Run nodemon
-rpm run server.js
+Todo:
 
-TODO:
-Admin Page, live sql search for users https://www.youtube.com/watch?v=991fdnSllcw
-And Add the coordinate system
+Metric, Inch or Feets 
+Admin Page
+Regex Optimization
+Encrypt Ids
+Learn Model Importing
 
-The coordinate system will be probably made with inputting in js
-
-
-CODE - ITEMS (Obejcts Imported):
-
-   /*     
-   {
-      "name" : "",
-      "image" : "",
-      "model" : "",
-      "type" : "1"
-    }, 
-    */
-  ]
-
-
-
-  var itemsDiv = $("#items-wrapper")
-  for (var i = 0; i < items.length; i++) {
-    var item = items[i];
-    var html = '<div class="col-sm-4">' +
-                '<a class="thumbnail add-item" model-name="' + 
-                item.name + 
-                '" model-url="' +
-                item.model +
-                '" model-type="' +
-                item.type + 
-                '"><img src="' +
-                item.image + 
-                '" alt="Add Item"> '+
-                item.name +
-                '</a></div>';
-    itemsDiv.append(html);

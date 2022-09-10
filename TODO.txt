@@ -9,9 +9,7 @@ Hostinger VPS --> Node.js, Mysql
 
 Todo:
 
-Metric, Inch or Feets 
 Admin Page
-Regex Optimization
 Encrypt Ids
-Learn Model Importing
-
+Popups for Dashboard and other editor issues
+Implement Brand Filter Dynamically and fix price && || condition

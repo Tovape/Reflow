@@ -1,3 +1,5 @@
+Blender:
+
 Software Needed:
 Blender 2.79b (For Export in JSON)
 Blender 3.0 (For actual Models)
@@ -7,3 +9,11 @@ Steps:
 1- Creation of the model in Blender 3.0 and get textures
 2- Export Model to Blender 2.79b using the Append Method and export as json
 3- Add Item to DDBB and verify the dimensions and textures
+
+Model Categories:
+
+Furniture	- 1
+Decoration	- 2
+Lights		- 3
+Windows		- 4
+Doors		- 5

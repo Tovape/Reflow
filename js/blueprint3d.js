@@ -13,6 +13,25 @@
  * Date: 2015-04-28T16:01Z
  */
 
+// Global Variables
+
+var globalMeasurement = null;
+
+// Measurement Localstorage
+
+$(document).ready(function() {
+	if (localStorage.getItem("measurement") !== null) {
+		globalMeasurement = localStorage.getItem("measurement");
+	} else {
+		globalMeasurement = "meters";
+	}
+
+	$('.measurement').click(function() {
+		globalMeasurement = $(this).attr('id');
+	});
+
+});
+
 (function( global, factory ) {
 
 	if ( typeof module === "object" && typeof module.exports === "object" ) {
@@ -44346,12 +44365,22 @@ var FloorplannerView = function(floorplan, viewmodel, canvas) {
     context.strokeStyle = "#ffffff";
     context.lineWidth  = 4;
 
-    context.strokeText(length.toFixed(2), 
-      viewmodel.convertX(pos.x), 
-      viewmodel.convertY(pos.y));
-    context.fillText(length.toFixed(2), 
-      viewmodel.convertX(pos.x), 
-      viewmodel.convertY(pos.y));
+	if (globalMeasurement === 'meters') {
+		context.strokeText(length.toFixed(2), 
+		  viewmodel.convertX(pos.x), 
+		  viewmodel.convertY(pos.y));
+		context.fillText(length.toFixed(2), 
+		  viewmodel.convertX(pos.x), 
+		  viewmodel.convertY(pos.y));
+	} else if (globalMeasurement === 'inches') {
+		context.strokeText(cmToFeet(length), 
+		  viewmodel.convertX(pos.x), 
+		  viewmodel.convertY(pos.y));
+		context.fillText(cmToFeet(length), 
+		  viewmodel.convertX(pos.x), 
+		  viewmodel.convertY(pos.y));
+	}
+
   }
 
   function drawEdge(edge, hover) {

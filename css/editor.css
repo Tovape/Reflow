@@ -465,7 +465,7 @@ button {
 	width: 100%;
 }
 
-#filter-price-range-input {
+.filter-price-range-input {
 	border: none;
 	background-color: transparent;
 	font-family: var(--montserrat);
@@ -474,7 +474,7 @@ button {
 	padding-top: 10px;
 }
 
-#filter-price-range-input:focus {outline: none;}
+.filter-price-range-input:focus {outline: none;}
 
 .ui-slider-horizontal .ui-slider-range { 
 	background-color: var(--fourth);

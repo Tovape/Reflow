@@ -59,23 +59,32 @@ const db = mysql.createConnection({
 
 // Get Users
 
-const users = [];
+var users = [];
 
 let query = "SELECT * FROM users";
 
-db.query(query, function (err, result, fields) {
-	if (err) {
-		throw err;
-		console.log("Error Getting Users");
-	} else {
-		console.log("\nGot Users");
-		for(let i = 0; i < result.length; i++) {
-			result[i] = JSON.parse(JSON.stringify(result[i]));
-			users.push(result[i]);
-		}
-		console.log(users)
+function getUsers() {
+	users = [];
+	try {
+		db.query(query, function (err, result, fields) {
+			if (err) {
+				throw err;
+				console.log("Error Getting Users");
+			} else {
+				console.log("\nGot Users");
+				for(let i = 0; i < result.length; i++) {
+					result[i] = JSON.parse(JSON.stringify(result[i]));
+					users.push(result[i]);
+				}
+				console.log(users)
+			}
+		});
+	} catch {
+		console.log("Critial Error")
 	}
-});
+}
+
+getUsers();
 
 // Get User Requests Function
 
@@ -198,7 +207,7 @@ app.get('/failure', function (req, res) {
 })
 
 app.get('/success', function (req, res) {
-	res.render('success.ejs'),
+	res.render('success.ejs', { message: req.body, }),
 	app.use(express.static(__dirname + '/css')),
 	app.use(express.static(__dirname + '/files')),
 	app.use(express.static(__dirname + '/js'))
@@ -271,7 +280,6 @@ app.post('/login', checkNotAuthenticated, passport.authenticate('local', {
 }))
 
 app.post('/register', checkNotAuthenticated, async (req, res) => {
-
 	var passwordExpression  = /^(?=.*[0-9])[a-zA-Z0-9!@#$%^&*]{6,16}$/;
 	var emailExpression = /^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/;
 
@@ -305,6 +313,7 @@ app.post('/register', checkNotAuthenticated, async (req, res) => {
 			});
 
 			console.log(users)
+			getUsers();
 			res.redirect('/login')
 		} catch {
 			res.redirect('/register')
@@ -319,13 +328,17 @@ app.post('/editor', checkAuthenticated, async (req, res) => {
 	if (req.body.request_title === undefined || req.body.request_title === null) {
 		console.log("Creating New Request");
 		let query = "INSERT INTO requests VALUES (" + req.body.request_id + ", " + req.user[Object.keys(req.user)[0]] + ", 'Title', 'Description', 'photos', '" + new Date().getFullYear() + "', '0','')";
-		db.query(query, function (err, result, fields) {
-			if (err)  {
-				throw err;
-			} else {
-				console.log("Request Added Correctly")
-			}
-		});
+		
+		try {
+			db.query(query, function (err, result, fields) {
+				if (err)  {
+					throw err;
+				} else {
+					console.log("Request Added Correctly")
+				}
+			});
+		} catch {;}
+		
 		let objects = await getObjects();
 		setTimeout(function () {
 			let stringfiedobjects = JSON.stringify(objects);
@@ -538,28 +551,38 @@ app.route('/resetpassword').post(function (req, res, next) {
 
 app.route('/newpassword').post(async function (req, res, next) {
 	
-	// Get Email
-	var decrypted = CryptoJS.AES.decrypt(req.body.encrypted, "Tovape");
-	var email = decrypted.toString(CryptoJS.enc.Utf8);
+	var passwordExpression  = /^(?=.*[0-9])[a-zA-Z0-9!@#$%^&*]{6,16}$/;
 
-	// Get Password Inputed
-	const hashedPassword = await bcrypt.hash(req.body.password, 10)
+	// Regex Check
+	if(!passwordExpression.test(req.body.password)) {
+		console.log("Password: From 6 to 16 with Numbers");
+		return false;
+	} else {
+		// Get Email
+		var decrypted = CryptoJS.AES.decrypt(req.body.encrypted, "Tovape");
+		var email = decrypted.toString(CryptoJS.enc.Utf8);
 
-	try {
-		let query = "UPDATE users SET password = '" + hashedPassword + "' WHERE email = '" + email + "'";
+		// Get Password Inputed
+		const hashedPassword = await bcrypt.hash(req.body.password, 10)
 
-		db.query(query, function (err, result, fields) {
-			if (err)  {
-				throw err;
-			} else {
-				console.log("User Updated Correctly")
-			}
-		});
+		try {
+			let query = "UPDATE users SET password = '" + hashedPassword + "' WHERE email = '" + email + "'";
 
-		res.redirect('/success')
-	} catch {
-		res.redirect('/failure')
+			db.query(query, function (err, result, fields) {
+				if (err)  {
+					throw err;
+				} else {
+					console.log("User Updated Correctly")
+				}
+			});
+			getUsers();
+
+			res.redirect('/success')
+		} catch {
+			res.redirect('/failure')
+		}
 	}
+	
 });
 
 // Port

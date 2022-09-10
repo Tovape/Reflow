@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
 	var items = document.getElementsByClassName("editor-inventory-browser-results-each");
 	for (let i = 0; i < items.length; i++) {
 		items[i].addEventListener("click", function() {
-			popup("green","Adding Item...");
+			popup("var(--green)","Adding Item...");
 		});
 	}
 
@@ -73,19 +73,24 @@ document.addEventListener("DOMContentLoaded", function(event) {
 			}, 250);
 		}
 	});
-
+	
 	// Browser Price Range
-	$("#filter-price-range").slider({
+	$(".filter-price-range").slider({
 		step: 10,
 		range: true, 
 		min: 0, 
 		max: 5000, 
 		values: [0, 5000], 
-		slide: function(event, ui) {$("#filter-price-range-input").val(ui.values[0] + " - " + ui.values[1]); }
+		slide: function(event, ui) {$(".filter-price-range-input").val(ui.values[0] + " - " + ui.values[1]); }
 	});
-	$("#filter-price-range-input").val($("#filter-price-range").slider("values", 0) + " - " + $("#filter-price-range").slider("values", 1));
+	$(".filter-price-range-input").val($(".filter-price-range").slider("values", 0) + " - " + $(".filter-price-range").slider("values", 1));
+	
+	// FIX BELOW
 
 	// Browser Brand
+	
+	var inventory_page = ['furniture','decoration','lights','windows','doors'];
+	
 	var brand_selector = document.querySelectorAll(".filter-manufacturer p");
 	var brand_array = Array.apply(null, Array(brand_selector.length)).map(function () {})
 	
@@ -106,24 +111,28 @@ document.addEventListener("DOMContentLoaded", function(event) {
 		});
 	}
 
-	// Browser Filtering
-	$("#filter-button")[0].addEventListener("click", function() {
-		for (let i = 0; i < furniture.length; i++) {
-			if (brand_array.includes(furniture[i].getAttribute("brand").toLowerCase()) &&
-			$("#filter-price-range").slider("values")[0] <= furniture[i].getAttribute("price") && 
-			$("#filter-price-range").slider("values")[1] >= furniture[i].getAttribute("price")) {
-				furniture[i].classList.remove("hidden");
-			} else if (brand_array.includes('all')) {
-				furniture[i].classList.remove("hidden");
-			} else {
-				if (furniture[i].classList.contains('hidden')) {
-					
+	// Browser Filtering	
+	for(let j = 0; j < inventory_page.length; j++) {
+		$("#filter-button-" + inventory_page[j])[0].addEventListener("click", function() {
+			var furniture = document.querySelectorAll("#browser-" + inventory_page[j] + " .add-item");
+			for (let i = 0; i < furniture.length; i++) {
+				if (brand_array.includes(furniture[i].getAttribute("brand").toLowerCase()) &&
+				$(".filter-price-range").slider("values")[0] <= furniture[i].getAttribute("price") && 
+				$(".filter-price-range").slider("values")[1] >= furniture[i].getAttribute("price")) {
+					furniture[i].classList.remove("hidden");
+				} else if (brand_array.includes('all')) {
+					furniture[i].classList.remove("hidden");
 				} else {
-					furniture[i].classList.add("hidden");
+					if (furniture[i].classList.contains('hidden')) {
+						
+					} else {
+						furniture[i].classList.add("hidden");
+					}
 				}
+				
 			}
-		}
-	});
+		});
+	}
 	
 	// Material Menu
 	$('#editor-material-open,#editor-material-cross').click(function(){
@@ -144,7 +153,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
 	
 	// Delete Project
 	$("#editor-delete")[0].addEventListener("click", function() {
-		popup("red","Deleting Project...");
+		popup("var(--red)","Deleting Project...");
 		setTimeout(function() {
 			$.ajax({
 				url: "/deleterequest",
@@ -170,6 +179,12 @@ document.addEventListener("DOMContentLoaded", function(event) {
 		});
 	}, 5000);
 	*/
+		
+	// Others
+	$('.measurement').click(function() {
+		popup("var(--blue)","Refresh the page");
+	});
+	
 	
 	// Popup Function
 	let popupflex = document.getElementById("editor-canvas-popup");
@@ -191,7 +206,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
 			}, 150);
 		}, 2000);
 	}
-	
+
 });
 
 // Save Title and Description DDBB AJAX

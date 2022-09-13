@@ -9,7 +9,5 @@ Hostinger VPS --> Node.js, Mysql
 
 Todo:
 
-Admin Page
 Encrypt Ids
 Popups for Dashboard and other editor issues
-Implement Brand Filter Dynamically and fix price && || condition

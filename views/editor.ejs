@@ -235,7 +235,7 @@
 				</div>
 			</div>
 		</div>		
-		<div class="editor-inventory fadein hidden" id="editor-inventory">
+		<div class="editor-inventory fadein hidden show fadeon" id="editor-inventory">
 			<div class="editor-inventory-banner">
 				<p class="editor-inventory-title" key="editor-inventory">Inventory</p>
 				<a href="javascript:void(0);" id="editor-inventory-cross"/>
@@ -301,7 +301,6 @@
 									<p class="editor-inventory-browser-filter-each-title">Manufacturer</p>
 									<div class="filter-manufacturer" id="filter-manufacturer-furniture">
 										<p brand="all" class="filter-manufacturer-active">All</p>
-										<p brand="generic" class="filter-manufacturer-active">Generic</p>
 									</div>
 								</div>
 								<div class="editor-inventory-browser-filter-each">
@@ -323,13 +322,13 @@
 											<div>
 												<p class="editor-inventory-browser-results-each-name">
 													<% if (objects[i].brand !== null && objects[i].brand !== "" && objects[i].brand !== undefined) { %>
-														<% if (objects[i].price === "" || objects[i].price === null || objects[i].price === undefined || objects[i].price === "0") { %>
+														<% if (objects[i].price === "" || objects[i].price === null || objects[i].price === undefined || objects[i].price === 0) { %>
 															<%= objects[i].brand %> - <%= objects[i].name %>
 														<% } else { %>
 															<%= objects[i].brand %> - <%= objects[i].name %> (<%= objects[i].price %>$)
 														<% } %>
-													<% } else{ %>
-														<% if (objects[i].price === "" || objects[i].price === null || objects[i].price === undefined) { %>
+													<% } else { %>
+														<% if (objects[i].price === "" || objects[i].price === null || objects[i].price === undefined || objects[i].price === 0) { %>
 															<%= objects[i].name %>
 														<% } else { %>
 															<%= objects[i].name %> (<%= objects[i].price %>$)
@@ -371,7 +370,6 @@
 									<p class="editor-inventory-browser-filter-each-title">Manufacturer</p>
 									<div class="filter-manufacturer" id="filter-manufacturer-decoration">
 										<p brand="all" class="filter-manufacturer-active">All</p>
-										<p brand="generic" class="filter-manufacturer-active">Generic</p>
 									</div>
 								</div>
 								<div class="editor-inventory-browser-filter-each">
@@ -393,13 +391,13 @@
 											<div>
 												<p class="editor-inventory-browser-results-each-name">
 													<% if (objects[i].brand !== null && objects[i].brand !== "" && objects[i].brand !== undefined) { %>
-														<% if (objects[i].price === "" || objects[i].price === null || objects[i].price === undefined || objects[i].price === "0") { %>
+														<% if (objects[i].price === "" || objects[i].price === null || objects[i].price === undefined || objects[i].price === 0) { %>
 															<%= objects[i].brand %> - <%= objects[i].name %>
 														<% } else { %>
 															<%= objects[i].brand %> - <%= objects[i].name %> (<%= objects[i].price %>$)
 														<% } %>
 													<% } else{ %>
-														<% if (objects[i].price === "" || objects[i].price === null || objects[i].price === undefined) { %>
+														<% if (objects[i].price === "" || objects[i].price === null || objects[i].price === undefined || objects[i].price === 0) { %>
 															<%= objects[i].name %>
 														<% } else { %>
 															<%= objects[i].name %> (<%= objects[i].price %>$)
@@ -441,7 +439,6 @@
 									<p class="editor-inventory-browser-filter-each-title">Manufacturer</p>
 									<div class="filter-manufacturer" id="filter-manufacturer-lights">
 										<p brand="all" class="filter-manufacturer-active">All</p>
-										<p brand="generic" class="filter-manufacturer-active">Generic</p>
 									</div>
 								</div>
 								<div class="editor-inventory-browser-filter-each">
@@ -463,13 +460,13 @@
 											<div>
 												<p class="editor-inventory-browser-results-each-name">
 													<% if (objects[i].brand !== null && objects[i].brand !== "" && objects[i].brand !== undefined) { %>
-														<% if (objects[i].price === "" || objects[i].price === null || objects[i].price === undefined || objects[i].price === "0") { %>
+														<% if (objects[i].price === "" || objects[i].price === null || objects[i].price === undefined || objects[i].price === 0) { %>
 															<%= objects[i].brand %> - <%= objects[i].name %>
 														<% } else { %>
 															<%= objects[i].brand %> - <%= objects[i].name %> (<%= objects[i].price %>$)
 														<% } %>
 													<% } else{ %>
-														<% if (objects[i].price === "" || objects[i].price === null || objects[i].price === undefined) { %>
+														<% if (objects[i].price === "" || objects[i].price === null || objects[i].price === undefined || objects[i].price === 0) { %>
 															<%= objects[i].name %>
 														<% } else { %>
 															<%= objects[i].name %> (<%= objects[i].price %>$)
@@ -511,7 +508,6 @@
 									<p class="editor-inventory-browser-filter-each-title">Manufacturer</p>
 									<div class="filter-manufacturer" id="filter-manufacturer-windows">
 										<p brand="all" class="filter-manufacturer-active">All</p>
-										<p brand="generic" class="filter-manufacturer-active">Generic</p>
 									</div>
 								</div>
 								<div class="editor-inventory-browser-filter-each">
@@ -533,13 +529,13 @@
 											<div>
 												<p class="editor-inventory-browser-results-each-name">
 													<% if (objects[i].brand !== null && objects[i].brand !== "" && objects[i].brand !== undefined) { %>
-														<% if (objects[i].price === "" || objects[i].price === null || objects[i].price === undefined || objects[i].price === "0") { %>
+														<% if (objects[i].price === "" || objects[i].price === null || objects[i].price === undefined || objects[i].price === 0) { %>
 															<%= objects[i].brand %> - <%= objects[i].name %>
 														<% } else { %>
 															<%= objects[i].brand %> - <%= objects[i].name %> (<%= objects[i].price %>$)
 														<% } %>
 													<% } else{ %>
-														<% if (objects[i].price === "" || objects[i].price === null || objects[i].price === undefined) { %>
+														<% if (objects[i].price === "" || objects[i].price === null || objects[i].price === undefined || objects[i].price === 0) { %>
 															<%= objects[i].name %>
 														<% } else { %>
 															<%= objects[i].name %> (<%= objects[i].price %>$)
@@ -581,7 +577,6 @@
 									<p class="editor-inventory-browser-filter-each-title">Manufacturer</p>
 									<div class="filter-manufacturer" id="filter-manufacturer-doors">
 										<p brand="all" class="filter-manufacturer-active">All</p>
-										<p brand="generic" class="filter-manufacturer-active">Generic</p>
 									</div>
 								</div>
 								<div class="editor-inventory-browser-filter-each">
@@ -603,13 +598,13 @@
 											<div>
 												<p class="editor-inventory-browser-results-each-name">
 													<% if (objects[i].brand !== null && objects[i].brand !== "" && objects[i].brand !== undefined) { %>
-														<% if (objects[i].price === "" || objects[i].price === null || objects[i].price === undefined || objects[i].price === "0") { %>
+														<% if (objects[i].price === "" || objects[i].price === null || objects[i].price === undefined || objects[i].price === 0) { %>
 															<%= objects[i].brand %> - <%= objects[i].name %>
 														<% } else { %>
 															<%= objects[i].brand %> - <%= objects[i].name %> (<%= objects[i].price %>$)
 														<% } %>
 													<% } else{ %>
-														<% if (objects[i].price === "" || objects[i].price === null || objects[i].price === undefined) { %>
+														<% if (objects[i].price === "" || objects[i].price === null || objects[i].price === undefined || objects[i].price === 0) { %>
 															<%= objects[i].name %>
 														<% } else { %>
 															<%= objects[i].name %> (<%= objects[i].price %>$)
@@ -723,7 +718,7 @@ var doors = [];
 <% for (var i = 0; i < objectslength; i++) { %>
 	<% if (objects[i].category === 3) { %>
 		<% if (objects[i].brand !== null && objects[i].brand !== "" && objects[i].brand !== undefined) { %>
-			decoration.push("<%= objects[i].brand %>");
+			lights.push("<%= objects[i].brand %>");
 		<% } %>
 	<% } %>
 <% } %>
@@ -751,23 +746,23 @@ windows = [...new Set(windows)];
 doors = [...new Set(doors)];
 
 for (var i = 0; i < furniture.length; i++) {
-	$('#filter-manufacturer-furniture').append("<p brand='" + furniture[i] + "'>" + furniture[i] + "</p>");
+	$('#filter-manufacturer-furniture').append("<p brand='" + furniture[i] + "' class='filter-manufacturer-active'>" + furniture[i] + "</p>");
 }
 
 for (var i = 0; i < decoration.length; i++) {
-	$('#filter-manufacturer-decoration').append("<p brand='" + decoration[i] + "'>" + decoration[i] + "</p>");
+	$('#filter-manufacturer-decoration').append("<p brand='" + decoration[i] + "' class='filter-manufacturer-active'>" + decoration[i] + "</p>");
 }
 
 for (var i = 0; i < lights.length; i++) {
-	$('#filter-manufacturer-lights').append("<p brand='" + lights[i] + "'>" + lights[i] + "</p>");
+	$('#filter-manufacturer-lights').append("<p brand='" + lights[i] + "' class='filter-manufacturer-active'>" + lights[i] + "</p>");
 }
 
 for (var i = 0; i < windows.length; i++) {
-	$('#filter-manufacturer-windows').append("<p brand='" + windows[i] + "'>" + windows[i] + "</p>");
+	$('#filter-manufacturer-windows').append("<p brand='" + windows[i] + "' class='filter-manufacturer-active'>" + windows[i] + "</p>");
 }
 
 for (var i = 0; i < doors.length; i++) {
-	$('#filter-manufacturer-doors').append("<p brand='" + doors[i] + "'>" + doors[i] + "</p>");
+	$('#filter-manufacturer-doors').append("<p brand='" + doors[i] + "' class='filter-manufacturer-active'>" + doors[i] + "</p>");
 }
 
 </script>

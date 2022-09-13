@@ -75,6 +75,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
 	});
 	
 	// Browser Price Range
+	/*
 	$(".filter-price-range").slider({
 		step: 10,
 		range: true, 
@@ -84,56 +85,142 @@ document.addEventListener("DOMContentLoaded", function(event) {
 		slide: function(event, ui) {$(".filter-price-range-input").val(ui.values[0] + " - " + ui.values[1]); }
 	});
 	$(".filter-price-range-input").val($(".filter-price-range").slider("values", 0) + " - " + $(".filter-price-range").slider("values", 1));
-	
-	// FIX BELOW
+	*/
 
 	// Browser Brand
-	
 	var inventory_page = ['furniture','decoration','lights','windows','doors'];
-	
-	var brand_selector = document.querySelectorAll(".filter-manufacturer p");
-	var brand_array = Array.apply(null, Array(brand_selector.length)).map(function () {})
-	
-	for (let i = 0; i < brand_selector.length; i++) {
-		brand_array[i] = null;
-	}
-	
-	for (let i = 0; i < brand_selector.length; i++) {
-		brand_selector[i].addEventListener("click", function() {
-			var brand = brand_selector[i].getAttribute("brand");
-			if (brand_array[i] === null) {
-				brand_array[i] = brand;
-				brand_selector[i].classList.toggle("filter-manufacturer-active");
-			} else if (brand_array[i] !== null) {
-				brand_array[i] = null;
-				brand_selector[i].classList.toggle("filter-manufacturer-active");
-			} else {}
-		});
-	}
 
-	// Browser Filtering	
-	for(let j = 0; j < inventory_page.length; j++) {
-		$("#filter-button-" + inventory_page[j])[0].addEventListener("click", function() {
-			var furniture = document.querySelectorAll("#browser-" + inventory_page[j] + " .add-item");
-			for (let i = 0; i < furniture.length; i++) {
-				if (brand_array.includes(furniture[i].getAttribute("brand").toLowerCase()) &&
-				$(".filter-price-range").slider("values")[0] <= furniture[i].getAttribute("price") && 
-				$(".filter-price-range").slider("values")[1] >= furniture[i].getAttribute("price")) {
-					furniture[i].classList.remove("hidden");
-				} else if (brand_array.includes('all')) {
-					furniture[i].classList.remove("hidden");
-				} else {
-					if (furniture[i].classList.contains('hidden')) {
-						
-					} else {
-						furniture[i].classList.add("hidden");
-					}
-				}
-				
-			}
-		});
-	}
+	// Page Brand Selectors
+	var brand_selector = Array.apply(null, Array(inventory_page.length)).map(function () {})
+
+	// Page Brand Array
+	var brand_array = new Array(inventory_page.length).fill(new Array(3).fill(null))
+
+	//
+	var furniture = [];
 	
+	//
+	var furniture_length = [];
+
+	// Browser Filtering
+	for(let j = 0; j < inventory_page.length; j++) {
+
+		// Dom Selector Setters
+		brand_selector[j] = new Array(document.querySelectorAll("#filter-manufacturer-" + inventory_page[j] + " p"));
+
+		brand_array[j] = new Array();
+
+		// Get Furniture
+		furniture[j] = new Array(document.querySelectorAll("#browser-" + inventory_page[j] + " .add-item"));
+
+		// Get to length of furniture elements
+		Array.from(furniture[j]).forEach(node => {
+			let myArray = Array.from(node)
+			furniture_length[j] = myArray.length;
+		})
+
+		//
+		Array.from(brand_selector[j]).forEach(node => {
+			let myArray = Array.from(node)
+
+			for (let i = 0; i < node.length; i++) {
+				brand_array[j][i] = myArray[i].getAttribute("brand");
+				myArray[i].addEventListener("click", function() {
+					var brand = myArray[i].getAttribute("brand");
+					if (brand_array[j][i] === null) {
+						brand_array[j][i] = brand;
+						myArray[i].classList.toggle("filter-manufacturer-active");
+					} else if (brand_array[i] !== null) {
+						brand_array[j][i] = null;
+						myArray[i].classList.toggle("filter-manufacturer-active");
+					} else {}
+				});			
+			}
+
+			$("#filter-button-" + inventory_page[j])[0].addEventListener("click", function() {
+				for (let i = 0; i < furniture[j].length; i++) {
+					Array.from(furniture[j]).forEach(subnode => {
+						let myArray = Array.from(subnode)
+						for (let a = 0; a < furniture_length[j]; a++) {
+							if (brand_array[j].includes('all')) {
+								myArray[a].classList.remove("hidden");
+							} else if (brand_array[j].includes(myArray[a].getAttribute("brand"))) {
+								myArray[a].classList.remove("hidden");
+							} else {
+								if (myArray[a].classList.contains('hidden')) {
+								} else {
+									myArray[a].classList.add("hidden");
+								}
+							}
+						}
+					})
+				}
+			});
+		})		
+	}
+		
+		/*
+		
+		with price range
+		
+		$("#filter-button-" + inventory_page[j])[0].addEventListener("click", function() {
+					console.log("click")
+					if (brand_array[j][i].includes('all')) {
+						console.log("HAS ALL")
+					}
+					/*
+					if (brand_array.includes('all') && 
+						$(".filter-price-range").slider("values")[0] <= furniture[i].getAttribute("price") && 
+						$(".filter-price-range").slider("values")[1] >= furniture[i].getAttribute("price")) {
+							furniture[i].classList.remove("hidden");
+					} else if ((furniture[i].getAttribute("brand") === '' || 
+						furniture[i].getAttribute("brand") === null || 
+						furniture[i].getAttribute("brand") === undefined) && (brand_array.includes('generic')) &&
+						($(".filter-price-range").slider("values")[0] <= furniture[i].getAttribute("price") && 
+						$(".filter-price-range").slider("values")[1] >= furniture[i].getAttribute("price"))) {
+							furniture[i].classList.remove("hidden");
+					} else if (brand_array.includes(furniture[i].getAttribute("brand")) &&
+						$(".filter-price-range").slider("values")[0] <= furniture[i].getAttribute("price") && 
+						$(".filter-price-range").slider("values")[1] >= furniture[i].getAttribute("price")) {
+							furniture[i].classList.remove("hidden");			
+					} else {
+						if (furniture[i].classList.contains('hidden')) {
+
+						} else {
+							furniture[i].classList.add("hidden");
+						}
+					}
+					*/
+
+		
+		/*
+		var brand_array = Array.apply(null, Array(brand_selector[j].length)).map(function () {})
+
+		for (let i = 0; i < brand_selector[j].length; i++) {
+			brand_array[i] = null;
+		}
+		
+		// Setting Default Values
+		brand_array[0] = 'all';
+		brand_array[1] = 'generic';
+		
+		
+		for (let i = 0; i < brand_selector.length; i++) {
+			brand_selector[i].addEventListener("click", function() {
+				var brand = brand_selector[i].getAttribute("brand");
+				if (brand_array[i] === null) {
+					brand_array[i] = brand;
+					console.log("HAS " +brand_array[i])
+					brand_selector[i].classList.toggle("filter-manufacturer-active");
+				} else if (brand_array[i] !== null) {
+					brand_array[i] = null;
+					console.log("NOT " +brand_array[i])
+					brand_selector[i].classList.toggle("filter-manufacturer-active");
+				} else {}
+			});
+		}
+		*/
+
 	// Material Menu
 	$('#editor-material-open,#editor-material-cross').click(function(){
 		if ($('#editor-material').hasClass('fadeon')) {
@@ -184,7 +271,6 @@ document.addEventListener("DOMContentLoaded", function(event) {
 	$('.measurement').click(function() {
 		popup("var(--blue)","Refresh the page");
 	});
-	
 	
 	// Popup Function
 	let popupflex = document.getElementById("editor-canvas-popup");

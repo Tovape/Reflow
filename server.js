@@ -171,6 +171,13 @@ app.get('/', function (req, res) {
 	app.use(express.static(__dirname + '/js'))
 })
 
+app.get('/index', function (req, res) {
+	res.render('index.ejs'),
+	app.use(express.static(__dirname + '/css')),
+	app.use(express.static(__dirname + '/files')),
+	app.use(express.static(__dirname + '/js'))
+})
+
 app.get('/projects', function (req, res) {
 	res.render('projects.ejs'),
 	app.use(express.static(__dirname + '/css')),

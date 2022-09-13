@@ -74,21 +74,46 @@ document.addEventListener("DOMContentLoaded", function(event) {
 		}
 	});
 	
-	// Browser Price Range
-	/*
-	$(".filter-price-range").slider({
-		step: 10,
-		range: true, 
-		min: 0, 
-		max: 5000, 
-		values: [0, 5000], 
-		slide: function(event, ui) {$(".filter-price-range-input").val(ui.values[0] + " - " + ui.values[1]); }
-	});
-	$(".filter-price-range-input").val($(".filter-price-range").slider("values", 0) + " - " + $(".filter-price-range").slider("values", 1));
-	*/
-
 	// Browser Brand
 	var inventory_page = ['furniture','decoration','lights','windows','doors'];
+	
+	// Browser Price Selector
+	var price_selector = Array.apply(null, Array(inventory_page.length)).map(function () {})
+
+	// Browser Price Array
+	var price_range = Array.apply(null, Array(2)).map(function () {})
+	
+	// Browser Price Input
+	var price_input = Array.apply(null, Array(2)).map(function () {})
+	
+	for(let j = 0; j < inventory_page.length; j++) {
+		price_selector[j] = new Array(document.querySelectorAll("#browser-" + inventory_page[j] + " .filter-price-range"));
+		price_range[j] = new Array();
+		price_input[j] = new Array(document.querySelectorAll("#browser-" + inventory_page[j] + " .filter-price-range-input"));
+	}
+	
+	// Default Values for Slider
+	for(let j = 0; j < inventory_page.length; j++) {
+		price_range[j][0] = 0;
+		price_range[j][1] = 5000;
+	}
+	
+	// Setting Up JQuery UI
+	for(let j = 0; j < inventory_page.length; j++) {
+		$(price_selector[j][0]).slider({
+			step: 10,
+			range: true, 
+			min: 0, 
+			max: 5000, 
+			values: [0, 5000], 
+			slide: function(event, ui) {
+				$(price_input[j][0]).val(ui.values[0] + " - " + ui.values[1]);
+				price_range[j][0] = ui.values[0];
+				price_range[j][1] = ui.values[1];
+			}
+		});
+		$(price_input[j][0]).val($(price_selector[j][0]).slider("values", 0) + " - " + $(price_selector[j][0]).slider("values", 1));
+	}
 
 	// Page Brand Selectors
 	var brand_selector = Array.apply(null, Array(inventory_page.length)).map(function () {})
@@ -96,10 +121,10 @@ document.addEventListener("DOMContentLoaded", function(event) {
 	// Page Brand Array
 	var brand_array = new Array(inventory_page.length).fill(new Array(3).fill(null))
 
-	//
+	// Each Furniture
 	var furniture = [];
 	
-	//
+	// Each Furniture Length
 	var furniture_length = [];
 
 	// Browser Filtering
@@ -108,6 +133,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
 		// Dom Selector Setters
 		brand_selector[j] = new Array(document.querySelectorAll("#filter-manufacturer-" + inventory_page[j] + " p"));
 
+		// Active Brands
 		brand_array[j] = new Array();
 
 		// Get Furniture
@@ -119,7 +145,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
 			furniture_length[j] = myArray.length;
 		})
 
-		//
+		// Actual Logic
 		Array.from(brand_selector[j]).forEach(node => {
 			let myArray = Array.from(node)
 
@@ -142,9 +168,9 @@ document.addEventListener("DOMContentLoaded", function(event) {
 					Array.from(furniture[j]).forEach(subnode => {
 						let myArray = Array.from(subnode)
 						for (let a = 0; a < furniture_length[j]; a++) {
-							if (brand_array[j].includes('all')) {
+							if (brand_array[j].includes('all') && price_range[j][0] <= myArray[a].getAttribute("price") && price_range[j][1] >= myArray[a].getAttribute("price")) {
 								myArray[a].classList.remove("hidden");
-							} else if (brand_array[j].includes(myArray[a].getAttribute("brand"))) {
+							} else if (brand_array[j].includes(myArray[a].getAttribute("brand")) && price_range[j][0] <= myArray[a].getAttribute("price") && price_range[j][1] >= myArray[a].getAttribute("price")) {
 								myArray[a].classList.remove("hidden");
 							} else {
 								if (myArray[a].classList.contains('hidden')) {
@@ -158,68 +184,6 @@ document.addEventListener("DOMContentLoaded", function(event) {
 			});
 		})		
 	}
-		
-		/*
-		
-		with price range
-		
-		$("#filter-button-" + inventory_page[j])[0].addEventListener("click", function() {
-					console.log("click")
-					if (brand_array[j][i].includes('all')) {
-						console.log("HAS ALL")
-					}
-					/*
-					if (brand_array.includes('all') && 
-						$(".filter-price-range").slider("values")[0] <= furniture[i].getAttribute("price") && 
-						$(".filter-price-range").slider("values")[1] >= furniture[i].getAttribute("price")) {
-							furniture[i].classList.remove("hidden");
-					} else if ((furniture[i].getAttribute("brand") === '' || 
-						furniture[i].getAttribute("brand") === null || 
-						furniture[i].getAttribute("brand") === undefined) && (brand_array.includes('generic')) &&
-						($(".filter-price-range").slider("values")[0] <= furniture[i].getAttribute("price") && 
-						$(".filter-price-range").slider("values")[1] >= furniture[i].getAttribute("price"))) {
-							furniture[i].classList.remove("hidden");
-					} else if (brand_array.includes(furniture[i].getAttribute("brand")) &&
-						$(".filter-price-range").slider("values")[0] <= furniture[i].getAttribute("price") && 
-						$(".filter-price-range").slider("values")[1] >= furniture[i].getAttribute("price")) {
-							furniture[i].classList.remove("hidden");			
-					} else {
-						if (furniture[i].classList.contains('hidden')) {
-
-						} else {
-							furniture[i].classList.add("hidden");
-						}
-					}
-					*/
-
-		
-		/*
-		var brand_array = Array.apply(null, Array(brand_selector[j].length)).map(function () {})
-
-		for (let i = 0; i < brand_selector[j].length; i++) {
-			brand_array[i] = null;
-		}
-		
-		// Setting Default Values
-		brand_array[0] = 'all';
-		brand_array[1] = 'generic';
-		
-		
-		for (let i = 0; i < brand_selector.length; i++) {
-			brand_selector[i].addEventListener("click", function() {
-				var brand = brand_selector[i].getAttribute("brand");
-				if (brand_array[i] === null) {
-					brand_array[i] = brand;
-					console.log("HAS " +brand_array[i])
-					brand_selector[i].classList.toggle("filter-manufacturer-active");
-				} else if (brand_array[i] !== null) {
-					brand_array[i] = null;
-					console.log("NOT " +brand_array[i])
-					brand_selector[i].classList.toggle("filter-manufacturer-active");
-				} else {}
-			});
-		}
-		*/
 
 	// Material Menu
 	$('#editor-material-open,#editor-material-cross').click(function(){

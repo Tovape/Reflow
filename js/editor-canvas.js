@@ -1,6 +1,7 @@
 // Global Variables
 
 var globalMeasurement = null;
+var currentObjects = new Array(); // Line 165 & 411
 
 // Measurement Localstorage
 
@@ -94,24 +95,24 @@ var CameraButtons = function(blueprint3d) {
 		};
 
 		/*
-    $("#move-left").click(function(){
-      pan(directions.LEFT)
-    })
-    $("#move-right").click(function(){
-      pan(directions.RIGHT)
-    })
-    $("#move-up").click(function(){
-      pan(directions.UP)
-    })
-    $("#move-down").click(function(){
-      pan(directions.DOWN)
-    })
+		$("#move-left").click(function(){
+		  pan(directions.LEFT)
+		})
+		$("#move-right").click(function(){
+		  pan(directions.RIGHT)
+		})
+		$("#move-up").click(function(){
+		  pan(directions.UP)
+		})
+		$("#move-down").click(function(){
+		  pan(directions.DOWN)
+		})
 
-    $("#move-left").dblclick(preventDefault);
-    $("#move-right").dblclick(preventDefault);
-    $("#move-up").dblclick(preventDefault);
-    $("#move-down").dblclick(preventDefault);
-	*/
+		$("#move-left").dblclick(preventDefault);
+		$("#move-right").dblclick(preventDefault);
+		$("#move-up").dblclick(preventDefault);
+		$("#move-down").dblclick(preventDefault);
+		*/
 	}
 
 	function preventDefault(e) {

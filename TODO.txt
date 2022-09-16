@@ -5,9 +5,8 @@ Decosol sumi, real state, mobles like ikea, tiendas q venden muebles companies
 Domain & Hosting:
 
 https://domains.google.com/registrar/search?searchTerm=reflow&hl=es&priceFilter=30&tab=1
+https://www.dominios.es/es
 Hostinger VPS --> Node.js, Mysql
 
 Todo:
 
-Encrypt Ids
-Popups for Dashboard and other editor issues

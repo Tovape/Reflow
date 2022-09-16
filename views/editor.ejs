@@ -33,9 +33,14 @@
 <body>
 
 <div class="editor-aligner">
-	<div class="editor-menu">
-		<div class="editor-menu-logo">
-			<a href="/">
+	<div class="editor-menu" id="editor-menu">
+		<div class="editor-menu-logo" id="editor-menu-logo">
+			<div class="editor-menu-bars" id="editor-menu-bars">
+				<a href="javascript:void(0);" onclick="menucollapse()"/>
+					<svg version="1.1" version="1.1" viewBox="0 0 512 512" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><g data-name="1" id="_1"><path d="M441.13,166.52h-372a15,15,0,1,1,0-30h372a15,15,0,0,1,0,30Z"/><path d="M441.13,279.72h-372a15,15,0,1,1,0-30h372a15,15,0,0,1,0,30Z"/><path d="M441.13,392.92h-372a15,15,0,1,1,0-30h372a15,15,0,0,1,0,30Z"/></g></svg>
+				</a>
+			</div>
+			<a href="/" id="editor-menu-logo-a">
 				<img data-lazy="/logo/logo.png">
 			</a>
 		</div>
@@ -60,14 +65,6 @@
 			<div class="editor-menu-input">
 				<input type="text" id="request_description" name="request_description" placeholder="Description" value="" required>
 			</div>
-			<!--
-			<div class="editor-menu-section">
-				<p key="editor-height">Flat Height</p>
-			</div>
-			<div class="editor-menu-input">
-				<input type="number" id="new_name" name="new_name" placeholder="Height" value="" required>
-			</div>
-			-->
 			<div class="editor-menu-button">
 				<button key="editor-save" onclick="saveRequest()">Save</button>
 			</div>
@@ -313,7 +310,7 @@
 						<div class="editor-inventory-browser-results">
 							<div class="editor-inventory-browser-searchbar">
 								<i class="fa-solid fa-magnifying-glass"></i>
-								<input type="text" id="searchbar" name="searchbar" placeholder="Search" value="">
+								<input type="text" id="searchbar" class="searchbar" name="searchbar" placeholder="Search" value="">
 							</div>
 							<div class="editor-inventory-browser-results-scroll" id="add-items">
 								<% for (var i = 0; i < objectslength; i++) { %>
@@ -382,7 +379,7 @@
 						<div class="editor-inventory-browser-results">
 							<div class="editor-inventory-browser-searchbar">
 								<i class="fa-solid fa-magnifying-glass"></i>
-								<input type="text" id="searchbar" name="searchbar" placeholder="Search" value="">
+								<input type="text" id="searchbar" class="searchbar" name="searchbar" placeholder="Search" value="">
 							</div>
 							<div class="editor-inventory-browser-results-scroll" id="add-items">
 								<% for (var i = 0; i < objectslength; i++) { %>
@@ -451,7 +448,7 @@
 						<div class="editor-inventory-browser-results">
 							<div class="editor-inventory-browser-searchbar">
 								<i class="fa-solid fa-magnifying-glass"></i>
-								<input type="text" id="searchbar" name="searchbar" placeholder="Search" value="">
+								<input type="text" id="searchbar" class="searchbar" name="searchbar" placeholder="Search" value="">
 							</div>
 							<div class="editor-inventory-browser-results-scroll" id="add-items">
 								<% for (var i = 0; i < objectslength; i++) { %>
@@ -520,7 +517,7 @@
 						<div class="editor-inventory-browser-results">
 							<div class="editor-inventory-browser-searchbar">
 								<i class="fa-solid fa-magnifying-glass"></i>
-								<input type="text" id="searchbar" name="searchbar" placeholder="Search" value="">
+								<input type="text" id="searchbar" class="searchbar" name="searchbar" placeholder="Search" value="">
 							</div>
 							<div class="editor-inventory-browser-results-scroll" id="add-items">
 								<% for (var i = 0; i < objectslength; i++) { %>
@@ -589,7 +586,7 @@
 						<div class="editor-inventory-browser-results">
 							<div class="editor-inventory-browser-searchbar">
 								<i class="fa-solid fa-magnifying-glass"></i>
-								<input type="text" id="searchbar" name="searchbar" placeholder="Search" value="">
+								<input type="text" id="searchbar" class="searchbar" name="searchbar" placeholder="Search" value="">
 							</div>
 							<div class="editor-inventory-browser-results-scroll" id="add-items">
 								<% for (var i = 0; i < objectslength; i++) { %>
@@ -641,30 +638,18 @@
 					<svg version="1.1" version="1.1" viewBox="0 0 512 512" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><g class="st2" id="cross"><g class="st0"><line class="st1" x1="112.5" x2="401" y1="112.5" y2="401"/><line class="st1" x1="401" x2="112.5" y1="112.5" y2="401"/></g></g><g id="cross_copy"><path d="M268.064,256.75l138.593-138.593c3.124-3.124,3.124-8.189,0-11.313c-3.125-3.124-8.189-3.124-11.314,0L256.75,245.436   L118.157,106.843c-3.124-3.124-8.189-3.124-11.313,0c-3.125,3.124-3.125,8.189,0,11.313L245.436,256.75L106.843,395.343   c-3.125,3.125-3.125,8.189,0,11.314c1.562,1.562,3.609,2.343,5.657,2.343s4.095-0.781,5.657-2.343L256.75,268.064l138.593,138.593   c1.563,1.562,3.609,2.343,5.657,2.343s4.095-0.781,5.657-2.343c3.124-3.125,3.124-8.189,0-11.314L268.064,256.75z"/></g></svg>
 				</a>
 			</div>
-			<table>
+			<table id="editor-material-table">
 				<tr>
 					<td></td>
 					<td colspan=2>Item</td>
-					<td>Quantity</td>
-					<td>Price</td>
-					<td>Site</td>
-				</tr>
-				<tr>
-					<td class="editor-material-table-available">
-						<svg height="24" width="24">
-							<circle cx="12" cy="12" r="6" stroke="black" stroke-width="2" fill="red" />
-						</svg>
-					</td>
-					<td class="editor-material-table-image"><img data-lazy="/editor/ikea/eket.jpg"></td>
-					<td class="editor-material-table-item">Ikea - Eket</td>
-					<td class="editor-material-table-quantity">3</td>
-					<td class="editor-material-table-price">40$</td>
-					<td class="editor-material-table-site"><span>View</span></td>
+					<td style="text-align:center">Quantity</td>
+					<td style="text-align:center">Price</td>
+					<td style="text-align:center">Site</td>
 				</tr>
 			</table>
 			<div class="editor-material-total">
 				<p>Total</p>
-				<p>64$</p>
+				<p id="editor-material-total-price"></p>
 			</div>
 		</div>
 		<div class="editor-canvas-popup fadein hidden" id="editor-canvas-popup">

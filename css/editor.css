@@ -20,6 +20,20 @@ button {
 	overflow: hidden;
 	width: 300px;
 	background-color: var(--secundary);
+	transition: all 0.25s ease-in-out;
+	-webkit-transition: all 0.25s ease-in-out;
+}
+
+/* Menu Collapse */
+
+.editor-menu-collapsed {
+	width: 80px;
+	transition: all 0.25s ease-in-out;
+	-webkit-transition: all 0.25s ease-in-out;
+}
+
+.editor-menu-overflow {
+	visibility: hidden !important;
 }
 
 .editor-menu-scrollable{
@@ -27,6 +41,23 @@ button {
 	overflow-y: scroll;
 	padding-bottom: 16px;
 }
+
+.editor-menu-collapsed-logo {
+	width: 100% !important;
+    height: 80px !important;
+	padding: 0px !important;
+	justify-content: center !important;
+}
+
+.editor-menu-collapsed-logo .editor-menu-bars{
+	padding-right: 0px !important;
+}
+
+.editor-canvas-collapsed {
+	width: calc(100% - 80px) !important;
+}
+
+/*  */
 
 .editor-menu-logo {
 	width: calc(100% - 40px);
@@ -39,10 +70,34 @@ button {
 	background-color: var(--black);
 }
 
+.editor-menu-logo a {
+	height: 40px;
+}
+
 .editor-menu-logo img {
 	width: 100%;
 	height: 40px;
 }
+
+/* Bars Cross */
+
+.editor-menu-bars {
+	height: 40px;
+	width: 40px;
+	padding-right: 20px;
+}
+
+.editor-menu-bars a {
+	height: 40px;
+	width: 40px;
+}
+
+.editor-menu-bars svg {
+	width: 40px;
+	fill: var(--white);
+}
+
+/*  */
 
 .editor-menu-user {
 	width: calc(100% - 40px);
@@ -281,6 +336,7 @@ button {
 	height: calc(100% - 160px);
 	width: calc(100% - 160px);
 	padding: 80px;
+	z-index: 10;
 }
 
 .editor-inventory-banner{
@@ -378,6 +434,7 @@ button {
 	height: calc(100% - 160px);
 	width: calc(100% - 160px);
 	padding: 80px;
+	z-index: 11;
 }
 
 .editor-inventory-browser-each {
@@ -617,6 +674,7 @@ button {
 	height: calc(100% - 160px);
 	width: calc(100% - 160px);
 	padding: 80px;
+	z-index: 12;
 }
 
 .editor-material table {
@@ -912,6 +970,11 @@ button {
 
 #save {background-color: green;}
 
+.btn-primary.disabled {
+	background-color: var(--fifth) !important;
+	color: var(--primary) !important;	
+}
+
 #floorplanner-controls button, #camera-controls div {
 	display: flex;
 	align-items: center;
@@ -923,6 +986,7 @@ button {
 	width: 40px;
 	height: 40px;
 	box-sizing: border-box;
+	border: none;
 }
 
 #floorplanner-controls button, #camera-controls div .fa-solid {
@@ -1094,8 +1158,9 @@ button {
 	border-radius: 4px;
 	padding: 12px 18px;
 	width: fit-Content;
-	color: var(--snowy);
-	background-color: var(--black);
+	color: var(--black);
+	background-color: var(--purewhite);
+	box-shadow: 0px 0px 4px 4px var(--shadowbar);	
 }
 
 /* Display & Hide Canvas */

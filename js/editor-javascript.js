@@ -9,6 +9,12 @@ document.addEventListener("DOMContentLoaded", function(event) {
 	var items = document.getElementsByClassName("editor-inventory-browser-results-each");
 	for (let i = 0; i < items.length; i++) {
 		items[i].addEventListener("click", function() {
+			$('#editor-material').removeClass("fadeon");
+			$('#editor-material').removeClass("show");
+			$('#editor-inventory-browser').removeClass("fadeon");
+			$('#editor-inventory-browser').removeClass("show");
+			$('#editor-inventory').removeClass("fadeon");
+			$('#editor-inventory').removeClass("show");
 			popup("var(--green)","Adding Item...");
 		});
 	}
@@ -76,6 +82,9 @@ document.addEventListener("DOMContentLoaded", function(event) {
 	
 	// Browser Brand
 	var inventory_page = ['furniture','decoration','lights','windows','doors'];
+	
+	// Brand Searchbar
+	var searchbar_array = document.querySelectorAll(".searchbar");
 	
 	// Browser Price Selector
 	var price_selector = Array.apply(null, Array(inventory_page.length)).map(function () {})
@@ -162,6 +171,21 @@ document.addEventListener("DOMContentLoaded", function(event) {
 					} else {}
 				});			
 			}
+			
+			$(searchbar_array[j]).on('input', function() {
+				for (let i = 0; i < furniture[j].length; i++) {
+					Array.from(furniture[j]).forEach(subnode => {
+						let myArray = Array.from(subnode)
+						for (let a = 0; a < furniture_length[j]; a++) {
+							if ((myArray[a].getAttribute("model-name").toLowerCase()).includes((searchbar_array[j].value).toLowerCase())) {
+								myArray[a].classList.remove("hidden");
+							} else {
+								myArray[a].classList.add("hidden");
+							}
+						}
+					})
+				}
+			});
 
 			$("#filter-button-" + inventory_page[j])[0].addEventListener("click", function() {
 				for (let i = 0; i < furniture[j].length; i++) {
@@ -186,7 +210,8 @@ document.addEventListener("DOMContentLoaded", function(event) {
 	}
 
 	// Material Menu
-	$('#editor-material-open,#editor-material-cross').click(function(){
+	$('#editor-material-open,#editor-material-cross').click(function() {
+		loadMaterials();
 		if ($('#editor-material').hasClass('fadeon')) {
 			$('#editor-material').toggleClass('fadeon');
 			setTimeout(function() {
@@ -272,4 +297,26 @@ function saveRequest() {
 			'request_json': data
 		}
 	});
+}
+
+// Menu Collapser
+var flag = 0;
+
+function menucollapse() {
+	var curwidth;
+	$('#editor-menu').toggleClass('editor-menu-collapsed');
+	$('.editor-menu-user').toggleClass('editor-menu-overflow');
+	$('.editor-menu-scrollable').toggleClass('editor-menu-overflow');
+	$('#editor-menu-logo-a').toggleClass('hidden');
+	$('#editor-menu-logo').toggleClass('editor-menu-collapsed-logo');
+	$('#editor-canvas').toggleClass('editor-canvas-collapsed');
+	if (flag === 0) {
+		curwidth = $("#floorplanner-canvas").attr("width");
+		$('#floorplanner-canvas').attr("width",parseInt(curwidth) + parseInt(220));
+		flag = 1;
+	} else if (flag === 1) {
+		curwidth = $("#floorplanner-canvas").attr("width");
+		$('#floorplanner-canvas').attr("width",parseInt(curwidth) - parseInt(220));
+		flag = 0;
+	}
 }

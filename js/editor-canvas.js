@@ -1,7 +1,14 @@
 // Global Variables
 
 var globalMeasurement = null;
-var currentObjects = new Array(); // Line 165 & 411
+
+// Global Objects for Shop | Line 165 & 411
+
+var currentObjects = new Array;
+
+currentObjects[0] = ["models/js/gus-churchchair-whiteoak.js", "Chair", "12", "models/thumbnails/thumbnail_Church-Chair-oak-white_1024x1024.jpg"];
+currentObjects[1] = ["models/js/gus-churchchair-whiteoak.js", "Chair", "12", "models/thumbnails/thumbnail_Church-Chair-oak-white_1024x1024.jpg"];
+currentObjects[2] = ["models/js/ik-ekero-orange_baked.js", "Red Chair", "0", "models/thumbnails/thumbnail_tn-orange.png"];
 
 // Measurement Localstorage
 
@@ -164,6 +171,13 @@ var ContextMenu = function(blueprint3d) {
 
 	function init() {
 		$("#context-menu-delete").click(function(event) {
+			
+			for (let i = 0; i < currentObjects.length; i++) {
+				if (currentObjects[i][0] === selectedItem['metadata']['modelUrl']) {
+					currentObjects[i] = null;
+				}
+			}
+			
 			selectedItem.remove();
 		});
 
@@ -400,6 +414,8 @@ var SideMenu = function(blueprint3d, floorplanControls, modalEffects) {
 	// TODO: this doesn't really belong here
 	function initItems() {
 		$("#add-items").find(".add-item").mousedown(function(e) {
+			var price = $(this).attr("price");
+			var imageUrl = $(this).find("img").attr("data-lazy");
 			var modelUrl = $(this).attr("model-url");
 			var itemType = parseInt($(this).attr("model-type"));
 			var metadata = {
@@ -408,7 +424,9 @@ var SideMenu = function(blueprint3d, floorplanControls, modalEffects) {
 				modelUrl: modelUrl,
 				itemType: itemType
 			}
-
+			
+			var pusharray = [metadata['modelUrl'], $(this).attr("model-name"), price, imageUrl];
+			currentObjects.push(pusharray);
 			blueprint3d.model.scene.addItem(itemType, modelUrl, metadata);
 			setCurrentState(scope.states.DEFAULT);
 		});
@@ -633,4 +651,54 @@ $(document).ready(function() {
 function saveData() {
 	var data = globalblueprint.model.exportSerialized();
 	return data;
+}
+
+function loadMaterials() {
+	
+	var formattedObjects = [];
+	var arrayObjects = [];
+	var count = 0;
+	var total = 0;
+	var obj = {};
+	
+	$("#editor-material-table .appended").remove();
+	
+	currentObjects.forEach(function(item) {
+		if (typeof obj[item] == 'number') {
+			obj[item]++;
+		} else {
+			obj[item] = 1;
+		}
+	});
+
+	Object.keys(obj).map(function(item) {
+		formattedObjects[item] = obj[item];
+		count++;
+	}).join('\n');
+			
+	for (let i = 0; i < count; i++) {
+		arrayObjects[i] = Object.keys(formattedObjects)[i].split(',');
+		arrayObjects[i].push(Object.values(formattedObjects)[i]);
+	}
+		
+	for (let i = 0; i < count; i++) {
+		$("#editor-material-table").append(`
+		<tr class='appended'>
+			<td class="editor-material-table-available">
+				<svg height="24" width="24"><circle cx="12" cy="12" r="6" stroke="black" stroke-width="2" fill="red" /></svg>
+			</td>
+			<td class="editor-material-table-image">
+				<img src="` + arrayObjects[i][3] + `">
+			</td>
+			<td class="editor-material-table-item">` + arrayObjects[i][1] + `</td>
+			<td class="editor-material-table-quantity">` + arrayObjects[i][4] + `</td>
+			<td class="editor-material-table-price">` + arrayObjects[i][2] + `</td>
+			<td class="editor-material-table-site"><span>View</span></td>
+		</tr>
+		`);
+		total = total + parseInt(arrayObjects[i][2]);
+	}
+	
+	$('#editor-material-total-price').text(total + '$');
+	
 }

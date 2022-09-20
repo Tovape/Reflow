@@ -7,8 +7,14 @@ three.js-r69 Blender Exporter
 
 Steps:
 1- Creation of the model in Blender 3.0 and get textures
-2- Export Model to Blender 2.79b using the Append Method and export as json
-3- Add Item to DDBB and verify the dimensions and textures
+
+2- Export Model to Blender 2.79b using the Append or Open the .blend file if you can
+
+If you only use a static color, just add it to the mesh and import to js, don't worry about size
+If you use images make sure to bake it, use the baked image into the model and export right away
+
+3- Add Item to DDBB and verify the textures, you will need to add the dimensions in the sql
+since it's the most reliable solution to resize the object
 
 Model Categories:
 
@@ -17,3 +23,7 @@ Decoration	- 2
 Lights		- 3
 Windows		- 4
 Doors		- 5
+
+Image Thumbnail of each Object:
+
+256x256

@@ -15,6 +15,8 @@ document.addEventListener("DOMContentLoaded", function(event) {
 			$('#editor-inventory-browser').removeClass("show");
 			$('#editor-inventory').removeClass("fadeon");
 			$('#editor-inventory').removeClass("show");
+			$('#editor-inventory-open').html('Open');
+			$('#editor-material-open').html('Open');
 			popup("var(--green)","Adding Item...");
 		});
 	}
@@ -260,32 +262,34 @@ document.addEventListener("DOMContentLoaded", function(event) {
 	$('.measurement').click(function() {
 		popup("var(--blue)","Refresh the page");
 	});
-	
-	// Popup Function
-	let popupflex = document.getElementById("editor-canvas-popup");
-	let popuptext = document.getElementById("editor-canvas-popup-text");
-		
-	function popup(color, message) {
-		popuptext.style.borderColor = color;
-		popuptext.textContent = message;
-		
-		popupflex.classList.toggle('flex');
-		setTimeout(function() {
-			popupflex.classList.toggle('fadeon');
-		}, 150);
-		
-		setTimeout(function() {
-			popupflex.classList.toggle('fadeon');
-			setTimeout(function() {
-				popupflex.classList.toggle('flex');
-			}, 150);
-		}, 2000);
-	}
 
 });
 
+// Popup Function	
+function popup(color, message) {
+	
+	let popupflex = document.getElementById("editor-canvas-popup");
+	let popuptext = document.getElementById("editor-canvas-popup-text");
+	
+	popuptext.style.borderColor = color;
+	popuptext.textContent = message;
+	
+	popupflex.classList.toggle('flex');
+	setTimeout(function() {
+		popupflex.classList.toggle('fadeon');
+	}, 150);
+	
+	setTimeout(function() {
+		popupflex.classList.toggle('fadeon');
+		setTimeout(function() {
+			popupflex.classList.toggle('flex');
+		}, 150);
+	}, 2000);
+}
+
 // Save Title and Description DDBB AJAX
 function saveRequest() {
+	popup("var(--green)","Saved");
 	var data = saveData();
 	$.ajax({
 		url: "/saverequest",

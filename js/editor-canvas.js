@@ -1,14 +1,11 @@
 // Global Variables
 
 var globalMeasurement = null;
+var globalSize = [null, null, null];
 
 // Global Objects for Shop | Line 165 & 411
 
 var currentObjects = new Array;
-
-currentObjects[0] = ["models/js/gus-churchchair-whiteoak.js", "Chair", "12", "models/thumbnails/thumbnail_Church-Chair-oak-white_1024x1024.jpg"];
-currentObjects[1] = ["models/js/gus-churchchair-whiteoak.js", "Chair", "12", "models/thumbnails/thumbnail_Church-Chair-oak-white_1024x1024.jpg"];
-currentObjects[2] = ["models/js/ik-ekero-orange_baked.js", "Red Chair", "0", "models/thumbnails/thumbnail_tn-orange.png"];
 
 // Measurement Localstorage
 
@@ -170,21 +167,47 @@ var ContextMenu = function(blueprint3d) {
 	var three = blueprint3d.three;
 
 	function init() {
+		
+		// Delete Button
 		$("#context-menu-delete").click(function(event) {
-			
 			for (let i = 0; i < currentObjects.length; i++) {
 				if (currentObjects[i][0] === selectedItem['metadata']['modelUrl']) {
 					currentObjects[i] = null;
 				}
 			}
-			
 			selectedItem.remove();
 		});
-
+		
+		// Delete Active Objects
+		document.addEventListener("keydown", (e) => {
+			if (e.key === "Delete" || e.key === 'Backspace') {
+				for (let i = 0; i < currentObjects.length; i++) {
+					if (currentObjects[i][0] === selectedItem['metadata']['modelUrl']) {
+						currentObjects[i] = null;
+					}
+				}
+				selectedItem.remove();
+			}
+		});
+		
 		three.itemSelectedCallbacks.add(itemSelected);
 		three.itemUnselectedCallbacks.add(itemUnselected);
-
+		
 		initResize();
+		
+		// Set Default Size
+		$(".add-item").click(function(){
+			globalSize[0] = $(this).attr("height");
+			globalSize[1] = $(this).attr("width");
+			globalSize[2] = $(this).attr("depth");
+			setTimeout(function() {
+				if (selectedItem !== null || selectedItem !== undefined) {
+				selectedItem.resize(globalSize[0], globalSize[1], globalSize[2]);
+				} else {
+				return;
+				}
+			}, 1000);
+		})
 
 		$("#fixed").click(function() {
 			var checked = $(this).prop('checked');
@@ -206,7 +229,7 @@ var ContextMenu = function(blueprint3d) {
 	function itemSelected(item) {
 		selectedItem = item;
 
-		$("#context-menu-name").text(item.metadata.itemName);
+		$("#context-menu-name").text(item.metadata.itemBrand + " - " + item.metadata.itemName);
 
 		if (globalMeasurement === 'meters') {
 			$("#item-width").val(selectedItem.getWidth().toFixed(0));
@@ -422,7 +445,8 @@ var SideMenu = function(blueprint3d, floorplanControls, modalEffects) {
 				itemName: $(this).attr("model-name"),
 				resizable: true,
 				modelUrl: modelUrl,
-				itemType: itemType
+				itemType: itemType,
+				itemBrand: $(this).attr("brand")
 			}
 			
 			var pusharray = [metadata['modelUrl'], $(this).attr("model-name"), price, imageUrl];
@@ -663,14 +687,19 @@ function loadMaterials() {
 	
 	$("#editor-material-table .appended").remove();
 	
-	currentObjects.forEach(function(item) {
+	// Clean Nulls
+	const results = currentObjects.filter(element => {
+		return element !== null;
+	});
+	
+	results.forEach(function(item) {
 		if (typeof obj[item] == 'number') {
 			obj[item]++;
 		} else {
 			obj[item] = 1;
 		}
 	});
-
+	
 	Object.keys(obj).map(function(item) {
 		formattedObjects[item] = obj[item];
 		count++;
@@ -696,7 +725,7 @@ function loadMaterials() {
 			<td class="editor-material-table-site"><span>View</span></td>
 		</tr>
 		`);
-		total = total + parseInt(arrayObjects[i][2]);
+		total = total + parseInt(arrayObjects[i][2])*arrayObjects[i][4];
 	}
 	
 	$('#editor-material-total-price').text(total + '$');

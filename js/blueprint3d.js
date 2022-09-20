@@ -20934,7 +20934,7 @@ THREE.JSONLoader.prototype.loadAjaxJSON = function ( context, url, callback, tex
 			} else {
 
 				console.error( 'THREE.JSONLoader: Couldn\'t load "' + url + '" (' + xhr.status + ')' );
-
+				return 0;
 			}
 
 		} else if ( xhr.readyState === xhr.LOADING ) {
@@ -32786,27 +32786,33 @@ THREE.WebGLRenderer = function ( parameters ) {
 
 	function clampToMaxSize ( image, maxSize ) {
 
-		if ( image.width > maxSize || image.height > maxSize ) {
+		if (image === null || image === undefined || image === "") {
+			
+		} else {
+			
+			if ( image.width > maxSize || image.height > maxSize ) {
 
-			// Warning: Scaling through the canvas will only work with images that use
-			// premultiplied alpha.
+				// Warning: Scaling through the canvas will only work with images that use
+				// premultiplied alpha.
 
-			var scale = maxSize / Math.max( image.width, image.height );
+				var scale = maxSize / Math.max( image.width, image.height );
 
-			var canvas = document.createElement( 'canvas' );
-			canvas.width = Math.floor( image.width * scale );
-			canvas.height = Math.floor( image.height * scale );
+				var canvas = document.createElement( 'canvas' );
+				canvas.width = Math.floor( image.width * scale );
+				canvas.height = Math.floor( image.height * scale );
 
-			var context = canvas.getContext( '2d' );
-			context.drawImage( image, 0, 0, image.width, image.height, 0, 0, canvas.width, canvas.height );
+				var context = canvas.getContext( '2d' );
+				context.drawImage( image, 0, 0, image.width, image.height, 0, 0, canvas.width, canvas.height );
 
-			console.log( 'THREE.WebGLRenderer:', image, 'is too big (' + image.width + 'x' + image.height + '). Resized to ' + canvas.width + 'x' + canvas.height + '.' );
+				console.log( 'THREE.WebGLRenderer:', image, 'is too big (' + image.width + 'x' + image.height + '). Resized to ' + canvas.width + 'x' + canvas.height + '.' );
 
-			return canvas;
+				return canvas;
 
+			}
+
+			return image;
+			
 		}
-
-		return image;
 
 	}
 

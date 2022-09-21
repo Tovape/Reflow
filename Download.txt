@@ -1,16 +1,15 @@
 Polantis
 
 Armchairs (10)			- Downloaded
-	Poang			- Baked
-	Tullsta
-	Vibbyn
-	Ektorp
-	Ektorp red
-	Emmabo
-	Grankulla
-	Gullholmen
-	Karlskrona
-	Karlstad
+	Poang			- Done
+	Tullsta			- Done
+	Vibbyn			- Done
+	Ektorp			- Done
+	Emmabo			- Done
+	Grankulla		- Done
+	Gullholmen		- 
+	Karlskrona		- 
+	Karlstad		- 
 Bath & Spas (3)			- Downloaded
 Beds (17)			- Downloaded
 Chairs, Stools & Benches (42)	- Downloaded

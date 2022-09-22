@@ -171,10 +171,17 @@ var ContextMenu = function(blueprint3d) {
 		// Delete Button
 		$("#context-menu-delete").click(function(event) {
 			for (let i = 0; i < currentObjects.length; i++) {
-				if (currentObjects[i][0] === selectedItem['metadata']['modelUrl']) {
-					currentObjects[i] = null;
+				if (currentObjects[i] !== null || currentObjects[i] !== undefined || currentObjects[i] !== "") {
+					if (currentObjects[i][0] === selectedItem['metadata']['modelUrl']) {
+						currentObjects[i] = null;
+					}
 				}
 			}
+			
+			currentObjects = currentObjects.filter(element => {
+				return element !== null;
+			});
+			
 			selectedItem.remove();
 		});
 		
@@ -186,6 +193,11 @@ var ContextMenu = function(blueprint3d) {
 						currentObjects[i] = null;
 					}
 				}
+				
+				currentObjects = currentObjects.filter(element => {
+					return element !== null;
+				});
+				
 				selectedItem.remove();
 			}
 		});
@@ -202,9 +214,9 @@ var ContextMenu = function(blueprint3d) {
 			globalSize[2] = $(this).attr("depth");
 			setTimeout(function() {
 				if (selectedItem !== null || selectedItem !== undefined) {
-				selectedItem.resize(globalSize[0], globalSize[1], globalSize[2]);
+					selectedItem.resize(globalSize[0], globalSize[1], globalSize[2]);
 				} else {
-				return;
+					return;
 				}
 			}, 1000);
 		})

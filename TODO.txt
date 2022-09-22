@@ -10,3 +10,6 @@ Hostinger VPS --> Node.js, Mysql
 
 Todo:
 
+Add Types: Drawers, Beds etc
+Add Colors
+Array of Objects into Requests new field

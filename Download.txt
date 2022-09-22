@@ -1,23 +1,35 @@
 Polantis
 
 Armchairs (10)			- Downloaded
-	Poang			- Done
-	Tullsta			- Done
-	Vibbyn			- Done
-	Ektorp			- Done
-	Emmabo			- Done
-	Grankulla		- Done
-	Gullholmen		- 
-	Karlskrona		- 
-	Karlstad		- 
+	Poang				- Done
+	Tullsta				- Done
+	Vibbyn				- Done
+	Ektorp				- Done
+	Emmabo				- Done
+	Grankulla			- Done
+	Karlstad			- Done
+
+Shelving & Storage (32)		- Downloaded
+	Alex Series
+		white 6 With Wheels	- Done
+		blue 6 With Wheels	- Pending
+		wood 6 With Wheels	- Pending
+		white 5 With Wheels	- Pending
+		blue 5 With Wheels	- Pending
+		wood 5 With Wheels	- Pending
+		black 5			- Pending
+		blue 5			- Pending
+		white 5			- Pending
+		wood 5			- Pending
+		blue 9			- Pending
+		white 9			- Pending
+		wood 9			- Pending
+	Helmes Series
+		3			- Pending
+
+Sofas & Armchairs (22)		- Downloaded
 Bath & Spas (3)			- Downloaded
 Beds (17)			- Downloaded
 Chairs, Stools & Benches (42)	- Downloaded
 Floor Mounted Lights (32)	- Downloaded
 Tables (50)			- Downloaded
-Shelving & Storage (32)		- Downloaded
-Sofas & Armchairs (22)		- Downloaded
-Storage (277)			- 
-Other Kitchen (228)		- 
-
-	

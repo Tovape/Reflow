@@ -303,6 +303,18 @@
 									</div>
 								</div>
 								<div class="editor-inventory-browser-filter-each">
+									<p class="editor-inventory-browser-filter-each-title">Type</p>
+									<div class="filter-manufacturer" id="filter-type-furniture">
+										<p type="all" class="filter-manufacturer-active">All</p>
+									</div>
+								</div>
+								<div class="editor-inventory-browser-filter-each">
+									<p class="editor-inventory-browser-filter-each-title">Color</p>
+									<div class="filter-manufacturer" id="filter-color-furniture">
+										<p color="all" class="filter-manufacturer-active">All</p>
+									</div>
+								</div>
+								<div class="editor-inventory-browser-filter-each">
 									<div class="filter-button" id="filter-button-furniture">
 										<p>Filter</p>
 									</div>
@@ -369,6 +381,18 @@
 									<p class="editor-inventory-browser-filter-each-title">Manufacturer</p>
 									<div class="filter-manufacturer" id="filter-manufacturer-decoration">
 										<p brand="all" class="filter-manufacturer-active">All</p>
+									</div>
+								</div>
+								<div class="editor-inventory-browser-filter-each">
+									<p class="editor-inventory-browser-filter-each-title">Type</p>
+									<div class="filter-manufacturer" id="filter-type-decoration">
+										<p type="all" class="filter-manufacturer-active">All</p>
+									</div>
+								</div>
+								<div class="editor-inventory-browser-filter-each">
+									<p class="editor-inventory-browser-filter-each-title">Color</p>
+									<div class="filter-manufacturer" id="filter-color-decoration">
+										<p color="all" class="filter-manufacturer-active">All</p>
 									</div>
 								</div>
 								<div class="editor-inventory-browser-filter-each">
@@ -441,6 +465,18 @@
 									</div>
 								</div>
 								<div class="editor-inventory-browser-filter-each">
+									<p class="editor-inventory-browser-filter-each-title">Type</p>
+									<div class="filter-manufacturer" id="filter-type-lights">
+										<p type="all" class="filter-manufacturer-active">All</p>
+									</div>
+								</div>
+								<div class="editor-inventory-browser-filter-each">
+									<p class="editor-inventory-browser-filter-each-title">Color</p>
+									<div class="filter-manufacturer" id="filter-color-lights">
+										<p color="all" class="filter-manufacturer-active">All</p>
+									</div>
+								</div>
+								<div class="editor-inventory-browser-filter-each">
 									<div class="filter-button" id="filter-button-lights">
 										<p>Filter</p>
 									</div>
@@ -510,6 +546,18 @@
 									</div>
 								</div>
 								<div class="editor-inventory-browser-filter-each">
+									<p class="editor-inventory-browser-filter-each-title">Type</p>
+									<div class="filter-manufacturer" id="filter-type-windows">
+										<p type="all" class="filter-manufacturer-active">All</p>
+									</div>
+								</div>
+								<div class="editor-inventory-browser-filter-each">
+									<p class="editor-inventory-browser-filter-each-title">Color</p>
+									<div class="filter-manufacturer" id="filter-color-windows">
+										<p color="all" class="filter-manufacturer-active">All</p>
+									</div>
+								</div>
+								<div class="editor-inventory-browser-filter-each">
 									<div class="filter-button" id="filter-button-windows">
 										<p>Filter</p>
 									</div>
@@ -576,6 +624,18 @@
 									<p class="editor-inventory-browser-filter-each-title">Manufacturer</p>
 									<div class="filter-manufacturer" id="filter-manufacturer-doors">
 										<p brand="all" class="filter-manufacturer-active">All</p>
+									</div>
+								</div>
+								<div class="editor-inventory-browser-filter-each">
+									<p class="editor-inventory-browser-filter-each-title">Type</p>
+									<div class="filter-manufacturer" id="filter-type-doors">
+										<p type="all" class="filter-manufacturer-active">All</p>
+									</div>
+								</div>
+								<div class="editor-inventory-browser-filter-each">
+									<p class="editor-inventory-browser-filter-each-title">Color</p>
+									<div class="filter-manufacturer" id="filter-color-doors">
+										<p color="all" class="filter-manufacturer-active">All</p>
 									</div>
 								</div>
 								<div class="editor-inventory-browser-filter-each">
@@ -679,77 +739,234 @@ jsonsave_selector.setAttribute("value", <%- JSON.stringify(jsonsave)%>);
 document.getElementById("request_title").setAttribute("value", '<%= request_title %>');
 document.getElementById("request_description").setAttribute("value", '<%= request_description %>');
 
+// Verifier
+<%
+function checking(value) {
+	if (value !== null && value !== "" && value !== undefined) {
+		return true;
+	} else {
+		return false;
+	}
+}
+%>
+
 // Brand Sorting
-var furniture = [];
-var decoration = [];
-var lights = [];
-var windows = [];
-var doors = [];
+var brand_furniture = [];
+var brand_decoration = [];
+var brand_lights = [];
+var brand_windows = [];
+var brand_doors = [];
 
 <% for (var i = 0; i < objectslength; i++) { %>
 	<% if (objects[i].category === 1) { %>
-		<% if (objects[i].brand !== null && objects[i].brand !== "" && objects[i].brand !== undefined) { %>
-			furniture.push("<%= objects[i].brand %>");
+		<% if (checking(objects[i].brand)) { %>
+			brand_furniture.push("<%= objects[i].brand %>");
 		<% } %>
 	<% } %>
 <% } %>
 
 <% for (var i = 0; i < objectslength; i++) { %>
 	<% if (objects[i].category === 2) { %>
-		<% if (objects[i].brand !== null && objects[i].brand !== "" && objects[i].brand !== undefined) { %>
-			decoration.push("<%= objects[i].brand %>");
+		<% if (checking(objects[i].brand)) { %>
+			brand_decoration.push("<%= objects[i].brand %>");
 		<% } %>
 	<% } %>
 <% } %>
 
 <% for (var i = 0; i < objectslength; i++) { %>
 	<% if (objects[i].category === 3) { %>
-		<% if (objects[i].brand !== null && objects[i].brand !== "" && objects[i].brand !== undefined) { %>
-			lights.push("<%= objects[i].brand %>");
+		<% if (checking(objects[i].brand)) { %>
+			brand_lights.push("<%= objects[i].brand %>");
 		<% } %>
 	<% } %>
 <% } %>
 
 <% for (var i = 0; i < objectslength; i++) { %>
 	<% if (objects[i].category === 4) { %>
-		<% if (objects[i].brand !== null && objects[i].brand !== "" && objects[i].brand !== undefined) { %>
-			windows.push("<%= objects[i].brand %>");
+		<% if (checking(objects[i].brand)) { %>
+			brand_windows.push("<%= objects[i].brand %>");
 		<% } %>
 	<% } %>
 <% } %>
 
 <% for (var i = 0; i < objectslength; i++) { %>
 	<% if (objects[i].category === 5) { %>
-		<% if (objects[i].brand !== null && objects[i].brand !== "" && objects[i].brand !== undefined) { %>
-			doors.push("<%= objects[i].brand %>");
+		<% if (checking(objects[i].brand)) { %>
+			brand_doors.push("<%= objects[i].brand %>");
 		<% } %>
 	<% } %>
 <% } %>
 
-furniture = [...new Set(furniture)];
-decoration = [...new Set(decoration)];
-lights = [...new Set(lights)];
-windows = [...new Set(windows)];
-doors = [...new Set(doors)];
+brand_furniture = [...new Set(brand_furniture)];
+brand_decoration = [...new Set(brand_decoration)];
+brand_lights = [...new Set(brand_lights)];
+brand_windows = [...new Set(brand_windows)];
+brand_doors = [...new Set(brand_doors)];
 
-for (var i = 0; i < furniture.length; i++) {
-	$('#filter-manufacturer-furniture').append("<p brand='" + furniture[i] + "' class='filter-manufacturer-active'>" + furniture[i] + "</p>");
+for (var i = 0; i < brand_furniture.length; i++) {
+	$('#filter-manufacturer-furniture').append("<p brand='" + brand_furniture[i] + "' class='filter-manufacturer-active'>" + brand_furniture[i] + "</p>");
 }
 
-for (var i = 0; i < decoration.length; i++) {
-	$('#filter-manufacturer-decoration').append("<p brand='" + decoration[i] + "' class='filter-manufacturer-active'>" + decoration[i] + "</p>");
+for (var i = 0; i < brand_decoration.length; i++) {
+	$('#filter-manufacturer-decoration').append("<p brand='" + brand_decoration[i] + "' class='filter-manufacturer-active'>" + brand_decoration[i] + "</p>");
 }
 
-for (var i = 0; i < lights.length; i++) {
-	$('#filter-manufacturer-lights').append("<p brand='" + lights[i] + "' class='filter-manufacturer-active'>" + lights[i] + "</p>");
+for (var i = 0; i < brand_lights.length; i++) {
+	$('#filter-manufacturer-lights').append("<p brand='" + brand_lights[i] + "' class='filter-manufacturer-active'>" + brand_lights[i] + "</p>");
 }
 
-for (var i = 0; i < windows.length; i++) {
-	$('#filter-manufacturer-windows').append("<p brand='" + windows[i] + "' class='filter-manufacturer-active'>" + windows[i] + "</p>");
+for (var i = 0; i < brand_windows.length; i++) {
+	$('#filter-manufacturer-windows').append("<p brand='" + brand_windows[i] + "' class='filter-manufacturer-active'>" + brand_windows[i] + "</p>");
 }
 
-for (var i = 0; i < doors.length; i++) {
-	$('#filter-manufacturer-doors').append("<p brand='" + doors[i] + "' class='filter-manufacturer-active'>" + doors[i] + "</p>");
+for (var i = 0; i < brand_doors.length; i++) {
+	$('#filter-manufacturer-doors').append("<p brand='" + brand_doors[i] + "' class='filter-manufacturer-active'>" + brand_doors[i] + "</p>");
+}
+
+// Class Sorting
+var class_furniture = [];
+var class_decoration = [];
+var class_lights = [];
+var class_windows = [];
+var class_doors = [];
+
+<% for (var i = 0; i < objectslength; i++) { %>
+	<% if (objects[i].category === 1) { %>
+		<% if (checking(objects[i].class)) { %>
+			class_furniture.push("<%= objects[i].class %>");
+		<% } %>
+	<% } %>
+<% } %>
+
+<% for (var i = 0; i < objectslength; i++) { %>
+	<% if (objects[i].category === 2) { %>
+		<% if (checking(objects[i].class)) { %>
+			class_decoration.push("<%= objects[i].class %>");
+		<% } %>
+	<% } %>
+<% } %>
+
+<% for (var i = 0; i < objectslength; i++) { %>
+	<% if (objects[i].category === 3) { %>
+		<% if (checking(objects[i].class)) { %>
+			class_lights.push("<%= objects[i].class %>");
+		<% } %>
+	<% } %>
+<% } %>
+
+<% for (var i = 0; i < objectslength; i++) { %>
+	<% if (objects[i].category === 4) { %>
+		<% if (checking(objects[i].class)) { %>
+			class_windows.push("<%= objects[i].class %>");
+		<% } %>
+	<% } %>
+<% } %>
+
+<% for (var i = 0; i < objectslength; i++) { %>
+	<% if (objects[i].category === 5) { %>
+		<% if (checking(objects[i].class)) { %>
+			class_doors.push("<%= objects[i].class %>");
+		<% } %>
+	<% } %>
+<% } %>
+
+class_furniture = [...new Set(class_furniture)];
+class_decoration = [...new Set(class_decoration)];
+class_lights = [...new Set(class_lights)];
+class_windows = [...new Set(class_windows)];
+class_doors = [...new Set(class_doors)];
+
+for (var i = 0; i < class_furniture.length; i++) {
+	$('#filter-type-furniture').append("<p brand='" + class_furniture[i] + "' class='filter-class-active'>" + class_furniture[i] + "</p>");
+}
+
+for (var i = 0; i < class_decoration.length; i++) {
+	$('#filter-type-decoration').append("<p brand='" + class_decoration[i] + "' class='filter-class-active'>" + class_decoration[i] + "</p>");
+}
+
+for (var i = 0; i < class_lights.length; i++) {
+	$('#filter-type-lights').append("<p brand='" + class_lights[i] + "' class='filter-class-active'>" + class_lights[i] + "</p>");
+}
+
+for (var i = 0; i < class_windows.length; i++) {
+	$('#filter-type-windows').append("<p brand='" + class_windows[i] + "' class='filter-class-active'>" + class_windows[i] + "</p>");
+}
+
+for (var i = 0; i < class_doors.length; i++) {
+	$('#filter-type-doors').append("<p brand='" + class_doors[i] + "' class='filter-class-active'>" + class_doors[i] + "</p>");
+}
+
+// Color Sorting
+var color_furniture = [];
+var color_decoration = [];
+var color_lights = [];
+var color_windows = [];
+var color_doors = [];
+
+<% for (var i = 0; i < objectslength; i++) { %>
+	<% if (objects[i].category === 1) { %>
+		<% if (checking(objects[i].color)) { %>
+			color_furniture.push("<%= objects[i].color %>");
+		<% } %>
+	<% } %>
+<% } %>
+
+<% for (var i = 0; i < objectslength; i++) { %>
+	<% if (objects[i].category === 2) { %>
+		<% if (checking(objects[i].color)) { %>
+			color_decoration.push("<%= objects[i].color %>");
+		<% } %>
+	<% } %>
+<% } %>
+
+<% for (var i = 0; i < objectslength; i++) { %>
+	<% if (objects[i].category === 3) { %>
+		<% if (checking(objects[i].color)) { %>
+			color_lights.push("<%= objects[i].color %>");
+		<% } %>
+	<% } %>
+<% } %>
+
+<% for (var i = 0; i < objectslength; i++) { %>
+	<% if (objects[i].category === 4) { %>
+		<% if (checking(objects[i].color)) { %>
+			color_windows.push("<%= objects[i].color %>");
+		<% } %>
+	<% } %>
+<% } %>
+
+<% for (var i = 0; i < objectslength; i++) { %>
+	<% if (objects[i].category === 5) { %>
+		<% if (checking(objects[i].color)) { %>
+			color_doors.push("<%= objects[i].color %>");
+		<% } %>
+	<% } %>
+<% } %>
+
+color_furniture = [...new Set(color_furniture)];
+color_decoration = [...new Set(color_decoration)];
+color_lights = [...new Set(color_lights)];
+color_windows = [...new Set(color_windows)];
+color_doors = [...new Set(color_doors)];
+
+for (var i = 0; i < color_furniture.length; i++) {
+	$('#filter-color-furniture').append("<p color='" + color_furniture[i] + "' class='filter-color-active'>" + color_furniture[i] + "</p>");
+}
+
+for (var i = 0; i < color_decoration.length; i++) {
+	$('#filter-color-decoration').append("<p color='" + color_decoration[i] + "' class='filter-color-active'>" + color_decoration[i] + "</p>");
+}
+
+for (var i = 0; i < color_lights.length; i++) {
+	$('#filter-color-lights').append("<p color='" + color_lights[i] + "' class='filter-color-active'>" + color_lights[i] + "</p>");
+}
+
+for (var i = 0; i < color_windows.length; i++) {
+	$('#filter-color-windows').append("<p color='" + color_windows[i] + "' class='filter-color-active'>" + color_windows[i] + "</p>");
+}
+
+for (var i = 0; i < color_doors.length; i++) {
+	$('#filter-color-doors').append("<p color='" + color_doors[i] + "' class='filter-color-active'>" + color_doors[i] + "</p>");
 }
 
 </script>

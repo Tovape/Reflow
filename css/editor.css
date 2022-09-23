@@ -27,7 +27,7 @@ button {
 /* Menu Collapse */
 
 .editor-menu-collapsed {
-	width: 80px;
+	width: 80px !important;
 	transition: all 0.25s ease-in-out;
 	-webkit-transition: all 0.25s ease-in-out;
 }
@@ -72,11 +72,12 @@ button {
 
 .editor-menu-logo a {
 	height: 40px;
+	width: auto;
 }
 
 .editor-menu-logo img {
 	width: 100%;
-	height: 40px;
+	height: 100%;
 }
 
 /* Bars Cross */
@@ -580,7 +581,7 @@ button {
     -webkit-transition: all 0.1s ease-in-out;
 }
 
-.filter-manufacturer-active {
+.filter-manufacturer-active,.filter-color-active,.filter-class-active {
 	color: var(--white);
 	background-color: var(--fourth) !important;
 }

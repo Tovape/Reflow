@@ -87,12 +87,13 @@ $(document).ready(function() {
 	
 });
 
-
 // Avatar Auto Submit
 
 document.addEventListener("DOMContentLoaded", function(event) { 
 	document.getElementById("avatar").onchange = function() {
 		document.getElementById("saveavatar").submit();
+		//let id_users = document.getElementById("id_user").value;
+		//document.getElementById("dashboard-profile-avatar").style.backgroundImage = "url('/user/" + id_users + ".jpg')";
 	};
 });
 

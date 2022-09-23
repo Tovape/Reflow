@@ -132,6 +132,18 @@ document.addEventListener("DOMContentLoaded", function(event) {
 	// Page Brand Array
 	var brand_array = new Array(inventory_page.length).fill(new Array(3).fill(null))
 
+	// Page Color Selectors
+	var class_selector = Array.apply(null, Array(inventory_page.length)).map(function () {})
+
+	// Page Color Array
+	var class_array = new Array(inventory_page.length).fill(new Array(3).fill(null))
+
+	// Page Color Selectors
+	var color_selector = Array.apply(null, Array(inventory_page.length)).map(function () {})
+
+	// Page Color Array
+	var color_array = new Array(inventory_page.length).fill(new Array(3).fill(null))
+
 	// Each Furniture
 	var furniture = [];
 	
@@ -141,11 +153,23 @@ document.addEventListener("DOMContentLoaded", function(event) {
 	// Browser Filtering
 	for(let j = 0; j < inventory_page.length; j++) {
 
-		// Dom Selector Setters
+		// Brand Dom Selector Setters
 		brand_selector[j] = new Array(document.querySelectorAll("#filter-manufacturer-" + inventory_page[j] + " p"));
 
 		// Active Brands
 		brand_array[j] = new Array();
+		
+		// Class Dom Selector Setters
+		class_selector[j] = new Array(document.querySelectorAll("#filter-type-" + inventory_page[j] + " p"));
+
+		// Active Class
+		class_array[j] = new Array();
+		
+		// Color Dom Selector Setters
+		color_selector[j] = new Array(document.querySelectorAll("#filter-color-" + inventory_page[j] + " p"));
+
+		// Active Colors
+		color_array[j] = new Array();
 
 		// Get Furniture
 		furniture[j] = new Array(document.querySelectorAll("#browser-" + inventory_page[j] + " .add-item"));
@@ -156,7 +180,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
 			furniture_length[j] = myArray.length;
 		})
 
-		// Actual Logic
+		// Actual Logic (Global)
 		Array.from(brand_selector[j]).forEach(node => {
 			let myArray = Array.from(node)
 
@@ -194,21 +218,69 @@ document.addEventListener("DOMContentLoaded", function(event) {
 					Array.from(furniture[j]).forEach(subnode => {
 						let myArray = Array.from(subnode)
 						for (let a = 0; a < furniture_length[j]; a++) {
-							if (brand_array[j].includes('all') && price_range[j][0] <= myArray[a].getAttribute("price") && price_range[j][1] >= myArray[a].getAttribute("price")) {
-								myArray[a].classList.remove("hidden");
-							} else if (brand_array[j].includes(myArray[a].getAttribute("brand")) && price_range[j][0] <= myArray[a].getAttribute("price") && price_range[j][1] >= myArray[a].getAttribute("price")) {
-								myArray[a].classList.remove("hidden");
+							if (brand_array[j].includes('all') && 
+								price_range[j][0] <= myArray[a].getAttribute("price") && 
+								price_range[j][1] >= myArray[a].getAttribute("price") && 
+								color_array[j].includes('all') &&
+								class_array[j].includes('all')) {
+									myArray[a].classList.remove("hidden");
+							} else if (
+								(brand_array[j].includes('all') || brand_array[j].includes(myArray[a].getAttribute("brand"))) && 
+								(price_range[j][0] <= myArray[a].getAttribute("price") && price_range[j][1] >= myArray[a].getAttribute("price")) && 
+								(color_array[j].includes('all') || color_array[j].includes(myArray[a].getAttribute("color"))) &&
+								(class_array[j].includes('all') || class_array[j].includes(myArray[a].getAttribute("model-class")))) {
+									myArray[a].classList.remove("hidden");
 							} else {
 								if (myArray[a].classList.contains('hidden')) {
 								} else {
 									myArray[a].classList.add("hidden");
 								}
 							}
+							console.log(class_array[j])
 						}
 					})
 				}
 			});
 		})		
+			
+		// Actual Logic (Color)
+		Array.from(color_selector[j]).forEach(node => {
+			let myArray = Array.from(node)
+
+			for (let i = 0; i < node.length; i++) {
+				color_array[j][i] = myArray[i].getAttribute("color");
+				myArray[i].addEventListener("click", function() {
+					var color = myArray[i].getAttribute("color");
+					if (color_array[j][i] === null) {
+						color_array[j][i] = color;
+						myArray[i].classList.toggle("filter-color-active");
+					} else if (brand_array[i] !== null) {
+						color_array[j][i] = null;
+						myArray[i].classList.toggle("filter-color-active");
+					} else {}
+				});			
+			}
+		})
+	
+		// Actual Logic (Class)
+		Array.from(class_selector[j]).forEach(node => {
+			let myArray = Array.from(node)
+
+			for (let i = 0; i < node.length; i++) {
+				class_array[j][i] = myArray[i].getAttribute("type");
+				myArray[i].addEventListener("click", function() {
+					var modelclass = myArray[i].getAttribute("type");
+					if (class_array[j][i] === null) {
+						class_array[j][i] = modelclass;
+						myArray[i].classList.toggle("filter-class-active");
+					} else if (brand_array[i] !== null) {
+						class_array[j][i] = null;
+						myArray[i].classList.toggle("filter-class-active");
+					} else {}
+				});			
+			}
+		})
+	
 	}
 
 	// Material Menu

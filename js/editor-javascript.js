@@ -363,6 +363,7 @@ function popup(color, message) {
 function saveRequest() {
 	popup("var(--green)","Saved");
 	var data = saveData();
+	var objects = saveObjects();
 	$.ajax({
 		url: "/saverequest",
 		type: "POST",
@@ -370,7 +371,8 @@ function saveRequest() {
 			'request_id': document.getElementById("request_id").getAttribute("value"),
 			'request_title': document.getElementById("request_title").value,
 			'request_description': document.getElementById("request_description").value,
-			'request_json': data
+			'request_json': data,
+			'request_objectsave': objects
 		}
 	});
 }

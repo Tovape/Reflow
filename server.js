@@ -124,6 +124,23 @@ let getJson = async (request_id) => {
 	return result;
 }
 
+// Get Object JSON Requests Function
+
+let getObjectJson = async (request_id) => {
+	
+	let query = "SELECT objectsjson FROM requests WHERE request_id = " + request_id;
+	
+	let result = await new Promise((resolve, reject) => db.query(query, (err, result) => {
+		if (err) {
+			reject(err)
+		} else {
+			resolve(result);
+			console.log("\nGot Request Object JSON")
+		}
+	}));
+	return result;
+}
+
 // Get JSON Objects List
 
 let getObjects = async () => {
@@ -334,7 +351,7 @@ app.post('/editor', checkAuthenticated, async (req, res) => {
 	
 	if (req.body.request_title === undefined || req.body.request_title === null) {
 		console.log("Creating New Request");
-		let query = "INSERT INTO requests VALUES (" + req.body.request_id + ", " + req.user[Object.keys(req.user)[0]] + ", 'Title', 'Description', 'photos', '" + new Date().getFullYear() + "', '0','')";
+		let query = "INSERT INTO requests VALUES (" + req.body.request_id + ", " + req.user[Object.keys(req.user)[0]] + ", 'Title', 'Description', 'photos', '" + new Date().getFullYear() + "', '0','','')";
 		
 		try {
 			db.query(query, function (err, result, fields) {
@@ -350,23 +367,25 @@ app.post('/editor', checkAuthenticated, async (req, res) => {
 		setTimeout(function () {
 			let stringfiedobjects = JSON.stringify(objects);
 			let objectslength = Object.keys(objects).length;
+			let stringfiedjsonobject = "";
 
-			res.render('editor.ejs', { user_data: req.user, request_id: req.body.request_id, jsonsave: '', objects: objects, objectslength: objectslength, request_title: 'Title', request_description: 'Description' }),
+			res.render('editor.ejs', { user_data: req.user, request_id: req.body.request_id, jsonsave: '', objects: objects, objectslength: objectslength, request_title: 'Title', request_description: 'Description', objectsjson: stringfiedjsonobject }),
 			app.use(express.static(__dirname + '/css')),
 			app.use(express.static(__dirname + '/files')),
 			app.use(express.static(__dirname + '/js'))
 		}, 1000);
 	} else {
+		let objectsjson = await getObjectJson(req.body.request_id);
 		let jsonsave = await getJson(req.body.request_id);
 		let objects = await getObjects();
 
 		setTimeout(function () {
 			let stringfiedjsonsave = JSON.stringify(jsonsave);
-
+			let stringfiedjsonobject = JSON.stringify(objectsjson);
 			let stringfiedobjects = JSON.stringify(objects);
 			let objectslength = Object.keys(objects).length;
 
-			res.render('editor.ejs', { user_data: req.user, request_id: req.body.request_id, jsonsave: stringfiedjsonsave, objects: objects, objectslength: objectslength, request_title: req.body.request_title, request_description: req.body.request_description }),
+			res.render('editor.ejs', { user_data: req.user, request_id: req.body.request_id, jsonsave: stringfiedjsonsave, objects: objects, objectslength: objectslength, request_title: req.body.request_title, request_description: req.body.request_description, objectsjson: stringfiedjsonobject }),
 			app.use(express.static(__dirname + '/css')),
 			app.use(express.static(__dirname + '/files')),
 			app.use(express.static(__dirname + '/js'))
@@ -378,7 +397,7 @@ app.post('/saverequest', (req, res) => {
 	console.log("\nSaving Request Server-Side")
 	if (req.body[Object.keys(req.body)[0]] !== null && req.body[Object.keys(req.body)[0]] !== undefined && req.body[Object.keys(req.body)[0]] !== '') {
 		console.log("\nUpdating request_id: " + req.body[Object.keys(req.body)[0]] + " new title: " + req.body[Object.keys(req.body)[1]] + " new description: " + req.body[Object.keys(req.body)[2]])
-		let query = "UPDATE requests SET title = '" + req.body[Object.keys(req.body)[1]] + "', description = '" + req.body[Object.keys(req.body)[2]] + "', json = '" + req.body[Object.keys(req.body)[3]] + "' WHERE request_id = " + req.body[Object.keys(req.body)[0]];
+		let query = "UPDATE requests SET title = '" + req.body[Object.keys(req.body)[1]] + "', description = '" + req.body[Object.keys(req.body)[2]] + "', json = '" + req.body[Object.keys(req.body)[3]] + "', objectsjson = '" + req.body[Object.keys(req.body)[4]] + "' WHERE request_id = " + req.body[Object.keys(req.body)[0]];
 		db.query(query, function (err, result, fields) {
 			if (err)  {
 				throw err;

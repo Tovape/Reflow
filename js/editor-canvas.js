@@ -7,6 +7,17 @@ var globalSize = [null, null, null];
 
 var currentObjects = new Array;
 
+// Get values from SQL
+
+setTimeout(function(){
+	var objectsave = document.getElementById("objectsave").getAttribute('value');
+	let temp = JSON.parse(objectsave);
+	temp = JSON.parse(temp[Object.keys(temp)[0]].objectsjson)
+	for (let i = 0; i < temp.length; i++) {
+		currentObjects.push(temp[i]);
+	}
+}, 4000);
+
 // Measurement Localstorage
 
 $(document).ready(function() {
@@ -687,6 +698,12 @@ $(document).ready(function() {
 function saveData() {
 	var data = globalblueprint.model.exportSerialized();
 	return data;
+}
+
+function saveObjects() {
+	var objects = JSON.stringify(currentObjects);
+	console.log(objects)
+	return objects;
 }
 
 function loadMaterials() {

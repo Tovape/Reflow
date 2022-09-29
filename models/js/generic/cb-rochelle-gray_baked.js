@@ -27,7 +27,7 @@
 		"colorSpecular" : [0.5, 0.5, 0.5],
 		"depthTest" : true,
 		"depthWrite" : true,
-		"mapDiffuse" : "cb-rochelle-gray_baked.png",
+		"mapDiffuse" : "generic/cb-rochelle-gray_baked.png",
 		"mapDiffuseWrap" : ["repeat", "repeat"],
 		"shading" : "Lambert",
 		"specularCoef" : 50,

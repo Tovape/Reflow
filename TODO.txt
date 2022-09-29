@@ -10,4 +10,3 @@ Hostinger VPS --> Node.js, Mysql
 
 Todo:
 
-Array of Objects into Requests new field

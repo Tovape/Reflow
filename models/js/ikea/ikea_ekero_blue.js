@@ -27,7 +27,7 @@
 		"colorSpecular" : [0.5, 0.5, 0.5],
 		"depthTest" : true,
 		"depthWrite" : true,
-		"mapDiffuse" : "ik-ekero-blue_baked.png",
+		"mapDiffuse" : "generic/ik-ekero-blue_baked.png",
 		"mapDiffuseWrap" : ["repeat", "repeat"],
 		"shading" : "Lambert",
 		"specularCoef" : 50,

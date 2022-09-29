@@ -27,7 +27,7 @@
 		"colorSpecular" : [0.5, 0.5, 0.5],
 		"depthTest" : true,
 		"depthWrite" : true,
-		"mapDiffuse" : "we-crosby2piece-green_baked.png",
+		"mapDiffuse" : "generic/we-crosby2piece-green_baked.png",
 		"mapDiffuseWrap" : ["repeat", "repeat"],
 		"shading" : "Lambert",
 		"specularCoef" : 50,

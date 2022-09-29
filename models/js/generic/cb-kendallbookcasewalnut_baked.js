@@ -27,7 +27,7 @@
 		"colorSpecular" : [0.5, 0.5, 0.5],
 		"depthTest" : true,
 		"depthWrite" : true,
-		"mapDiffuse" : "cb-kendallbookcasewalnut_baked.png",
+		"mapDiffuse" : "generic/cb-kendallbookcasewalnut_baked.png",
 		"mapDiffuseWrap" : ["repeat", "repeat"],
 		"shading" : "Lambert",
 		"specularCoef" : 50,

@@ -17,7 +17,8 @@ var arrLang = {
 	'editor-inventory': 'Inventory',
 	'editor-open': 'Open',
 	'editor-close': 'Close',
-	'editor-delete': 'Delete'
+	'editor-delete': 'Delete',
+	'editor-autosave': 'AutoSave'
 	
 	},
 
@@ -36,7 +37,8 @@ var arrLang = {
 	'editor-inventory': 'Inventario',
 	'editor-open': 'Abrir',
 	'editor-close': 'Cerrar',
-	'editor-delete': 'Eliminar'
+	'editor-delete': 'Eliminar',
+	'editor-autosave': 'AutoGuardado'
 
 	},
 	
@@ -55,7 +57,8 @@ var arrLang = {
 	'editor-inventory': 'Inventari',
 	'editor-open': 'Obrir',
 	'editor-close': 'Tancar',
-	'editor-delete': 'Eliminar'
+	'editor-delete': 'Eliminar',
+	'editor-autosave': 'AutoGuardat'
 
 	}
 };
@@ -67,7 +70,7 @@ $(function() {
 	}
 
 	var lang = localStorage.getItem("language");
-		$('p,a').each(function(index, element) {
+		$('p,a,span').each(function(index, element) {
 			$(this).html(arrLang[lang][$(this).attr('key')]);
 			$(this).html(arrGlobal[lang][$(this).attr('key')]);
 	});
@@ -77,7 +80,7 @@ $(function() {
 		var lang = $(this).attr('id');
 		$(this).parent().addClass('language-active').siblings().removeClass('language-active');
 
-		$('p,a').each(function(index, element) {
+		$('p,a,span').each(function(index, element) {
 			$(this).html(arrLang[lang][$(this).attr('key')]);
 			$(this).html(arrGlobal[lang][$(this).attr('key')]);
 

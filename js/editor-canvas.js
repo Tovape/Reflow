@@ -702,7 +702,6 @@ function saveData() {
 
 function saveObjects() {
 	var objects = JSON.stringify(currentObjects);
-	console.log(objects)
 	return objects;
 }
 

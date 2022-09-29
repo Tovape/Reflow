@@ -315,20 +315,6 @@ document.addEventListener("DOMContentLoaded", function(event) {
 			window.location.replace("./dashboard");
 		}, 2300);
 	});
-	
-	// Automatic Saving
-	/*
-	var jsonAutosave = window.setInterval(function() {
-		$.ajax({
-			url: "/savecanvas",
-			type: "POST",
-			data: {
-				'json': canvas_json[flatselected],
-				'request': request_id
-			}
-		});
-	}, 5000);
-	*/
 		
 	// Others
 	$('.measurement').click(function() {
@@ -376,6 +362,26 @@ function saveRequest() {
 		}
 	});
 }
+
+// AutoSave
+setInterval(function() {
+	if ($('#editor-autosave').is(":checked") === true) {
+		popup("var(--green)","Saved");
+		var data = saveData();
+		var objects = saveObjects();
+		$.ajax({
+			url: "/saverequest",
+			type: "POST",
+			data: {
+				'request_id': document.getElementById("request_id").getAttribute("value"),
+				'request_title': document.getElementById("request_title").value,
+				'request_description': document.getElementById("request_description").value,
+				'request_json': data,
+				'request_objectsave': objects
+			}
+		});
+	}
+}, 80000);
 
 // Menu Collapser
 var flag = 0;

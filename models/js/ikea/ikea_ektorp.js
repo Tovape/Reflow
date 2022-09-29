@@ -40,7 +40,7 @@
 					"colorSpecular": [0.5, 0.5, 0.5],
 					"depthTest": true,
 					"depthWrite": true,
-					"mapDiffuse": "IKE040018.jpg",
+					"mapDiffuse": "ikea/IKE040018.jpg",
 					"mapDiffuseWrap": ["repeat", "repeat"],
 					"shading": "Lambert",
 					"specularCoef": 115,

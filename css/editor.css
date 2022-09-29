@@ -146,8 +146,8 @@ button {
 	padding: 16px;
 }
 
-.editor-menu-each-nopadding {
-	padding: 0px 16px 16px 16px !important;	
+.editor-menu-each-nopaddingbottom {
+	padding: 16px 16px 0px 16px !important;	
 }
 
 .editor-menu-each p {

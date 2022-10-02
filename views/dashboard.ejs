@@ -55,7 +55,7 @@
 								<button key="dashboard-logout" type="submit">Log Out</button>
 							</form>
 						</div>
-						<% if(user_data[Object.keys(user_data)[8]] == 1) { %>
+						<% if(user_data[Object.keys(user_data)[5]] == 1) { %>
 						<div class="dashboard-profile-options-each">
 							<a key="dashboard-admin" href="/admin">Administrator Panel</a>
 						</div>
@@ -65,14 +65,6 @@
 						<div>
 							<p><%= requests.length %></p>
 							<p key="dashboard-requests">Requests</p>
-						</div>
-						<div>
-							<p><%= user_data[Object.keys(user_data)[7]] %></p>
-							<p key="dashboard-progress">In Progress</p>
-						</div>
-						<div>
-							<p><%= user_data[Object.keys(user_data)[5]] %></p>
-							<p key="dashboard-points">Points</p>
 						</div>
 					</div>
 				</div>

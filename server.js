@@ -351,7 +351,7 @@ app.post('/editor', checkAuthenticated, async (req, res) => {
 	
 	if (req.body.request_title === undefined || req.body.request_title === null) {
 		console.log("Creating New Request");
-		let query = "INSERT INTO requests VALUES (" + req.body.request_id + ", " + req.user[Object.keys(req.user)[0]] + ", 'Title', 'Description', 'photos', '" + new Date().getFullYear() + "', '0','','')";
+		let query = "INSERT INTO requests VALUES (null, " + req.user[Object.keys(req.user)[0]] + ", 'Title', 'Description', 'photos', '" + new Date().getFullYear() + "', '0','','')";
 		
 		try {
 			db.query(query, function (err, result, fields) {

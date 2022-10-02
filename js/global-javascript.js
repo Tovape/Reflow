@@ -105,3 +105,12 @@ function menudropper() {
 		cross.classList.remove("dropdown-show");
 	}
 }
+
+// Console.log
+
+console.log(`%c 
+  _____       __ _               \r\n |  __ \\     \/ _| |              \r\n | |__) |___| |_| | _____      __\r\n |  _  \/\/ _ \\  _| |\/ _ \\ \\ \/\\ \/ \/\r\n | | \\ \\  __\/ | | | (_) \\ V  V \/ \r\n |_|  \\_\\___|_| |_|\\___\/ \\_\/\\_\/   
+`, "color: #6497b1; font-family: Monospace;");
+
+console.table({Español:"Quieres Trabajar con nosotros?", English:"Do you want to work with us?"});
+console.log(`%c Send us an email! tovapebusiness@gmail.com`, "color: #6497b1; font-family: Monospace;");

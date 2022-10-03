@@ -53,8 +53,28 @@ const db = mysql.createConnection({
 	host: 'localhost',
 	port: 3306,
 	user: 'test2',
-	password: '123',
+	password: 'test2',
 	database: "reflow"
+});
+
+// Port
+
+app.listen(PORT);
+
+// Console
+
+console.log(`%c 
+\t  _____       __ _               \r\n\t |  __ \\     \/ _| |              \r\n\t | |__) |___| |_| | _____      __\r\n\t |  _  \/\/ _ \\  _| |\/ _ \\ \\ \/\\ \/ \/\r\n\t | | \\ \\  __\/ | | | (_) \\ V  V \/ \r\n\t |_|  \\_\\___|_| |_|\\___\/ \\_\/\\_\/   
+`, "color: #6497b1; font-family: Monospace;");
+
+console.log('\n\t' +  '\x1b[90m', 'v1.0.1 | Stable' + '\x1b[0m');
+
+console.log("\t--------------------------\n\t" + "\x1b[33m", "Server " + "\x1b[0m" + "Running in Port " + PORT + "\n\t--------------------------");
+console.log("\t" + "\x1b[32m", "NodeJS" + "\x1b[0m" + " Online");
+
+db.query('SELECT 1 + 1 AS solution', (error, results, fields) => {
+	if (error) throw error;
+	console.log("\t--------------------------\n\t" + "\x1b[94m", "MySql" + "\x1b[0m" + " Connected");
 });
 
 // Get Users
@@ -610,11 +630,6 @@ app.route('/newpassword').post(async function (req, res, next) {
 	}
 	
 });
-
-// Port
-
-console.log("Server Started on port " + PORT);
-app.listen(PORT);
 
 // Ikea Checker
 

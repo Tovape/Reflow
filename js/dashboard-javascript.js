@@ -47,6 +47,33 @@ function sortType(arg, sel, elem, order) {
 	$element.detach().appendTo($selector);
 }
 
+// Select Country
+
+$(document).ready(function() {
+	var countrydiv = document.getElementById("dashboard-country-div-p");
+
+	for (let i = 0; i < regions.length; i++) {
+		$(countrydiv).append("<p class='dashboard-country-each' value='" + regions[i] + "'>" + regions[i] + "</p>");
+	}
+	
+	var generated = document.getElementsByClassName("dashboard-country-each");
+	
+	for (let i = 0; i < generated.length; i++) {
+		generated[i].addEventListener("click", function () {
+			localStorage.setItem("region", generated[i].getAttribute("value"));
+			popup("var(--green)","Saved");
+		});
+	}	
+})
+
+function selectCountry() {
+	var countrydiv = document.getElementById("dashboard-country-div");
+	var requestdiv = document.getElementById("dashboard-requests");
+	
+	countrydiv.classList.toggle("dashboard-filter-fadein");
+	requestdiv.classList.toggle("dashboard-filter-fadein");
+}
+
 // Sort Year Buttons
 
 $(document).on('click', '.dashboard-sort-asc', function() {
@@ -78,13 +105,11 @@ $(document).on('click', '.dashboard-filter-progress', function() {
 // Set Filter Selection
 
 $(document).ready(function() {
-	
 	const sortbutton = document.getElementsByClassName("dashboard-filter-each");
 
 	$(sortbutton).click(function() {
 		$(this).addClass('dashboard-filter-active').siblings().removeClass('dashboard-filter-active');
 	});
-	
 });
 
 // Avatar Auto Submit
@@ -107,5 +132,29 @@ document.addEventListener("DOMContentLoaded", function(event) {
 		  request_id[i].submit();
 		});
 	}
-
 });
+
+// Popup Function	
+
+function popup(color, message) {
+
+	let popupflex = document.getElementById("dashboard-canvas-popup");
+	let popuptext = document.getElementById("dashboard-canvas-popup-text");
+	
+	popuptext.style.borderColor = color;
+	popuptext.textContent = message;
+	
+	popupflex.classList.toggle('flex');
+	setTimeout(function() {
+		popupflex.classList.toggle('fadeon');
+	}, 150);
+	
+	setTimeout(function() {
+		popupflex.classList.toggle('fadeon');
+		setTimeout(function() {
+			popupflex.classList.toggle('flex');
+		}, 150);
+	}, 2000);
+}
+
+

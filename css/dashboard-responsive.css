@@ -25,6 +25,12 @@
     padding: 8px 20px;
 }
 
+#dashboard-country-div {
+	width: 100%;
+	padding-left: 0px;
+	margin-top: 20px;
+}
+
 }
 
 @media only screen and (max-width: 500px) {

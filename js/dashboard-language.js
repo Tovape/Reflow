@@ -13,7 +13,9 @@ var arrLang = {
 	'dashboard-points': 'Points',
 	'dashboard-all': 'All',
 	'dashboard-photos': 'Photos',
-	'dashboard-videos': 'Videos'
+	'dashboard-videos': 'Videos',
+	'dashboard-country': 'Select Country',
+	'dashboard-selectcountry': 'Select Your Country'
 	
 	},
 
@@ -28,7 +30,9 @@ var arrLang = {
 	'dashboard-points': 'Puntos',
 	'dashboard-all': 'Todo',
 	'dashboard-photos': 'Fotos',
-	'dashboard-videos': 'Videos'
+	'dashboard-videos': 'Videos',
+	'dashboard-country': 'Selecionar País',
+	'dashboard-selectcountry': 'Seleciona tu País'
 
 	},
 	
@@ -43,7 +47,9 @@ var arrLang = {
 	'dashboard-points': 'Punts',
 	'dashboard-all': 'Tot',
 	'dashboard-photos': 'Fotos',
-	'dashboard-videos': 'Videos'
+	'dashboard-videos': 'Videos',
+	'dashboard-country': 'Seleccionar País',
+	'dashboard-selectcountry': 'Seleciona el teu País'
 
 	}
 };

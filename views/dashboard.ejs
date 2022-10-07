@@ -23,6 +23,7 @@
 	<script type="text/javascript" src="global-language.js"></script>
 	<script type="text/javascript" src="dashboard-language.js"></script>
 	<script type="text/javascript" src="dashboard-javascript.js"></script>
+	<script type="text/javascript" src="dashboard-region.js"></script>
 </head>
 
 <body>
@@ -50,6 +51,9 @@
 						</div>
 					</div>
 					<div class="dashboard-profile-options">
+						<div class="dashboard-profile-options-each" id="dashboard-country">
+							<button key="dashboard-country" onclick="selectCountry()">Select Country</button>
+						</div>
 						<div class="dashboard-profile-options-each">
 							<form action="/logout?_method=DELETE" method="POST">
 								<button key="dashboard-logout" type="submit">Log Out</button>
@@ -69,7 +73,7 @@
 					</div>
 				</div>
 			</div>
-			<div class="dashboard-requests">
+			<div class="dashboard-requests" id="dashboard-requests">
 				<div class="dashboard-sort">
 					<a href="#" key="newest" class="dashboard-sort-each dashboard-sort-desc">Newest <i class="fa fa-arrow-up"></i></a>
 					<a href="#" key="oldest" class="dashboard-sort-each dashboard-sort-asc">Oldest <i class="fa fa-arrow-down"></i></a>
@@ -114,7 +118,15 @@
 					</form>
 				</div>
 			</div>
+			<div class="dashboard-country-div dashboard-filter-fadein" id="dashboard-country-div">
+				<p class="dashboard-country-div-title" key="dashboard-selectcountry"></p>
+				<div id="dashboard-country-div-p">
+				</div>
+			</div>
 		</div>
+	</div>
+	<div class="dashboard-canvas-popup fadein hidden" id="dashboard-canvas-popup">
+		<p id="dashboard-canvas-popup-text">Message</p>
 	</div>
 </div>
 

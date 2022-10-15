@@ -19,8 +19,7 @@ var arrGlobal = {
 	'footer-row-1-entry-2': 'Work',
 	
 	'footer-row-2-title': 'Legal',
-	'footer-row-2-entry-1': 'Privacy',
-	'footer-row-2-entry-2': 'Security',
+	'footer-row-2-entry-1': 'Privacy & Cookies',
 	'footer-row-2-entry-3': 'Terms and Conditions',
 	
 	// Language
@@ -61,8 +60,7 @@ var arrGlobal = {
 	'footer-row-1-entry-2': 'Trabajo',
 	
 	'footer-row-2-title': 'Legal',
-	'footer-row-2-entry-1': 'Privacidad',
-	'footer-row-2-entry-2': 'Seguridad',
+	'footer-row-2-entry-1': 'Privacidad y Cookies',
 	'footer-row-2-entry-3': 'Términos y Condiciones',
 
 	// Language
@@ -103,8 +101,7 @@ var arrGlobal = {
 	'footer-row-1-entry-2': 'Treball',
 	
 	'footer-row-2-title': 'Legal',
-	'footer-row-2-entry-1': 'Privacitat',
-	'footer-row-2-entry-2': 'Seguretat',
+	'footer-row-2-entry-1': 'Privacitat i Cookies',
 	'footer-row-2-entry-3': 'Termes i Condicions',
 
 	// Language

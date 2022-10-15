@@ -140,6 +140,7 @@ Top Button Configuration
 	border-radius: 50%;
     display: none;
 	cursor: pointer;
+	border: none;
 }
 
 .top:hover {
@@ -151,6 +152,10 @@ Top Button Configuration
 Menu Configuration
 ----------------------------------
 */
+
+.test {
+
+}
 
 .menu-background {
 	width: 100%;
@@ -172,6 +177,7 @@ Menu Configuration
 	justify-content: space-between;
 	height: 100%;
 	width: 80%;
+	max-width: 1920px;
 }
 
 .menu-fixed{
@@ -646,6 +652,7 @@ Menu Configuration
 	align-items: flex-start;
     justify-content: center;
 	padding: 20px 0;
+    max-width: 1920px;
 }
 
 .footer-logo {
@@ -654,6 +661,7 @@ Menu Configuration
 
 .footer-logo img {
 	width: 50%;
+	max-width: 300px;
 }
 
 .footer-catchphrase {
@@ -703,6 +711,7 @@ Menu Configuration
 	font-size: var(--bigfont);
 	color: var(--white);
 	font-weight: bold;
+	padding-bottom: 10px;
 }
 
 .footer-each a {
@@ -750,6 +759,7 @@ Menu Configuration
 	flex-direction: row;
 	align-items: center;
 	justify-content: center;
+	max-width: 1920px;
 }
 
 .responsive-aligner-padding {

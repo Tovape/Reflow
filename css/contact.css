@@ -50,6 +50,10 @@
 	margin-top: 10px;
 }
 
+.contact-each form button {
+	margin-top: 20px;
+}
+
 .contact-form-field {
 	width: calc(100% - 22px);
 	border: 0;

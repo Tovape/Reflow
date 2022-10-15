@@ -1,5 +1,8 @@
 document.addEventListener("DOMContentLoaded", function(event) { 
 
+	// Reminder	
+	popup("var(--blue)","Low Performance? Turn on Hardware Acceleration");
+
 	// Set 2D Floorplanner Default
 	setTimeout(function(){
 		document.getElementById("editor-menu-view-2d").click();
@@ -236,7 +239,6 @@ document.addEventListener("DOMContentLoaded", function(event) {
 									myArray[a].classList.add("hidden");
 								}
 							}
-							console.log(class_array[j])
 						}
 					})
 				}

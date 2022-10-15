@@ -27,6 +27,10 @@
 	margin-top: 10px;	
 }
 
+.booking form button {
+	margin-top: 20px;
+}
+
 .booking-flex {
 	width: 100%;
 	display: flex;
@@ -90,6 +94,7 @@
 	padding: 10px;
 	border-radius: 4px;
 	font-size: var(--midfont);
+	font-family: var(--montserrat);
 }
 
 .booking-each form textarea:focus::placeholder{

@@ -1,0 +1,3 @@
+For pip:
+cd C:\Users\toniv\AppData\Local\Programs\Python\Python35\Scripts
+pip install x

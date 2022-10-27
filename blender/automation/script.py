@@ -33,8 +33,3 @@ if os.path.isdir(importdir):
 else:
     print("No Directory Found in " + importdir)
     raise SystemExit
-
-# + " --" + x
-#subprocess.call([blenderarg], shell=True)
-#C:\Users\toniv\Desktop\Work\Reflow\output
-# -con --python C:\Users\toniv\Documents\Webdesign\Reflow\blender\automation\blender.py

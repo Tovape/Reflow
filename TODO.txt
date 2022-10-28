@@ -1,11 +1,5 @@
-Partners:
+Production:
 
-Decosol sumi, real state, mobles like ikea, tiendas q venden muebles companies
-
-Domain & Hosting:
-
-https://domains.google.com/registrar/search?searchTerm=reflow&hl=es&priceFilter=30&tab=1
-https://www.dominios.es/es
-Hostinger VPS --> Node.js, Mysql
+images and content loading gets a plus reflow/global-css.css like
 
 Todo:

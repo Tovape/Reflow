@@ -3,6 +3,13 @@ document.addEventListener("DOMContentLoaded", function(event) {
 	// Reminder	
 	popup("var(--blue)","Low Performance? Turn on Hardware Acceleration");
 
+    // Set autosave state
+    if (localStorage.getItem("autosave") == 1) {
+        document.getElementById("editorautosave").checked = true;
+    } else {
+        document.getElementById("editorautosave").checked = false;
+    }
+
 	// Set 2D Floorplanner Default
 	setTimeout(function(){
 		document.getElementById("editor-menu-view-2d").click();
@@ -367,7 +374,7 @@ function saveRequest() {
 
 // AutoSave
 setInterval(function() {
-	if ($('#editor-autosave').is(":checked") === true) {
+	if ($('#editorautosave').is(":checked") === true) {
 		popup("var(--green)","Saved");
 		var data = saveData();
 		var objects = saveObjects();
@@ -383,7 +390,15 @@ setInterval(function() {
 			}
 		});
 	}
-}, 80000);
+}, 40000);
+
+$('#editorautosave').change(function() {
+    if ($(this).is(':checked')) {
+        localStorage.setItem("autosave", 1);
+    } else {
+        localStorage.setItem("autosave", 0);
+    }
+});
 
 // Menu Collapser
 var flag = 0;

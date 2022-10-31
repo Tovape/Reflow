@@ -25,6 +25,80 @@ initializePassport(
   user_id => users.find(user => user.user_id === user_id)
 )
 
+// Firewall
+
+app.all('/server.js', function (req,res, next) {
+   res.status(403).send({
+      message: 'Access Forbidden'
+   });
+});
+
+app.all('/.env', function (req,res, next) {
+   res.status(403).send({
+      message: 'Access Forbidden'
+   });
+});
+
+app.all('/.gitattributes', function (req,res, next) {
+   res.status(403).send({
+      message: 'Access Forbidden'
+   });
+});
+
+app.all('/.gitignore', function (req,res, next) {
+   res.status(403).send({
+      message: 'Access Forbidden'
+   });
+});
+
+app.all('/Download.txt', function (req,res, next) {
+   res.status(403).send({
+      message: 'Access Forbidden'
+   });
+});
+
+app.all('/Guide.txt', function (req,res, next) {
+   res.status(403).send({
+      message: 'Access Forbidden'
+   });
+});
+
+app.all('/package.json', function (req,res, next) {
+   res.status(403).send({
+      message: 'Access Forbidden'
+   });
+});
+
+app.all('/package-lock.json', function (req,res, next) {
+   res.status(403).send({
+      message: 'Access Forbidden'
+   });
+});
+
+app.all('/passport-config-js', function (req,res, next) {
+   res.status(403).send({
+      message: 'Access Forbidden'
+   });
+});
+
+app.all('/blender/*', function (req,res, next) {
+   res.status(403).send({
+      message: 'Access Forbidden'
+   });
+});
+
+app.all('/ddbb/*', function (req,res, next) {
+   res.status(403).send({
+      message: 'Access Forbidden'
+   });
+});
+
+app.all('/node_modules/*', function (req,res, next) {
+   res.status(403).send({
+      message: 'Access Forbidden'
+   });
+});
+
 // USE
 
 app.use(express.json({limit: '20mb'}));
@@ -46,6 +120,14 @@ app.use(session({
 app.use(passport.initialize())
 app.use(passport.session())
 app.use(methodOverride('_method'))
+app.use((req, res, next) => {
+    const test = /\?[^]*\//.test(req.url);
+    if (req.url.substr(-1) === '/' && req.url.length > 1 && !test) {
+        res.redirect(".."+req.url.slice(0, -1));
+    } else {
+        next();
+    }
+});
 
 // SQL Connection
 
@@ -604,28 +686,32 @@ app.route('/newpassword').post(async function (req, res, next) {
 		console.log("Password: From 6 to 16 with Numbers");
 		return false;
 	} else {
-		// Get Email
-		var decrypted = CryptoJS.AES.decrypt(req.body.encrypted, "Tovape");
-		var email = decrypted.toString(CryptoJS.enc.Utf8);
+	    if (req.body.encrypted === 'null' || req.body.encrypted === null || req.body.encrypted === '' || req.body.encrypted === undefined) {
+	        res.redirect('../reflow/failure')
+	    } else {
+			// Get Email
+			var decrypted = CryptoJS.AES.decrypt(req.body.encrypted, "Tovape");
+			var email = decrypted.toString(CryptoJS.enc.Utf8);
 
-		// Get Password Inputed
-		const hashedPassword = await bcrypt.hash(req.body.password, 10)
+			// Get Password Inputed
+			const hashedPassword = await bcrypt.hash(req.body.password, 10)
 
-		try {
-			let query = "UPDATE users SET password = '" + hashedPassword + "' WHERE email = '" + email + "'";
+			try {
+				let query = "UPDATE users SET password = '" + hashedPassword + "' WHERE email = '" + email + "'";
 
-			db.query(query, function (err, result, fields) {
-				if (err)  {
-					throw err;
-				} else {
-					console.log("User Updated Correctly")
-				}
-			});
-			getUsers();
+				db.query(query, function (err, result, fields) {
+					if (err)  {
+						throw err;
+					} else {
+						console.log("User Updated Correctly")
+					}
+				});
+				getUsers();
 
-			res.redirect('/success')
-		} catch {
-			res.redirect('/failure')
+				res.redirect('/success')
+			} catch {
+				res.redirect('/failure')
+			}
 		}
 	}
 	

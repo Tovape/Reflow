@@ -445,6 +445,10 @@ Menu Configuration
 
 .menu-dropmenu-hover {
 	margin-left: 10px;
+	width: 100%;
+}
+
+.menu-dropmenu-hover a p {
 	padding: 10px;
 }
 
@@ -657,6 +661,10 @@ Menu Configuration
 
 .footer-logo {
 	width: 46%;
+}
+
+.footer-logo > img:nth-child(1) {
+	min-width: 160px;
 }
 
 .footer-logo img {

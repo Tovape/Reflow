@@ -493,7 +493,7 @@
 					</div>
 					<div class="pricing-tag">
 						<a href="/booking">
-							<p>55$</p>
+							<p key="price-free"></p>
 						</a>
 					</div>
 				</div>
@@ -726,6 +726,16 @@
 <div class="author">
 	<a href="https://tovape.github.io" key="website">Website developed by Toni Valverde</a>
 </div>
+
+<script>
+    
+// Hardcoded for landing page
+
+if (window.location.pathname === '/reflow/') {
+    window.location.replace("http://espanastore.es/reflow");
+}
+    
+</script>
 
 </body>
 

@@ -96,6 +96,7 @@ var arrLang = {
 		'price-format-4': 'Delivery Format fbx, stl, obj, mp4, avi, mov, mkv, webp, jpg & png',
 		
 		'price-ask': 'Ask',
+		'price-free': 'Free',
 
 	// Faq
 	'faq-title': 'FAQ',
@@ -203,6 +204,7 @@ var arrLang = {
 		'price-format-4': 'Formato fbx, stl, obj, mp4, avi, mov, mkv, webp, jpg y png',
 		
 		'price-ask': 'Preguntar',
+		'price-free': 'Gratuito',
 		
 	// Faq
 	'faq-title': 'FAQ',
@@ -310,6 +312,7 @@ var arrLang = {
 		'price-format-4': 'Format fbx, stl, obj, mp4, avi, mov, mkv, webp, jpg i png',
 
 		'price-ask': 'Pregunta',
+		'price-free': 'Gratis',
 
 	// Faq
 	'faq-title': 'FAQ',

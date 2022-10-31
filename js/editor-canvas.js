@@ -9,14 +9,16 @@ var currentObjects = new Array;
 
 // Get values from SQL
 
-setTimeout(function(){
-	var objectsave = document.getElementById("objectsave").getAttribute('value');
-	let temp = JSON.parse(objectsave);
-	temp = JSON.parse(temp[Object.keys(temp)[0]].objectsjson)
-	for (let i = 0; i < temp.length; i++) {
-		currentObjects.push(temp[i]);
-	}
-}, 4000);
+document.addEventListener("DOMContentLoaded", function(event) { 
+	setTimeout(function(){
+		var objectsave = document.getElementById("objectsave").getAttribute('value');
+		let temp = JSON.parse(objectsave);
+		temp = JSON.parse(temp[Object.keys(temp)[0]].objectsjson)
+		for (let i = 0; i < temp.length; i++) {
+			currentObjects.push(temp[i]);
+		}
+	}, 4000);
+});
 
 // Measurement Localstorage
 

@@ -48,5 +48,9 @@
 .dashboard-requests {
     margin-top: 10px;
 }
+
+.dashboard-gallery form {
+    width: 100%;
+}
 	
 }

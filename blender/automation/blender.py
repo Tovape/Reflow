@@ -2,15 +2,29 @@ import bpy
 import sys
 
 print("Blender Launched")
-outputdir = r'C:\Users\toniv\Documents\Webdesign\Reflow\blender\automation\output'
+outputdir = r'C:\Users\toniv\Documents\Webdesign\Reflow\blender\automation\output\\'
 
 if sys.argv[-1] is not None:
     print("Got FileName")
-    string_to_use = sys.argv[-1]
-    string_to_use = string_to_use[2:]
-    text_data = bpy.data.curves.new('txt', 'FONT')
-    text_data.body = string_to_use
-    text_obj = bpy.data.objects.new('text', text_data)
-    bpy.context.scene.objects.link(text_obj)
+    # Formatting Nmae
+    filename = sys.argv[-1]
+    filename = filename[2:]
+    # Getting Objs
+    file_loc = 'C:\\Users\\toniv\\Desktop\\Work\\Reflow\\Sweet3D\\' + filename + '\\' + filename + '.obj'
+    imported_object = bpy.ops.import_scene.obj(filepath=file_loc)
+    obj_object = bpy.context.selected_objects[0]
+    # Selecting All
+    objects = bpy.context.scene.objects
+    for obj in objects:
+        obj.select = True
+        bpy.context.scene.objects.active = obj
+        bpy.ops.object.join()
+        break
+    # Set active
+    bpy.context.scene.objects.active = bpy.context.scene.objects[0]
+    # Exporting
+    Ufilename = filename.capitalize()
+    bpy.ops.export.threejs(filepath=outputdir + Ufilename + '.json')
+    bpy.ops.wm.quit_blender()
 else:
     raise SystemExit

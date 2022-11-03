@@ -1,7 +1,33 @@
+// Popup Function	
+function popup(color, message) {
+	
+	let popupflex = document.getElementById("editor-canvas-popup");
+	let popuptext = document.getElementById("editor-canvas-popup-text");
+	
+	popuptext.style.borderColor = color;
+	popuptext.textContent = message;
+	
+	popupflex.classList.toggle('flex');
+	setTimeout(function() {
+		popupflex.classList.toggle('fadeon');
+	}, 150);
+	
+	setTimeout(function() {
+		popupflex.classList.toggle('fadeon');
+		setTimeout(function() {
+			popupflex.classList.toggle('flex');
+		}, 150);
+	}, 4000);
+}
+
 document.addEventListener("DOMContentLoaded", function(event) { 
 
 	// Reminder	
-	popup("var(--blue)","Low Performance? Turn on Hardware Acceleration");
+	if (window.innerWidth < 700) {
+    	popup("var(--blue)","Please use a screen bigger than 700px wide\nPorfavor utiliza una pantalla más grande para usar esta herramienta");
+	} else {
+		popup("var(--blue)","Low Performance? Turn on Hardware Acceleration");
+	}
 
     // Set autosave state
     if (localStorage.getItem("autosave") == 1) {
@@ -329,30 +355,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
 	$('.measurement').click(function() {
 		popup("var(--blue)","Refresh the page");
 	});
-
 });
-
-// Popup Function	
-function popup(color, message) {
-	
-	let popupflex = document.getElementById("editor-canvas-popup");
-	let popuptext = document.getElementById("editor-canvas-popup-text");
-	
-	popuptext.style.borderColor = color;
-	popuptext.textContent = message;
-	
-	popupflex.classList.toggle('flex');
-	setTimeout(function() {
-		popupflex.classList.toggle('fadeon');
-	}, 150);
-	
-	setTimeout(function() {
-		popupflex.classList.toggle('fadeon');
-		setTimeout(function() {
-			popupflex.classList.toggle('flex');
-		}, 150);
-	}, 2000);
-}
 
 // Save Title and Description DDBB AJAX
 function saveRequest() {

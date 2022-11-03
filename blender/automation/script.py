@@ -17,6 +17,7 @@ else:
 print("\n\nReflow Automation Program by Toni Valverde")
 print("-------------tovape.github.io-------------\n")
 importdir = r"C:\Users\toniv\Desktop\Work\Reflow\Sweet3D\testing"
+outputdir = r'C:\Users\toniv\Documents\Webdesign\Reflow\blender\automation\output\\'
 
 if os.path.isdir(importdir):
     print("Importing from " + importdir + "\n")
@@ -26,7 +27,14 @@ if os.path.isdir(importdir):
         for x in importsubdir:
             print("Formatting " + x)
             os.system('blender.bat' + " " + x)
-            os.system("pause")
+            # JSON to JS
+            while not os.path.exists(outputdir + x + ".json"):
+                time.sleep(3)
+            if os.path.isfile(outputdir + x + ".json"):
+                os.rename(outputdir + x + ".json", outputdir + x + ".js")
+            # Stablish Texture Routes
+            #file = open(outputdir + x + '.js', 'w+')
+
     else:
         print("No subdirectories found")
         raise SystemExit

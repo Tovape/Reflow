@@ -16,7 +16,11 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
 		// Text
 		
-		var language = localStorage.getItem("language");
+		if(localStorage.getItem("language")) {
+			var language = localStorage.getItem("language");
+		} else {
+			var language = 'es';
+		}
 		
 		if (language == 'es') {
 			var titlearray = [

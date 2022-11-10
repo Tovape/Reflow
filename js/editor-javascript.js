@@ -22,6 +22,9 @@ function popup(color, message) {
 
 document.addEventListener("DOMContentLoaded", function(event) { 
 
+	// Disable Warnings
+	console.warn = () => {};
+
 	// Reminder	
 	if (window.innerWidth < 700) {
     	popup("var(--blue)","Please use a screen bigger than 700px wide\nPorfavor utiliza una pantalla más grande para usar esta herramienta");

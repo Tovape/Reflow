@@ -2,7 +2,7 @@ import bpy
 import sys
 
 print("Blender Launched")
-outputdir = r'C:\Users\toniv\Documents\Webdesign\Reflow\blender\automation\output\\'
+outputdir = r'C:\Users\toniv\Documents\Webdesign\Reflow\models\js\generic\\'
 
 if sys.argv[-1] is not None:
     print("Got FileName")

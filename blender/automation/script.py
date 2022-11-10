@@ -2,6 +2,19 @@ import sys
 import os
 import ctypes
 import time
+import pymysql
+import pymysql.cursors
+
+db = pymysql.connect(
+    host="localhost",
+    user="test2",
+    password="test2",
+    database="reflow",
+    charset='utf8mb4',
+    cursorclass=pymysql.cursors.DictCursor
+)
+
+dbcursor = db.cursor()
 
 try:
  is_admin = os.getuid() == 0
@@ -16,8 +29,9 @@ else:
 
 print("\n\nReflow Automation Program by Toni Valverde")
 print("-------------tovape.github.io-------------\n")
-importdir = r"C:\Users\toniv\Desktop\Work\Reflow\Sweet3D\testing"
-outputdir = r'C:\Users\toniv\Documents\Webdesign\Reflow\blender\automation\output\\'
+importdir = r"C:\Users\toniv\Desktop\Work\Reflow\testing"
+outputdir = r'C:\Users\toniv\Documents\Webdesign\Reflow\models\js\generic\\'
+texturedir = r'C:\Users\toniv\Documents\Webdesign\Reflow\models\textures\generic\\'
 
 if os.path.isdir(importdir):
     print("Importing from " + importdir + "\n")
@@ -32,9 +46,22 @@ if os.path.isdir(importdir):
                 time.sleep(3)
             if os.path.isfile(outputdir + x + ".json"):
                 os.rename(outputdir + x + ".json", outputdir + x + ".js")
-            # Stablish Texture Routes
-            #file = open(outputdir + x + '.js', 'w+')
-
+            # Move Textures
+            file_names = os.listdir(importdir + '\\' + x)
+            for file_name in file_names:
+                if file_name.endswith('.jpg') or file_name.endswith('.png'):
+                    os.rename(importdir + '\\' + x + '\\' + file_name, texturedir + file_name)
+                    # Add Texture Route
+                    with open(outputdir + x + ".js", 'r') as file :
+                        filedata = file.read()
+                    filedata = filedata.replace(file_name, 'generic/' + file_name)
+                    with open(outputdir + x + ".js", 'w') as file:
+                        file.write(filedata)
+            # Add to sql database
+            sql = "INSERT INTO objects VALUES (null, '" + x + "', null, 'Generic', 'models/js/generic/" + x + ".js', 0, 0, 0, 'models/thumbnails/generic/" + x + ".jpg', 0, 1, 1, null, null)"
+            dbcursor.execute(sql)
+            db.commit()
+            print("New record inserted.")
     else:
         print("No subdirectories found")
         raise SystemExit

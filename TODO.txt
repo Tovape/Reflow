@@ -1,5 +1,3 @@
-Production:
-
-images and content loading gets a plus reflow/global-css.css like
-
 Todo:
+
+Add size to blend files before exporting to json

@@ -225,7 +225,7 @@ var ContextMenu = function(blueprint3d) {
 			globalSize[0] = $(this).attr("height");
 			globalSize[1] = $(this).attr("width");
 			globalSize[2] = $(this).attr("depth");
-			if (globalSize[0] !== 0 || globalSize[1] !== 0 || globalSize[2] !== 0) {
+			if (globalSize[0] != 0 || globalSize[1] != 0 || globalSize[2] != 0) {
 				setTimeout(function() {
 					if (selectedItem !== null || selectedItem !== undefined) {
 						selectedItem.resize(globalSize[0], globalSize[1], globalSize[2]);

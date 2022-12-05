@@ -4,6 +4,7 @@ import ctypes
 import time
 import pymysql
 import pymysql.cursors
+import json
 
 db = pymysql.connect(
     host="localhost",
@@ -17,9 +18,9 @@ db = pymysql.connect(
 dbcursor = db.cursor()
 
 try:
- is_admin = os.getuid() == 0
+    is_admin = os.getuid() == 0
 except AttributeError:
- is_admin = ctypes.windll.shell32.IsUserAnAdmin() != 0
+    is_admin = ctypes.windll.shell32.IsUserAnAdmin() != 0
 
 if is_admin == False:
     print("Must Run as Administrator, Blender 2.79 requirement")
@@ -27,9 +28,9 @@ if is_admin == False:
 else:
     print("Running as Administrator")
 
-print("\n\nReflow Automation Program by Toni Valverde")
-print("-------------tovape.github.io-------------\n")
-importdir = r"C:\Users\toniv\Desktop\Work\Reflow\testing"
+print("\n\nBlueprint.js Automation v1.0.0")
+print("Program by Toni Valverde | tovape.github.io\n")
+importdir = r"C:\Users\toniv\Desktop\Work\Reflow\Sweet3D"
 outputdir = r'C:\Users\toniv\Documents\Webdesign\Reflow\models\js\generic\\'
 texturedir = r'C:\Users\toniv\Documents\Webdesign\Reflow\models\textures\generic\\'
 
@@ -46,6 +47,11 @@ if os.path.isdir(importdir):
                 time.sleep(3)
             if os.path.isfile(outputdir + x + ".json"):
                 os.rename(outputdir + x + ".json", outputdir + x + ".js")
+            # Get Dimensions
+            dimen = [0,0,0]
+            with open("temp.txt") as file:
+                for line in file:
+                    dimen = line.split(",")
             # Move Textures
             file_names = os.listdir(importdir + '\\' + x)
             for file_name in file_names:
@@ -58,10 +64,10 @@ if os.path.isdir(importdir):
                     with open(outputdir + x + ".js", 'w') as file:
                         file.write(filedata)
             # Add to sql database
-            sql = "INSERT INTO objects VALUES (null, '" + x + "', null, 'Generic', 'models/js/generic/" + x + ".js', 0, 0, 0, 'models/thumbnails/generic/" + x + ".jpg', 0, 1, 1, null, null)"
+            sql = "INSERT INTO objects VALUES (null, '" + x + "', null, 'Generic', 'models/js/generic/" + x + ".js', " + dimen[0] + "," + dimen[1] + "," + dimen[2] + ", 'models/thumbnails/generic/" + x + ".jpg', 0, 1, 1, null, null)"
             dbcursor.execute(sql)
             db.commit()
-            print("New record inserted.")
+            print("All finished.")
     else:
         print("No subdirectories found")
         raise SystemExit

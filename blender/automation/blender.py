@@ -1,5 +1,7 @@
 import bpy
 import sys
+import time
+import json
 
 print("Blender Launched")
 outputdir = r'C:\Users\toniv\Documents\Webdesign\Reflow\models\js\generic\\'
@@ -22,6 +24,13 @@ if sys.argv[-1] is not None:
         break
     # Set active
     bpy.context.scene.objects.active = bpy.context.scene.objects[0]
+    # Get and save dimensions
+    dimensions = [bpy.context.scene.objects.active.dimensions[0], bpy.context.scene.objects.active.dimensions[1], bpy.context.scene.objects.active.dimensions[2]]
+    f = open("temp.txt", "w")
+    for i in range(len(dimensions)):
+        dimensions[i] = round((dimensions[i]*10), 2)
+    f.write(str(dimensions[0]) + "," + str(dimensions[1]) + "," + str(dimensions[2]))
+    f.close()
     # Exporting
     Ufilename = filename.capitalize()
     bpy.ops.export.threejs(filepath=outputdir + Ufilename + '.json')

@@ -5,6 +5,7 @@ import time
 import pymysql
 import pymysql.cursors
 import json
+import shutil
 
 db = pymysql.connect(
     host="localhost",
@@ -56,7 +57,7 @@ if os.path.isdir(importdir):
             file_names = os.listdir(importdir + '\\' + x)
             for file_name in file_names:
                 if file_name.endswith('.jpg') or file_name.endswith('.png'):
-                    os.rename(importdir + '\\' + x + '\\' + file_name, texturedir + file_name)
+                    shutil.move(importdir + '\\' + x + '\\' + file_name, texturedir + file_name)
                     # Add Texture Route
                     with open(outputdir + x + ".js", 'r') as file :
                         filedata = file.read()

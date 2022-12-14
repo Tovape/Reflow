@@ -200,7 +200,8 @@ var ContextMenu = function(blueprint3d) {
 		
 		// Delete Active Objects
 		document.addEventListener("keydown", (e) => {
-			if (e.key === "Delete" || e.key === 'Backspace') {
+			// || e.key === 'Backspace'
+			if (e.key === "Delete") {
 				for (let i = 0; i < currentObjects.length; i++) {
 					if (currentObjects[i][0] === selectedItem['metadata']['modelUrl']) {
 						currentObjects[i] = null;
@@ -749,7 +750,7 @@ function loadMaterials() {
 				<svg height="24" width="24"><circle cx="12" cy="12" r="6" stroke="black" stroke-width="2" fill="red" /></svg>
 			</td>
 			<td class="editor-material-table-image">
-				<img src="` + arrayObjects[i][3] + `">
+				<img src="` + arrayObjects[i][3] + `" onerror="this.onerror=null; this.src='/files/images/404.png'" >
 			</td>
 			<td class="editor-material-table-item">` + arrayObjects[i][1] + `</td>
 			<td class="editor-material-table-quantity">` + arrayObjects[i][4] + `</td>

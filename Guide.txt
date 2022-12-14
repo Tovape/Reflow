@@ -24,6 +24,11 @@ Lights		- 3
 Windows		- 4
 Doors		- 5
 
+Model Types:
+
+Floor		- 1
+Wall		- 3
+
 Image Thumbnail of each Object:
 
 256x256

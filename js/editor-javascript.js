@@ -339,6 +339,24 @@ document.addEventListener("DOMContentLoaded", function(event) {
 		}
 	});
 	
+	// Guide Menu
+	$('#editor-guide-open,#editor-guide-cross').click(function() {
+		loadMaterials();
+		if ($('#editor-guide').hasClass('fadeon')) {
+			$('#editor-guide').toggleClass('fadeon');
+			setTimeout(function() {
+				$('#editor-guide').toggleClass('show');
+			}, 250);
+		$('#editor-guide-open').html('Open');
+		} else {
+			$('#editor-guide').toggleClass('show');
+			setTimeout(function() {
+				$('#editor-guide').toggleClass('fadeon');
+			}, 250);
+			$('#editor-guide-open').html('Close');
+		}
+	});
+	
 	// Delete Project
 	$("#editor-delete")[0].addEventListener("click", function() {
 		popup("var(--red)","Deleting Project...");

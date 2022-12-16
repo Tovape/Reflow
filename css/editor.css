@@ -448,7 +448,7 @@ button {
 	width: 30%;
 }
 
-.editor-inventory-browser-filter-title{
+.editor-inventory-browser-filter-title {
 	font-size: var(--medfont);
 	padding: 10px 0;
 }
@@ -769,8 +769,41 @@ button {
 	font-family: var(--montserrat);
 }
 
-
 .editor-material-total p:first-child {font-weight: bold;}
+
+/* Guide List */
+
+.editor-guide {
+	background-color: var(--white);
+	position: absolute;
+	top: 0; left: 0;
+	height: calc(100% - 160px);
+	width: calc(100% - 160px);
+	padding: 80px;
+	z-index: 12;
+}
+
+#editor-guide-flex {
+	height: calc(100% - 40px) !important;
+	width: 100%;
+	overflow-y: scroll;
+	gap: 20px;
+	display: flex;
+	flex-direction: row;
+}
+
+#editor-guide-flex div {width: calc(50% - 20px);}
+
+#editor-guide-flex div p {
+	font-size: var(--medfont);
+	margin-bottom: 20px;
+}
+
+#editor-guide-flex div img {
+	width: 100%;
+	max-width: 400px;
+	height: auto;
+}
 
 /* Settings */
 

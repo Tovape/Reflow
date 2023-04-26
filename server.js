@@ -134,8 +134,8 @@ app.use((req, res, next) => {
 const db = mysql.createConnection({
 	host: 'localhost',
 	port: 3306,
-	user: 'test2',
-	password: 'test2',
+	user: 'root',
+	password: '',
 	database: "reflow"
 });
 
